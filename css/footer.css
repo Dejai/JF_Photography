@@ -1,0 +1,3 @@
+#ron_footer{ position:fixed; bottom:0px; width:100%; height:50px; border:1px dashed ; text-align:left; }
+.footer-list { display:inline-block; width:auto; padding:1%; color:white; }
+.footer-list:hover { cursor: pointer; }
