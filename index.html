@@ -19,18 +19,45 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- JQUERY MOBILE -->
+    <!-- Include jQuery Mobile stylesheets -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
+
+    <!-- Include the jQuery Mobile library -->
+    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
     <!-- CUSTOM  -->
 	<!-- <link rel="stylesheet" type="text/css" href="./style/main.css"> -->
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/mainIndex.css">
     <link rel="stylesheet" type="text/css" href="./css/navbar.css">
     <link rel="stylesheet" type="text/css" href="./css/footer.css">
-
-    <script type="text/javascript" src="./js/index.js"></script>
+    
+    <script type="text/javascript" src="./js/mainIndex.js"></script>
 
 
 </head>
-<body id="ronPhotog">
-<nav id="ron_navbar"></nav>
-<footer id="ron_footer"></footer> 
+<body id="ronPhotog" data-role="page">
+<nav class="col-lg-12" id="ron_navbar" ></nav>
+<div id="ron_showcaseSection">
+    <button class="leftButtonArea">&#10094;</button>
+    <button class="rightButtonArea">&#10095;</button>
+
+    <img class="mySlides" src="./images/image2.jpg">
+    <img class="mySlides" src="./images/image3.jpg">
+    <img class="mySlides" src="./images/image4.jpg">
+    <img class="mySlides" src="./images/image6.jpg">
+    <img class="mySlides" src="./images/image7.jpg">
+    <img class="mySlides" src="./images/image8.jpg">
+
+    <div style="position:absolute; bottom:10px; width:100%; text-align:center; background-color:inherit; border:none;">
+        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="1"></span>
+        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="2"></span>
+        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="3"></span>
+        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="4"></span>
+        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="5"></span>
+        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="6"></span>
+    </div>
+</div>
+<!-- <footer id="ron_footer"></footer> -->
 </body>
 </html>
