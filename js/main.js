@@ -50,15 +50,17 @@ $(document).ready(function(){
 		// Test for touch events - will need to be updated to account for couresel behavior (if it works);
 
 		var slideshowImages = document.getElementsByClassName("slideshow_image");
+        var start = 0;
+        var dist = 0;
         slideshowImages.addEventListener("touchstart", function(e){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
-            var start = parseInt(touchObj.clientX);
+            start = parseInt(touchObj.clientX);
         }, false);
         slideshowImages.addEventListener("touchmove", function(e){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
-            var dist = parseInt(touchobj.clientX) - start;
+            dist = parseInt(touchobj.clientX) - start;
             if ( dist < 0){
                 clearTimeout(theTimer);
                 if (slideIndex == 1){
