@@ -55,18 +55,11 @@ $(document).ready(function(){
             var touchObj = e.changedTouches[0];
             var start = parseInt(touchObj.clientX);
         }, false);
-        // slideshowSection.addEventListener("touchmove", function(e){
-        //     e.preventDefault();
-        //     var touchObj = e.changedTouches[0];
-        //     var dist = parseInt(touchobj.clientX) - start;
-        //     alert('Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px');
-
-        // }, false);
-        slideshowSection.addEventListener("touchend", function(e){
+        slideshowSection.addEventListener("touchmove", function(e){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
-            var end = parseInt(touchObj.clientX);
-            if ( (end - start) < -29){
+            var dist = parseInt(touchobj.clientX) - start;
+            if ( dist < 0){
                 clearTimeout(theTimer);
                 if (slideIndex == 1){
                     slideIndex = slideshow_image.length-1;
@@ -74,10 +67,28 @@ $(document).ready(function(){
                     slideIndex -= 2; 
                 }
                 carousel();
-            } else if ( (end - start) > 29){
+            } else if ( dist > 0){
                 clearTimeout(theTimer);
                 carousel();
             }
+
         }, false);
+        // slideshowSection.addEventListener("touchend", function(e){
+        //     e.preventDefault();
+        //     var touchObj = e.changedTouches[0];
+        //     var end = parseInt(touchObj.clientX);
+        //     if ( (end - start) < -29){
+        //         clearTimeout(theTimer);
+        //         if (slideIndex == 1){
+        //             slideIndex = slideshow_image.length-1;
+        //         }  else { 
+        //             slideIndex -= 2; 
+        //         }
+        //         carousel();
+        //     } else if ( (end - start) > 29){
+        //         clearTimeout(theTimer);
+        //         carousel();
+        //     }
+        // }, false);
 
 });

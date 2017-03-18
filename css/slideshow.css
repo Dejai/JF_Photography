@@ -20,18 +20,18 @@ body {	background-color: black; }
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) { 
-	#slideshowSection { width:90%; left:5%; top:150px; height:450px; margin:auto; }	
+	#slideshowSection { width:90%; left:5%; top:8px; height:450px; margin:auto; }	
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media screen and  (min-width: 900px) { 
-	#slideshowSection { width:75%; left:12%; margin:auto; }
+	#slideshowSection { width:75%; left:12%; margin:auto; top:80px;}
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media screen and (min-width: 1200px){
 
-	#slideshowSection {width:65%; left:17%; margin:auto; height:450px; }
+	#slideshowSection {width:65%; left:17%; margin:auto;  }
 	.clickButton { position:absolute; display:block; }
 	/*The Buttons in the Slideshow*/
 	#slideshow_leftButton { display:block; position:absolute; height:25%; top:37%;  border: none;
