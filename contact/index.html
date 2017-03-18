@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ron Photography - Contact</title>
+	<title>Contact JF Photography</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8"/>
     <meta http-equiv="Cache-control" content="no-cache">
@@ -22,8 +22,20 @@
     <!-- CUSTOM  -->
 	<!-- <link rel="stylesheet" type="text/css" href="./style/main.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/contact.css">
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+
+    <script type="text/javascript" src="../js/sharedFunctions.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#navbar").load("../views/navbar.html", function(){
+                highlightCurrentPage('contact');
+                mobileMenu();
+            });
+        });
+    </script>
 </head>
 <body id="ronPhotog">
-<p>This is a page to show your contact information</p>
+<nav class="col-lg-12" id="navbar" ></nav>
+<!-- <p>This is a page to show your contact information</p> -->
 </body>
 </html>

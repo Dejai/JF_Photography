@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ron Photography</title>
+	<title>JF Photography</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8"/>
     <meta http-equiv="Cache-control" content="no-cache">
@@ -19,45 +19,46 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- JQUERY MOBILE -->
-    <!-- Include jQuery Mobile stylesheets -->
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
 
-    <!-- Include the jQuery Mobile library -->
-    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-
-    <!-- CUSTOM  -->
-	<!-- <link rel="stylesheet" type="text/css" href="./style/main.css"> -->
-    <link rel="stylesheet" type="text/css" href="./css/mainIndex.css">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/slideshow.css">
     <link rel="stylesheet" type="text/css" href="./css/navbar.css">
     <link rel="stylesheet" type="text/css" href="./css/footer.css">
     
-    <script type="text/javascript" src="./js/mainIndex.js"></script>
-
+    <!-- Custom JavaScript to control page functionality -->
+    <script type="text/javascript">
+       
+    </script>
+    <script type="text/javascript" src="./js/sharedFunctions.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 
 </head>
-<body id="ronPhotog" data-role="page">
-<nav class="col-lg-12" id="ron_navbar" ></nav>
-<div id="ron_showcaseSection">
-    <button class="leftButtonArea">&#10094;</button>
-    <button class="rightButtonArea">&#10095;</button>
+<body>
+<nav class="col-lg-12" id="navbar" ></nav>
+<div id="slideshowSection">
+    <button id="slideshow_leftButton">&#10094;</button>
+    <button id="slideshow_rightButton">&#10095;</button>
+    
+    <img class="slideshow_image" src="./images/image2.jpg">
+    <img class="slideshow_image" src="./images/image8.jpg">
+    <img class="slideshow_image" src="./images/image3.jpg">
+    <img class="slideshow_image" src="./images/image4.jpg">
+    <img class="slideshow_image" src="./images/image6.jpg">
+    <img class="slideshow_image" src="./images/image7.jpg">
+    <img class="slideshow_image" src="./images/image3.jpg">
+    <img class="slideshow_image" src="./images/image6.jpg">
 
-    <img class="mySlides" src="./images/image2.jpg">
-    <img class="mySlides" src="./images/image3.jpg">
-    <img class="mySlides" src="./images/image4.jpg">
-    <img class="mySlides" src="./images/image6.jpg">
-    <img class="mySlides" src="./images/image7.jpg">
-    <img class="mySlides" src="./images/image8.jpg">
-
-    <div style="position:absolute; bottom:10px; width:100%; text-align:center; background-color:inherit; border:none;">
-        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="1"></span>
-        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="2"></span>
-        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="3"></span>
-        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="4"></span>
-        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="5"></span>
-        <span class="glyphicon glyphicon-camera slidePosition" data-ron-slide="6"></span>
+    <div id="slideshowPositionsSection">
+        <p class="slideshow_position" data-ron-slide="1"></p>
+        <p class="slideshow_position" data-ron-slide="2"></p>
+        <p class="slideshow_position" data-ron-slide="3"></p>
+        <p class="slideshow_position" data-ron-slide="4"></p>
+        <p class="slideshow_position" data-ron-slide="5"></p>
+        <p class="slideshow_position" data-ron-slide="6"></p>
+        <p class="slideshow_position" data-ron-slide="7"></p>
+        <p class="slideshow_position" data-ron-slide="8"></p>
     </div>
 </div>
-<!-- <footer id="ron_footer"></footer> -->
+<div id="footer"></div>
 </body>
 </html>
