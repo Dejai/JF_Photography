@@ -20,7 +20,7 @@ body {	background-color: black; }
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) { 
-	#slideshowSection { width:90%; left:5%; top:150px; margin:auto; }	
+	#slideshowSection { width:90%; left:5%; top:150px; height:450px; margin:auto; }	
 }
 
 /*Large devices (desktops, 992px and up)*/
@@ -31,7 +31,7 @@ body {	background-color: black; }
 /*Extra large devices (large desktops, 1200px and up)*/
 @media screen and (min-width: 1200px){
 
-	#slideshowSection {width:65%; left:17%; margin:auto; }
+	#slideshowSection {width:65%; left:17%; margin:auto; height:450px; }
 	.clickButton { position:absolute; display:block; }
 	/*The Buttons in the Slideshow*/
 	#slideshow_leftButton { display:block; position:absolute; height:25%; top:37%;  border: none;

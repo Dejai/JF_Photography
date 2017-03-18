@@ -54,7 +54,6 @@ $(document).ready(function(){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
             var start = parseInt(touchObj.clientX);
-            alert('Status: touchstart<br> ClientX: ' + start + 'px');
         }, false);
         // slideshowSection.addEventListener("touchmove", function(e){
         //     e.preventDefault();
