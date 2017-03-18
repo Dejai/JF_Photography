@@ -49,13 +49,13 @@ $(document).ready(function(){
 
 		// Test for touch events - will need to be updated to account for couresel behavior (if it works);
 
-		var slideshowSection = document.getElementById("slideshowSection");
-        slideshowSection.addEventListener("touchstart", function(e){
+		var slideshowImages = document.getElementById("slideshow_image");
+        slideshowImages.addEventListener("touchstart", function(e){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
             var start = parseInt(touchObj.clientX);
         }, false);
-        slideshowSection.addEventListener("touchmove", function(e){
+        slideshowImages.addEventListener("touchmove", function(e){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
             var dist = parseInt(touchobj.clientX) - start;
@@ -73,7 +73,7 @@ $(document).ready(function(){
             }
 
         }, false);
-        // slideshowSection.addEventListener("touchend", function(e){
+        // slideshowImages.addEventListener("touchend", function(e){
         //     e.preventDefault();
         //     var touchObj = e.changedTouches[0];
         //     var end = parseInt(touchObj.clientX);

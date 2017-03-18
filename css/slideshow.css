@@ -20,7 +20,7 @@ body {	background-color: black; }
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) { 
-	#slideshowSection { width:90%; left:5%; top:8px; height:450px; margin:auto; }	
+	#slideshowSection { width:90%; left:5%; top:100px; height:450px; margin:auto; }	
 }
 
 /*Large devices (desktops, 992px and up)*/
