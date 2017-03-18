@@ -56,18 +56,29 @@ $(document).ready(function(){
             var start = parseInt(touchObj.clientX);
             alert('Status: touchstart<br> ClientX: ' + start + 'px');
         }, false);
-        slideshowSection.addEventListener("touchmove", function(e){
-            e.preventDefault();
-            var touchObj = e.changedTouches[0];
-            var dist = parseInt(touchobj.clientX) - start;
-            alert('Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px');
+        // slideshowSection.addEventListener("touchmove", function(e){
+        //     e.preventDefault();
+        //     var touchObj = e.changedTouches[0];
+        //     var dist = parseInt(touchobj.clientX) - start;
+        //     alert('Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px');
 
-        }, false);
+        // }, false);
         slideshowSection.addEventListener("touchend", function(e){
             e.preventDefault();
             var touchObj = e.changedTouches[0];
             var end = parseInt(touchObj.clientX);
-            alert('Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px');
+            if ( (end - start) < -29){
+                clearTimeout(theTimer);
+                if (slideIndex == 1){
+                    slideIndex = slideshow_image.length-1;
+                }  else { 
+                    slideIndex -= 2; 
+                }
+                carousel();
+            } else if ( (end - start) > 29){
+                clearTimeout(theTimer);
+                carousel();
+            }
         }, false);
 
 });
