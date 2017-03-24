@@ -54,8 +54,8 @@ $(document).ready(function(){
 
         var startx = 0, dist = 0; 
         box1.addEventListener('touchstart', function(e){
-            var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
-            startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
+            var touchobj = e.changedTouches[0]; // reference first touch point (ie: first finger)
+            startx = parseInt(touchobj.clientX);// get x position of touch point relative to left edge of browser
             // alert('Status: touchstart<br> ClientX: ' + startx + 'px');
         }, false)
      
@@ -66,7 +66,7 @@ $(document).ready(function(){
         // }, false)
      
         box1.addEventListener('touchend', function(e){
-            var touchobj = e.changedTouches[0] // reference first touch point for this event
+            var touchobj = e.changedTouches[0]; // reference first touch point for this event
             var end = parseInt(touchObj.clientX);
             if (end < startx){
                 alert("The end is less");
