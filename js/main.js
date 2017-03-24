@@ -50,19 +50,23 @@ $(document).ready(function(){
 		// Test for touch events - will need to be updated to account for couresel behavior (if it works);
 
         // var slideshowImages = document.getElementsByClassName("slideshow_image");
-		var box1 = document.getElementById("slideshowSection");
+		var slideSection = document.getElementById("slideshowSection");
+		swipedetect(slideSection, function(swipedir){
+		    if (swipedir =='left') {
+		    	clearTimeout(theTimer);
+			    $(this).blur();
+			    if (slideIndex == 1){
+			    	slideIndex = slideshow_image.length-1;
+			    }  else { 
+			    	slideIndex -= 2; 
+			    }
+			    carousel();
+		    } else if (swipedir == 'right'){
+		    	clearTimeout(theTimer);
+	        	$(this).blur();
+			    carousel();
+		    }
+		});
 
-        var startx = 0, dist = 0; 
-        box1.addEventListener('touchstart', function(e){
-            var touchobj = e.changedTouches[0]; // reference first touch point (ie: first finger)
-            startx = parseInt(touchobj.clientX);// get x position of touch point relative to left edge of browser
-            alert('Status: touchstart<br> ClientX: ' + startx + 'px');
-        }, false)
-     
-        // box1.addEventListener('touchmove', function(e){
-        //     var touchobj = e.changedTouches[0] // reference first touch point for this event
-        //     dist = parseInt(touchobj.clientX) - startx;
-        //     alert('Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px');
-        // }, false)
 
 });
