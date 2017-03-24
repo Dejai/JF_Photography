@@ -54,28 +54,27 @@ $(document).ready(function(){
 
         var start, dist, touchObj;
 
-        slideshowSection.addEventListener("touchend", function(e){
+        slideshowSection.addEventListener("touchstart", function(e){
             e.preventDefault();
             touchObj = e.changedTouches[0];
             start = parseInt(touchObj.clientX);
-            alert("Start = " + start);
         }, false);
-        // slideshowImages.addEventListener("touchmove", function(e){
-        //     e.preventDefault();
-        //     touchObj = e.changedTouches[0];
-        //     dist = parseInt(touchobj.clientX) - start;
-        //     if ( dist < 0){
-        //         clearTimeout(theTimer);
-        //         if (slideIndex == 1){
-        //             slideIndex = slideshow_image.length-1;
-        //         }  else { 
-        //             slideIndex -= 2; 
-        //         }
-        //         carousel();
-        //     } else if ( dist > 0){
-        //         clearTimeout(theTimer);
-        //         carousel();
-        //     }
-        // }, false);
+        slideshowSection.addEventListener("touchmove", function(e){
+            e.preventDefault();
+            touchObj = e.changedTouches[0];
+            dist = parseInt(touchobj.clientX) - start;
+            if ( dist < 0){
+                clearTimeout(theTimer);
+                if (slideIndex == 1){
+                    slideIndex = slideshow_image.length-1;
+                }  else { 
+                    slideIndex -= 2; 
+                }
+                carousel();
+            } else if ( dist > 0){
+                clearTimeout(theTimer);
+                carousel();
+            }
+        }, false);
 
 });
