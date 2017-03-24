@@ -63,6 +63,7 @@ $(document).ready(function(){
             e.preventDefault();
             touchObj = e.changedTouches[0];
             dist = parseInt(touchobj.clientX) - start;
+            alert("The distance - " + dist);
             if ( dist < 0){
                 clearTimeout(theTimer);
                 if (slideIndex == 1){
