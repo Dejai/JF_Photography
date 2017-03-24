@@ -54,7 +54,7 @@ $(document).ready(function(){
 
         var start, dist, touchObj;
 
-        slideshowSection.addEventListener("touchstart", function(e){
+        slideshowSection.addEventListener("touchend", function(e){
             e.preventDefault();
             touchObj = e.changedTouches[0];
             start = parseInt(touchObj.clientX);
