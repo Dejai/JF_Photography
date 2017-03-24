@@ -56,29 +56,13 @@ $(document).ready(function(){
             e.preventDefault();
             touchObj = e.changedTouches[0];
             start = parseInt(touchObj.clientX);
+            alert("Start = " + start);
         }, false);
-        slideshowImages.addEventListener("touchmove", function(e){
-            e.preventDefault();
-            touchObj = e.changedTouches[0];
-            dist = parseInt(touchobj.clientX) - start;
-            if ( dist < 0){
-                clearTimeout(theTimer);
-                if (slideIndex == 1){
-                    slideIndex = slideshow_image.length-1;
-                }  else { 
-                    slideIndex -= 2; 
-                }
-                carousel();
-            } else if ( dist > 0){
-                clearTimeout(theTimer);
-                carousel();
-            }
-        }, false);
-        // slideshowImages.addEventListener("touchend", function(e){
+        // slideshowImages.addEventListener("touchmove", function(e){
         //     e.preventDefault();
-        //     var touchObj = e.changedTouches[0];
-        //     var end = parseInt(touchObj.clientX);
-        //     if ( (end - start) < -29){
+        //     touchObj = e.changedTouches[0];
+        //     dist = parseInt(touchobj.clientX) - start;
+        //     if ( dist < 0){
         //         clearTimeout(theTimer);
         //         if (slideIndex == 1){
         //             slideIndex = slideshow_image.length-1;
@@ -86,7 +70,7 @@ $(document).ready(function(){
         //             slideIndex -= 2; 
         //         }
         //         carousel();
-        //     } else if ( (end - start) > 29){
+        //     } else if ( dist > 0){
         //         clearTimeout(theTimer);
         //         carousel();
         //     }
