@@ -59,11 +59,11 @@ $(document).ready(function(){
             touchObj = e.changedTouches[0];
             start = parseInt(touchObj.clientX);
         }, false);
-        slideshowSection.addEventListener("touchstart", function(e){
-            e.preventDefault();
-            touchObj = e.changedTouches[0];
-            end = parseInt(touchObj.clientX);
+        slideshowSection.addEventListener('touchend', function(e){
+            var touchobj2 = e.changedTouches[0] // reference first touch point for this event
+            end = touchObj2.clientX;
             alert("The End - " + end);
+            e.preventDefault()
         }, false);
         // slideshowSection.addEventListener("touchmove", function(e){
         //     e.preventDefault();
