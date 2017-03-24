@@ -50,38 +50,32 @@ $(document).ready(function(){
 		// Test for touch events - will need to be updated to account for couresel behavior (if it works);
 
         // var slideshowImages = document.getElementsByClassName("slideshow_image");
-		var slideshowSection = document.getElementById("slideshowSection");
+		var box1 = document.getElementById("slideshowSection");
 
-        var start, end, dist, touchObj;
-
-        slideshowSection.addEventListener("touchstart", function(e){
-            e.preventDefault();
-            touchObj = e.changedTouches[0];
-            start = parseInt(touchObj.clientX);
-        }, false);
-        slideshowSection.addEventListener('touchend', function(e){
-            var touchobj2 = e.changedTouches[0] // reference first touch point for this event
-            end = touchObj2.clientX;
-            alert("The End - " + end);
-            e.preventDefault()
-        }, false);
-        // slideshowSection.addEventListener("touchmove", function(e){
-        //     e.preventDefault();
-        //     touchObj = e.changedTouches[0];
-        //     dist = parseInt(touchobj.clientX) - start;
-        //     alert("The distance - " + dist);
-        //     if ( dist < 0){
-        //         clearTimeout(theTimer);
-        //         if (slideIndex == 1){
-        //             slideIndex = slideshow_image.length-1;
-        //         }  else { 
-        //             slideIndex -= 2; 
-        //         }
-        //         carousel();
-        //     } else if ( dist > 0){
-        //         clearTimeout(theTimer);
-        //         carousel();
-        //     }
-        // }, false);
+        var startx = 0, dist = 0; 
+        box1.addEventListener('touchstart', function(e){
+            var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+            startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
+            // alert('Status: touchstart<br> ClientX: ' + startx + 'px');
+        }, false)
+     
+        // box1.addEventListener('touchmove', function(e){
+        //     var touchobj = e.changedTouches[0] // reference first touch point for this event
+        //     dist = parseInt(touchobj.clientX) - startx;
+        //     alert('Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px');
+        // }, false)
+     
+        box1.addEventListener('touchend', function(e){
+            var touchobj = e.changedTouches[0] // reference first touch point for this event
+            var end = parseInt(touchObj.clientX);
+            if (end < startx){
+                alert("The end is less");
+            } else if (end > startx) {
+                alert ("The end is greater");
+            } else {
+                alert ('ehhh');
+            }
+            // alert('Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px');
+        }, false) 
 
 });
