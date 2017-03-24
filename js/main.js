@@ -49,10 +49,12 @@ $(document).ready(function(){
 
 		// Test for touch events - will need to be updated to account for couresel behavior (if it works);
 
-		var slideshowImages = document.getElementsByClassName("slideshow_image");
+        // var slideshowImages = document.getElementsByClassName("slideshow_image");
+		var slideshowSection = document.getElementById("slideshowSection");
+
         var start, dist, touchObj;
 
-        slideshowImages.addEventListener("touchstart", function(e){
+        slideshowSection.addEventListener("touchstart", function(e){
             e.preventDefault();
             touchObj = e.changedTouches[0];
             start = parseInt(touchObj.clientX);
