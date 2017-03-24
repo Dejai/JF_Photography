@@ -52,7 +52,7 @@ $(document).ready(function(){
         // var slideshowImages = document.getElementsByClassName("slideshow_image");
 		var slideSection = document.getElementById("slideshowSection");
 		swipedetect(slideSection, function(swipedir){
-		    if (swipedir =='left') {
+		    if (swipedir =='right') {
 		    	clearTimeout(theTimer);
 			    $(this).blur();
 			    if (slideIndex == 1){
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			    	slideIndex -= 2; 
 			    }
 			    carousel();
-		    } else if (swipedir == 'right'){
+		    } else if (swipedir == 'left'){
 		    	clearTimeout(theTimer);
 	        	$(this).blur();
 			    carousel();
