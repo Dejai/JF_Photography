@@ -2,7 +2,7 @@ body {	background-color: black; }
 * { box-sizing: border-box; }
 
 /*Slideshow Section & Buttons*/
-	#slideshowSection { position:fixed; top:120px; height:350px; width:100%; border:1px dotted gray; }
+	#slideshowSection { position:fixed; top:120px; height:350px; width:100%; }
 	#slideshow_leftButton { display:none; }
 	#slideshow_rightButton { display:none; }
 	.clickButton { display:none;  top:100px; }
