@@ -1,29 +1,46 @@
+$(function(){
+    $("#navbar").load("/JF_Photography/views/navbar.html", function(){
+        var currentPath = window.location.pathname, page;
+        if (currentPath.indexOf("portfolio") > 0){
+            page = "portfolio";
+        } else if (currentPath.indexOf("contact") > 0){
+            page = "contact"; 
+        } else if (currentPath.indexOf("about") > 0){
+            page = "about";
+        } else {
+            page = "home"; 
+        }
+        $("[data-ron-nav-link]").each(function(){
+            if ($(this)[0].attributes[1].value == page){
+                // $(this).css("background-color", "red");
+                $(this).css("border-top", "2px solid red");
+                $(this).css("border-bottom", "2px solid red");
+                $(this).css("padding-top", "0.5%");
+                $(this).css("padding-bottom", "0.5%");
+            }
+        });
+        mobileMenu();
+    });
+    $("#footer").load("/JF_Photography/views/footer.html");
+
+});
 function mobileMenu(){
-
-	$("#mobile-hamburger-button").click(function(){
-		$("#menu-list-section").show();
-		$("#mobile-hamburger-button").hide();
-		$("#mobile-close-button").show();
-	});
-	$("#mobile-close-button").click(function(){
-		$("#menu-list-section").toggle();
-		$("#mobile-hamburger-button").toggle();
-		$("#mobile-close-button").toggle();
-	});
+    $("#mobile-hamburger-button").click(function(){
+         $("#menu-list-section").show();
+         $("#mobile-hamburger-button").hide();
+         $("#mobile-close-button").show();
+     });
+     $("#mobile-close-button").click(function(){
+         $("#menu-list-section").toggle();
+         $("#mobile-hamburger-button").toggle();
+         $("#mobile-close-button").toggle();
+     });
 }
 
-function highlightCurrentPage(page){
-	// var element = "\"[data-ron-nav-link='" + page + "']\"";
-	$("[data-ron-nav-link]").each(function(){
-		if ($(this)[0].attributes[1].value == page){
-			console.log("Welcome home");
-			$(this).css("background-color", "red");
-		}
-	});
-}
+
 
 function swipedetect(el, callback){
-  
+
     var touchsurface = el,
     swipedir,
     startX,
