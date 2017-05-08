@@ -1,0 +1,3 @@
+albumName, albumCover
+TestOne, image8.txt
+TestTwo, image7.txt
