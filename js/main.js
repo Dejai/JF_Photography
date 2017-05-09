@@ -4,10 +4,10 @@ $(document).ready(function(){
         var slideshow_image; 
         var myPositions;
         var theTimer;
-        $.get(current+"config/slideshowImages.txt", function(results){
+        $.get(current+"config/_slideshowImages.txt", function(results){
             var all = results.split("\n");
             for (var x in all){
-                var img = "<img class=\"slideshow_image\" src=\""+current+"images/"+all[x]+"\">";
+                var img = "<img class=\"slideshow_image\" src=\""+current+"images/slideshow/"+all[x]+"\">";
                 $("#slideshowImagesContainer").append(img);
                 var pos = "<p class=\"slideshow_position\" data-ron-slide=\"" +x+"\"></p>";
                 $("#slideshowPositionsSection").append(pos);
