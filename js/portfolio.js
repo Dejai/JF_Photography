@@ -9,7 +9,7 @@ $(document).ready(function(){
 });
 
 function getAlbumCovers(){
-	$.get("/JF_Photography/config/_albumCovers.txt", function(results){
+	$.get("/JF_Photography/config/albumCovers.txt", function(results){
     	var album_covers_info = results.split("\n");
     	var album_covers_listing = ""; 
 

@@ -4,7 +4,7 @@ $(document).ready(function(){
         var slideshow_image; 
         var myPositions;
         var theTimer;
-        $.get(current+"config/_slideshowImages.txt", function(results){
+        $.get(current+"config/slideshowImages.txt", function(results){
             var all = results.split("\n");
             for (var x in all){
                 var img = "<img class=\"slideshow_image\" src=\""+current+"images/slideshow/"+all[x]+"\">";
