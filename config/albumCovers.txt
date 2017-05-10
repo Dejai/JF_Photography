@@ -1,5 +1,3 @@
-Album Name, Album Cover Image
-Album One, image1.jpg
-Album Two, image2.jpg
-Album Three, image3.jpg
-Album Four, image4.jpg
+Folder Name, Album Name, Album Cover
+albumone, Album One, image3.jpg
+albumtwo, Album Two, image8.jpg

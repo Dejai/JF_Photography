@@ -1,16 +1,16 @@
-Image Name
-image5.jpg
-image6.jpg
-image7.jpg
-image8.jpg
-image1.jpg
-image5.jpg
-image6.jpg
-image7.jpg
-image8.jpg
-image1.jpg
-image5.jpg
-image6.jpg
-image7.jpg
-image8.jpg
-image1.jpg
+Image Name, Description
+image5.jpg, This is image #1
+image6.jpg, This is image #2
+image7.jpg, This is image #3
+image8.jpg, This is image #4
+image1.jpg, This is image #5
+image5.jpg, This is image #6
+image6.jpg, This is image #7
+image7.jpg, This is image #8
+image8.jpg, This is image #9
+image1.jpg, This is image #10
+image5.jpg, This is image #11
+image6.jpg, This is image #12
+image7.jpg, This is image #13
+image8.jpg, This is image #14
+image1.jpg, This is image #15

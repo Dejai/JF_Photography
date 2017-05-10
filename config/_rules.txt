@@ -1,0 +1,62 @@
+---------------------
+*** Introduction ***
+---------------------
+The following are rules and details related to the files and folders that you can update to dynamically control your website. A configuration file is a simple .txt file that contains information about images and folders. See below for a description of the different ones. But first ...
+
+-------------------------
+*** THE GOLDEN RULES ***
+-------------------------
+
+Rule #1: Every custom configuration file should have a corresponding album folder in /gallery/. So for example, if you add a configuraiton file for 'myFirstAlbum.txt', there should be a folder in /gallery/ named myFirstAlbum. 
+
+Rule #2: Each configuration file should follow the format described below in the *** DESCRIPTIONS OF CONFIGURATION FILES *** section. The scripts on the pages are based on you strictly following these formats! This includes the headers for each file, as well as the commas (and the space after the commas). 
+
+Rule #3: The last line of data in your file should be the last line. Meaning, there should not be any empty lines after it. You can remove these by going to the end of the last line and hitting the 'Delete' / 'Remove' button. 
+
+
+----------------------------------
+*** THE FOLDERS YOU WOULD USE ***
+----------------------------------
+
+config: This is the folder that has the configuration files. You would be adding and editing them in this folder. 
+
+images: This is the folder that has to do with anything that is an image - from the logo, to the slideshow images, album covers, and the actual images in the album. 
+
+slideshow: This is found within the /images/ folder. This is where you put images that you want to be in the slideshow on the main page. 
+
+gallery: This is found within the /images/ folder. This is where you put the other folders for the albums you want to show.
+
+
+
+--------------------------------------------
+*** DESCRIPTIONS OF CONFIGURATION FILES ***
+--------------------------------------------
+
+File: albumCovers.txt
+Purpose: This stores the names of the albums, and the cover image you want to show on the portfolio page.
+Headers:
+	> Folder Name = The name of the folder that contains the images for the album; This folder MUST exist in the /gallery/ folder.
+	> Album Name = A custom name that you want to show up for the album on the webpage
+	> Album Cover = The image that you want to use as the cover for the album; It must exist in the folder given for 'Folder Name'
+Example structure:
+	albumone, The First Album, coverImage.png
+	albumtwo, The Second Album, coverImageTwo.png
+
+
+File: slideshowImages.txt
+Purpose: Includes the file names for the images you want to include in the slideshow on the main page. 
+Headers:
+	> Image Name = This is the file name for the image. The file MUST exist in the /slideshow/ folder;
+Example structure:
+	theFirstImage.png
+	theSecondImage.png
+
+
+File: [insert_custom_name].txt
+Purpose: You can add a custom configuration file for any album that you want to include. Just remember rule #1 above. 
+Headers:
+	> Image Name = This is the file name for the image that should be included in this album. It must exist in the related album folder
+	> Description = This is a short description you would want to associate with an image. 
+Example syntax:
+	firstImageInAlbum.png, This is a cool picture I took
+	secondImageInAlbum.png, This one is dope af

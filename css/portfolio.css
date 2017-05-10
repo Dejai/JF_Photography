@@ -17,3 +17,23 @@
 				padding:1% 2%; margin-bottom:2%; margin-left:5%; display:inline-block; float:left;
 				}
 .backToAlbums:hover { color:white; }
+
+
+
+#galleryModal { display:none; position:fixed; top: 0px; left:0px; right:0px; background-color:black; height:1000px; width:100%; }
+#closeGalleryModal { position:fixed; top:2%; right:17.5%; color:white; padding:1%; font-size:22px; }
+#closeGalleryModal:hover { cursor:pointer; }
+
+.galleryImage { width:100%; height:100%;  }
+
+#galleryModalImageContainer { width:65%; margin:auto;text-align:center; height:450px; margin-top:5%; }
+
+#galleryImageCounter { position:fixed; top:2%; left:17.5%; color:white; padding:1%; font-size:16px;  }
+
+#galleryModalImageDescriptions { color:white; padding:2%; text-align:center; width:100%; }
+
+#galleryModalLeftButton { position:fixed; left: 10%; color:white; font-size:30px; height:10%; top:35%;  }
+#galleryModalLeftButton:hover { cursor:pointer; }
+
+#galleryModalRightButton { position:fixed; right: 10%; color:white; font-size:30px; height:10%; top:35%;  }
+#galleryModalRightButton:hover { cursor:pointer; }
