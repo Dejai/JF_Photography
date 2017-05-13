@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>JF Photography Contact</title>
+	<title>JF Photobiz - Contact</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8"/>
     <meta http-equiv="Cache-control" content="no-cache">
@@ -26,105 +26,95 @@
     <link rel="stylesheet" type="text/css" href="../css/navbar.css">
  
     <!-- Custom JavaScript -->
-<!--     <script type="text/javascript" src="../js/sharedFunctions.js"></script>
-    <script type="text/javascript" src="../js/contact.js"></script> -->
+    <script type="text/javascript" src="../js/sharedFunctions.js"></script>
+	<!-- <script type="text/javascript" src="../js/contact.js"></script> -->
+
 </head>
-<body id="ronPhotog">
+<body>
 <nav class="col-lg-12" id="navbar" ></nav>
 <div class="col-lg-12">
-	<p id="question" style="">What would you like to contact me about?</p>
-	<div id="selectForm">
-		<a class="selectFormOption" data-jf-form-option="service">Request services</a>
-		<a class="selectFormOption" data-jf-form-option="feedback">Send feedback</a>
+	<p id="contactQuestion">What would you like to contact me about?</p>
+	<div id="contactOptionsSection">
+		<a class="typeOfContact" data-jf-contact-option="service">Request services</a>
+		<a class="typeOfContact" data-jf-contact-option="feedback">Send feedback</a>
 	</div>
-	<form id="contactForm">
-		<p style="color:white;"><span style="color:red;margin-top:2%;">*</span> indicates required field.</p><br/>
-		<div id="email_and_phone_input" style="width:100%;">
-			<div id="nameInput" style="width:40%;float:left; text-align:left;">
-				<label>Full Name <span style="color:red;">*</span></label><br/>
-				<input class="placer" type="text" name="full_name" style="width:80%;" placeholder="Enter name"/>
+	<form id="requestServiceForm" class="formToSubmit formSections">
+		<p><span class="requiredField"></span> indicates required field.</p>
+		<div class="formRow">
+			<div class="customerInfoFields">
+				<label class="requiredField">Name</label><br/>
+				<input class="clearPlaceholder" type="text" name="full_name" placeholder="Enter your name"/>
 			</div>
-			<div id="email_input" style="width:35%;float:left; text-align:left;">
-				<label>Email <span style="color:red;">*</span></label><br/>
-				<input class="placer" type="email" name="email_address" placeholder="Enter email address"/>
+			<div class="customerInfoFields">
+				<label class="requiredField">Email</label><br/>
+				<input class="clearPlaceholder" type="email" name="email_address" placeholder="Enter your email"/>
 			</div>
-			<div id="phone_input" style="width:25%;float:left; text-align:left;">
-				<label>Phone Number </label><br/>
-				<input class="placer" type="text" name="phone_number" placeholder="optional"/>
+			<div class="customerInfoFields">
+				<label class="optionalField">Phone Number</label><br/>
+				<input class="clearPlaceholder" type="text" name="phone_number" placeholder="Enter your phone number"/>
 			</div>
 		</div>
-		<div style="height:90px;"></div>
-		<div id="dateOfEvent" style="width:100%;">
-			<div style="color:white;float:left;width:100%;text-align:left;">
-				<p>When would do you need me?</p>
-			</div>
-			<div id="listOfDates">
-				<div id="startDate" style="width:40%;float:left;text-align:left;">
-					<div style="width:50%;float:left;">
-						<label id="starty">Preferred Date</label>&nbsp;<span style="color:red;">*</span><br/>
-						<input class="date_timepicker" type="text" placeholder="mm/dd/yy" style="color:black;width:100%;float:left;">
-					</div>
-					<div style="width:30%; float:left;">
-						<label>Time</label><br/>
-						<input class="timeselect" placeholder="h:mm" style="color:black; width:100%;float:left;">
-					</div>
+		<div class="formRow">
+			<label>When do you need photos taken?</label><br/>
+			<div id="datetimePickerSection" class="dateSection">
+				<div class="dateSelectorSection">
+					<label class="requiredField">Preferred Date</label><br/>
+					<input class="datePicker inheritWidth" placeholder="mm/dd/yy">
+				</div>
+				<div class="timeSelectorSection">
+					<label>Time</label><br/>
+					<input class="timePicker inheritWidth" placeholder="h:mm">
+				</div>
+				<div class="addNewDateTimeSection">
+					<label>&nbsp;</label><br/>
+					<a class="addNewDateTimeButton"> + Add date / time</a>
 				</div>
 			</div>
-			<br style="clear:both;"/>
-			<div id="dater" style="float:left; width:40%;padding:1%;">
-				<p id="dateRangeOption" style="color:green; float:left; text-align:left; padding-top:10%;">
-					<span class="glyphicon glyphicon-plus"></span> Add another date / time
-				</p>
-			</div>
 		</div>
-		<div id="descriptionOfEvent" style="width:100%;float:left;margin-top:2%;">
-			<div style="color:white;float:left;width:100%;text-align:left;">
-				<p>Description:</p>
-			</div>
-			<div style="width:100%; text-align:left; float:left;">
-				<textarea class="placer" rows="5" style="width:100%;" placeholder="Describe what you would need."></textarea>
-			</div>
+		<div class="formRow">
+			<label>Description:</label><br/>
+			<textarea class="clearPlaceholder" rows="5" placeholder="Describe what you would need."></textarea>
 		</div>
-		<div id="submitButton" style="width:100%;float:left;margin-top:2%;padding:5%;" >
+		<div class="formRow submitButton" >
 			<input type="submit" name="Submit" value="Submit Request"/>
 		</div>
 	</form>
-	<form id="feedbackForm">
-		<p style="color:white;"><span style="color:red;">*</span> indicates required field.</p><br/>
-		<div id="email_and_phone_input2" style="width:100%;">
-			<div id="nameInput2" style="width:40%;float:left; text-align:left;">
-				<label>Name (optional) <br/>
-				<input class="placer" type="text" name="full_name" style="width:80%;" placeholder="Enter name"/>
+	<form id="feedbackForm" class="formToSubmit formSections">
+		<p><span class="requiredField"></span> indicates required field.</p>
+		<div class="formRow">
+			<div class="customerInfoFields">
+				<label class="optionalField">Name</label><br/>
+				<input class="clearPlaceholder" type="text" name="full_name" placeholder="Enter your name"/>
 			</div>
-			<div id="email_input2" style="width:35%;float:left; text-align:left;">
-				<label>Email (optional) </label><br/>
-				<input class="placer" type="email" name="email_address" placeholder="Enter email address"/>
-			</div>
-			<div id="phone_input2" style="width:25%;float:left; text-align:left;">
-				<label>Phone Number </label><br/>
-				<input class="placer" type="text" name="phone_number" placeholder="optional"/>
+			<div class="customerInfoFields">
+				<label class="optionalField">Email</label><br/>
+				<input class="clearPlaceholder" type="email" name="email_address" placeholder="Enter your email address"/>
 			</div>
 		</div>
-		<div id="descriptionOfEvent2" style="width:100%;float:left;margin-top:2%;">
+		<div class="formRow">
 			<div style="color:white;float:left;width:100%;text-align:left;">
 				<p>Feedback: <span style="color:red;">*</span></p>
 			</div>
 			<div style="width:100%; text-align:left; float:left;">
-				<textarea class="placer" rows="5" style="width:100%;" placeholder="What do you want to let me know?"></textarea>
+				<textarea class="clearPlaceholder" rows="5" style="width:100%;" placeholder="What do you want to let me know?"></textarea>
 			</div>
 		</div>
-		<div id="submitButton2" style="width:100%;float:left;margin-top:2%; padding:5%;" >
+		<div id="formRow submitButton">
 			<input type="submit" name="Submit" value="Submit Request"/>
 		</div>
 	</form>
+	<div id="formResultsSection" class="formSections">
+		<h1 style="color:limegreen;">SUCCESS!</h1>
+		<p>Your request has been submitted!</p>
+		<p>I will be in touch with you within the next <em>48 hours</em></p>
+		<p>In the meantime, feel free to <a href="/JF_Photography/portfolio">checkout out my portfolio</a></p>
+	</div>
 </div>
 </body>
-<style type="text/css">
-	input:hover { cursor:pointer; }
-</style>
+<!-- STYLE & CODE FOR datePicker -->
 <!-- this should go after your </body> -->
 <link rel="stylesheet" type="text/css" href="/JF_Photography/js/datetimepicker-master/jquery.datetimepicker.css"/ >
 <script src="/JF_Photography/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
-<script type="text/javascript" src="../js/sharedFunctions.js"></script>
 <script type="text/javascript" src="../js/contact.js"></script>
+
 </html>

@@ -1,0 +1,13 @@
+VARIABLES
+* For most variables, please use camelCase; This is my go-to, and I should be consistent
+* It is only acceptable to include an underscore at the end of a variable name - WITHIN A FUNCTION!
+
+
+FUNCTIONS
+* Each function should have a description at the top. It should have the following format:
+	/*
+		@desc -- Shows the next image in the gallery slideshow (accounts for direction)
+		@params -- The array of photos, the array of descriptions for the photos, the direction to go in the slideshow. 
+	*/
+
+

@@ -1,66 +1,72 @@
 $(document).ready(function(){
+
 	AddDateTimePicker();
-	$("#dateRangeOption").click(function(){
-		var nextOne = buildAnotherDate();
-		$("#startDate").append(nextOne);
-		AddDateTimePicker();
-	});	
+	addNewDateTimeRow();
+
 	var placeholder;
-	$(".placer").focus(function(){
+	$(".clearPlaceholder").focus(function(){
 		placeholder = $(this).attr('placeholder');
 		$(this).attr('placeholder', '');
 	});
-	$(".placer").blur(function(){
+	$(".clearPlaceholder").blur(function(){
 		if ($(this).text() == ''){
 			$(this).attr('placeholder', placeholder);
 		}
 	});
 	
-	$(".selectFormOption").click(function(){
-		var option = $(this).attr("data-jf-form-option");
-		$(".selectFormOption").css("background-color", "black").css("color","white").css("border", "1px solid white");
+	$(".typeOfContact").click(function(){
+		var option = $(this).attr("data-jf-contact-option");
+		$(".typeOfContact").css("background-color", "black").css("color","white").css("border", "1px solid white");
 		$(this).css("background-color", "white").css("color","black").css("border", "1px solid black");
-		$("#question").css("font-size", "0%").css("margin-bottom", "0%").css("padding", "0%");
-		$(".selectFormOption").css("font-size", 16);
-		$("#selectForm").css("padding", "1%");
+		$("#contactQuestion").css("font-size", "0%").css("margin-bottom", "0%").css("padding", "0%");
+		$(".typeOfContact").css("font-size", 16);
+		$("#contactOptionsSection").css("padding", "1%");
+		$(".formSections").hide();
 		switch(option){
 			case "service":
-				$("#feedbackForm").hide();
-				$("#contactForm").show();
+				$("#requestServiceForm").show();
 				break;
 			case "feedback":
-				$("#contactForm").hide();
 				$("#feedbackForm").show();
 				break;
 			default:
-				alert("Ehhh");
+				console.log("No section selected");
 		}
-	})
+	});
+	$(".formToSubmit").submit(function(event){
+		event.preventDefault();
+		$(".formToSubmit").hide();
+		$("#formResultsSection").show();
+	});
 });
 
 function buildAnotherDate(){
 	var otherDate = "<br style=\"clear:both;\"/><br style=\"clear:both;\"/>"
-					+" <div style=\"width:50%;float:left;\">"
+					+" <div class=\"dateSelectorSection\">"
 					+"<label>Alternate Date</label><br/>"
-					+"<input class=\"date_timepicker\" type=\"text\" placeholder=\"mm/dd/yy\" style=\"color:black;width:100%;float:left;\">"
+					+"<input class=\"datePicker inheritWidth\" type=\"text\" placeholder=\"mm/dd/yy\">"
 					+"</div>"
-					+"<div id=\"endy2\" style=\"width:30%; float:left;\">"
+					+"<div class=\"timeSelectorSection\">"
 					+"<label>Time</label><br/>"
-					+"<input class=\"timeselect\" placeholder=\"h:mm\" style=\"color:black; width:100%;float:left;\">"
-					+"</div>";
+					+"<input class=\"timePicker inheritWidth\" placeholder=\"h:mm\">"
+					+"</div>"
+					+ "<div class=\"addNewDateTimeSection\">"
+					+ "<label>&nbsp;</label><br/>"
+					+ "<a class=\"addNewDateTimeButton\"> + Add date / time</a>"
+					+ "</div>";
 
 	return otherDate;
 }
 
 function AddDateTimePicker(){
-	$(".timeselect").datetimepicker({
+	$(".timePicker").datetimepicker({
 		datepicker:false,
 		timepicker:true,
 		step:30,
 		format: 'g:i A',
 		formatTime: 'g:i a',
 	});
-	$('.date_timepicker').datetimepicker({
+	$('.datePicker').datetimepicker({
 	  format:'m/d/y',
 	  scrollInput: 'false',
 	  scrollMonth: 'false',
@@ -68,4 +74,15 @@ function AddDateTimePicker(){
 	  mask:false,
 	  scrollMonth: false
 	 });
+}
+
+
+function addNewDateTimeRow(){
+	$(".addNewDateTimeButton").click(function(){
+		$(".addNewDateTimeSection").remove();
+		var nextOne = buildAnotherDate();
+		$("#datetimePickerSection").append(nextOne);
+		AddDateTimePicker();
+		addNewDateTimeRow();
+	});
 }

@@ -12,7 +12,6 @@ $(function(){
         }
         $("[data-ron-nav-link]").each(function(){
             if ($(this)[0].attributes[1].value == page){
-                // $(this).css("background-color", "red");
                 $(this).css("border-top", "2px solid red");
                 $(this).css("border-bottom", "2px solid red");
                 $(this).css("padding-top", "0.5%");
@@ -36,8 +35,6 @@ function mobileMenu(){
          $("#mobile-close-button").toggle();
      });
 }
-
-
 
 function swipedetect(el, callback){
 
