@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/navbar.css">
     <link rel="stylesheet" type="text/css" href="../css/portfolio.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/footer.css">
+    
  
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="/JF_Photography/js/sharedFunctions.js"></script>
@@ -30,22 +32,26 @@
 </head>
 <body>
 <div id="galleryModal">
-    <span class="glyphicon glyphicon-remove" id="closeGalleryModal"></span>
-    <div id="galleryModalImageCounter">
-        <span id="currentGalleryModalImage"></span><span> / </span><span id="numberOfGalleryModalImages"></span> 
+    <div id="galleryModalMenu">
+        <div id="galleryModalCounterSection">
+            <span id="currentGalleryModalImage"></span><span> / </span><span id="numberOfGalleryModalImages"></span> 
+        </div>
+        <span class="glyphicon glyphicon-remove" id="closeGalleryModal"></span>
     </div>
     <div id="galleryModalImageContainer"></div>
-    <a id="galleryModalLeftButton"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a id="galleryModalRightButton"><span class="glyphicon glyphicon-chevron-right"></span>  </a>
-    <div id="galleryModalImageDescriptions"></div>
+    <a id="galleryModalLeftButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a id="galleryModalRightButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-right"></span>  </a>
+    <div id="galleryModalImageDescriptions"></div> 
 </div>
 <nav class="col-lg-12" id="navbar" ></nav>
-<div class="col-lg-12" id="albumSection">
+<div class="col-lg-12 hideForMobileNav mobileBelowNav" id="albumSection">
     <div id="albumPhotosList">
-        <a class = "backToAlbums" href="/JF_Photography/portfolio"> &#8656; Back </a>
+        <div id="backToAlbumContainer">
+            <a class = "backToAlbums" href="/JF_Photography/portfolio"> &#8656; Back </a>            
+        </div>
         <div id="albumPhotosTable"> </div>
     </div>
 </div>
-
+<div id="footer" class="z-index-0"></div>
 </body>
 </html>

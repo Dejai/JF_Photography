@@ -23,17 +23,26 @@ $(function(){
     $("#footer").load("/JF_Photography/views/footer.html");
 
 });
+
+$(function(){
+    setTimeout(function(){
+        $(".delayedDisplay").fadeIn();
+    }, 100);
+});
+
 function mobileMenu(){
     $("#mobile-hamburger-button").click(function(){
-         $("#menu-list-section").show();
-         $("#mobile-hamburger-button").hide();
-         $("#mobile-close-button").show();
-     });
-     $("#mobile-close-button").click(function(){
-         $("#menu-list-section").toggle();
-         $("#mobile-hamburger-button").toggle();
-         $("#mobile-close-button").toggle();
-     });
+        $(".hideForMobileNav").hide();
+        $("#menu-list-section").show();
+        $("#mobile-hamburger-button").hide();
+        $("#mobile-close-button").css("display", "block");
+    });
+    $("#mobile-close-button").click(function(){
+        $("#menu-list-section").toggle();
+        $("#mobile-hamburger-button").toggle();
+        $("#mobile-close-button").toggle();
+        $(".hideForMobileNav").fadeIn();
+    });
 }
 
 function swipedetect(el, callback){

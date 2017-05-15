@@ -18,14 +18,15 @@ function getAlbumCovers(){
 	$.get("/JF_Photography/config/albumCovers.txt", function(results){
     	var albumCovers_config = results.split("\n");
     	var albumCovers_element = ""; 
-
+    	var clientWidth = window.innerWidth;
+    	var endOfRow = clientWidth >= 768 ? 3 : 2;
     	for (var x = 1; x < albumCovers_config.length; x++){
     		var folderName = albumCovers_config[x].split(", ")[0];
     		var albumName = albumCovers_config[x].split(", ")[1];
     		var albumCoverImage = albumCovers_config[x].split(", ")[2];
     		if (x == 1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "firstCellInRow");
-    		} else if ( (x % 3) == 0 && x != albumCovers_config.length-1){
+    		} else if ( (x % endOfRow) == 0 && x != albumCovers_config.length-1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCellInRow");
     		} else if ( x == albumCovers_config.length-1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCell");
@@ -36,11 +37,11 @@ function getAlbumCovers(){
     	$("#albumCoversTable").append(albumCovers_element);
 
     	// ADDING A LISTENER FOR EACH ALBUM COVER
-	    	$(".albumCoversSingleCell").click(function(){
-		        var albumID = $(this).attr("data-album-id");
-		        var portfolioPath= window.location.href; 
-		        window.location.assign(portfolioPath + "albums.html?name="+albumID);
-		    });
+    	$(".albumCoversSingleCell").click(function(){
+	        var albumID = $(this).attr("data-album-id");
+	        var portfolioPath= window.location.href; 
+	        window.location.assign(portfolioPath + "albums.html?name="+albumID);
+	    });
 });
 }
 
@@ -52,7 +53,7 @@ function buildAlbumCover(folderName, albumName, coverImage, typeOfCell){
 	var openCell, closeCell;
 	var openCoverDesc = "<div class=\"albumCoverDescription\">";
 	var closeCoverDesc = "</div>";
-	var img = "<img class='albumPhoto' src='/JF_Photography/images/gallery/"+folderName+"/"+ coverImage + "'/>";
+	var img = "<img class='albumCoverPhoto imageHover' src='/JF_Photography/images/gallery/"+folderName+"/"+ coverImage + "'/>";
 	switch(typeOfCell){
 		case "firstCellInRow":
 			openCell = "<div class=\"albumCoversRow\">\n\t<div data-album-id=\""+folderName+"\" class=\"albumCoversSingleCell\">"; 
@@ -105,7 +106,15 @@ function getAlbumPhotos(folderName){
 
     	}
     	$("#albumPhotosTable").append(albumPhotos_element);
-    	galleryModalEventListeners();   
+    	galleryModalEventListeners();
+    	setTimeout(function(){
+    		$(".backToAlbums").fadeIn();
+    		var arr = $(".albumPhoto").toArray();
+    		for (var x in arr){
+    			// $(arr[x]).css("width", "33.333%").css("height","200px");
+    			$(arr[x]).css("width", "95%").css("height","inherit");
+    		}
+    	}, 70);
     });
 }
 
@@ -115,7 +124,7 @@ function getAlbumPhotos(folderName){
 */
 function buildAlbumPhoto(folderName, photo, photoID, typeOfCell){
 	var openCell, closeCell;
-	var img = "<img class='albumPhoto' src='/JF_Photography/images/gallery/"+folderName+"/" + photo + "'/>";
+	var img = "<img class='albumPhoto imageHover' src='/JF_Photography/images/gallery/"+folderName+"/" + photo + "'/>";
 	switch(typeOfCell){
 		case "firstCellInRow":
 			openCell = "<div class=\"albumPhotosRow\">\n\t<div data-photo-id=\""+photoID+"\" class=\"albumPhotosSingleCell\">"; 
@@ -153,6 +162,7 @@ function galleryModalEventListeners(){
     
     // THE LISTENER FOR AN IMAGE IN THE LIST OF PHOTOS; OPENS THE MODAL
     $(".albumPhotosSingleCell").click(function(){
+    	$("#albumSection").css("opacity", "0.0");
 		$("#galleryModal").show().css("z-index", 10);
 		$("body").css("overflow", "hidden");
 		var photoID = Number($(this).attr("data-photo-id"));
@@ -163,11 +173,20 @@ function galleryModalEventListeners(){
 
     // THE LISTENER TO CLOSE THE MODAL
      $("#closeGalleryModal").click(function(){
+    	$("#albumSection").css("opacity", "1.0");
 		$("#galleryModal").css("z-index", -10).hide();
 		$(".galleryModalImage").hide();
 		$(".galleryDescription").hide();
 		$("body").css("overflow", "scroll");
-
+    });
+    $(window).click(function(event){
+    	if (event.target.id == "galleryModal"){
+    		$("#galleryModal").hide();
+    		$("#albumSection").css("opacity", "1.0");
+    		$(".galleryModalImage").hide();
+			$(".galleryDescription").hide();
+			$("body").css("overflow", "scroll");
+    	}
     });
 
     // THE LISTENERS FOR MOVING THE SLIDESHOW LEFT OR RIGHT

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>JF Photography</title>
+	<title>JF Photobiz</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8"/>
     <meta http-equiv="Cache-control" content="no-cache">
@@ -22,42 +22,25 @@
 
 
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="./css/slideshow.css">
-    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/slideshow.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/footer.css">
     
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="./js/sharedFunctions.js"></script>
-    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="/JF_Photography/js/sharedFunctions.js"></script>
+    <script type="text/javascript" src="/JF_Photography/js/main.js"></script>
 
 
 </head>
 <body>
-<nav class="col-lg-12" id="navbar" ></nav>
-<div id="slideshowSection">
-    <a id="slideshow_leftButton">&#10094;</a>
-    <a id="slideshow_rightButton">&#10095;</a>
-    <div id="slideshowImagesContainer">
-        <!-- <img class="slideshow_image" src="./images/image2.jpg">
-        <img class="slideshow_image" src="./images/image8.jpg">
-        <img class="slideshow_image" src="./images/image3.jpg">
-        <img class="slideshow_image" src="./images/image4.jpg">
-        <img class="slideshow_image" src="./images/image6.jpg">
-        <img class="slideshow_image" src="./images/image7.jpg">
-        <img class="slideshow_image" src="./images/image3.jpg">
-        <img class="slideshow_image" src="./images/image6.jpg"> -->
-    </div>
-    <div id="slideshowPositionsSection">
-        <!-- <p class="slideshow_position" data-ron-slide="1"></p>
-        <p class="slideshow_position" data-ron-slide="2"></p>
-        <p class="slideshow_position" data-ron-slide="3"></p>
-        <p class="slideshow_position" data-ron-slide="4"></p>
-        <p class="slideshow_position" data-ron-slide="5"></p>
-        <p class="slideshow_position" data-ron-slide="6"></p>
-        <p class="slideshow_position" data-ron-slide="7"></p>
-        <p class="slideshow_position" data-ron-slide="8"></p> -->
-    </div>
+<nav id="navbar"></nav>
+<div id="slideshowSection" class="delayedDisplay z-index-0">
+    <a id="slideshow_leftButton" class="slideshowArrow">&#10094;</a>
+    <a id="slideshow_rightButton" class="slideshowArrow">&#10095;</a>
+    <div id="slideshowImagesContainer"></div>
+    <div id="slideshowPositionsSection" class="z-index-2"></div>
 </div>
-<div id="footer"></div>
+<div id="footer" class="z-index-0"></div>
 </body>
 </html>

@@ -18,18 +18,18 @@ $(document).ready(function(){
 	        $(".slideshow_position").click(function(){
 				clearTimeout(theTimer);
 				var goToSlide = Number($(this).attr('data-ron-slide'));
-				slideIndex = goToSlide;
+				slideIndex = goToSlide-1;
 				carousel();
 			});
         });
-        function carousel() {
+        function carousel(init) {
         	$(".slideshow_image").hide();
         	$(".slideshow_position").removeClass("currentSlidePosition");
 		    slideIndex++;
 		    if (slideIndex > slideshow_images.length) { slideIndex = 1} 
-		    $(slideshow_images[slideIndex-1]).show(); 
+		    $(slideshow_images[slideIndex-1]).show();
 		    $(myPositions[slideIndex-1]).addClass("currentSlidePosition"); 
-		    theTimer = setTimeout(carousel, 7000);
+		    theTimer = setTimeout(carousel, 5000);
 		}
 		
 		$("#slideshow_leftButton").click(function(){

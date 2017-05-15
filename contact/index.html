@@ -21,20 +21,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/contact.css">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/footer.css">
+    
  
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="../js/sharedFunctions.js"></script>
+    <script type="text/javascript" src="/JF_Photography/js/sharedFunctions.js"></script>
 	<!-- <script type="text/javascript" src="../js/contact.js"></script> -->
 
 </head>
 <body>
-<nav class="col-lg-12" id="navbar" ></nav>
-<div class="col-lg-12">
-	<p id="contactQuestion">What would you like to contact me about?</p>
-	<div id="contactOptionsSection">
+<nav id="navbar" ></nav>
+<div class="col-lg-12 z-index-0 hideForMobileNav mobileBelowNav">
+	<p id="contactQuestion" class="delayedDisplay">What would you like to contact me about?</p>
+	<div id="contactOptionsSection" class="delayedDisplay">
 		<a class="typeOfContact" data-jf-contact-option="service">Request services</a>
 		<a class="typeOfContact" data-jf-contact-option="feedback">Send feedback</a>
 	</div>
@@ -110,11 +112,12 @@
 		<p>In the meantime, feel free to <a href="/JF_Photography/portfolio">checkout out my portfolio</a></p>
 	</div>
 </div>
+<div id="footer" class="z-index-0"></div>
 </body>
 <!-- STYLE & CODE FOR datePicker -->
 <!-- this should go after your </body> -->
 <link rel="stylesheet" type="text/css" href="/JF_Photography/js/datetimepicker-master/jquery.datetimepicker.css"/ >
 <script src="/JF_Photography/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
-<script type="text/javascript" src="../js/contact.js"></script>
+<script type="text/javascript" src="/JF_Photography/js/contact.js"></script>
 
 </html>
