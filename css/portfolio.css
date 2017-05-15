@@ -51,26 +51,28 @@
 	#galleryModalImageContainer { height:200px; }
 	#galleryModalCounterSection { font-size:16px;  }
 	#closeGalleryModal { font-size:18px;  }
-
 }
+
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) { 
-	#albumCoversList {width:65%; margin:auto; }
+	#albumCoversList {width:75%; margin:auto; }
 	#albumCoversTable { width:90%;  margin:auto;}
+	.albumCoversSingleCell { width:33.333%; }
+	.albumCoversRow { height:130px; }
+
 	#albumPhotosList {width:85%; margin:auto;  }
 	#albumPhotosTable { width:90%;  margin:auto;}
-	.albumCoversSingleCell { width:33.333%; }
-	.albumPhotosRow { height:250px; }
-	#backToAlbumContainer { width:90%;  margin:auto;  }
+	.albumPhotosRow { height:150px; margin-bottom:2%;}
+	#backToAlbumContainer { width:90%;  margin:auto; margin-bottom:2%; }
 
-	#galleryModal {	padding-top:5%; }
-	#galleryModalMenu { width:65%; padding-top:1%; padding-bottom:1%; font-size:22px; }
-	#galleryModalImageContainer { width:65%; height:400px; }
-	#galleryModalImageDescriptions { padding:1%; }
+	#galleryModal {	padding-top:12%; }
+	#galleryModalMenu { width:70%; padding-top:1%; padding-bottom:1%; font-size:22px; }
+	#galleryModalImageContainer { width:70%; height:295px; }
+	#galleryModalImageDescriptions { padding:0%; padding-top:5%; width:50%; margin:auto; }
 
 
-	.galleryModalArrow { display:block; position:fixed; color:white; font-size:30px; height:10%; top:35%;}
+	.galleryModalArrow { display:block; position:fixed; color:white; font-size:30px; height:10%; top:40%;}
 	.galleryModalArrow:hover { cursor:pointer; color:red; }
 
 	#galleryModalLeftButton {  left: 10%;   }
@@ -78,11 +80,17 @@
 
 }
 
-/*Large devices (desktops, 992px and up)*/
-@media screen and  (min-width: 900px) { 
+@media screen and (min-width:1024px){
+	#albumPhotosList {width:70%; }
+	.albumPhotosRow { height:220px;}
 
+	.albumCoversRow { height:180px; margin-bottom:6%; }
+	#galleryModalImageContainer { height:370px; }
 
-}
-@media screen and  (min-width: 992px) { 
+	#galleryModal {	padding-top:7%; }
+	#galleryModalMenu { width:60%; font-size:25px;}
+	#galleryModalImageContainer { width:60%; height:350px; }
+	#galleryModalLeftButton {  left: 15%;   }
+	#galleryModalRightButton { right: 15%;  }
 
 }

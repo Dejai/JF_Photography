@@ -11,15 +11,3 @@
 @media screen and (min-width: 1280px){
 	#footer {position:static; display:none;}
 }
-
-
-/*@media screen and  (min-width: 900px) { 
-	#footer {position:static; display:none;}
-
-}*/
-
-@media screen and  (min-width: 992px) { 
-	#footer {position:static; display:none;}
-
-}
-

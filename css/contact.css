@@ -47,7 +47,6 @@
 	#formResultsSection { color:white; text-align:center; display:none; }
 
 
-
 @media screen and (min-width:320px){
 	#contactQuestion { font-size:22px; margin-bottom:5%; }
 	#contactOptionsSection { width:100%; }
@@ -65,7 +64,25 @@
 	.customerInfoFields input { width:100%; }
 
 	#feedbackForm{ width:100%; padding-top:2%;}
+}
 
+@media screen and (min-width:768px){
+	.formRow { margin-bottom:2%; padding-left:0%; }
+	.dateSection { width:80%;float:left;text-align:left; }
+	.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }
+	.dateSelectorSection { width:35%;  }
+	.timeSelectorSection { width:20%; }
+	label { font-size: 14px; }
+
+	#requestServiceForm{ width:75%; margin:auto;}
+	.customerInfoFields { width:33.333%; text-align:left; margin-bottom:1%; }
+	.customerInfoFields input { width:85%; }
+
+	#feedbackForm{ width:75%;  margin:auto; padding-top:2%;}
+}
+
+@media screen and (min-width:1024px){
+	
 }
 
 
