@@ -47,6 +47,22 @@ $(document).ready(function(){
         	$(this).blur();
 		    carousel();
 		});
+		$(document).keydown(function(event){
+	    	if(event.which == 37){
+	    		clearTimeout(theTimer);
+			    $(this).blur();
+			    if (slideIndex == 1){
+			    	slideIndex = slideshow_images.length-1;
+			    }  else { 
+			    	slideIndex -= 2; 
+			    }
+			    carousel();
+	    	} else if (event.which == 39){
+		    	clearTimeout(theTimer);
+        		$(this).blur();
+		    	carousel();
+	    	} 
+	    });
 		
 		// Test for touch events - will need to be updated to account for couresel behavior (if it works);
 

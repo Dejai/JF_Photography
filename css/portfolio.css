@@ -81,16 +81,25 @@
 }
 
 @media screen and (min-width:1024px){
+	#albumCoversList {width:65%; }
+	.albumCoversRow { height:150px; margin-bottom:10%; }
+
 	#albumPhotosList {width:70%; }
 	.albumPhotosRow { height:220px;}
 
-	.albumCoversRow { height:180px; margin-bottom:6%; }
 	#galleryModalImageContainer { height:370px; }
 
-	#galleryModal {	padding-top:7%; }
+	#galleryModal {	padding-top:8%; }
 	#galleryModalMenu { width:60%; font-size:25px;}
 	#galleryModalImageContainer { width:60%; height:350px; }
 	#galleryModalLeftButton {  left: 15%;   }
 	#galleryModalRightButton { right: 15%;  }
+}
+
+@media screen and (min-width:1440px){
+	#galleryModal {	padding-top:12%; }
+	#galleryModalImageContainer { height:400px; }
+
+
 
 }

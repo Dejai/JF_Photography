@@ -8,6 +8,6 @@
 	#footerFacebookBadge { height:30px; width:30px; }
 	#footerInstagramBadge { height:35px; width:35px;}
 }
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1024px){
 	#footer {position:static; display:none;}
 }

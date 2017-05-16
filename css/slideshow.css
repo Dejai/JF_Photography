@@ -17,12 +17,19 @@ body {	background-color: black; }
 	.currentSlidePosition { color:red; background-color:red; }
 
 @media screen and (min-width: 320px){
-	#slideshowSection { top:130px; height:250px; margin:auto; }	
+	/*#slideshowSection { top:130px; height:250px; margin:auto; }	*/
+	#slideshowSection { top:25%; height:250px; margin:auto; }	
+}
+
+/*iPhone 6 Plus*/
+@media screen and (min-width:414px) and (min-height: 736px){
+	#slideshowSection { height:350px; }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) { 
-	#slideshowSection { width:75%; margin:auto; top: 120px; left:12%; height:300px; z-index:10  }
+	/*#slideshowSection { width:75%; margin:auto; top: 120px; left:12%; height:300px; z-index:10  }*/
+	#slideshowSection { width:75%; margin:auto; top: 25%; left:12%; height:300px; z-index:10  }
 	#slideshowPositionsSection { display:inline-block; z-index:10; }
 	#slideshowPositionsSection p  { z-index:10; }
 	.slideshowArrow { display:block; background-color:none; position:absolute; border: none; padding:1%; width:5%; opacity:0.9;
@@ -34,5 +41,9 @@ body {	background-color: black; }
 
 @media screen and (min-width:1024px){
 	#slideshowSection { width:65%; left:17%; top:140px; height:380px;}
+}
+
+@media screen and (min-width:1440px){
+	#slideshowSection { width:55%; left:22%; top:20%; height:420px;}
 }
 
