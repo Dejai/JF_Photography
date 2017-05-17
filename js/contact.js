@@ -33,22 +33,17 @@ $(document).ready(function(){
 				console.log("No section selected");
 		}
 	});
-	$(".formToSubmit").submit(function(event){
-		event.preventDefault();
-		$(".formToSubmit").hide();
-		$("#formResultsSection").show();
-	});
 });
 
 function buildAnotherDate(){
 	var otherDate = "<br style=\"clear:both;\"/><br style=\"clear:both;\"/>"
 					+" <div class=\"dateSelectorSection\">"
 					+"<label>Alternate Date</label><br/>"
-					+"<input class=\"datePicker inheritWidth\" type=\"text\" placeholder=\"mm/dd/yy\">"
+					+"<input class=\"datePicker inheritWidth\" name=\"dateChoice\" type=\"text\" placeholder=\"mm/dd/yy\">"
 					+"</div>"
 					+"<div class=\"timeSelectorSection\">"
 					+"<label>Time</label><br/>"
-					+"<input class=\"timePicker inheritWidth\" placeholder=\"h:mm\">"
+					+"<input class=\"timePicker inheritWidth\" name=\"timeChoice\" placeholder=\"h:mm\">"
 					+"</div>"
 					+ "<div class=\"addNewDateTimeSection\">"
 					+ "<label>&nbsp;</label><br/>"

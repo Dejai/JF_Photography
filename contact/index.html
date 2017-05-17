@@ -30,6 +30,9 @@
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="/JF_Photography/js/sharedFunctions.js"></script>
 
+    <!-- EMAIL JS SCRIPT -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="/JF_Photography/js/emailJS.js"></script>
 </head>
 <body>
 <nav id="navbar" ></nav>
@@ -44,15 +47,15 @@
 		<div class="formRow">
 			<div class="customerInfoFields">
 				<label class="requiredField">Name</label><br/>
-				<input class="clearPlaceholder" type="text" name="full_name" placeholder="Enter your name"/>
+				<input class="clearPlaceholder" type="text" name="fullName" placeholder="Enter your name"/ required>
 			</div>
 			<div class="customerInfoFields">
 				<label class="requiredField">Email</label><br/>
-				<input class="clearPlaceholder" type="email" name="email_address" placeholder="Enter your email"/>
+				<input class="clearPlaceholder" type="email" name="emailAddress" placeholder="Enter your email"/ required>
 			</div>
 			<div class="customerInfoFields">
 				<label class="optionalField">Phone Number</label><br/>
-				<input class="clearPlaceholder" type="text" name="phone_number" placeholder="Enter your phone number"/>
+				<input class="clearPlaceholder" type="number" min="9" name="phoneNumber" placeholder="Enter your number"/>
 			</div>
 		</div>
 		<div class="formRow">
@@ -60,11 +63,11 @@
 			<div id="datetimePickerSection" class="dateSection">
 				<div class="dateSelectorSection">
 					<label class="requiredField">Preferred Date</label><br/>
-					<input class="datePicker inheritWidth" placeholder="mm/dd/yy">
+					<input class="datePicker inheritWidth" name="dateChoice" placeholder="mm/dd/yy" required>
 				</div>
 				<div class="timeSelectorSection">
 					<label>Time</label><br/>
-					<input class="timePicker inheritWidth" placeholder="h:mm">
+					<input class="timePicker inheritWidth" name="timeChoice" placeholder="h:mm">
 				</div>
 				<div class="addNewDateTimeSection">
 					<label>&nbsp;</label><br/>
@@ -74,14 +77,14 @@
 		</div>
 		<div class="formRow">
 			<label>Description:</label><br/>
-			<textarea class="clearPlaceholder" rows="5" placeholder="Describe what you would need."></textarea>
+			<textarea class="clearPlaceholder" rows="5" name="description" placeholder="Describe what you would need."></textarea>
 		</div>
-		<div class="formRow submitButton" >
-			<input type="submit" name="Submit" value="Submit Request"/>
+		<div class="formRow" >
+			<input class="submitButton" type="submit" name="Submit" value="Submit Request"/>
 		</div>
 	</form>
 	<form id="feedbackForm" class="formToSubmit formSections">
-		<p><span class="requiredField"></span> indicates required field.</p>
+		<p><span class="requiredField"></span> indicates required field</p>
 		<div class="formRow">
 			<div class="customerInfoFields">
 				<label class="optionalField">Name</label><br/>
@@ -94,14 +97,14 @@
 		</div>
 		<div class="formRow">
 			<div style="color:white;float:left;width:100%;text-align:left;">
-				<p>Feedback: <span style="color:red;">*</span></p>
+				<p>Feedback: <span class="requiredField"></span></p>
 			</div>
 			<div style="width:100%; text-align:left; float:left;">
-				<textarea class="clearPlaceholder" rows="5" style="width:100%;" placeholder="What do you want to let me know?"></textarea>
+				<textarea class="clearPlaceholder" rows="5" style="width:100%;" placeholder="What do you want to let me know?" required></textarea>
 			</div>
 		</div>
-		<div id="formRow submitButton">
-			<input type="submit" name="Submit" value="Submit Request"/>
+		<div id="formRow">
+			<input class="submitButton" type="submit" name="Submit" value="Submit Request"/>
 		</div>
 	</form>
 	<div id="formResultsSection" class="formSections">
