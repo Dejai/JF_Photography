@@ -22,6 +22,7 @@ $(document).ready(function(){
 		$(".typeOfContact").css("font-size", 16);
 		$("#contactOptionsSection").css("padding", "1%");
 		$(".formSections").hide();
+		$("#formStatusSection").hide();
 		switch(option){
 			case "service":
 				$("#requestServiceForm").show();
@@ -38,12 +39,12 @@ $(document).ready(function(){
 function buildAnotherDate(){
 	var otherDate = "<br style=\"clear:both;\"/><br style=\"clear:both;\"/>"
 					+" <div class=\"dateSelectorSection\">"
-					+"<label>Alternate Date</label><br/>"
-					+"<input class=\"datePicker inheritWidth\" name=\"dateChoice\" type=\"text\" placeholder=\"mm/dd/yy\">"
+					+"<label class=\"requiredField\">Alternate Date</label><br/>"
+					+"<input class=\"datePicker inheritWidth resetAfterSubmit\" name=\"dateChoice\" type=\"text\" placeholder=\"mm/dd/yy\" required>"
 					+"</div>"
 					+"<div class=\"timeSelectorSection\">"
 					+"<label>Time</label><br/>"
-					+"<input class=\"timePicker inheritWidth\" name=\"timeChoice\" placeholder=\"h:mm\">"
+					+"<input class=\"timePicker inheritWidth resetAfterSubmit\" name=\"timeChoice\" placeholder=\"h:mm\">"
 					+"</div>"
 					+ "<div class=\"addNewDateTimeSection\">"
 					+ "<label>&nbsp;</label><br/>"

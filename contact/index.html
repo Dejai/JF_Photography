@@ -47,15 +47,15 @@
 		<div class="formRow">
 			<div class="customerInfoFields">
 				<label class="requiredField">Name</label><br/>
-				<input class="clearPlaceholder" type="text" name="fullName" placeholder="Enter your name"/ required>
+				<input class="clearPlaceholder resetAfterSubmit" type="text" name="fullName" placeholder="Enter your name"/ required>
 			</div>
 			<div class="customerInfoFields">
 				<label class="requiredField">Email</label><br/>
-				<input class="clearPlaceholder" type="email" name="emailAddress" placeholder="Enter your email"/ required>
+				<input class="clearPlaceholder resetAfterSubmit" type="email" name="emailAddress" placeholder="Enter your email"/ required>
 			</div>
 			<div class="customerInfoFields">
 				<label class="optionalField">Phone Number</label><br/>
-				<input class="clearPlaceholder" type="number" min="9" name="phoneNumber" placeholder="Enter your number"/>
+				<input class="clearPlaceholder resetAfterSubmit" type="number" min="9" name="phoneNumber" placeholder="Enter your number"/>
 			</div>
 		</div>
 		<div class="formRow">
@@ -63,24 +63,24 @@
 			<div id="datetimePickerSection" class="dateSection">
 				<div class="dateSelectorSection">
 					<label class="requiredField">Preferred Date</label><br/>
-					<input class="datePicker inheritWidth" name="dateChoice" placeholder="mm/dd/yy" required>
+					<input class="datePicker inheritWidth resetAfterSubmit" name="dateChoice" placeholder="mm/dd/yy" required>
 				</div>
 				<div class="timeSelectorSection">
 					<label>Time</label><br/>
-					<input class="timePicker inheritWidth" name="timeChoice" placeholder="h:mm">
+					<input class="timePicker inheritWidth resetAfterSubmit" name="timeChoice" placeholder="h:mm">
 				</div>
 				<div class="addNewDateTimeSection">
 					<label>&nbsp;</label><br/>
-					<a class="addNewDateTimeButton"> + Add date / time</a>
+					<a class="addNewDateTimeButton "> + Add date / time</a>
 				</div>
 			</div>
 		</div>
 		<div class="formRow">
 			<label>Description:</label><br/>
-			<textarea class="clearPlaceholder" rows="5" name="description" placeholder="Describe what you would need."></textarea>
+			<textarea class="clearPlaceholder resetAfterSubmit" rows="5" name="description" placeholder="Describe what you would need."></textarea>
 		</div>
 		<div class="formRow" >
-			<input class="submitButton" type="submit" name="Submit" value="Submit Request"/>
+			<input class="submitButton" type="submit" name="Submit" value="Request Services"/>
 		</div>
 	</form>
 	<form id="feedbackForm" class="formToSubmit formSections">
@@ -88,11 +88,11 @@
 		<div class="formRow">
 			<div class="customerInfoFields">
 				<label class="optionalField">Name</label><br/>
-				<input class="clearPlaceholder" type="text" name="full_name" placeholder="Enter your name"/>
+				<input id="feedbackField_Name" autocomplete="off" class="resetAfterSubmit clearPlaceholder" type="text" name="fullName" placeholder="Enter your name"/>
 			</div>
 			<div class="customerInfoFields">
 				<label class="optionalField">Email</label><br/>
-				<input class="clearPlaceholder" type="email" name="email_address" placeholder="Enter your email address"/>
+				<input id="feedbackField_Email" autocomplete="off" class="resetAfterSubmit clearPlaceholder" type="email" name="emailAddress" placeholder="Enter your email address"/>
 			</div>
 		</div>
 		<div class="formRow">
@@ -100,19 +100,23 @@
 				<p>Feedback: <span class="requiredField"></span></p>
 			</div>
 			<div style="width:100%; text-align:left; float:left;">
-				<textarea class="clearPlaceholder" rows="5" style="width:100%;" placeholder="What do you want to let me know?" required></textarea>
+				<textarea class="clearPlaceholder resetAfterSubmit" name="feedback" rows="5" style="width:100%;" placeholder="What do you want to let me know?" required></textarea>
 			</div>
 		</div>
 		<div id="formRow">
-			<input class="submitButton" type="submit" name="Submit" value="Submit Request"/>
+			<input class="submitButton" type="submit" name="Submit" value="Send Feedback"/>
 		</div>
 	</form>
 	<div id="formResultsSection" class="formSections">
-		<h1 style="color:limegreen;">SUCCESS!</h1>
-		<p>Your request has been submitted!</p>
-		<p>I will be in touch with you within the next <em>48 hours</em></p>
-		<p>In the meantime, feel free to <a href="/JF_Photography/portfolio">checkout out my portfolio</a></p>
+		<div id="counterSection" style="display:none;">
+			<h1>Smile in ... <span id="countDowner">3</span></h1>
+		</div>
+		<div id="formStatusSection" style="display:none">
+			<h1 id="formStatusSentence" style="padding:1%;"></h1>
+			<h4 id="formStatusSentence2" style="padding:1%;"></h4>
+		</div>
 	</div>
+
 </div>
 <div id="footer"></div>
 </body>

@@ -7,7 +7,7 @@ The following are rules and details related to the files and folders that you ca
 *** THE GOLDEN RULES ***
 -------------------------
 
-Rule #1: Every custom configuration file should have a corresponding album folder in /gallery/. So for example, if you add a configuraiton file for 'myFirstAlbum.txt', there should be a folder in /gallery/ named myFirstAlbum. 
+Rule #1: Every configuration file for an album should have a corresponding album folder in /gallery/. So for example, if you add a configuraiton file for 'myFirstAlbum.txt', there should be a folder in /gallery/ named myFirstAlbum. 
 
 Rule #2: Each configuration file should follow the format described below in the *** DESCRIPTIONS OF CONFIGURATION FILES *** section. The scripts on the pages are based on you strictly following these formats! This includes the headers for each file, as well as the commas (and the space after the commas). 
 

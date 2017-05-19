@@ -15,6 +15,8 @@
 
 /*GENERAL FORM STUFF*/
 	.formRow { width:100%; float:left; padding-bottom:5%; }
+	.formSections { margin-bottom:5%; }
+	.formSections::after { content:("Hello"); color:white; font-size:22px; } 
 	.submitButton {	border: 1px solid white; background-color:black; padding:1%; color:white; letter-spacing: 1px; }
 	.submitButton:hover { background-color:white; color:black; } 
 	.errorIndicator {color:red;}
