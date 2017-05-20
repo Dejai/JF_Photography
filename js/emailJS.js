@@ -33,7 +33,6 @@ function processFeedback(){
 		// 		formResults("feedbackForm", err);
 		// 	});
 		console.log("Name = " + full_Name 
-					+ "\nEmail = " + email_Address
 					+  "\nFeedback = " + feedback);
 		formResults("feedbackForm", "success");
 		// formResults("feedbackForm", "fail");
