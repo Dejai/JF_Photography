@@ -34,7 +34,7 @@ function processFeedback(){
 		// 	});
 		console.log("Name = " + full_Name 
 					+  "\nFeedback = " + feedback);
-		formResults("feedbackForm", "success");
+		formResults("feedbackForm", 200);
 		// formResults("feedbackForm", "fail");
 }
 function processRequest(){
@@ -69,13 +69,11 @@ function processRequest(){
 	// 	});
 	console.log("Name = " + full_Name 
 					+ "\nEmail = " + email_Address 
-					+ "\nPhone Number = " + phone_Number 
-					// + "\nDates List = " + dates_List
-					// + "\nTimes List = " + times_List 
+					+ "\nPhone Number = " + phone_Number
 					+  "\nDescription = " + description
 					+ "\nDatetime Combo " + dateTimeCombo);
-	formResults("requestServiceForm", "success");
-	// formResults("requestServiceForm", "fail");
+	// formResults("requestServiceForm", 200);
+	formResults("requestServiceForm", "fail");
 
 }
 
