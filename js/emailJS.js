@@ -15,33 +15,22 @@ $(document).ready(function(){
 				processRequest();
 			}
 		}
-		
-		// console.log("Name = " + full_Name 
-		// 			+ "\nEmail = " + email_Address 
-		// 			+ "\nPhone Number = " + phone_Number 
-		// 			// + "\nDates List = " + dates_List
-		// 			// + "\nTimes List = " + times_List 
-		// 			+  "\nDescription = " + description
-		// 			+ "\nDatetime Combo " + dateTimeCombo);
 	});
 });
 
 function processFeedback(){
-		// var full_Name = $("[name='fullName']").val();
-		var full_Name = $("#feedbackField_Name").val();
-		var email_Address = $("#feedbackField_Email").val();
+		var full_Name = $("#feedbackField_Name").val() ? $("#feedbackField_Name").val() : "Anonymous" ;
 		var feedback = $("[name='feedback']").val();
 
 		// emailjs.send("default_service","new_feedback",
 		// 	{ 	name: full_Name, 
-		// 		emailAddress: email_Address,
 		// 		feedback : feedback
 		// 	}).then(function(response) {
-		// 		console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-		// 		$(".formToSubmit").hide();
-		// 		$("#formResultsSection").show();
+		// 		// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+		// 		formResults("feedbackForm", response.status);
 		// 	}, function(err) {
-		// 		console.log("FAILED. error=", err);
+		// 		// console.log("FAILED. error=", err);
+		// 		formResults("feedbackForm", err);
 		// 	});
 		console.log("Name = " + full_Name 
 					+ "\nEmail = " + email_Address
@@ -93,13 +82,13 @@ function processRequest(){
 
 function formResults(formID, status){
 	$("#formResultsSection img").remove();
-	var firstImage = "<img src=\"/JF_Photography/images/badges/camera_flash.gif\" width=\"400\" height=\"400\" style=\"margin-top:2%;\" alt=\"Sad\"/>";
-	var oops = "<img src=\"/JF_Photography/images/badges/sadness_emoji.png\" width=\"100\" height=\"100\" style=\"margin-top:2%;\" alt=\"Sad\"/>"
+	var firstImage = "<img id=\"cameraFlash\" src=\"/JF_Photography/images/badges/camera_flash.gif\" alt=\"*INSERT CAMERA FLASH*\"/>";
+	var oops = "<img src=\"/JF_Photography/images/badges/sadness_emoji.png\" width=\"100\" height=\"100\" style=\"margin-top:2%;\" alt=\"*INSERT SAD FACE*\"/>"
 	var firstSentence = formID == "feedbackForm" ? "Thanks for the feedback!" : "Thanks for your request!";
-	var secondSentence = formID == "feedbackForm" ? "I greatly appreciate your thoughts." : "I will follow-up with you within the next 48 hours.";
+	var secondSentence = formID == "feedbackForm" ? "I really appreciate it!" : "I will follow-up with you within the next 48 hours.";
 	var count = 2;
 
-	if (status == "fail"){
+	if (status != 200){
 		$("#formStatusSection").prepend(oops);
 		$("#formStatusSentence").html("Ooops! <br/> Something went wrong!");
 		$("#formStatusSentence2").html("You can try again, or just reach out to me directly at jf@gmail.com");
@@ -108,10 +97,10 @@ function formResults(formID, status){
 		$("#counterSection").fadeIn();
 		$(".resetAfterSubmit").val('').css("background-color", "white");
 		setTimeout(function(){
-			$("#countDowner").empty().html(count);
+			$("#countDownNumber").empty().html(count);
 			setTimeout(function(){
 				count--;
-				$("#countDowner").empty().html(count);
+				$("#countDownNumber").empty().html(count);
 				setTimeout(function(){
 					$("#counterSection").hide();
 					$("#formResultsSection").hide().append(firstImage).fadeIn("slow");
@@ -125,13 +114,6 @@ function formResults(formID, status){
 			}, 1000);
 		}, 1000);
 	}
-		// <h1 style=\"padding:2%;\" id=\"formStatus\">Your request has been submitted!</h1>
-		// <h1 style=\"padding:1%;\" id=\"formStatus\"></h1>
-		// <h4 style=\"padding:1%;\" id=\"formStatus_sentenceOne\">I will be in touch with you within the next <em>48 hours</em></h4>
-		// <h4 style=\"padding:1%;\" id=\"formStatus_sentenceOne\"></h4>
-		// <p>In the meantime, feel free to <a href=\"/JF_Photography/portfolio\">checkout out my portfolio</a></p>
-
-
 }
 
 

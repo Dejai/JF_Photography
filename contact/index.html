@@ -39,10 +39,10 @@
 <div class="col-lg-12 hideForMobileNav mobileBelowNav">
 	<p id="contactQuestion" class="delayedDisplay">What would you like to contact me about?</p>
 	<div id="contactOptionsSection" class="delayedDisplay">
-		<a class="typeOfContact" data-jf-contact-option="service">Request services</a>
-		<a class="typeOfContact" data-jf-contact-option="feedback">Send feedback</a>
+		<a class="contactOption formButton" data-jf-contact-option="service">Request services</a>
+		<a class="contactOption formButton" data-jf-contact-option="feedback">Send feedback</a>
 	</div>
-	<form id="requestServiceForm" class="formToSubmit formSections">
+	<form id="requestServiceForm" class="contactForm formToSubmit formSections">
 		<p><span class="requiredField"></span> indicates required field.</p>
 		<div class="formRow">
 			<div class="customerInfoFields">
@@ -80,19 +80,15 @@
 			<textarea class="clearPlaceholder resetAfterSubmit" rows="5" name="description" placeholder="Describe what you would need."></textarea>
 		</div>
 		<div class="formRow" >
-			<input class="submitButton" type="submit" name="Submit" value="Request Services"/>
+			<input class="submitButton formButton" type="submit" name="Submit" value="Request Services"/>
 		</div>
 	</form>
-	<form id="feedbackForm" class="formToSubmit formSections">
+	<form id="feedbackForm" class="contactForm formToSubmit formSections">
 		<p><span class="requiredField"></span> indicates required field</p>
 		<div class="formRow">
 			<div class="customerInfoFields">
 				<label class="optionalField">Name</label><br/>
 				<input id="feedbackField_Name" autocomplete="off" class="resetAfterSubmit clearPlaceholder" type="text" name="fullName" placeholder="Enter your name"/>
-			</div>
-			<div class="customerInfoFields">
-				<label class="optionalField">Email</label><br/>
-				<input id="feedbackField_Email" autocomplete="off" class="resetAfterSubmit clearPlaceholder" type="email" name="emailAddress" placeholder="Enter your email address"/>
 			</div>
 		</div>
 		<div class="formRow">
@@ -100,26 +96,25 @@
 				<p>Feedback: <span class="requiredField"></span></p>
 			</div>
 			<div style="width:100%; text-align:left; float:left;">
-				<textarea class="clearPlaceholder resetAfterSubmit" name="feedback" rows="5" style="width:100%;" placeholder="What do you want to let me know?" required></textarea>
+				<textarea class="clearPlaceholder resetAfterSubmit" name="feedback" rows="5" placeholder="What do you want to let me know?" required></textarea>
 			</div>
 		</div>
-		<div id="formRow">
-			<input class="submitButton" type="submit" name="Submit" value="Send Feedback"/>
+		<div class="formRow">
+			<input class="submitButton formButton" type="submit" name="Submit" value="Send Feedback"/>
 		</div>
 	</form>
 	<div id="formResultsSection" class="formSections">
-		<div id="counterSection" style="display:none;">
-			<h1>Smile in ... <span id="countDowner">3</span></h1>
+		<div id="counterSection">
+			<h1>Smile in <br/> <span id="countDownNumber">3</span></h1>
 		</div>
-		<div id="formStatusSection" style="display:none">
-			<h1 id="formStatusSentence" style="padding:1%;"></h1>
-			<h4 id="formStatusSentence2" style="padding:1%;"></h4>
+		<div id="formStatusSection">
+			<p id="formStatusSentence" class="formStatusSentence"></p>
+			<p id="formStatusSentence2" class="formStatusSentence"></p>
 		</div>
 	</div>
-
 </div>
-<div id="footer"></div>
 </body>
+
 <!-- STYLE & CODE FOR datePicker -->
 <!-- this should go after your </body> -->
 <link rel="stylesheet" type="text/css" href="/JF_Photography/js/datetimepicker-master/jquery.datetimepicker.css"/ >

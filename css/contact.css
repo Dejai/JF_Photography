@@ -1,101 +1,119 @@
-/*body { color:black; }*/
-/* THE CONTACT QUESTION & OPTIONS*/
-	#contactQuestion { color:white;padding:2%;text-align:center;font-size:24px;margin-top:0px; margin-bottom:1%;
+
+/*
+CONTACT OPTIONS
+*/
+	#contactQuestion { color:white;padding:2%;text-align:center;font-size:18px; margin-top:0px; margin-bottom:5%;
 						transition: font-size 0.6s ease-out, margin-bottom 0.6s ease-out, padding 0.6s ease-out; 
-					}
-	#contactOptionsSection { width:60%; margin:auto; text-align:center; padding:3%; margin-bottom:2%;
-					transition: padding 0.5s ease-out;
-				}
-	.typeOfContact  { border: 1px solid white; font-size:24px; background-color:none; color:white; padding:2%; margin:1%; 
-						letter-spacing: 1px;
-						transition: font-size 0.5s ease-out;
-					}
-	.typeOfContact:hover {background-color:white; color:black; border:1px solid black; cursor:pointer;}
+						-webkit-transition: font-size 0.6s ease-out, margin-bottom 0.6s ease-out, padding 0.6s ease-out; }
+	#contactOptionsSection { width:100%; margin:auto; text-align:center; padding:3%; margin-bottom:2%;
+							transition: padding 0.5s ease-out; -webkit-transition: padding 0.5s ease-out; }
+	.contactOption  { border: 1px solid white; font-size:14px; background-color:none; color:white; padding:2%; margin:1%; 
+						letter-spacing: 1px; transition: font-size 0.5s ease-out; -webkit-transition: font-size 0.5s ease-out; }
+	/*.contactOption:hover {background-color:white; color:black; border:1px solid black; cursor:pointer;}*/
+	
 
-
-/*GENERAL FORM STUFF*/
-	.formRow { width:100%; float:left; padding-bottom:5%; }
-	.formSections { margin-bottom:5%; }
-	.formSections::after { content:("Hello"); color:white; font-size:22px; } 
-	.submitButton {	border: 1px solid white; background-color:black; padding:1%; color:white; letter-spacing: 1px; }
-	.submitButton:hover { background-color:white; color:black; } 
-	.errorIndicator {color:red;}
+/*
+GENERAL 
+*/
+	/* The rows and components in the form*/
+	.formRow { width:100%; float:left; padding-bottom:2%; margin-bottom:0%; padding-left:5%;}
+	.formButton:hover { background-color:white; color:black; border:1px solid black; cursor:pointer;  }
 	.requiredField::after{ content:" * "; color:red; }
 	.optionalField::after{ content:" (optional) "; color:gray; }
-	.customerInfoFields { width:33.333%; float:left; text-align:left; }
-	.customerInfoFields input { width:85%; }
-	input:hover { cursor:pointer; }
-	p { color:white; }
-	p:hover { cursor:default; }
-	.clear { clear:both; }
 	.inheritWidth { width:100%; }
-	textarea { width:100%; }
-	label { color:white; }
+	.customerInfoFields { width:70%; float:left; text-align:left; margin-bottom:3%; }
+	.customerInfoFields input { width:100%; }
+
+	/*The Labels and inputs*/
+	.contactForm label { color:white; font-size:12px;}
+	.contactForm p { color:white; }
+	.contactForm p:hover { cursor:default; }
+	.contactForm textarea { width:100%; }
 
 
-/* THE REQUEST SERVICE FORM*/
-	#requestServiceForm{ width:50%; margin:auto; display:none; margin-bottom:5%;}
-	.dateSection { width:60%;float:left;text-align:left; }
-	.dateSelectorSection { width:35%;float:left;  }
-	.timeSelectorSection { width:20%;float:left;  }
+	/*The submit button for each form */
+	.submitButton {	border: 1px solid white; background-color:black; color:white; letter-spacing: 1px; }
+	/*.submitButton:hover { background-color:white; color:black; } */
+
+
+/*
+REQUEST FORM
+*/
+	#requestServiceForm{ width:100%; margin:auto; display:none; padding-top:2%;}
+	
+	/*The section for the date and time*/
+	.dateSection { width:100%;float:left;text-align:left; }
+	.dateSelectorSection { width:35%; float:left; margin-right:2%;  }
+	.timeSelectorSection { width:25%; float:left;  }
+
+	/*The option to add a new date / time. */
 	.addNewDateTimeSection { width:45%; float:left; padding-left:2%; }
-	.addNewDateTimeButton { color:limegreen; text-align:left; padding:5%; }
+	.addNewDateTimeButton { color:limegreen; font-size:12px; text-align:center; padding:0%; }
 	.addNewDateTimeButton:hover { cursor:pointer; }
 
 
-/* THE FEEDBACK FORM */
-	#feedbackForm{ width:50%; margin:auto; display:none; margin-bottom:5%;}
+/*
+FEEDBACK FORM
+*/
+	#feedbackForm{ width:100%; margin:auto; display:none; padding-top:2%;}
 
 
-/* THE SECTION AFTER YOU SUBMIT THE FORM */
-	#formResultsSection { color:white; text-align:center; display:none; }
+/* 
+FORM RESULTS
+*/
+	#formResultsSection { color:white; text-align:center; display:none; padding-top:2%; }
+	#counterSection { padding:2%; text-align:center; display:none; }
+	#countDownNumber { color:red; padding:1%;}
+	#formStatusSection { display:none }
+	.formStatusSentence { padding:2%; }
+	#formStatusSentence { font-size:22px;}
+	#formStatusSentence2 { font-size:16px; }
+	#cameraFlash { width:200px; height:200px; margin-top:2%; }
 
 
-@media screen and (min-width:320px){
-	#contactQuestion { font-size:22px; margin-bottom:5%; }
-	#contactOptionsSection { width:100%; }
-	.typeOfContact  { font-size:16px; }
-	
-	.formRow { margin-bottom:5%; padding-left:5%; }
-	.dateSection { width:100%; }
-	.addNewDateTimeButton { font-size:12px; text-align:center; padding:0%; }
-	.dateSelectorSection { width:35%; margin-right:2%;  }
-	.timeSelectorSection { width:25%; }
-	label { font-size: 12px; }
 
-	#requestServiceForm{ width:100%; padding-top:2%;}
-	.customerInfoFields { width:70%; margin-bottom:3%; }
-	.customerInfoFields input { width:100%; }
+/*
+MEDIA QUERIES
+*/
+	@media screen and (min-width:768px){
 
-	#feedbackForm{ width:100%; padding-top:2%;}
-}
+		/*Contact Options*/
+		#contactQuestion { margin-bottom:2%; font-size:24px; }
+		.contactOption { font-size:18px; }
 
-@media screen and (min-width:768px){
-	#contactQuestion { margin-bottom:2%; }
+		/*GENERAL */
+		.formRow { padding-left:0%; }
+		.contactForm label { font-size: 14px; }
+		.customerInfoFields { width:33.333%; }
+		.customerInfoFields input { width:85%; }
 
-	.formRow { margin-bottom:2%; padding-left:0%; }
-	.dateSection { width:80%;float:left;text-align:left; }
-	.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }
-	.dateSelectorSection { width:35%;  }
-	.timeSelectorSection { width:20%; }
-	label { font-size: 14px; }
-	.addNewDateTimeSection { width:35%; }
+		/*Date / Time Section*/
+		.dateSection { width:80%;float:left;text-align:left; }
+		.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }
+		.dateSelectorSection { width:35%;  }
+		.timeSelectorSection { width:20%; }
+		.addNewDateTimeSection { width:35%; }
 
-	#requestServiceForm{ width:75%; margin:auto;}
-	.customerInfoFields { width:33.333%; text-align:left; margin-bottom:1%; }
-	.customerInfoFields input { width:85%; }
+		/*Individual Forms / Sections*/
+		#requestServiceForm{ width:75%; margin:auto; padding-bottom:5%;}
 
-	#feedbackForm{ width:75%;  margin:auto; padding-top:2%;}
-}
+		#feedbackForm{ width:75%;  margin:auto; padding-top:2%; padding-bottom:5%;}
+		.formStatusSentence { padding:1%; }
 
-@media screen and (min-width:1024px){
-	#contactQuestion { margin-bottom:1%; }
-	#requestServiceForm{ width:55%; }
-	#feedbackForm{ width:55%; }
-}
+		#cameraFlash { width:300px; height:300px; margin-top:0%; }
 
-@media screen and (min-width:1440px){
+	}
 
-}
+	@media screen and (min-width:1024px){
+		#contactQuestion { margin-bottom:1%; }
+		#requestServiceForm{ width:55%; }
+		#feedbackForm{ width:55%; }
+		#cameraFlash { width:350px; height:350px; }
+
+	}
+
+	@media screen and (min-width:1440px){
+
+	}
 
 

@@ -14,12 +14,14 @@ $(document).ready(function(){
 		}
 	});
 	
-	$(".typeOfContact").click(function(){
+	$(".contactOption").click(function(){
 		var option = $(this).attr("data-jf-contact-option");
-		$(".typeOfContact").css("background-color", "black").css("color","white").css("border", "1px solid white");
+		$(".contactOption").css("background-color", "black").css("color","white").css("border", "1px solid white");
 		$(this).css("background-color", "white").css("color","black").css("border", "1px solid black");
 		$("#contactQuestion").css("font-size", "0%").css("margin-bottom", "0%").css("padding", "0%");
-		$(".typeOfContact").css("font-size", 16);
+		var currentSize = $(this).css("font-size");
+		var newSize = Number(currentSize) - 2;
+		$(".contactOption").css("font-size", newSize);
 		$("#contactOptionsSection").css("padding", "1%");
 		$(".formSections").hide();
 		$("#formStatusSection").hide();
