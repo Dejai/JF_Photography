@@ -22,19 +22,19 @@ function processFeedback(){
 		var full_Name = $("#feedbackField_Name").val() ? $("#feedbackField_Name").val() : "Anonymous" ;
 		var feedback = $("[name='feedback']").val();
 
-		// emailjs.send("default_service","new_feedback",
-		// 	{ 	name: full_Name, 
-		// 		feedback : feedback
-		// 	}).then(function(response) {
-		// 		// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-		// 		formResults("feedbackForm", response.status);
-		// 	}, function(err) {
-		// 		// console.log("FAILED. error=", err);
-		// 		formResults("feedbackForm", err);
-		// 	});
-		console.log("Name = " + full_Name 
-					+  "\nFeedback = " + feedback);
-		formResults("feedbackForm", 200);
+		emailjs.send("default_service","new_feedback",
+			{ 	name: full_Name, 
+				feedback : feedback
+			}).then(function(response) {
+				// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+				formResults("feedbackForm", response.status);
+			}, function(err) {
+				// console.log("FAILED. error=", err);
+				formResults("feedbackForm", err);
+			});
+		// console.log("Name = " + full_Name 
+		// 			+  "\nFeedback = " + feedback);
+		// formResults("feedbackForm", 200);
 		// formResults("feedbackForm", "fail");
 }
 function processRequest(){
@@ -72,8 +72,8 @@ function processRequest(){
 					+ "\nPhone Number = " + phone_Number
 					+  "\nDescription = " + description
 					+ "\nDatetime Combo " + dateTimeCombo);
-	// formResults("requestServiceForm", 200);
-	formResults("requestServiceForm", "fail");
+	formResults("requestServiceForm", 200);
+	// formResults("requestServiceForm", "fail");
 
 }
 
