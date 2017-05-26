@@ -27,4 +27,4 @@ http://www.pngmart.com/image/7663
 The loading image: 
 http://24.media.tumblr.com/cfa55f70bbc5ce545eed804fa61a9d26/tumblr_mfpmmdCdWA1s1r5leo1_500.gif
 
-
+This is a test for how GitHub for Windows could work. 
