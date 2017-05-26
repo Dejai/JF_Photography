@@ -22,19 +22,19 @@ function processFeedback(){
 		var full_Name = $("#feedbackField_Name").val() ? $("#feedbackField_Name").val() : "Anonymous" ;
 		var feedback = $("[name='feedback']").val();
 
-		emailjs.send("default_service","new_feedback",
-			{ 	name: full_Name, 
-				feedback : feedback
-			}).then(function(response) {
-				// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-				formResults("feedbackForm", response.status);
-			}, function(err) {
-				// console.log("FAILED. error=", err);
-				formResults("feedbackForm", err);
-			});
-		// console.log("Name = " + full_Name 
-		// 			+  "\nFeedback = " + feedback);
-		// formResults("feedbackForm", 200);
+		// emailjs.send("default_service","new_feedback",
+		// 	{ 	name: full_Name, 
+		// 		feedback : feedback
+		// 	}).then(function(response) {
+		// 		// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+		// 		formResults("feedbackForm", response.status);
+		// 	}, function(err) {
+		// 		// console.log("FAILED. error=", err);
+		// 		formResults("feedbackForm", err);
+		// 	});
+		console.log("Name = " + full_Name 
+					+  "\nFeedback = " + feedback);
+		formResults("feedbackForm", 200);
 		// formResults("feedbackForm", "fail");
 }
 function processRequest(){
@@ -61,11 +61,13 @@ function processRequest(){
 	// 		dates : dateTimeCombo,
 	// 		description : description
 	// 	}).then(function(response) {
-	// 		console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-	// 		$(".formToSubmit").hide();
-	// 		$("#formResultsSection").show();
+	// 		// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+	// 		// $(".formToSubmit").hide();
+	// 		// $("#formResultsSection").show();
+	// 		formResults("requestServiceForm", response.status);
 	// 	}, function(err) {
-	// 		console.log("FAILED. error=", err);
+	// 		// console.log("FAILED. error=", err);
+	// 		formResults("requestServiceForm", err);
 	// 	});
 	console.log("Name = " + full_Name 
 					+ "\nEmail = " + email_Address 

@@ -32,6 +32,13 @@ gallery: This is found within the /images/ folder. This is where you put the oth
 *** DESCRIPTIONS OF CONFIGURATION FILES ***
 --------------------------------------------
 
+File: aboutMe.txt
+Purpose: This stores the paragraphs that you write about yourself.
+Headers: N/A
+Example structure:
+	Just write a paragraph or a set of paragraphs. That simple.
+
+
 File: albumCovers.txt
 Purpose: This stores the names of the albums, and the cover image you want to show on the portfolio page.
 Headers:
