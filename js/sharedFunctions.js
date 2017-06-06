@@ -49,24 +49,16 @@ function setImageDimensions(container, dimension){
     var ele = "#"+container;
     switch (dimension.trim()){
         case "portrait":
-            // $("#galleryModalImageContainer").css("width", "35%").css("height", "380px").css("border", "1px solid green");
-            $(ele).css("width", "400px").css("height", "450px");
-            // .css("border", "1px solid green");
+            $(ele).attr("class", " ").addClass("dim-portrait");
             break;
         case "landscape":
-            // $("#galleryModalImageContainer").css("width", "60%").css("height", "350px").css("border", "1px solid yellow");
-            $(ele).css("width", "850px").css("height", "450px");
-            // .css("border", "1px solid yellow");
+            $(ele).attr("class", " ").addClass("dim-landscape");
             break;
         case "square":
-            // $("#galleryModalImageContainer").css("width", "50%").css("height", "350px").css("border", "1px solid purple");
-            $(ele).css("width", "450px").css("height", "450px");
-            // .css("border", "1px solid purple");
+            $(ele).attr("class", " ").addClass("dim-square");
             break;
         default:
-            // $("#galleryModalImageContainer").css("width", "50%").css("height", "350px").css("border", "1px solid red");
-            $(ele).css("width", "50%").css("height", "350px");
-            // .css("border", "1px solid red");
+            $(ele).attr("class", " ").addClass("dim-square");
     }
 }
 

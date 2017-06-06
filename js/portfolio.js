@@ -275,8 +275,8 @@ function nextGalleryImage(galleryPhotos, direction){
 		$("#currentGalleryModalImage").empty().html(nextID);
 		var dimm = $(galleryPhotos[nextID-1]).attr("data-photo-dimension");
 		setImageDimensions("galleryModalImageContainer", dimm);
-		$(galleryPhotos[nextID-1]).show();
-		// $(galleryPhotos[nextID-1]).fadeIn();
+		// $(galleryPhotos[nextID-1]).show();
+		$(galleryPhotos[nextID-1]).fadeIn();
 	}
 }
 
