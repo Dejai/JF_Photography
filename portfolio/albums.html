@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="/JF_Photography/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/JF_Photography/css/portfolio.css">
     <link rel="stylesheet" type="text/css" href="/JF_Photography/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/images.css">
     
  
     <!-- Custom JavaScript -->
@@ -32,16 +33,14 @@
 </head>
 <body>
 <div id="galleryModal">
-    <div id="galleryModalMenu">
-        <div id="galleryModalCounterSection">
-            <span id="currentGalleryModalImage"></span><span> / </span><span id="numberOfGalleryModalImages"></span> 
-        </div>
-        <span class="glyphicon glyphicon-remove" id="closeGalleryModal"></span>
-    </div>
+    <span class="glyphicon glyphicon-remove" id="closeGalleryModal"></span>
     <div id="galleryModalImageContainer"></div>
-    <a id="galleryModalLeftButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a id="galleryModalRightButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-right"></span>  </a>
-    <div id="galleryModalImageDescriptions"></div> 
+    <div id="galleryModalNavigationSection">
+        <a id="galleryModalLeftButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <span id="currentGalleryModalImage" class="noSelector"></span><span class="noSelector"> / </span><span id="numberOfGalleryModalImages" class="noSelector"></span> 
+        <a id="galleryModalRightButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-right"></span>  </a>        
+    </div>
+
 </div>
 <nav class="col-lg-12" id="navbar" ></nav>
 <div class="col-lg-12 hideForMobileNav mobileBelowNav" id="albumSection">
