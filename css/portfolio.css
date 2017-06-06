@@ -19,6 +19,7 @@
 							display: flex; align-items: center; justify-content: center; }
 	.albumPhoto { width:0%; margin:auto; height:0%; float:left; 
 					transition: width 0.8s ease-out 0.2s, height 0.8s ease-out 0.2s; }
+	.albumPhotosSingleCell:hover { opacity:0.5; }
 	#backToAlbumContainer { width:100%; padding-top:2%; padding-bottom:2%; padding-left:1%;  }
 	.backToAlbums { border: 2px solid white; color:gray; border-radius:50px; padding:1% 2%; display:inline-block; display:none;}
 	.backToAlbums:hover { color:white; }
@@ -90,10 +91,6 @@
 	#albumPhotosList {width:70%; }
 	.albumPhotosRow { height:220px;}
 
-	/*#galleryModalImageContainer { height:370px; }*/
-	.dim-portrait { width:300px; height:500px; }
-	.dim-landscape { width:850px; height:450px; }
-	.dim-square { width:450px; height:450px; }
 
 	#galleryModal {	padding-top:7%; }
 	#closeGalleryModal { font-size:30px; position:fixed; top:5%; right:5%; color:white;}	

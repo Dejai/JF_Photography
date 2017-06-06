@@ -129,6 +129,7 @@ function getAlbumPhotos(folderName){
 function buildAlbumPhoto(folderName, photo, photoIndex, typeOfCell){
 	var openCell, closeCell;
 	var img = "<img class='albumPhoto imageHover' src='/JF_Photography/images/gallery/"+folderName+"/" + photo + "'/>";
+
 	switch(typeOfCell){
 		case "firstCellInRow":
 			openCell = "<div class=\"albumPhotosRow\">\n\t<div data-photo-index=\""+photoIndex+"\" class=\"albumPhotosSingleCell\">"; 

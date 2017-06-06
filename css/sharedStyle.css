@@ -3,6 +3,6 @@ body {	background-color: black; }
 
 .delayedDisplay { display:none; }
 
-.dim-portrait { width:300px; height: 400px;  }
+.dim-portrait { width:320px; height: 500px;  }
 .dim-landscape { width:750px; height: 400px; }
-.dim-square { width:400px; height: 400px; }
+.dim-square { width:420px; height: 420px; }
