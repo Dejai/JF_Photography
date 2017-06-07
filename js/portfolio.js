@@ -169,11 +169,8 @@ function galleryModalEventListeners(){
     // THE LISTENER FOR AN IMAGE IN THE LIST OF PHOTOS; OPENS THE MODAL
     $(".albumPhotosSingleCell").click(function(){
 	    $("#albumSection").css("opacity", "0.0");
-		// $("#navbar").css("opacity", "0.0");
-		$("#navigation-links-section").hide();
-		// css("opacity", "0.0");
-		$("#navbar-social-links").hide();
-		// css("opacity", "0.0");
+		$("#navigation-links-section").css("opacity", "0.0");
+		$("#navbar-social-links").css("opacity", "0.0");
 		$("#logo-section").css("position", "fixed").css("z-index", -10);
 
 		$("#galleryModal").show().css("z-index", 10);
@@ -181,9 +178,6 @@ function galleryModalEventListeners(){
 		var photoIndex = Number($(this).attr("data-photo-index"));
 		var photoIndex = Number($(this).attr("data-photo-index"));
 		$("#currentGalleryModalImage").html(photoIndex-1);
-		// var dii = $(this).attr("data-photo-dimension");
-		// setImageDimensions("galleryModalImageContainer", dii);
-		// $(galleryModalPhotos_array[photoIndex-1]).show();
 		nextGalleryImage(galleryModalPhotos_array, "right");
     });
 
@@ -227,11 +221,8 @@ function galleryModalEventListeners(){
 
 function closeGallery(){
 	$("#albumSection").css("opacity", "1.0");
-	// $("#navbar").css("opacity", "0.0");
-	$("#navigation-links-section").show();
-	// css("opacity", "0.0");
-	$("#navbar-social-links").show();
-	// css("opacity", "0.0");
+	$("#navigation-links-section").css("opacity", "1.0");
+	$("#navbar-social-links").css("opacity", "1.0");
 	$("#logo-section").css("position", "static").css("z-index", 0);
 	$("#galleryModal").css("z-index", -10).hide();
 	$(".galleryModalImage").hide();
@@ -239,11 +230,11 @@ function closeGallery(){
 	$("body").css("overflow", "scroll");
 
 	$("#galleryModal").hide();
-    		$("#albumSection").css("opacity", "1.0");
-    		$("#navbar").css("opacity", "1.0");
-    		$(".galleryModalImage").hide();
-			$(".galleryDescription").hide();
-			$("body").css("overflow", "scroll");
+	$("#albumSection").css("opacity", "1.0");
+	$("#navbar").css("opacity", "1.0");
+	$(".galleryModalImage").hide();
+	$(".galleryDescription").hide();
+	$("body").css("overflow", "scroll");
 }
 
 /*
@@ -279,6 +270,8 @@ function nextGalleryImage(galleryPhotos, direction){
 		// $(galleryPhotos[nextID-1]).show();
 		$(galleryPhotos[nextID-1]).fadeIn();
 	}
+    // $("#galleryModalImageContainer").scrollTop();
+	
 }
 
 // function setImageDimensions(container, dimension){

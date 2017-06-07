@@ -27,24 +27,14 @@
 
 /* GALLERY MODAL OF PHOTOS */
 	#galleryModal { display:none; position:fixed; top: 0px; left:0px; right:0px; background-color:black; height:100%; width:100%; 
-					padding-top:40%; opacity:0.8; }
-
-
+					padding-top:30%; opacity:0.8; overflow:scroll; }
 	
-	
-	/*#galleryModalMenu { width:100%; margin: auto; padding-top:10%; padding-bottom:10%; }*/
-	/*#galleryModalCounterSection { float:left; width:auto; color:white; padding:1%; font-size:16px;  }*/
-	/*#closeGalleryModal { color:white; padding:1%; font-size:45px; display:block; width:70%; margin:auto; text-align: right;  }*/
 	#galleryModalNavigationSection {color:white; width:20%; margin:auto; text-align:center; font-size:18px; padding:1%;}
+	#closeGalleryModal { font-size:20px; position:fixed; top:5%; right:5%; color:white;}		
 	#closeGalleryModal:hover { cursor:pointer; }
 
-	/*#galleryModalImageContainer { width:100%; height:250px; margin:auto; text-align:center; 		}*/
-	#galleryModalImageContainer { margin:auto; }
-	/*.galleryModalImage { height:100%; display:none; }*/
+	#galleryModalImageContainer { margin:auto; margin-bottom:2%; }
 	.galleryModalImage { width:100%; height:100%; display:none; }
-	/*.galleryDescription { width:100%; color:white; display:none;}*/
-	/*#galleryModalImageDescriptions { color:white; padding:5%; text-align:center; width:100%; }*/
-	/*.galleryModalArrow { display:none;}*/
 
 
 
@@ -92,8 +82,7 @@
 	.albumPhotosRow { height:220px;}
 
 
-	#galleryModal {	padding-top:7%; }
-	#closeGalleryModal { font-size:30px; position:fixed; top:5%; right:5%; color:white;}	
+	#galleryModal {	padding-top:6%; }
 	#galleryModalLeftButton::after { content:" "; margin:0.5%; }
 	#galleryModalRightButton::before { content:" "; margin:0.5%; }
 
