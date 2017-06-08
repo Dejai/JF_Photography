@@ -17,8 +17,10 @@ a:hover { text-decoration:none; }
 
 }
 
-@media screen and (min-width:768px) and (min-height:102px){
-
+@media screen and (min-width:768px) and (min-height:500px){
+	.dim-portrait { width:300px; height: 350px; border:3px solid white; }
+	.dim-landscape { width:650px; height: 350px;  }
+	.dim-square { width:350px; height: 350px; }
 }
 
 

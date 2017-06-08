@@ -98,20 +98,20 @@ function slideshowEventListeners(){
 
     // var slideshowImages = document.getElementsByClassName("slideshow_image");
 	var slideSection = document.getElementById("slideshowSection");
-	// swipedetect(slideSection, function(swipedir){
-	//     if (swipedir =='right') {
-	//     	clearTimeout(theTimer);
-	// 	    $(this).blur();
-	// 	    if (slideIndex == 1){
-	// 	    	slideIndex = slideshow_images.length-1;
-	// 	    }  else { 
-	// 	    	slideIndex -= 2; 
-	// 	    }
-	// 	    carousel();
-	//     } else if (swipedir == 'left'){
-	//     	clearTimeout(theTimer);
- //        	$(this).blur();
-	// 	    carousel();
-	//     }
-	// });
+	swipedetect(slideSection, function(swipedir){
+	    if (swipedir =='right') {
+	    	clearTimeout(theTimer);
+		    $(this).blur();
+		    if (slideIndex == 1){
+		    	slideIndex = slideshow_images.length-1;
+		    }  else { 
+		    	slideIndex -= 2; 
+		    }
+		    carousel();
+	    } else if (swipedir == 'left'){
+	    	clearTimeout(theTimer);
+        	$(this).blur();
+		    carousel();
+	    }
+	});
 }
