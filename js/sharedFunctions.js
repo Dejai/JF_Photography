@@ -31,34 +31,44 @@ $(function(){
 });
 
 function mobileMenu(){
-    $("#mobile-hamburger-button").click(function(){
+    $("#navbar-mobile-hamburger-button").click(function(){
         $(".hideForMobileNav").hide();
-        $("#menu-list-section").show();
-        $("#mobile-hamburger-button").hide();
-        $("#mobile-close-button").css("display", "block");
+        $("#navbar-navigation-options-section").show();
+        $("#navbar-mobile-hamburger-button").hide();
+        $("#navbar-mobile-close-button").css("display", "block");
     });
-    $("#mobile-close-button").click(function(){
-        $("#menu-list-section").toggle();
-        $("#mobile-hamburger-button").toggle();
-        $("#mobile-close-button").toggle();
+    $("#navbar-mobile-close-button").click(function(){
+        $("#navbar-navigation-options-section").toggle();
+        $("#navbar-mobile-hamburger-button").toggle();
+        $("#navbar-mobile-close-button").toggle();
         $(".hideForMobileNav").fadeIn();
     });
 }
 
 function setImageDimensions(container, dimension){
     var ele = "#"+container;
+    resetDimensionClasses($(ele));
     switch (dimension.trim()){
         case "portrait":
-            $(ele).attr("class", " ").addClass("dim-portrait");
+            $(ele).addClass("dim-portrait");
             break;
         case "landscape":
-            $(ele).attr("class", " ").addClass("dim-landscape");
+            $(ele).addClass("dim-landscape");
             break;
         case "square":
-            $(ele).attr("class", " ").addClass("dim-square");
+            $(ele).addClass("dim-square");
             break;
         default:
-            $(ele).attr("class", " ").addClass("dim-square");
+            $(ele).addClass("dim-square");
+    }
+
+}
+function resetDimensionClasses(element){
+    var classes = element[0].classList;
+    for (var x = 0; x < classes.length; x++){
+        if (classes[x].indexOf("dim-") > -1){
+            classes.remove(classes[x]);
+        }
     }
 }
 
