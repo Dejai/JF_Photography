@@ -70,12 +70,20 @@ FORM RESULTS
 	#formStatusSentence2 { font-size:16px; }
 	#cameraFlash { width:200px; height:200px; margin-top:2%; }
 
+	#contactFormSection { margin-top:130px; }
 
 
 /*
 MEDIA QUERIES
 */
-	@media screen and (min-width:768px){
+
+/*iPads (mini, Air, and small pro)*/
+@media screen and (min-width:768px) and (min-height:1024px){
+	#contactFormSection { margin-top:150px; }
+
+}
+
+@media screen and (min-width:768px){
 
 		/*Contact Options*/
 		#contactQuestion { margin-bottom:2%; font-size:24px; }
@@ -105,6 +113,8 @@ MEDIA QUERIES
 	}
 
 	@media screen and (min-width:1024px){
+		#contactFormSection { margin-top:20px; }
+
 		#contactQuestion { margin-bottom:1%; }
 		#requestServiceForm{ width:55%; }
 		#feedbackForm{ width:55%; }

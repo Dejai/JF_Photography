@@ -36,7 +36,7 @@
 	#galleryModalImageContainer { margin:auto; margin-bottom:2%; }
 	.galleryModalImage { width:100%; height:100%; display:none; }
 
-
+	#albumSection { margin-top:130px; }
 
 
 @media screen and (min-width: 320px){
@@ -48,6 +48,10 @@
 	#galleryModalCounterSection { font-size:16px;  }
 }
 
+/*iPads (mini, Air, and small pro)*/
+@media screen and (min-width:768px) and (min-height:1024px){
+	#albumSection { margin-top:160px; }
+}
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) { 
@@ -71,10 +75,12 @@
 	.galleryModalArrow:hover { cursor:pointer; color:red; }
 	/*#galleryModalLeftButton {  left: 10%;   }*/
 	/*#galleryModalRightButton { right: 10%;  }*/
-
 }
 
 @media screen and (min-width:1024px){
+
+	#albumSection { margin-top:20px; }
+
 	#albumCoversList {width:65%; }
 	.albumCoversRow { height:150px; margin-bottom:10%; }
 
