@@ -8,7 +8,7 @@ $(document).ready(function(){
         buildSlideshow(results);
        
         slideshow_images = $(".slideshow_image").toArray();
-    	myPositions = $(".slideshow_position_new").toArray();
+    	myPositions = $(".slideshowPositionIndicator").toArray();
         carousel();
         slideshowEventListeners();
     });	
@@ -20,19 +20,19 @@ function buildSlideshow(results){
     for (var x = 0; x < slideshow_images_array.length; x++){
     	var imageDetails = slideshow_images_array[x].split(",");
     	if (x == 0){ 
-    		var leftArrow = "<p id=\"slideshow_leftButton\" class=\"newSlideshowArrow\"></p>";
+    		var leftArrow = "<p id=\"slideshow_leftButton\" class=\"slideshowArrow\"></p>";
         	$("#slideshowPositionsSection").append(leftArrow);
     	} else if (x == slideshow_images_array.length-1) {
     		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/JF_Photography/images/slideshow/"+imageDetails[0]+"\">";
        		$("#slideshowImagesContainer").append(img);
-       		var pos = "<p class=\"slideshow_position_new\" data-ron-slide=\"" +x+"\"></p>";
+       		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
         	$("#slideshowPositionsSection").append(pos);
-       		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"newSlideshowArrow\"></p>";
+       		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideShowArrow\"></p>";
     		$("#slideshowPositionsSection").append(rightArrow);
     	} else{
     		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/JF_Photography/images/slideshow/"+imageDetails[0]+"\">";
        		$("#slideshowImagesContainer").append(img);
-       		var pos = "<p class=\"slideshow_position_new\" data-ron-slide=\"" +x+"\"></p>";
+       		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
         	$("#slideshowPositionsSection").append(pos);
     	}
     }
@@ -40,7 +40,7 @@ function buildSlideshow(results){
 
 function carousel() {
 	$(".slideshow_image").hide();
-	$(".slideshow_position_new").removeClass("currentSlidePosition");
+	$(".slideshowPositionIndicator").removeClass("currentSlidePosition");
     slideIndex++;
     if (slideIndex > slideshow_images.length) { slideIndex = 1} 
 
@@ -56,7 +56,7 @@ function carousel() {
 }
 
 function slideshowEventListeners(){
-    $(".slideshow_position_new").click(function(){
+    $(".slideshowPositionIndicator").click(function(){
 		clearTimeout(theTimer);
 		var goToSlide = Number($(this).attr('data-ron-slide'));
 		slideIndex = goToSlide-1;
