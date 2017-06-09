@@ -169,9 +169,9 @@ function galleryModalEventListeners(){
     // THE LISTENER FOR AN IMAGE IN THE LIST OF PHOTOS; OPENS THE MODAL
     $(".albumPhotosSingleCell").click(function(){
 	    $("#albumSection").css("opacity", "0.0");
-		$("#navigation-links-section").css("opacity", "0.0");
-		$("#navbar-social-links").css("opacity", "0.0");
-		$("#logo-section").css("position", "fixed").css("z-index", -10);
+		$("#navbar-navigation-section").css("opacity", "0.0");
+		$("#navbar-social-links-section").css("opacity", "0.0");
+		$("#navbar-logo-section").css("position", "fixed").css("z-index", 10);
 
 		$("#galleryModal").show().css("z-index", 10);
 		$("body").css("overflow", "hidden");
@@ -221,9 +221,9 @@ function galleryModalEventListeners(){
 
 function closeGallery(){
 	$("#albumSection").css("opacity", "1.0");
-	$("#navigation-links-section").css("opacity", "1.0");
-	$("#navbar-social-links").css("opacity", "1.0");
-	$("#logo-section").css("position", "static").css("z-index", 0);
+	$("#navbar-navigation-section").css("opacity", "1.0");
+	$("#navbar-social-links-section").css("opacity", "1.0");
+	$("#navbar-logo-section").css("position", "static").css("z-index", 0);
 	$("#galleryModal").css("z-index", -10).hide();
 	$(".galleryModalImage").hide();
 	$(".galleryDescription").hide();
