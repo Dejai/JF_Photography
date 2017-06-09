@@ -19,7 +19,7 @@ function getAlbumCovers(){
     	var albumCovers_config = results.split("\n");
     	var albumCovers_element = ""; 
     	var clientWidth = window.innerWidth;
-    	var endOfRow = clientWidth >= 768 ? 3 : 2;
+    	var endOfRow = clientWidth >= 760 ? 3 : 2;
     	for (var x = 1; x < albumCovers_config.length; x++){
     		var folderName = albumCovers_config[x].split(", ")[0];
     		var albumName = albumCovers_config[x].split(", ")[1];

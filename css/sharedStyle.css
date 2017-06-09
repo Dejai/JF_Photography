@@ -4,9 +4,9 @@ body {	background-color: black; }
 .delayedDisplay { display:none; }
 a:hover { text-decoration:none; }
 
-.dim-portrait {width:60%; height:300px; border:3px solid white; }
-.dim-landscape { width:100%; }
-.dim-square { width:80%; }
+.dim-portrait {width:70%; height:350px; border:3px solid white; }
+.dim-landscape { width:100%; height:300px;}
+.dim-square { width:80%; height:300px; }
 
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:1024px){
