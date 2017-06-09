@@ -171,7 +171,8 @@ function galleryModalEventListeners(){
 	    $("#albumSection").css("opacity", "0.0");
 		$("#navbar-navigation-section").css("opacity", "0.0");
 		$("#navbar-social-links-section").css("opacity", "0.0");
-		$("#navbar-logo-section").css("position", "fixed").css("z-index", 10);
+		$("#navbar-logo-section").css("opacity", "0.0").css("z-index", -10);
+		// $("#navbar-logo-section").css("position", "fixed").css("z-index", 10);
 
 		$("#galleryModal").show().css("z-index", 10);
 		$("body").css("overflow", "hidden");
@@ -201,10 +202,10 @@ function galleryModalEventListeners(){
     });
 	var galleryModalImageContainer = document.getElementById("galleryModalImageContainer");
 	swipedetect(galleryModalImageContainer, function(swipedir){
-	    if (swipedir =="left") {
-    		nextGalleryImage(galleryModalPhotos_array, galleryDescriptions_array , "right");
+	    if (swipedir == "left") {
+    		nextGalleryImage(galleryModalPhotos_array, "right");
 	    } else if (swipedir == "right"){
-    		nextGalleryImage(galleryModalPhotos_array, galleryDescriptions_array , "left");
+    		nextGalleryImage(galleryModalPhotos_array , "left");
 	    }
 	});
     $(document).keydown(function(event){
@@ -223,7 +224,9 @@ function closeGallery(){
 	$("#albumSection").css("opacity", "1.0");
 	$("#navbar-navigation-section").css("opacity", "1.0");
 	$("#navbar-social-links-section").css("opacity", "1.0");
-	$("#navbar-logo-section").css("position", "static").css("z-index", 0);
+	$("#navbar-logo-section").css("opacity", "1.0").css("z-index", 10);
+
+	// $("#navbar-logo-section").css("position", "fixed").css("z-index", 10);
 	$("#galleryModal").css("z-index", -10).hide();
 	$(".galleryModalImage").hide();
 	$(".galleryDescription").hide();

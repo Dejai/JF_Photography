@@ -36,7 +36,7 @@ body {	background-color: black; }
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) and (min-height:500px) { 
-	#slideshowSection {margin-top:120px;}
+	#slideshowSection {margin-top:200px;}
 	#slideshowPositionsSection { position:static; display:inline-block; }
 	#slideshowPositionsSection p  { }
 	.slideshowArrow { display:inline; background-color:none; position:static; border: none; width:1%; margin-top:0%;

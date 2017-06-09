@@ -1,6 +1,7 @@
 /* GENERAL STYLE FOR ANY ELEMENT IN THE PORTFOLIO PAGE*/
 
 	.imageHover:hover { border: 1px solid white; cursor:pointer; }
+	#albumSection { margin-top:130px; }
 
 /* LIST OF ALBUMS */
 	#albumCoversList {width:100% }
@@ -28,29 +29,30 @@
 /* GALLERY MODAL OF PHOTOS */
 	#galleryModal { display:none; position:fixed; top: 0px; left:0px; right:0px; background-color:black; height:100%; width:100%; 
 					padding-top:30%; opacity:0.8; overflow:scroll; }
-	
-	#galleryModalNavigationSection {color:white; width:20%; margin:auto; text-align:center; font-size:18px; padding:1%;}
-	#closeGalleryModal { font-size:20px; position:fixed; top:5%; right:5%; color:white;}		
-	#closeGalleryModal:hover { cursor:pointer; }
+	#closeGalleryModal { font-size:22px; position:fixed; top:5%; right:5%; color:white; z-index:12;}		
 
-	#galleryModalImageContainer { margin:auto; margin-bottom:2%; }
+	#galleryModalImageContainer { margin:auto; }
 	.galleryModalImage { width:100%; height:100%; display:none; }
+	
+	#galleryModalNavigationSection {color:white; margin-top:2%; width:50%; margin:auto; text-align:center; font-size:18px; padding:1%;}
+	.galleryModalArrow { color:white; }
+	.galleryModalArrow:hover { cursor:pointer; color:red; }
 
-	#albumSection { margin-top:130px; }
+
 
 
 @media screen and (min-width: 320px){
 	.albumCoversRow { height:110px; margin-bottom:15%; }
 	.albumPhotosRow { height:110px; margin-bottom:10%; }
 	#backToAlbumContainer { width:100%; padding-top:1%; padding-bottom:1%; padding-left:1%;  }
-	#galleryModal { padding-top:30%; } 
 	/*#galleryModalImageContainer { height:200px; }*/
-	#galleryModalCounterSection { font-size:16px;  }
+	/*#galleryModalCounterSection { font-size:12px;  }*/
 }
 
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:1024px){
 	#albumSection { margin-top:160px; }
+
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -71,8 +73,7 @@
 
 
 	/*.galleryModalArrow { display:block; position:fixed; color:white; font-size:30px; height:10%; top:40%;}*/
-	.galleryModalArrow { color:white; }
-	.galleryModalArrow:hover { cursor:pointer; color:red; }
+
 	/*#galleryModalLeftButton {  left: 10%;   }*/
 	/*#galleryModalRightButton { right: 10%;  }*/
 }
