@@ -45,7 +45,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		if (event){
 			$(".formToSubmit").hide();
-			var loadImage =	"<img src=\"/JF_Photography/images/badges/loading.gif\" width=\"200\" height=\"200\" style=\"margin-top:2%; border-color:red;\" alt=\"Sad\"/>"
+			var loadImage =	"<img src=\"/images/badges/loading.gif\" width=\"200\" height=\"200\" style=\"margin-top:2%; border-color:red;\" alt=\"Sad\"/>"
 			$("#formResultsSection").append(loadImage).show();
 			var form = $(this).attr("id");
 			if (form == "feedbackForm"){
@@ -168,8 +168,8 @@ function processRequest(){
 
 function formResults(formID, status){
 	$("#formResultsSection img").remove();
-	var firstImage = "<img id=\"successImage\" src=\"/JF_Photography/images/badges/successImage.gif\" alt=\"*INSERT CAMERA FLASH*\"/>";
-	var oops = "<img src=\"/JF_Photography/images/badges/oops.png\" width=\"100\" height=\"100\" style=\"margin-top:2%;\" alt=\"*INSERT SAD FACE*\"/>"
+	var firstImage = "<img id=\"successImage\" src=\"/images/badges/successImage.gif\" alt=\"*INSERT CAMERA FLASH*\"/>";
+	var oops = "<img src=\"/images/badges/oops.png\" width=\"100\" height=\"100\" style=\"margin-top:2%;\" alt=\"*INSERT SAD FACE*\"/>"
 	var firstSentence = formID == "feedbackForm" ? "Thanks for the feedback!" : "Your request has been sent.";
 	var secondSentence = formID == "feedbackForm" ? " " : "I will be in touch with you once I've reviewed the details.";
 	var count = 2;

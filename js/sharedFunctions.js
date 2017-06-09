@@ -1,5 +1,5 @@
 $(function(){
-    $("#navbar").load("/JF_Photography/views/navbar.html", function(){
+    $("#navbar").load("/views/navbar.html", function(){
         var currentPath = window.location.pathname, page;
         if (currentPath.indexOf("portfolio") > 0){
             page = "portfolio";
@@ -20,7 +20,7 @@ $(function(){
         });
         mobileMenu();
     });
-    $("#footer").load("/JF_Photography/views/footer.html");
+    $("#footer").load("/views/footer.html");
 
 });
 

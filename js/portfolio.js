@@ -15,7 +15,7 @@ $(document).ready(function(){
 	@desc -- Makes a GET call to retrieve information about the different albums from the config file.
 */
 function getAlbumCovers(){
-	$.get("/JF_Photography/config/albumCovers.txt", function(results){
+	$.get("/config/albumCovers.txt", function(results){
     	var albumCovers_config = results.split("\n");
     	var albumCovers_element = ""; 
     	var clientWidth = window.innerWidth;
@@ -55,7 +55,7 @@ function buildAlbumCover(folderName, albumName, coverImage, typeOfCell){
 	var openCell, closeCell;
 	var openCoverDesc = "<div class=\"albumCoverDescription\">";
 	var closeCoverDesc = "</div>";
-	var img = "<img class='albumCoverPhoto imageHover' src='/JF_Photography/images/gallery/"+folderName+"/"+ coverImage + "'/>";
+	var img = "<img class='albumCoverPhoto imageHover' src='/images/gallery/"+folderName+"/"+ coverImage + "'/>";
 	switch(typeOfCell){
 		case "firstCellInRow":
 			openCell = "<div class=\"albumCoversRow\">\n\t<div data-album-id=\""+folderName+"\" class=\"albumCoversSingleCell\">"; 
@@ -87,7 +87,7 @@ function buildAlbumCover(folderName, albumName, coverImage, typeOfCell){
 	@params -- The name of the album; Used to get the photos from the correct config file
 */
 function getAlbumPhotos(folderName){
-	$.get("/JF_Photography/config/"+folderName+".txt", function(results){
+	$.get("/config/"+folderName+".txt", function(results){
     	var albumPhotos_config = results.split("\n");
     	var albumPhotos_element = ""; 
 
@@ -105,7 +105,7 @@ function getAlbumPhotos(folderName){
     		} else {
     			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "middleCell");
     		}
-            $("#galleryModalImageContainer").append("<img class=\"galleryModalImage\" data-photo-dimension=\""+dimension+"\" src='/JF_Photography/images/gallery/"+folderName+"/" + photo + "'/>");
+            $("#galleryModalImageContainer").append("<img class=\"galleryModalImage\" data-photo-dimension=\""+dimension+"\" src='/images/gallery/"+folderName+"/" + photo + "'/>");
             // $("#galleryModalImageDescriptions").append("<p class=\"galleryDescription\">" + description + "</p>");
 
     	}
@@ -128,7 +128,7 @@ function getAlbumPhotos(folderName){
 */
 function buildAlbumPhoto(folderName, photo, photoIndex, typeOfCell){
 	var openCell, closeCell;
-	var img = "<img class='albumPhoto imageHover' src='/JF_Photography/images/gallery/"+folderName+"/" + photo + "'/>";
+	var img = "<img class='albumPhoto imageHover' src='/images/gallery/"+folderName+"/" + photo + "'/>";
 
 	switch(typeOfCell){
 		case "firstCellInRow":

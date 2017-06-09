@@ -4,7 +4,7 @@ var myPositions;
 var theTimer;
 $(document).ready(function(){
 	
-	$.get("/JF_Photography/config/slideshowImages.txt", function(results){
+	$.get("/config/slideshowImages.txt", function(results){
         buildSlideshow(results);
        
         slideshow_images = $(".slideshow_image").toArray();
@@ -23,14 +23,14 @@ function buildSlideshow(results){
     		var leftArrow = "<p id=\"slideshow_leftButton\" class=\"slideshowArrow\"></p>";
         	$("#slideshowPositionsSection").append(leftArrow);
     	} else if (x == slideshow_images_array.length-1) {
-    		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/JF_Photography/images/slideshow/"+imageDetails[0]+"\">";
+    		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/images/slideshow/"+imageDetails[0]+"\">";
        		$("#slideshowImagesContainer").append(img);
        		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
         	$("#slideshowPositionsSection").append(pos);
        		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideshowArrow\"></p>";
     		$("#slideshowPositionsSection").append(rightArrow);
     	} else{
-    		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/JF_Photography/images/slideshow/"+imageDetails[0]+"\">";
+    		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/images/slideshow/"+imageDetails[0]+"\">";
        		$("#slideshowImagesContainer").append(img);
        		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
         	$("#slideshowPositionsSection").append(pos);
