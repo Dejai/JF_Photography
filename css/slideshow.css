@@ -45,12 +45,12 @@
 @media screen and (min-width:1024px){
 	#slideshowSection {margin-top:0px;}
 	#slideshowNavigation { margin-top:1%; }
+	.slideshowArrow:hover { cursor:pointer; color:red; }
+	.slideshowArrow { color:white; background-color:none; display:inline-block; }
 	#slideshow_leftButton { display:inline-block; }
 	#slideshow_rightButton { display:inline-block; }
-	#slideshow_rightButton:hover {border-left-color:red; }
+	#slideshow_rightButton:hover { border-left-color:red; }
 	#slideshow_leftButton:hover { border-right-color:red; }
-	.slideshowArrow { color:white; background-color:none; display:inline-block; }
-	.slideshowArrow:hover { cursor:pointer; color:red; }
 	.slideshowPositionIndicator { margin-right:1%; }
 }
 @media screen and (min-width:1024px) and (min-height:1366px){

@@ -27,7 +27,7 @@ function buildSlideshow(results){
        		$("#slideshowImagesContainer").append(img);
        		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
         	$("#slideshowPositionsSection").append(pos);
-       		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideShowArrow\"></p>";
+       		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideshowArrow\"></p>";
     		$("#slideshowPositionsSection").append(rightArrow);
     	} else{
     		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/JF_Photography/images/slideshow/"+imageDetails[0]+"\">";

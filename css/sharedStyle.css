@@ -8,8 +8,12 @@ a:hover { text-decoration:none; }
 .dim-landscape { width:100%; height:300px;}
 .dim-square { width:80%; height:300px; }
 
+.pageHeadlinerSize { font-size:18px; }
+
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:1024px){
+	.pageHeadlinerSize { font-size:24px; }
+
 
 	.dim-portrait { width:320px; height: 450px; border:3px solid white; }
 	.dim-landscape { width:750px; height: 450px;  }
