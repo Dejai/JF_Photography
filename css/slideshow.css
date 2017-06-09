@@ -8,25 +8,25 @@
 	#slideshowNavigation { width:100%; text-align:center; height:50px; margin:auto; margin-top:3%; }
 
 	#slideshowPositionIndicatorsSection { width:100%; text-align:center; border:none; display:block; position:static;}
-	.slideshowPositionIndicator { color:white; height:20px; width:20px; display:inline-block;
-							margin:1%; background-color:white; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; }
+	.slideshowPositionIndicator { color:white; height:16px; width:16px; display:inline-block; border:1px solid white;
+							margin:1%; background-color:transparent; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; }
 	.slideshowPositionIndicator:hover { background-color:red; cursor:pointer; }
 	#slideshow_leftButton{
 		display:none;
 		  width: 0px; 
   			height: 0px; 
-  			border-top: 15px solid transparent;
-  			border-bottom: 15px solid transparent;
-  			border-right:15px solid white;
+  			border-top: 12px solid transparent;
+  			border-bottom: 12px solid transparent;
+  			border-right:12px solid white;
   			margin-right:0%;
 	}
 	#slideshow_rightButton{
 		display:none;
 		  width: 0px; 
   			height: 0px; 
-  			border-top: 15px solid transparent;
-  			border-bottom: 15px solid transparent;
-  			border-left: 15px solid white;
+  			border-top: 12px solid transparent;
+  			border-bottom: 12px solid transparent;
+  			border-left: 12px solid white;
   			margin-left:0%;
 	}
 	
