@@ -1,5 +1,5 @@
 Folder Name, Album Name, Album Cover
-albumone, Album One, image3.jpg
-albumtwo, Album Two, image8.jpg
-albumone, Album Two, image4.jpg
-albumtwo, Album Two, image6.jpg
+albumone, The First One, image3.jpg
+albumtwo, Humans, image8.jpg
+albumone, The Other One, image4.jpg
+albumtwo, Hello, image6.jpg

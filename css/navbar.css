@@ -1,69 +1,109 @@
-/*#navbar { position: fixed; top:0px; width:100%; height:50px; text-align: center; background-color:black; opacity:0.7; }*/*/
-
 /*General Navbar*/
-	#navbar { width:100%; background-color:inherit; }
-	a:hover { text-decoration:none; }
-	/*.mobileBelowNav { margin-top:145px; }*/
+	#navbar { width:100%; background-color:black; }
+	#navbar * { background-color:black;  }
 
-	
 /*The Logo Section */
-	#logo-section {text-align:center; float:left;  background-color:black; }
+	#navbar-logo-section {text-align:center; float:left; }
 	#logo_img { margin-top:-15px; height:120px; width:100px;}
 
 /*Navbar Mobile Nav section*/
 	.mobileNavToggle { font-size:34px; padding-top:50%; padding-left:20%; }
-	#mobile-hamburger-button { display:block; color:#FFFFFF;}
-	#mobile-close-button { display:none; color:#FFFFFF;}
+	#navbar-mobile-hamburger-button { display:block; color:#FFFFFF;}
+	#navbar-mobile-close-button { display:none; color:#FFFFFF;}
 
 /*Navigation Links Section*/
-	#navigation-links-section { position:fixed; background-color:black; left:10px; top:10px; vertical-align: middle; 
-								padding:2%; height:inherit; text-align:center; z-index:50; float:left; }
-
-	#menu-list-section { display:none; position:fixed; padding:20%; left:0px; top:100px; width:100%; height:100%; 
-						background-color:black; z-index:10; float:left;}
-	.menu-list { display:block; width:30%; margin:auto; padding:1%; color:#FFFFFF; font-size:22px; margin-bottom:10%;d letter-spacing: 1px; }
-	.menu-list:hover { cursor: pointer; color:white; text-decoration:none; 
+	#navbar-navigation-section { position:fixed; background-color:black; left:10px; top:10px; vertical-align: middle; 
+								padding:1%; height:inherit; text-align:center; z-index:50; }
+	#navbar-navigation-options-section { display:none; position:fixed; padding:20%; left:0px; top:120px; width:100%; height:100%; 
+						background-color:black; z-index:10; float:left; }
+	.navbar-navigation-option { display:block; width:30%; margin:auto; padding:1%; color:#FFFFFF; font-size:22px; margin-bottom:10%; letter-spacing: 1px; }
+	.navbar-navigation-option:hover { cursor: pointer; color:white; text-decoration:none; 
 						border-top:1px solid white; border-bottom:1px solid white;
 						padding-top:0.5%; padding-bottom:0.5%; }
 
 /*Navbar Social Links*/
-	#navbar-social-links {display:none; height:inherit; text-align:center; padding:2%; float:left;}
-	.socialBadges { margin-right:5px;}
+	#navbar-social-links-section {display:none; height:inherit; text-align:right; padding:2%; float:right;}
+
+
+	/* Tooltip container */
+	.tooltipz {
+	    position: relative;
+	    display: inline-block;
+	    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+	}
+	/* Tooltip text */
+	.tooltipz .tooltiptextz {
+	    visibility: hidden;
+	    width: 120px;
+	    background-color: black;
+	    color: #fff;
+	    text-align: center;
+	    padding: 5px 0;
+	    border-radius: 6px;	 
+	    /* Position the tooltip text - see examples below! */
+	    position: absolute;
+	    z-index: 1;	
+	    top:5%; 
+	    left:90%;
+
+
+	}
+
+	/* Show the tooltip text when you mouse over the tooltip container */
+	.tooltipz:hover { cursor:pointer; }
+	.tooltipz:hover .tooltiptextz {
+	    visibility: visible;
+	    cursor:pointer;
+	}
 
 
 @media screen and (min-width: 320px){
-
 	.mobileNavToggle { font-size:22px; }
-	#logo_img { height:120px; width:100px;}
-	#logo-section { position:fixed; top:0px; width:100%; z-index:50; }
-	.menu-list { font-size:18px; }
-	#menu-list-section { padding:10%; }
-	.mobileBelowNav { margin-top:120px; }
+	#logo_img { height:130px; width:110px;}
+	#navbar-logo-section { position:fixed; top:0px; width:100%; z-index:10; }
+	.navbar-navigation-option { font-size:18px; }
+	#navbar-navigation-options-section { padding:10%; }
+	/*.mobileBelowNav { margin-top:120px; }*/
+}
+
+/*iPads (mini, Air, and small pro)*/
+@media screen and (min-width:768px) and (min-height:1024px){
+	#logo_img { height:160px; width:140px;}
+	#navbar-navigation-options-section { margin-top:70px; }
 
 }
 
+
 /*Medium devices (tablets, 768px and up)*/
-@media screen and  (min-width: 768px) { 
-	#menu-list-section { padding:1%; }
-	.menu-list { font-size:16px; width:10%; margin-bottom:5%; }
-	#navigation-links-section { padding:0%; width:5%; }
+@media screen and  (min-width: 768px) and (min-height:500px) { 
+	#navbar-navigation-options-section { padding:1%; margin-top:20px; }
+	.navbar-navigation-option { font-size:16px; width:10%; margin-bottom:5%; }
+	#navbar-navigation-section { padding:0%; width:5%; }
 	.mobileNavToggle { font-size:30px; }
 }
 
 @media screen and (min-width:1024px){
-	/*#navbar { float:left; width:100%; padding:0%; }*/
-	#navbar { height:120px; width:100%; margin-bottom:2%; }
-	#logo-section { position:static; display:inline-block; width:20%; height:120px;}
-	#navigation-links-section { position:static; display:inline-block; height:120px;
-								width:60%; padding:0.5%; z-index:100;}
-	#menu-list-section { display:inline-block; position:static; padding:0%; padding-top:3%;   }
-	.menu-list { width:auto; display:inline-block; margin-right:1%; font-size:18px;
+	/*General Navbar*/
+	#navbar { width:100%; margin-bottom:0%; }
+
+	/*The Logo Section */
+	#navbar-logo-section { position:static; display:inline-block; width:20%;}
+
+	/*Navbar Mobile Nav section*/
+	#navbar-mobile-hamburger-button { display:none; }
+	#navbar-mobile-close-button { display:none; }
+
+	/*Navigation Links Section*/
+	#navbar-navigation-section { position:static; display:inline-block;	width:60%; padding:0%; z-index:100;  }
+	#navbar-navigation-options-section {position:static;  display:inline-block; padding:0%; padding-top:3%; margin-top:0px;  }
+	.navbar-navigation-option { width:auto; display:inline-block; margin-right:1%; font-size:18px;
 				transition: padding-top 0.2s linear 0.1s, padding-bottom 0.2s linear 0.1s, border-top 0s linear 0.1s, border-bottom 0s linear 0.1s;
 				-webkit-transition: padding-top 0.2s linear 0.1s, padding-bottom 0.2s linear 0.1s, border-top 0s linear 0.1s, border-bottom 0s linear 0.1s;
 	}
-	#mobile-hamburger-button { display:none; }
-	#mobile-close-button { display:none; }
-	#navbar-social-links {display:inline-block; height:120px; width:20%;}
-	.mobileBelowNav { margin-top:0%; }
+	/*Navbar Social Links*/
+	#navbar-social-links-section {position:static; display:inline-block; width:20%; text-align:left; padding-left:1%;}
+	/*.mobileBelowNav { margin-top:0%; }*/
+
+	.navbarHeight { height:100px; }
 
 }

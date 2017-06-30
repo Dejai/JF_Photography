@@ -10,7 +10,7 @@
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="expires" content="Mon, 16 Dec 1996 4:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
-    <link rel="icon" type="image/png" href="/JF_Photography/images/logo/jfp2.png"/>
+    <link rel="icon" type="image/png" href="/images/logo/jfp2.png"/>
     
 	<!-- BOOTSTRAP -->
      <!-- Latest compiled and minified CSS -->
@@ -21,23 +21,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/contact.css">
-    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="/JF_Photography/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/sharedStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
     
  
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="/JF_Photography/js/sharedFunctions.js"></script>
+    <script type="text/javascript" src="/js/sharedFunctions.js"></script>
 
     <!-- EMAIL JS SCRIPT -->
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript" src="/JF_Photography/js/emailJS.js"></script>
+
 </head>
 <body>
-<nav id="navbar" ></nav>
-<div class="col-lg-12 hideForMobileNav mobileBelowNav">
-	<p id="contactQuestion" class="delayedDisplay">What would you like to contact me about?</p>
+<nav id="navbar" class="navbarHeight" ></nav>
+<div id="contactFormSection" class="col-lg-12 hideForMobileNav mobileBelowNav">
+	<p id="contactQuestion" class="delayedDisplay pageHeadlinerSize">What would you like to contact me about?</p>
 	<div id="contactOptionsSection" class="delayedDisplay">
 		<a class="contactOption formButton" data-jf-contact-option="service">Request services</a>
 		<a class="contactOption formButton" data-jf-contact-option="feedback">Send feedback</a>
@@ -76,15 +76,16 @@
 			</div>
 		</div>
 		<div class="formRow">
-			<label>Description:</label><br/>
+			<label>Description</label><br/>
 			<textarea class="clearPlaceholder resetAfterSubmit" rows="5" name="description" placeholder="Describe what you would need."></textarea>
 		</div>
 		<div class="formRow" >
 			<input class="submitButton formButton" type="submit" name="Submit" value="Request Services"/>
+			<div style="width:100%; height:30px;"></div>
 		</div>
 	</form>
 	<form id="feedbackForm" class="contactForm formToSubmit formSections">
-		<p><span class="requiredField"></span> indicates required field</p>
+		<p><span class="requiredField"></span> indicates required field.</p>
 		<div class="formRow">
 			<div class="customerInfoFields">
 				<label class="optionalField">Name</label><br/>
@@ -93,7 +94,7 @@
 		</div>
 		<div class="formRow">
 			<div style="color:white;float:left;width:100%;text-align:left;">
-				<p>Feedback: <span class="requiredField"></span></p>
+				<p>Feedback<span class="requiredField"></span></p>
 			</div>
 			<div style="width:100%; text-align:left; float:left;">
 				<textarea class="clearPlaceholder resetAfterSubmit" name="feedback" rows="5" placeholder="What do you want to let me know?" required></textarea>
@@ -114,11 +115,10 @@
 	</div>
 </div>
 </body>
-
 <!-- STYLE & CODE FOR datePicker -->
 <!-- this should go after your </body> -->
-<link rel="stylesheet" type="text/css" href="/JF_Photography/js/datetimepicker-master/jquery.datetimepicker.css"/ >
-<script src="/JF_Photography/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
-<script type="text/javascript" src="/JF_Photography/js/contact.js"></script>
+<link rel="stylesheet" type="text/css" href="/js/datetimepicker-master/jquery.datetimepicker.css"/ >
+<script src="/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+<script type="text/javascript" src="/js/contactForms.js"></script>
 
 </html>

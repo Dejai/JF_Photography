@@ -1,49 +1,68 @@
-body {	background-color: black; }
-* { box-sizing: border-box; }
-
 /*Slideshow Section & Buttons*/
-	#slideshowSection { position:fixed; top:180px; height:350px; width:100%; z-index:-4;}
-	.slideshowArrow { display:none; }
-	.clickButton { display:none;  top:100px; }
-	#slideshowImagesContainer { height:inherit; width:100%; }
+	/*#slideshowSection { position:fixed; top:180px; height:350px; width:50%;}*/
+	#slideshowSection { margin:auto; margin-top:150px;}
+	#slideshowImagesContainer { height:inherit; width:100%;}
 	.slideshow_image { width:100%; height:100%; }
 
 /*The Positions in the slideshow*/
-	#slideshowPositionsSection { position:absolute; bottom:0px; width:100%; text-align:center; background-color:inherit; 
-								 border:none; display:none;}
-	.slideshow_position { padding:1%; color:white; height:20px; width:20px; display:inline-block; margin:1%; background-color:white;
-							border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; }
-	.slideshow_position:hover { color:red; cursor:pointer; background-color:red;}
+	#slideshowNavigation { width:100%; text-align:center; height:50px; margin:auto; margin-top:3%; }
+
+	#slideshowPositionIndicatorsSection { width:100%; text-align:center; border:none; display:block; position:static;}
+	.slideshowPositionIndicator { color:white; height:16px; width:16px; display:inline-block; border:1px solid white;
+							margin:1%; background-color:transparent; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; }
+	.slideshowPositionIndicator:hover { background-color:red; cursor:pointer; }
+	#slideshow_leftButton{
+		display:none;
+		  width: 0px; 
+  			height: 0px; 
+  			border-top: 12px solid transparent;
+  			border-bottom: 12px solid transparent;
+  			border-right:12px solid white;
+  			margin-right:0%;
+	}
+	#slideshow_rightButton{
+		display:none;
+		  width: 0px; 
+  			height: 0px; 
+  			border-top: 12px solid transparent;
+  			border-bottom: 12px solid transparent;
+  			border-left: 12px solid white;
+  			margin-left:0%;
+	}
+	
 	.currentSlidePosition { color:red; background-color:red; }
 
-@media screen and (min-width: 320px){
-	/*#slideshowSection { top:130px; height:250px; margin:auto; }	*/
-	#slideshowSection { top:25%; height:250px; margin:auto; }	
-}
-
-/*iPhone 6 Plus*/
-@media screen and (min-width:414px) and (min-height: 736px){
-	#slideshowSection { height:350px; }
-}
-
 /*Medium devices (tablets, 768px and up)*/
-@media screen and  (min-width: 768px) { 
-	/*#slideshowSection { width:75%; margin:auto; top: 120px; left:12%; height:300px; z-index:10  }*/
-	#slideshowSection { width:75%; margin:auto; top: 25%; left:12%; height:300px; z-index:10  }
-	#slideshowPositionsSection { display:inline-block; z-index:10; }
-	#slideshowPositionsSection p  { z-index:10; }
-	.slideshowArrow { display:block; background-color:none; position:absolute; border: none; padding:1%; width:5%; opacity:0.9;
-					 height:12%; top:40%; color:black; cursor:pointer; color:white; font-size:30px;  }
-	.slideshowArrow:hover { color:red;  }
-	#slideshow_leftButton { left:0px;  }
-	#slideshow_rightButton { right:0px; }
+@media screen and  (min-width: 768px) and (min-height:500px) { 
+	#slideshowSection {margin-top:120px;}
+}
+
+/*iPads (mini, Air, and small pro)*/
+@media screen and (min-width:768px) and (min-height:1024px){
+	#slideshowSection { margin-top:200px; }
 }
 
 @media screen and (min-width:1024px){
-	#slideshowSection { width:65%; left:17%; top:140px; height:380px;}
+	#slideshowSection {margin-top:0px;}
+	#slideshowNavigation { margin-top:1%; }
+	.slideshowArrow:hover { cursor:pointer; color:red; }
+	.slideshowArrow { color:white; background-color:none; display:inline-block; }
+	#slideshow_leftButton { display:inline-block; }
+	#slideshow_rightButton { display:inline-block; }
+	#slideshow_rightButton:hover { border-left-color:red; }
+	#slideshow_leftButton:hover { border-right-color:red; }
+	.slideshowPositionIndicator { margin-right:1%; }
+}
+@media screen and (min-width:1024px) and (min-height:1366px){
+	#slideshowSection {margin-top:50px;}	
+}
+
+/* Medium Laptops or Sideways Ipad Pros*/
+@media screen and (min-width:1300px){
+	#slideshowSection {margin-top:50px;}	
 }
 
 @media screen and (min-width:1440px){
-	#slideshowSection { width:55%; left:22%; top:20%; height:420px;}
+	#slideshowSection {margin-top:30px;}
 }
 

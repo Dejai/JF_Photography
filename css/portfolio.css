@@ -1,63 +1,57 @@
 /* GENERAL STYLE FOR ANY ELEMENT IN THE PORTFOLIO PAGE*/
 
 	.imageHover:hover { border: 1px solid white; cursor:pointer; }
+	#albumSection { margin-top:120px; }
 
 /* LIST OF ALBUMS */
+	#albumListingDescription { color:white; padding:1%; text-align:center; }
 	#albumCoversList {width:100% }
 	#albumCoversTable { width:100%;}
-	.albumCoversRow { height:150px; float:left; width:100%; margin-bottom:10%; }
+	.albumCoversRow { height:110px; float:left; width:100%; margin-bottom:15%; }
+
 	.albumCoversSingleCell { width:50%; float:left; height:inherit; padding:2%; }
 	.albumCoverPhoto { z-index:-4; width:95%; margin:auto; height:inherit; float:left; }
-	.albumCoverDescription { background-color:none; height:50px; width:100%; color:white;  }
+	.albumCoverDescription { background-color:none; height:50px; width:100%; color:white; text-align:center; padding-top:5%;   }
 
 
 /* LIST OF PHOTOS IN AN ALBUM*/
 	#albumPhotosList { width:100%; margin-top:2%; }
 	#albumPhotosTable { width:100%;}
 	.albumPhotosRow { height:150px; float:left; width:100%; margin-bottom:2%; }
+
+	.albumPhotosRow { height:110px; margin-bottom:10%; }
+
 	.albumPhotosSingleCell { width:33.333%; float:left; height:inherit; text-align:center; vertical-align: center;
 							display: flex; align-items: center; justify-content: center; }
 	.albumPhoto { width:0%; margin:auto; height:0%; float:left; 
 					transition: width 0.8s ease-out 0.2s, height 0.8s ease-out 0.2s; }
+	.albumPhotosSingleCell:hover { opacity:0.5; }
 	#backToAlbumContainer { width:100%; padding-top:2%; padding-bottom:2%; padding-left:1%;  }
+
 	.backToAlbums { border: 2px solid white; color:gray; border-radius:50px; padding:1% 2%; display:inline-block; display:none;}
 	.backToAlbums:hover { color:white; }
 
 
 /* GALLERY MODAL OF PHOTOS */
 	#galleryModal { display:none; position:fixed; top: 0px; left:0px; right:0px; background-color:black; height:100%; width:100%; 
-					padding-top:40%; opacity:0.8; }
-	
-	#galleryModalMenu { width:100%; margin: auto; padding-top:10%; padding-bottom:10%; }
-	#galleryModalCounterSection { float:left; width:auto; color:white; padding:1%; font-size:16px;  }
-	#closeGalleryModal { float:right; color:white; padding:1%; font-size:22px;  }
-	#closeGalleryModal:hover { cursor:pointer; }
+					padding-top:30%; opacity:0.8; overflow:scroll; }
+	#closeGalleryModal { font-size:22px; position:fixed; top:5%; right:5%; color:white; z-index:12;}		
+	#closeGalleryModal:hover { cursor:pointer; }		
 
-	#galleryModalImageContainer { width:100%; height:250px; margin:auto; text-align:center; }
+	#galleryModalImageContainer { margin:auto; }
 	.galleryModalImage { width:100%; height:100%; display:none; }
-	.galleryDescription { width:100%; color:white; display:none;}
-	#galleryModalImageDescriptions { color:white; padding:5%; text-align:center; width:100%; }
-
-	.galleryModalArrow { display:none;}
-
-
-
-
-@media screen and (min-width: 320px){
-	.albumCoversRow { height:110px; margin-bottom:15%; }
-	.albumPhotosRow { height:110px; margin-bottom:10%; }
-	#backToAlbumContainer { width:100%; padding-top:1%; padding-bottom:1%; padding-left:1%;  }
-	#galleryModal { padding-top:30%; } 
-	#galleryModalImageContainer { height:200px; }
-	#galleryModalCounterSection { font-size:16px;  }
-	#closeGalleryModal { font-size:18px;  }
-}
+	
+	#galleryModalNavigationSection {color:white; margin-top:2%; width:50%; margin:auto; text-align:center; font-size:18px; padding:1%;}
+	.galleryModalArrow { color:white; }
+	.galleryModalArrow:hover { cursor:pointer; color:red; }
 
 
 /*Medium devices (tablets, 768px and up)*/
-@media screen and  (min-width: 768px) { 
-	#albumCoversList {width:75%; margin:auto; }
-	#albumCoversTable { width:90%;  margin:auto;}
+@media screen and  (min-width: 768px) and (min-height:500px) {
+	#albumSection { margin-top:120px; }
+
+	/*#albumCoversList {width:100%; margin:auto; }*/
+	#albumCoversTable { width:85%;  margin:auto;}
 	.albumCoversSingleCell { width:33.333%; }
 	.albumCoversRow { height:130px; }
 
@@ -68,38 +62,33 @@
 
 	#galleryModal {	padding-top:12%; }
 	#galleryModalMenu { width:70%; padding-top:1%; padding-bottom:1%; font-size:22px; }
-	#galleryModalImageContainer { width:70%; height:295px; }
-	#galleryModalImageDescriptions { padding:0%; padding-top:5%; width:50%; margin:auto; }
+}
 
-
-	.galleryModalArrow { display:block; position:fixed; color:white; font-size:30px; height:10%; top:40%;}
-	.galleryModalArrow:hover { cursor:pointer; color:red; }
-
-	#galleryModalLeftButton {  left: 10%;   }
-	#galleryModalRightButton { right: 10%;  }
+/*iPads (mini, Air, and small pro)*/
+@media screen and (min-width:768px) and (min-height:1024px){
+	#albumSection { margin-top:160px; }
 
 }
 
+
+
 @media screen and (min-width:1024px){
-	#albumCoversList {width:65%; }
+	#albumSection { margin-top:20px; }
+
+	#albumCoversList {width:65%; margin:auto;}
 	.albumCoversRow { height:150px; margin-bottom:10%; }
 
 	#albumPhotosList {width:70%; }
 	.albumPhotosRow { height:220px;}
 
-	#galleryModalImageContainer { height:370px; }
-
-	#galleryModal {	padding-top:8%; }
-	#galleryModalMenu { width:60%; font-size:25px;}
-	#galleryModalImageContainer { width:60%; height:350px; }
-	#galleryModalLeftButton {  left: 15%;   }
-	#galleryModalRightButton { right: 15%;  }
+	#galleryModal {	padding-top:6%; }
+	#galleryModalLeftButton::after { content:" "; margin:0.5%; }
+	#galleryModalRightButton::before { content:" "; margin:0.5%; }
 }
+
+
 
 @media screen and (min-width:1440px){
 	#galleryModal {	padding-top:12%; }
-	#galleryModalImageContainer { height:400px; }
-
-
 
 }

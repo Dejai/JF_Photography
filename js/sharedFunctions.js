@@ -1,5 +1,5 @@
 $(function(){
-    $("#navbar").load("/JF_Photography/views/navbar.html", function(){
+    $("#navbar").load("/views/navbar.html", function(){
         var currentPath = window.location.pathname, page;
         if (currentPath.indexOf("portfolio") > 0){
             page = "portfolio";
@@ -20,8 +20,7 @@ $(function(){
         });
         mobileMenu();
     });
-    $("#footer").load("/JF_Photography/views/footer.html");
-
+    $("#footer").load("/views/footer.html");
 });
 
 $(function(){
@@ -31,22 +30,49 @@ $(function(){
 });
 
 function mobileMenu(){
-    $("#mobile-hamburger-button").click(function(){
+    $("#navbar-mobile-hamburger-button").click(function(){
         $(".hideForMobileNav").hide();
-        $("#menu-list-section").show();
-        $("#mobile-hamburger-button").hide();
-        $("#mobile-close-button").css("display", "block");
+        $("#navbar-navigation-options-section").show();
+        $("#navbar-mobile-hamburger-button").hide();
+        $("#navbar-mobile-close-button").css("display", "block");
     });
-    $("#mobile-close-button").click(function(){
-        $("#menu-list-section").toggle();
-        $("#mobile-hamburger-button").toggle();
-        $("#mobile-close-button").toggle();
+    $("#navbar-mobile-close-button").click(function(){
+        $("#navbar-navigation-options-section").toggle();
+        $("#navbar-mobile-hamburger-button").toggle();
+        $("#navbar-mobile-close-button").toggle();
         $(".hideForMobileNav").fadeIn();
     });
 }
 
-function swipedetect(el, callback){
+function setImageDimensions(container, dimension){
+    var ele = "#"+container;
+    resetDimensionClasses($(ele));
+    switch (dimension.trim()){
+        case "portrait":
+            $(ele).addClass("dim-portrait");
+            break;
+        case "landscape":
+            $(ele).addClass("dim-landscape");
+            break;
+        case "square":
+            $(ele).addClass("dim-square");
+            break;
+        default:
+            $(ele).addClass("dim-square");
+    }
 
+}
+function resetDimensionClasses(element){
+    var classes = element[0].classList;
+    for (var x = 0; x < classes.length; x++){
+        if (classes[x].indexOf("dim-") > -1){
+            classes.remove(classes[x]);
+        }
+    }
+}
+
+
+function swipedetect(el, callback){
     var touchsurface = el,
     swipedir,
     startX,
