@@ -21,7 +21,6 @@ $(function(){
         mobileMenu();
     });
     $("#footer").load("/views/footer.html");
-
 });
 
 $(function(){
