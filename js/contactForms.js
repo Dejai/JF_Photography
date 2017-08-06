@@ -113,16 +113,15 @@ function processFeedback(){
 			{ 	name: full_Name, 
 				feedback : feedback
 			}).then(function(response) {
-				// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
 				formResults("feedbackForm", response.status);
 			}, function(err) {
-				// console.log("FAILED. error=", err);
 				formResults("feedbackForm", err);
 			});
 		// console.log("Name = " + full_Name +  "\nFeedback = " + feedback);
 		// formResults("feedbackForm", 200);
 		// formResults("feedbackForm", "fail");
 }
+
 function processRequest(){
 	var full_Name = $("[name='fullName']").val();
 	var email_Address = $("[name='emailAddress']").val();
@@ -140,27 +139,23 @@ function processRequest(){
 	}
 	var description = $("[name='description']").val();
 
-	// emailjs.send("default_service","new_request",
-	// 	{ 	name: full_Name, 
-	// 		emailAddress: email_Address,
-	// 		phoneNumber : phone_Number, 
-	// 		dates : dateTimeCombo,
-	// 		description : description
-	// 	}).then(function(response) {
-	// 		// console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-	// 		// $(".formToSubmit").hide();
-	// 		// $("#formResultsSection").show();
-	// 		formResults("requestServiceForm", response.status);
-	// 	}, function(err) {
-	// 		// console.log("FAILED. error=", err);
-	// 		formResults("requestServiceForm", err);
-	// 	});
-	console.log("Name = " + full_Name 
-					+ "\nEmail = " + email_Address 
-					+ "\nPhone Number = " + phone_Number
-					+  "\nDescription = " + description
-					+ "\nDatetime Combo " + dateTimeCombo);
-	formResults("requestServiceForm", 200);
+	emailjs.send("default_service","new_request",
+		{ 	name: full_Name, 
+			emailAddress: email_Address,
+			phoneNumber : phone_Number, 
+			dates : dateTimeCombo,
+			description : description
+		}).then(function(response) {
+			formResults("requestServiceForm", response.status);
+		}, function(err) {
+			formResults("requestServiceForm", err);
+		});
+	// console.log("Name = " + full_Name 
+	// 				+ "\nEmail = " + email_Address 
+	// 				+ "\nPhone Number = " + phone_Number
+	// 				+  "\nDescription = " + description
+	// 				+ "\nDatetime Combo " + dateTimeCombo);
+	// formResults("requestServiceForm", 200);
 	// formResults("requestServiceForm", "fail");
 }
 
@@ -175,7 +170,7 @@ function formResults(formID, status){
 	if (status != 200){
 		$("#formStatusSection").prepend(oops);
 		$("#formStatusSentence").html("Ooops! <br/> Something went wrong!");
-		$("#formStatusSentence2").html("You can try again, or just reach out to me directly at jf@gmail.com");
+		$("#formStatusSentence2").html("You can try again later, or just email me directly at: &nbsp;&nbsp; jfphotobiz@gmail.com");
 		$("#formStatusSection").fadeIn("slow");
 	} else {	
 		$("#counterSection").fadeIn();
