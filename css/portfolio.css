@@ -1,6 +1,6 @@
 /* TEMP Gradient */
-	#tempI { display:block; margin:auto; width:250px;height:50px; }
-	#tempS { color:white; text-align:center; font-size:14px; }
+	#tempI { display:block; margin:auto; width:250px;height:150px; }
+	#tempS { color:white; text-align:center; font-size:16px; }
 
 /* GENERAL STYLE FOR ANY ELEMENT IN THE PORTFOLIO PAGE*/
 
@@ -54,7 +54,7 @@
 @media screen and  (min-width: 768px) and (min-height:500px) {
 	/* TEMP Gradient */
 	#tempI { width:350px;height:150px; }
-	#tempS { font-size:40px; }
+	#tempS { font-size:25px; }
 
 
 	#albumSection { margin-top:120px; }
