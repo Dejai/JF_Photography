@@ -1,9 +1,9 @@
 Image Name, Dimension
+image1.jpg, landscape
 image2.jpg, landscape
-image8.jpg, square
 image3.jpg, landscape
-image4.jpg, square
+image4.jpg, landscape
+image5.jpg, landscape
 image6.jpg, landscape
 image7.jpg, landscape
-image3.jpg, square
-image6.jpg, square
+image8.jpg, landscape
