@@ -6,7 +6,6 @@ $(document).ready(function(){
 	
 	$.get("/config/slideshowImages.txt", function(results){
         buildSlideshow(results);
-       
         slideshow_images = $(".slideshow_image").toArray();
     	myPositions = $(".slideshowPositionIndicator").toArray();
         carousel();
