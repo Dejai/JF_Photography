@@ -5,12 +5,13 @@ var theTimer;
 $(document).ready(function(){
 	
 	$.get("/config/slideshowImages.txt", function(results){
-        buildSlideshow(results);
-        displayDelayed();
-        slideshow_images = $(".slideshow_image").toArray();
-    	myPositions = $(".slideshowPositionIndicator").toArray();
-        carousel();
-        slideshowEventListeners();
+        if (buildSlideshow(results)){
+        	displayDelayed();
+        	slideshow_images = $(".slideshow_image").toArray();
+    		myPositions = $(".slideshowPositionIndicator").toArray();
+        	carousel();
+        	slideshowEventListeners();
+        }
     });	
 });
 
@@ -36,6 +37,7 @@ function buildSlideshow(results){
         	$("#slideshowPositionsSection").append(pos);
     	}
     }
+    return true;
 }
 
 function carousel() {
