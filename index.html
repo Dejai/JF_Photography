@@ -12,34 +12,75 @@
     <meta http-equiv="pragma" content="no-cache" />
     <link rel="icon" type="image/png" href="/images/logo/jfp2.png"/>
 
-	<!-- BOOTSTRAP -->
-     <!-- Latest compiled and minified CSS -->
+    <!-- BOOTSTRAP -->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+    
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" type="text/css" href="/css/sharedStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/slideshow.css">
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/footer.css">
-    
-    <!-- Custom JavaScript -->
-    <script type="text/javascript" src="/js/sharedFunctions.js"></script>
-    <script type="text/javascript" src="/js/slideshow.js"></script>
-
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
 <div id="slideshowSection" class="delayedDisplay hideForMobileNav">
-    <div id="slideshowImagesContainer" class="delayedDisplay"></div>
+    <div id="slideshowImagesContainerzz" style="width:100%;height:100%; padding-top:0.5%;">
+        <img class="slideshow_image dim-portrait selectedImage1 showMeDel2" style="margin:auto;" src="/images/slideshow/imageQ.jpg">
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image1.jpg">
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image3.jpg">
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image4.jpg">
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image5.jpg">
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image6.jpg">
+        <!-- <img class="slideshow_image dim-landscape" src="/images/slideshow/image7.jpg"> -->
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image8.jpg">
+    </div>
 </div>
 <div id="slideshowNavigation" class="delayedDisplay">
-    <span id="slideshowPositionsSection"></span>
+    <span id="slideshowPositionsSection">
+        <p id="slideshow_leftButton" class="slideshowArrow showMeDel"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="1"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="2"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="3"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="4"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="5"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="6"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="7"></p>
+        <!-- <p class="slideshowPositionIndicator showMeDel" data-ron-slide="8"></p> -->
+        <p id="slideshow_rightButton" class="slideshowArrow showMeDel"></p>
+    </span>
 </div>
-<div id="footer"></div>
+<div id="footer"></div> 
+    <!-- Custom JavaScript -->
+    <script type="text/javascript" src="/js/sharedFunctions.js"></script>
+    <script type="text/javascript" src="/js/slideshow.js"></script>
+    <script type="text/javascript">
+        var slideIndex = 0;
+        var slideshow_images; 
+        var myPositions;
+        var theTimer;
+        $(document).ready(function(){
+            // $("#testImages").load("/views/slideshow.html", function(){
+                // $(".slideshow_image").hide();
+                 slideshow_images = $(".slideshow_image").toArray();
+                myPositions = $(".slideshowPositionIndicator").toArray();
+                // displayDelayed(300);
+                setTimeout(function(){
+                    $(".delayedDisplay").fadeIn(2000);
+
+                    // $(".delayedDisplay").fadeIn(4000, function(){
+                        // $(".showMeDel2").fadeIn(1000, function(){ $(".showMeDel").css("visibility", "visible");}).css("display","block");
+                    // });
+                }, 400);
+                carousel();
+                slideshowEventListeners();
+            // });
+        });
+    </script>
+
 </body>
 </html>

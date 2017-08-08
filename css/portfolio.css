@@ -1,4 +1,6 @@
 /* TEMP Gradient */
+	#tempI { display:block; margin:auto; width:250px;height:150px; }
+	#tempS { color:white; text-align:center; font-size:16px; }
 
 /* GENERAL STYLE FOR ANY ELEMENT IN THE PORTFOLIO PAGE*/
 
@@ -50,6 +52,11 @@
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and  (min-width: 768px) and (min-height:500px) {
+	/* TEMP Gradient */
+	#tempI { width:350px;height:150px; }
+	#tempS { font-size:25px; }
+
+
 	#albumSection { margin-top:120px; }
 
 	/*#albumCoversList {width:100%; margin:auto; }*/
@@ -68,6 +75,10 @@
 
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:1024px){
+	/* TEMP Gradient */
+	#tempI { width:450px;height:250px; }
+	#tempS { font-size:40px; }
+
 	#albumSection { margin-top:160px; }
 
 }
@@ -75,6 +86,8 @@
 
 
 @media screen and (min-width:1024px){
+
+
 	#albumSection { margin-top:20px; }
 
 	#albumCoversList {width:65%; margin:auto;}
