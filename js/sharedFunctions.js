@@ -26,7 +26,7 @@ $(function(){
 $(function(){
     setTimeout(function(){
         $(".delayedDisplay").fadeIn();
-    }, 100);
+    }, 500);
 });
 
 function mobileMenu(){
