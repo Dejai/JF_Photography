@@ -52,6 +52,7 @@
 	#slideshow_rightButton:hover { border-left-color:red; }
 	#slideshow_leftButton:hover { border-right-color:red; }
 	.slideshowPositionIndicator { margin-right:1%; }
+
 }
 @media screen and (min-width:1024px) and (min-height:1366px){
 	#slideshowSection {margin-top:50px;}	
