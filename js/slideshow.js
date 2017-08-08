@@ -52,7 +52,7 @@ function carousel() {
 
     $(slideshow_images[slideIndex-1]).show();
     $(myPositions[slideIndex-1]).addClass("currentSlidePosition"); 
-    theTimer = setTimeout(carousel, 5000);
+    theTimer = setTimeout(carousel, 4000);
 }
 
 function slideshowEventListeners(){
