@@ -23,10 +23,10 @@ $(function(){
     $("#footer").load("/views/footer.html");
 });
 
-function displayDelayed(time){
+function displayDelayed(){
     setTimeout(function(){
         $(".delayedDisplay").fadeIn();
-    }, time);
+    }, 200);
 }
 
 function mobileMenu(){

@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 	AddDateTimePicker();
 	addNewDateTimeRow();
-	displayDelayed(200);
+	displayDelayed();
 	var placeholder;
 	$(".clearPlaceholder").focus(function(){
 		placeholder = $(this).attr('placeholder');
