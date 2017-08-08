@@ -1,6 +1,6 @@
 Image Name, Dimension
+image0.jpg, portrait
 image1.jpg, landscape
-image2.jpg, landscape
 image3.jpg, landscape
 image4.jpg, landscape
 image5.jpg, landscape
