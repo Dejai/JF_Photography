@@ -44,32 +44,33 @@ function mobileMenu(){
     });
 }
 
-function setImageDimensions(container, dimension){
-    var ele = "#"+container;
-    resetDimensionClasses($(ele));
-    switch (dimension.trim()){
-        case "portrait":
-            $(ele).addClass("dim-portrait");
-            break;
-        case "landscape":
-            $(ele).addClass("dim-landscape");
-            break;
-        case "square":
-            $(ele).addClass("dim-square");
-            break;
-        default:
-            $(ele).addClass("dim-square");
-    }
+// function setImageDimensions(container, dimension){
+//     var ele = "#"+container;
+//     resetDimensionClasses($(ele));
+//     switch (dimension.trim()){
+//         case "portrait":
+//             $(ele).addClass("dim-portrait");
+//             break;
+//         case "landscape":
+//             $(ele).addClass("dim-landscape");
+//             break;
+//         case "square":
+//             $(ele).addClass("dim-square");
+//             break;
+//         default:
+//             $(ele).addClass("dim-square");
+//     }
 
-}
-function resetDimensionClasses(element){
-    var classes = element[0].classList;
-    for (var x = 0; x < classes.length; x++){
-        if (classes[x].indexOf("dim-") > -1){
-            classes.remove(classes[x]);
-        }
-    }
-}
+// }
+
+// function resetDimensionClasses(element){
+//     var classes = element[0].classList;
+//     for (var x = 0; x < classes.length; x++){
+//         if (classes[x].indexOf("dim-") > -1){
+//             classes.remove(classes[x]);
+//         }
+//     }
+// }
 
 
 function swipedetect(el, callback){

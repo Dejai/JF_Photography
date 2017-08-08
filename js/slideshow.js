@@ -52,10 +52,10 @@ function carousel() {
     // GOING DOWN THE RIGHT PATH WITH THIS ONE.
 	var dimm = $(slideshow_images[slideIndex-1]).attr("data-photo-dimension");
 	// setImageDimensions("slideshowImagesContainer", dimm);
-	setImageDimensions("slideshowSection", dimm);
+	// setImageDimensions("slideshowSection", dimm);
 	
 
-    $(slideshow_images[slideIndex-1]).show();
+    $(slideshow_images[slideIndex-1]).show().css("display", "block");
     $(myPositions[slideIndex-1]).addClass("currentSlidePosition"); 
     theTimer = setTimeout(carousel, 4000);
 }
