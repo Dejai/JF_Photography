@@ -29,15 +29,27 @@
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="/js/sharedFunctions.js"></script>
     <script type="text/javascript" src="/js/slideshow.js"></script>
+    <script type="text/javascript">
+        var slideIndex = 0;
+        var slideshow_images; 
+        var myPositions;
+        var theTimer;
+        $(document).ready(function(){
+            $("#testImages").load("/views/slideshow.html", function(){
+                $(".slideshow_image").hide();
+                 slideshow_images = $(".slideshow_image").toArray();
+                myPositions = $(".slideshowPositionIndicator").toArray();
+                displayDelayed();
+                carousel();
+                slideshowEventListeners();
+            });
+        });
+    </script>
+
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
-<div id="slideshowSection" class="delayedDisplay hideForMobileNav">
-    <div id="slideshowImagesContainer"></div>
-</div>
-<div id="slideshowNavigation" class="delayedDisplay">
-    <span id="slideshowPositionsSection"></span>
-</div>
+<div id="testImages"></div>
 <div id="footer"></div>
  
 </body>
