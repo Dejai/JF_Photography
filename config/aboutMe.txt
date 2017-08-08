@@ -1,11 +1,1 @@
-<<<<<<< HEAD
-OH me on me oh my Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-rain rain go awy thats what all my haters
-=======
 My name is JeRon Fyfield and I am the Founder and CEO of JeRon Fyfield Photography. My love for photography started as a kid, but my first camera didn’t come until my 18th birthday. I spent a couple years taking pictures as a hobby, but it wasn’t until 2016 that I decided to pursue the professional photography route. My goal is to bring you <strong style="color:red;">professional quality pictures</strong> at a <strong style="color:red;">family-friendly price.</strong> So book J.F. Photography and <strong><em>"Lets Make Magic"!</em></strong>
->>>>>>> beta
