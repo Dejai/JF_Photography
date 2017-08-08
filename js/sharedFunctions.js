@@ -23,11 +23,11 @@ $(function(){
     $("#footer").load("/views/footer.html");
 });
 
-$(function(){
+function displayDelayed(){
     setTimeout(function(){
         $(".delayedDisplay").fadeIn();
-    }, 500);
-});
+    }, 200);
+}
 
 function mobileMenu(){
     $("#navbar-mobile-hamburger-button").click(function(){

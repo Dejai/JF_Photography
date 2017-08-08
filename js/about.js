@@ -5,6 +5,6 @@ $(document).ready(function(){
 		for (var x in paragraphs){
 			$("#aboutMeParagraphs").append(paragraphs[x] + "<br/>");
 		}
-
+		displayDelayed();
 	});
 });
