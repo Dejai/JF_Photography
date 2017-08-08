@@ -19,20 +19,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+    
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" type="text/css" href="/css/sharedStyle.css">
     <link rel="stylesheet" type="text/css" href="/css/slideshow.css">
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/footer.css">
-
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
 <div id="slideshowSection" class="delayedDisplay hideForMobileNav">
     <div id="slideshowImagesContainerzz" style="width:100%;">
-        <img class="slideshow_image dim-portrait selectedImage1" src="/images/slideshow/imageQ.jpg">
+        <img class="slideshow_image dim-portrait selectedImage1 showMeDel2" style="margin:auto;" src="/images/slideshow/imageQ.jpg">
 <!--         <img class="slideshow_image dim-landscape" src="/images/slideshow/image1.jpg">
         <img class="slideshow_image dim-landscape" src="/images/slideshow/image3.jpg">
         <img class="slideshow_image dim-landscape" src="/images/slideshow/image4.jpg">
@@ -44,16 +42,16 @@
 </div>
 <div id="slideshowNavigation" class="delayedDisplay">
     <span id="slideshowPositionsSection">
-        <p id="slideshow_leftButton" class="slideshowArrow"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="1"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="2"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="3"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="4"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="5"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="6"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="7"></p>
-        <p class="slideshowPositionIndicator" data-ron-slide="8"></p>
-        <p id="slideshow_rightButton" class="slideshowArrow"></p>
+        <p id="slideshow_leftButton" class="slideshowArrow showMeDel"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="1"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="2"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="3"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="4"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="5"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="6"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="7"></p>
+        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="8"></p>
+        <p id="slideshow_rightButton" class="slideshowArrow showMeDel"></p>
     </span>
 </div>
 <div id="footer"></div> 
@@ -70,11 +68,17 @@
                 // $(".slideshow_image").hide();
                  slideshow_images = $(".slideshow_image").toArray();
                 myPositions = $(".slideshowPositionIndicator").toArray();
-                displayDelayed(300);
+                // displayDelayed(300);
+                setTimeout(function(){
+                    $(".delayedDisplay").fadeIn(1000, function(){
+                        $(".showMeDel2").fadeIn(1000, function(){ $(".showMeDel").css("visibility", "visible");}).css("display","block");
+                    });
+                }, 300);
                 // carousel();
                 // slideshowEventListeners();
             // });
         });
     </script>
+
 </body>
 </html>
