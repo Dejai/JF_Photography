@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var url = window.location.pathname;
-	displayDelayed();
+	displayDelayed(200);
 	// var filename = url.substring(url.lastIndexOf('/')+1);
 	// if (filename == "albums.html"){
 	// 	var query = window.location.search
