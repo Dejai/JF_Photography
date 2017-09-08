@@ -1,16 +1,24 @@
 $(document).ready(function(){
 	var url = window.location.pathname;
 	displayDelayed();
-	// var filename = url.substring(url.lastIndexOf('/')+1);
-	// if (filename == "albums.html"){
-	// 	var query = window.location.search
-	// 	var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
-	//     getAlbumPhotos(albumName);
-	// } else {
-	//     getAlbumCovers();
-	// }
+	var filename = url.substring(url.lastIndexOf('/')+1);
+	if (filename == "albums.html"){
+		var query = window.location.search
+		var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
+	    getAlbumPhotos(albumName);
+	} else {
+	    getAlbumCovers();
+	}
 });
 
+
+/*
+	NEW LOGIC: 
+		On page load .... Load the JSON file of albums (includes the slideshow album)
+			> Maybe the slideshow album should end up being a config file on its own.
+		Save each album object as a class on the JS side. 
+		First .... List each album object; 
+*/
 
 /*
 	@desc -- Makes a GET call to retrieve information about the different albums from the config file.
