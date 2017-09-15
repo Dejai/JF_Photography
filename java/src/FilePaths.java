@@ -7,6 +7,7 @@ public class FilePaths{
 	public String gifsPath;
 	public String galleryPath;
 	public String slideshowPath;
+	public String separator; 
 	public FilePaths(String opSystem){
 		if (opSystem == "windows"){
 			setWindowsPaths();
@@ -20,8 +21,8 @@ public class FilePaths{
 		dimensionsFilePath = "config\\dimConfig.txt";
 		galleryPath = "images\\gallery\\";
 		slideshowPath = "images\\slideshow\\";
-
 		gifsPath = "images\\assets\\gifs\\";
+		separator = "\\";
 
 
 	}
@@ -30,9 +31,10 @@ public class FilePaths{
 		aboutMeFilePath = "config/aboutMe.txt";
 		dimensionsFilePath = "config/dimConfig.txt";
 		galleryPath = "images/gallery/";
-		slideshowPath = "images/slideshow/";
-
+		slideshowPath = "images/slideshow";
 		gifsPath = "images/assets/gifs/";
+		separator = "/";
+
 		
 	}
 

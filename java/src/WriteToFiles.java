@@ -1,6 +1,13 @@
 import java.util.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.File;
+
+// import java.nio.file.FileSystems;
+// import java.nio.file.Files;
+// import java.nio.file.LinkOption;
+// import java.nio.file.Path;
+
 
 public class WriteToFiles{
 
@@ -20,7 +27,18 @@ public class WriteToFiles{
 
 	public static boolean writeJSONFile(String fileParam, ArrayList<Album> albumArrayList){
 		try{
-			BufferedWriter jsonOUT = new BufferedWriter(new FileWriter(fileParam));
+			File fp = new File(fileParam);
+			fp.setWritable(true);
+			BufferedWriter jsonOUT = new BufferedWriter(new FileWriter(fp));
+
+			//  Path path = FileSystems.getDefault().getPath(fileParam);
+			//  boolean is_writable = Files.isWritable(path);
+
+			// if (is_writable) {
+		 //   		ConfigTool.resultsMessageDialog(true, "Can Write");
+			// } else{
+		 //    	ConfigTool.resultsMessageDialog(false, "Not Writable");
+			// }
 
 			jsonOUT.write("[");
 			jsonOUT.newLine();
@@ -62,7 +80,9 @@ public class WriteToFiles{
 			jsonOUT.close();
 			return true;
 		} catch (Exception ex){
+		    ConfigTool.resultsMessageDialog(false, ex.getMessage());
 		    return false;
+
 		}
 	}
 

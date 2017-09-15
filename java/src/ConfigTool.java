@@ -157,6 +157,7 @@ public class ConfigTool extends JFrame {
 		  	});
 		} catch (Exception ex){
 			resultsMessageDialog(false, ex.getMessage());
+			System.exit(-1);
 		}
 	}
 
@@ -351,8 +352,8 @@ public class ConfigTool extends JFrame {
 			 			thread2.start();
 			 		}
 		 		} catch(InterruptedException ie){
-		 			// resultsMessageDialog(false, "Something Went Wrong Here");
-		 			ie.printStackTrace();
+		 			resultsMessageDialog(false, ie.getMessage());
+		 			// ie.printStackTrace();
 		 		}
 		 						
 			}
@@ -593,8 +594,8 @@ public class ConfigTool extends JFrame {
 				}
 			}
 		} catch (Exception ex){
-			// resultsMessageDialog(false, ex.getMessage());
-			ex.printStackTrace();
+			resultsMessageDialog(false, ex.getMessage());
+			// ex.printStackTrace();
 
 		}
 	}
@@ -615,10 +616,9 @@ public class ConfigTool extends JFrame {
 	}
 
 	public static void getImageDimensionLimits(){
-		String line; 
 		try{
+			String line; 
 			// filePaths.dimensionsFilePath = "config/dimConfig.txt";
-
 			BufferedReader dimConfig = new BufferedReader(new FileReader(filePaths.dimensionsFilePath));
 			while ( (line = dimConfig.readLine()) != null){
 				String [] lineSplit = line.split("=");
@@ -637,15 +637,15 @@ public class ConfigTool extends JFrame {
 				}
 			}
 		} catch (Exception ex){
-		    ex.printStackTrace();
-			// resultsMessageDialog(false, ex.getMessage());
+		    // ex.printStackTrace();
+			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
 
 	public static void getAboutMeText(){
-		String line; 
-		String fullText = ""; 
 		try{
+			String line; 
+			String fullText = ""; 
 			// aboutMeFilePath = "config/aboutMe.txt";
 			BufferedReader aboutMeReader = new BufferedReader(new FileReader(filePaths.aboutMeFilePath));
 			while ( (line = aboutMeReader.readLine()) != null){
@@ -653,8 +653,8 @@ public class ConfigTool extends JFrame {
 			}
 			aboutMeTextEditor.setText(fullText);
 		} catch (Exception ex){
-		    ex.printStackTrace();
-			// resultsMessageDialog(false, ex.getMessage());
+		    // ex.printStackTrace();
+			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
 
@@ -702,9 +702,9 @@ public class ConfigTool extends JFrame {
 				workingOnConstraints.insets = new Insets(10,0,0,0);  //top padding
 			innerRightPanel.add(workingOn, workingOnConstraints);
 			validateView();
-		} catch (Exception ec){
-			// resultsMessageDialog(false, ec.getMessage());
-		 	ec.printStackTrace();
+		} catch (Exception ex){
+			resultsMessageDialog(false, ex.getMessage());
+		 	// ec.printStackTrace();
 		}	
 	}
 
@@ -738,8 +738,8 @@ public class ConfigTool extends JFrame {
 			// clearPanel(innerRightPanel);
 			// validateView();
 		} catch (Exception ex){
-			// resultsMessageDialog(false, ex.getMessage());
-		 	ex.printStackTrace();
+			resultsMessageDialog(false, ex.getMessage());
+		 	// ex.printStackTrace();
 
 
 		}	
@@ -749,14 +749,17 @@ public class ConfigTool extends JFrame {
 		try{
 			File dir = new File(directoryPath);
 			File dirList[] = dir.listFiles();
-	
-			String freedom = directoryPath.substring(directoryPath.lastIndexOf("/")+1);
-			albumArrayList.add(new Album(freedom));
-			// String albumCover_temp = ;
+			String albumName = directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1);
+			albumArrayList.add(new Album(albumName));
 			for (int x = 0; x < dirList.length; x++){
 				boolean isImage; 
 				String dimensionTemp = "";
-				String extension = dirList[x].getPath().substring(dirList[x].getPath().lastIndexOf("."));
+				String extension;
+				if (dirList[x].getPath().contains(".")){
+					extension = dirList[x].getPath().substring(dirList[x].getPath().lastIndexOf("."));
+				} else {
+					extension = "noExtension";
+				}
 				switch(extension){
 					case ".jpg":
 					case ".png":
@@ -768,7 +771,6 @@ public class ConfigTool extends JFrame {
 				}
 				if (!dirList[x].isDirectory() && isImage){
 					workingOn.setText(String.format("<html> >> Working on <span style='font-weight:bold; color:white;'>%s</span></html>", dirList[x].getPath()));
-					// System.out.println(String.format(">> Working on %s", dirList[x].getPath()));
 					BufferedImage imageB = ImageIO.read(new File(dirList[x].getPath()));
 					if (imageB.getWidth() <= portraitDim){
 						dimensionTemp = "portrait";
@@ -785,28 +787,13 @@ public class ConfigTool extends JFrame {
 					} else {
 						// System.out.println("Aready has an album cover");
 					}
-					// if (  )  {
-					// } else if ({
-					// 	albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
-					// }
-					// 	System.out.println("It is set");
-					// } else {
-						// albumArrayList.get(albumArrayList.size()-1).coverImage = dirList[x].getPath();
-					// }
-					// if (x == 0 || dirList[x].getPath().contains("cover_")){
-						// albumArrayList.get(albumArrayList.size()-1).coverImage = dirList[x].getPath();
-						// albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
-					// }
-					// albumArrayList.get(albumArrayList.size()-1).pictures.add(new Picture(dirList[x].getPath(), dimensionTemp));
 					albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
 
 				}
 			}
 		} catch (Exception ex){
-		    // resultsMessageDialog(false, ex.getMessage());
-		 	ex.printStackTrace();
-
-		    // return NULL;
+		    resultsMessageDialog(false, ex.getMessage());
+		 	// ex.printStackTrace();
 		}
 	}
 
