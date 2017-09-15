@@ -1,0 +1,4 @@
+[
+{"name" :"images\slideshow\","folderName" :"images\slideshow\","coverImg" :"null","images" : [
+}
+]
