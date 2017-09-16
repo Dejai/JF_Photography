@@ -7,7 +7,7 @@ public class UpdateFilePermissions{
 	public static void main (String [] args){
 		try{
 			// String cmd = "ls -al ../config/";
-			String cmd = "sudo chmod 666 ../config/*.txt";
+			String cmd = "./updateTest.command";
 			Runtime run = Runtime.getRuntime();
 			Process pr = run.exec(cmd);
 			pr.waitFor();
