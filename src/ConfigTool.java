@@ -56,7 +56,7 @@ public class ConfigTool extends JFrame {
 		public static JPanel imagePanel = new JPanel(new GridLayout(0,1));
 		public static JLabel processingImage = new JLabel("");
 
-		public static JLabel processingNow = new JLabel("<html>Processing Images ... <span style='color:orange;font-weight:bold;'>RUNNING NOW</span></html>");
+		public static JLabel processingNow = new JLabel("");
 		public static JLabel workingOn = new JLabel(">>\t");
 
 
@@ -97,9 +97,10 @@ public class ConfigTool extends JFrame {
 
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
+		filePaths = new FilePaths();
 
-		// initFrame();
-		pickOpSystem();
+		initFrame();
+		// pickOpSystem();
 		mainFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		mainFrame.pack();
 		mainFrame.setSize(800, 500);
@@ -110,65 +111,66 @@ public class ConfigTool extends JFrame {
 	}
 
 
+	// public static void pickOpSystem(){
+	// 	try{
+	// 		BufferedImage unScaledImage1 = ImageIO.read(ConfigTool.class.getResource("icons\\windowsOSIcon.png"));
+	// 		// JOptionPane.showMessageDialog(mainFrame, message, "Error", JOptionPane.ERROR_MESSAGE);
+	// 		JOptionPane.showMessageDialog(mainFrame, unScaledImage1.getType());
+	// 		Image scaledImage1 = unScaledImage1.getScaledInstance(unScaledImage1.getWidth()/4, unScaledImage1.getHeight()/4, Image.SCALE_SMOOTH);
+	// 		windowsOSIcon = new JLabel(new ImageIcon(scaledImage1));
 
-	public static void pickOpSystem(){
-		try{
-			BufferedImage unScaledImage1 = ImageIO.read(ConfigTool.class.getResource("icons/windowsOSIcon.png"));
-			Image scaledImage1 = unScaledImage1.getScaledInstance(unScaledImage1.getWidth()/4, unScaledImage1.getHeight()/4, Image.SCALE_SMOOTH);
-			windowsOSIcon = new JLabel(new ImageIcon(scaledImage1));
-
-			BufferedImage unScaledImage2 = ImageIO.read(ConfigTool.class.getResource("icons/macOSIcon.png"));
-			Image scaledImage2 = unScaledImage2.getScaledInstance(unScaledImage2.getWidth(), unScaledImage2.getHeight(), Image.SCALE_SMOOTH);
-			macOSIcon = new JLabel(new ImageIcon(scaledImage2));
+	// 		BufferedImage unScaledImage2 = ImageIO.read(ConfigTool.class.getResource("icons/macOSIcon.png"));
+	// 		Image scaledImage2 = unScaledImage2.getScaledInstance(unScaledImage2.getWidth(), unScaledImage2.getHeight(), Image.SCALE_SMOOTH);
+	// 		macOSIcon = new JLabel(new ImageIcon(scaledImage2));
 
 
-			opSysPanel.add(windowsOSIcon);
-			opSysPanel.add(macOSIcon);
+	// 		opSysPanel.add(windowsOSIcon);
+	// 		opSysPanel.add(macOSIcon);
 
-			JLabel pickAnOS = new JLabel("Pick an Operating System");
-			pickAnOS.setFont(new Font("Arial", Font.BOLD, 22));
+	// 		JLabel pickAnOS = new JLabel("Pick an Operating System");
+	// 		pickAnOS.setFont(new Font("Arial", Font.BOLD, 22));
 
-			GridBagConstraints osCon1 = new GridBagConstraints();
-				// osCon1.fill = GridBagConstraints.BOTH;
-				osCon1.gridx = 0;
-				osCon1.gridy = 0;
-				osCon1.anchor = GridBagConstraints.CENTER;
-				osCon1.insets = new Insets(20,0,0,0);
-			mainFrame.add(pickAnOS, osCon1);
+	// 		GridBagConstraints osCon1 = new GridBagConstraints();
+	// 			// osCon1.fill = GridBagConstraints.BOTH;
+	// 			osCon1.gridx = 0;
+	// 			osCon1.gridy = 0;
+	// 			osCon1.anchor = GridBagConstraints.CENTER;
+	// 			osCon1.insets = new Insets(20,0,0,0);
+	// 		mainFrame.add(pickAnOS, osCon1);
 
-			GridBagConstraints osCon = new GridBagConstraints();
-				osCon.fill = GridBagConstraints.BOTH;
-				osCon.gridx = 0;
-				osCon.gridy = 1;
-				osCon.weighty = 1.0;
-			mainFrame.add(opSysPanel, osCon);
+	// 		GridBagConstraints osCon = new GridBagConstraints();
+	// 			osCon.fill = GridBagConstraints.BOTH;
+	// 			osCon.gridx = 0;
+	// 			osCon.gridy = 1;
+	// 			osCon.weighty = 1.0;
+	// 		mainFrame.add(opSysPanel, osCon);
 
-			windowsOSIcon.addMouseListener(new MouseAdapter() {
-				public void mouseClicked(MouseEvent e) {
-		  			setTheOS("windows");
-		  		}
-		  	});
+	// 		windowsOSIcon.addMouseListener(new MouseAdapter() {
+	// 			public void mouseClicked(MouseEvent e) {
+	// 	  			setTheOS("windows");
+	// 	  		}
+	// 	  	});
 		  	
-		  	macOSIcon.addMouseListener(new MouseAdapter() {
-				public void mouseClicked(MouseEvent e) {
-		  			setTheOS("mac");
+	// 	  	macOSIcon.addMouseListener(new MouseAdapter() {
+	// 			public void mouseClicked(MouseEvent e) {
+	// 	  			setTheOS("mac");
 
-		  		}
-		  	});
-		} catch (Exception ex){
-			resultsMessageDialog(false, ex.getMessage());
-			System.exit(-1);
-		}
-	}
+	// 	  		}
+	// 	  	});
+	// 	} catch (Exception ex){
+	// 		resultsMessageDialog(false, ex.getMessage());
+	// 		System.exit(-1);
+	// 	}
+	// }
 
-	public static void setTheOS(String osName){
-		filePaths = new FilePaths(osName);
-		mainFrame.getContentPane().removeAll();
-		mainFrame.getContentPane().repaint();
-		initFrame();
-		mainFrame.getContentPane().revalidate();
-		mainFrame.getContentPane().repaint();
-	}
+	// public static void setTheOS(String osName){
+	// 	filePaths = new FilePaths(osName);
+	// 	mainFrame.getContentPane().removeAll();
+	// 	mainFrame.getContentPane().repaint();
+	// 	initFrame();
+	// 	mainFrame.getContentPane().revalidate();
+	// 	mainFrame.getContentPane().repaint();
+	// }
 
 	public static void initFrame(){
 
@@ -600,20 +602,20 @@ public class ConfigTool extends JFrame {
 		}
 	}
 
-	public static void getGIFs(){
-		try{
-			File gif = new File(filePaths.gifsPath);
-			File [] gifList = gif.listFiles();
-			for (int x = 0; x < gifList.length; x++){
-				if (gifList[x].getPath().contains(".gif")){
-					gifs.add(gifList[x].getPath());
-				}
-			}
-		} catch (Exception ex){
-		    // ex.printStackTrace();
-			resultsMessageDialog(false, ex.getMessage());
-		}
-	}
+	// public static void getGIFs(){
+	// 	try{
+	// 		File gif = new File(filePaths.gifsPath);
+	// 		File [] gifList = gif.listFiles();
+	// 		for (int x = 0; x < gifList.length; x++){
+	// 			if (gifList[x].getPath().contains(".gif")){
+	// 				gifs.add(gifList[x].getPath());
+	// 			}
+	// 		}
+	// 	} catch (Exception ex){
+	// 	    // ex.printStackTrace();
+	// 		resultsMessageDialog(false, ex.getMessage());
+	// 	}
+	// }
 
 	public static void getImageDimensionLimits(){
 		try{
@@ -664,7 +666,6 @@ public class ConfigTool extends JFrame {
 	public static void showImageProcessing(){
 		try{
 			hideHTMLExamples();
-			getGIFs();
 			
 			clearPanel(innerRightPanel);
 			GridBagConstraints processingNowConstraints = new GridBagConstraints();
@@ -674,6 +675,7 @@ public class ConfigTool extends JFrame {
 				processingNowConstraints.gridy = 0;
 				processingNowConstraints.anchor = GridBagConstraints.CENTER;
 				processingNowConstraints.insets = new Insets(10,0,20,0);  //top padding
+			processingNow.setText("<html>Processing Images ... <span style='color:orange;font-weight:bold;'>RUNNING NOW</span></html>");
 			innerRightPanel.add(processingNow, processingNowConstraints);
 
 			GridBagConstraints imagePanelConstraints = new GridBagConstraints();
@@ -684,12 +686,9 @@ public class ConfigTool extends JFrame {
 				imagePanelConstraints.anchor = GridBagConstraints.CENTER;
 
 
-			// BufferedImage unScaledImage = ImageIO.read(new File("gifs/fingerTapping.gif"));
-			// Image scaledImage = unScaledImage.getScaledInstance(unScaledImage.getWidth()/2, unScaledImage.getHeight()/2, Image.SCALE_SMOOTH);
-		// image.setIcon(new ImageIcon(scaledImage));
-						// image.setSize(imageB.getWidth()/2, imageB.getHeight()/2);
-			Random rand = new Random();
-			String procImg = gifs.get(rand.nextInt(gifs.size()));
+			// Random rand = new Random();
+			// String procImg = gifs.get(rand.nextInt(gifs.size()));
+			String procImg = filePaths.getRandomGIF();
 			processingImage.setIcon(new ImageIcon(procImg));
 			imagePanel.add(processingImage);
 			innerRightPanel.add(imagePanel, imagePanelConstraints);
@@ -704,15 +703,13 @@ public class ConfigTool extends JFrame {
 			validateView();
 		} catch (Exception ex){
 			resultsMessageDialog(false, ex.getMessage());
-		 	// ec.printStackTrace();
+		 	// ex.printStackTrace();
 		}	
 	}
 
 	public static void startImageProcessing(){
 		try{
 			getGalleryAlbums();
-
-			// slideshowDirectory = "images/slideshow";
 
 			processImages(filePaths.slideshowPath, slideshowList);
 			boolean slideshowBool = myFileWriter.writeJSONFile("config/slideshowJSON.txt", slideshowList);
@@ -800,8 +797,8 @@ public class ConfigTool extends JFrame {
 
 
 	public static void resultsMessageDialog(boolean success, String message){
-		if (message.length() < 1){
-			message = "Something went wrong!";
+		if (message.isEmpty()){
+			message = "Uknown error!";
 		}
 		if (success){
 			JOptionPane.showMessageDialog(mainFrame, message, "Success", JOptionPane.INFORMATION_MESSAGE);

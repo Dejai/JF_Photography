@@ -1,3 +1,3 @@
 #!/bin/bash
 
-chmod 664 *.txt;
+chmod 666 *.txt;
