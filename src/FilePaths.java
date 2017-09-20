@@ -4,13 +4,13 @@ import java.io.*;
 
 public class FilePaths{
 
+	protected String opSystem;
 	protected String aboutMeFilePath;
 	protected String dimensionsFilePath;
 	protected String gifsPath;
 	protected String galleryPath;
 	protected String slideshowPath;
 	protected String separator; 
-	protected String opSystem;
 
 	private static ArrayList<String> gifs = new ArrayList<String>();
 
@@ -18,36 +18,69 @@ public class FilePaths{
 	public FilePaths(){
 
 		opSystem = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0 ? "windows" : "mac" ;
-		if (opSystem == "windows"){
-			setWindowsPaths();
-		} else if (opSystem == "mac"){
-			setMacPaths();
-		}
+		
+		updateFilePermissions(opSystem);
+		
+		setFilePaths(opSystem);
 
+		// if (opSystem == "windows"){
+		// 	setWindowsPaths();
+		// } else if (opSystem == "mac"){
+		// 	setMacPaths();
+		// }
+		
 		getGIFS();
-
 	}
 
-
-	public void setWindowsPaths(){
-		aboutMeFilePath = "config\\aboutMe.txt";
-		dimensionsFilePath = "config\\dimConfig.txt";
-		galleryPath = "images\\gallery\\";
-		slideshowPath = "images\\slideshow\\";
-		gifsPath = "images\\assets\\gifs\\";
-		separator = "\\";
-
-
+	public void updateFilePermissions(String os){
+		try{
+			if (os == "windows"){
+				System.out.println("Friendly advice .... Fix this!");
+			} else if (os == "mac"){
+				String cmd = "open ./filePermissions.command";
+				Runtime run = Runtime.getRuntime();
+				Process pr = run.exec(cmd);
+			}
+		} catch (Exception ex){
+			ConfigTool.resultsMessageDialog(false, ex.getMessage());
+		}
+		
 	}
 
-	public void setMacPaths(){
-		aboutMeFilePath = "config/aboutMe.txt";
-		dimensionsFilePath = "config/dimConfig.txt";
-		galleryPath = "images/gallery/";
-		slideshowPath = "images/slideshow";
-		gifsPath = "images/assets/gifs/";
-		separator = "/";		
+	// Consolidate the two different set functions below
+	public void setFilePaths(String os){
+		aboutMeFilePath = os == "windows" ? "config\\aboutMe.txt" : "config/aboutMe.txt";
+
+		dimensionsFilePath = os == "windows" ? "config\\dimConfig.txt" : "config/dimConfig.txt";
+
+		galleryPath = os == "windows" ? "images\\gallery\\" : "images/gallery/";
+
+		slideshowPath = os == "windows" ? "images\\slideshow\\" : "images/slideshow";
+
+		gifsPath = os == "windows" ? "images\\assets\\gifs\\" : "images/assets/gifs/";
+
+		separator = os == "windows" ? "\\" : "/";
 	}
+
+	// public void setWindowsPaths(){
+	// 	aboutMeFilePath = "config\\aboutMe.txt";
+	// 	dimensionsFilePath = "config\\dimConfig.txt";
+	// 	galleryPath = "images\\gallery\\";
+	// 	slideshowPath = "images\\slideshow\\";
+	// 	gifsPath = "images\\assets\\gifs\\";
+	// 	separator = "\\";
+
+
+	// }
+
+	// public void setMacPaths(){
+	// 	aboutMeFilePath = "config/aboutMe.txt";
+	// 	dimensionsFilePath = "config/dimConfig.txt";
+	// 	galleryPath = "images/gallery/";
+	// 	slideshowPath = "images/slideshow";
+	// 	gifsPath = "images/assets/gifs/";
+	// 	separator = "/";		
+	// }
 
 
 	public void getGIFS(){

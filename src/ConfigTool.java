@@ -98,6 +98,7 @@ public class ConfigTool extends JFrame {
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
 		filePaths = new FilePaths();
+		// filePaths.updateFilePermissions();
 
 		initFrame();
 		// pickOpSystem();
@@ -719,8 +720,8 @@ public class ConfigTool extends JFrame {
 			}
 			boolean albumsBool = myFileWriter.writeJSONFile("config/albumsJSON.txt", albumList);
 
-			String processSlideshowResults = slideshowBool ? "<span style='color:green;font-weight:bold'>SUCCESS</span> processing the Slideshow images" : "<span style='color:red;font-weight:bold'>FAILED</span> to process the Slideshow images";
-			String processAlbumsResults = albumsBool ? "<span style='color:green;font-weight:bold'>SUCCESS</span> processing the Album images" : "<span style='color:red;font-weight:bold'>FAILED</span> to process the Album images";
+			String processSlideshowResults = slideshowBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Slideshow images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Slideshow images were not processed.";
+			String processAlbumsResults = albumsBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Album images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Album images were not processed.";
 
 			String succMsg = String.format("<html> %s <br/> <br/> %s </html>", processSlideshowResults, processAlbumsResults);
 
