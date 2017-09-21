@@ -5,6 +5,7 @@ import java.io.*;
 public class FilePaths{
 
 	protected String opSystem;
+	protected String opSystemFull;
 	protected String aboutMeFilePath;
 	protected String dimensionsFilePath;
 	protected String gifsPath;
@@ -17,18 +18,10 @@ public class FilePaths{
 
 	public FilePaths(){
 
-		opSystem = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0 ? "windows" : "mac" ;
-		
+		opSystemFull =  System.getProperty("os.name");
+		opSystem = opSystemFull.toLowerCase().indexOf("mac") >= 0 ? "mac" : "windows" ;
 		updateFilePermissions(opSystem);
-		
 		setFilePaths(opSystem);
-
-		// if (opSystem == "windows"){
-		// 	setWindowsPaths();
-		// } else if (opSystem == "mac"){
-		// 	setMacPaths();
-		// }
-		
 		getGIFS();
 	}
 
@@ -61,26 +54,6 @@ public class FilePaths{
 
 		separator = os == "windows" ? "\\" : "/";
 	}
-
-	// public void setWindowsPaths(){
-	// 	aboutMeFilePath = "config\\aboutMe.txt";
-	// 	dimensionsFilePath = "config\\dimConfig.txt";
-	// 	galleryPath = "images\\gallery\\";
-	// 	slideshowPath = "images\\slideshow\\";
-	// 	gifsPath = "images\\assets\\gifs\\";
-	// 	separator = "\\";
-
-
-	// }
-
-	// public void setMacPaths(){
-	// 	aboutMeFilePath = "config/aboutMe.txt";
-	// 	dimensionsFilePath = "config/dimConfig.txt";
-	// 	galleryPath = "images/gallery/";
-	// 	slideshowPath = "images/slideshow";
-	// 	gifsPath = "images/assets/gifs/";
-	// 	separator = "/";		
-	// }
 
 
 	public void getGIFS(){

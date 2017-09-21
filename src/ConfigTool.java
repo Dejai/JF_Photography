@@ -27,6 +27,10 @@ public class ConfigTool extends JFrame {
 		public static JPanel opSysPanel = new JPanel(new GridLayout(0,2));
 		public static JLabel windowsOSIcon = new JLabel("");
 		public static JLabel macOSIcon = new JLabel("");
+
+		public static JPanel bottomPanel = new JPanel(new FlowLayout());
+		public static JLabel poweredByLabel = new JLabel("");
+
 		
 		//Left Side 
 		public static JPanel leftPanel = new JPanel(new FlowLayout());
@@ -98,10 +102,8 @@ public class ConfigTool extends JFrame {
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
 		filePaths = new FilePaths();
-		// filePaths.updateFilePermissions();
 
 		initFrame();
-		// pickOpSystem();
 		mainFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		mainFrame.pack();
 		mainFrame.setSize(800, 500);
@@ -111,67 +113,6 @@ public class ConfigTool extends JFrame {
 
 	}
 
-
-	// public static void pickOpSystem(){
-	// 	try{
-	// 		BufferedImage unScaledImage1 = ImageIO.read(ConfigTool.class.getResource("icons\\windowsOSIcon.png"));
-	// 		// JOptionPane.showMessageDialog(mainFrame, message, "Error", JOptionPane.ERROR_MESSAGE);
-	// 		JOptionPane.showMessageDialog(mainFrame, unScaledImage1.getType());
-	// 		Image scaledImage1 = unScaledImage1.getScaledInstance(unScaledImage1.getWidth()/4, unScaledImage1.getHeight()/4, Image.SCALE_SMOOTH);
-	// 		windowsOSIcon = new JLabel(new ImageIcon(scaledImage1));
-
-	// 		BufferedImage unScaledImage2 = ImageIO.read(ConfigTool.class.getResource("icons/macOSIcon.png"));
-	// 		Image scaledImage2 = unScaledImage2.getScaledInstance(unScaledImage2.getWidth(), unScaledImage2.getHeight(), Image.SCALE_SMOOTH);
-	// 		macOSIcon = new JLabel(new ImageIcon(scaledImage2));
-
-
-	// 		opSysPanel.add(windowsOSIcon);
-	// 		opSysPanel.add(macOSIcon);
-
-	// 		JLabel pickAnOS = new JLabel("Pick an Operating System");
-	// 		pickAnOS.setFont(new Font("Arial", Font.BOLD, 22));
-
-	// 		GridBagConstraints osCon1 = new GridBagConstraints();
-	// 			// osCon1.fill = GridBagConstraints.BOTH;
-	// 			osCon1.gridx = 0;
-	// 			osCon1.gridy = 0;
-	// 			osCon1.anchor = GridBagConstraints.CENTER;
-	// 			osCon1.insets = new Insets(20,0,0,0);
-	// 		mainFrame.add(pickAnOS, osCon1);
-
-	// 		GridBagConstraints osCon = new GridBagConstraints();
-	// 			osCon.fill = GridBagConstraints.BOTH;
-	// 			osCon.gridx = 0;
-	// 			osCon.gridy = 1;
-	// 			osCon.weighty = 1.0;
-	// 		mainFrame.add(opSysPanel, osCon);
-
-	// 		windowsOSIcon.addMouseListener(new MouseAdapter() {
-	// 			public void mouseClicked(MouseEvent e) {
-	// 	  			setTheOS("windows");
-	// 	  		}
-	// 	  	});
-		  	
-	// 	  	macOSIcon.addMouseListener(new MouseAdapter() {
-	// 			public void mouseClicked(MouseEvent e) {
-	// 	  			setTheOS("mac");
-
-	// 	  		}
-	// 	  	});
-	// 	} catch (Exception ex){
-	// 		resultsMessageDialog(false, ex.getMessage());
-	// 		System.exit(-1);
-	// 	}
-	// }
-
-	// public static void setTheOS(String osName){
-	// 	filePaths = new FilePaths(osName);
-	// 	mainFrame.getContentPane().removeAll();
-	// 	mainFrame.getContentPane().repaint();
-	// 	initFrame();
-	// 	mainFrame.getContentPane().revalidate();
-	// 	mainFrame.getContentPane().repaint();
-	// }
 
 	public static void initFrame(){
 
@@ -186,19 +127,20 @@ public class ConfigTool extends JFrame {
 			// xL.setForeground(Color.WHITE);
 		}
 
-		JComponent [] leftSide = {leftPanel, innerLeftPanel };
+		JComponent [] leftSide = {leftPanel, innerLeftPanel, bottomPanel};
 		for (JComponent left : leftSide){
 			// left.setBackground(new Color(0.9f, 0.9f, 0.5f));
 			left.setBackground(Color.LIGHT_GRAY);
 			// left.setBackground(Color.BLACK);
 		}
+		mainFrame.getContentPane().setBackground(Color.GRAY);
+		bottomPanel.setBackground(Color.GRAY);
 
 		JComponent [] rightSide = {updateDimensionsPanel, rightPanel, innerRightPanel };
 		for (JComponent right : rightSide){
 			right.setBackground(new Color(0.2f, 0.5f, 0.6f));
 		}
 
-		// mainFrame.setLayout(new GridBagLayout());
 
 		GridBagConstraints menuLabelConstraints = new GridBagConstraints();
 			menuLabelConstraints.fill = GridBagConstraints.HORIZONTAL;
@@ -236,14 +178,32 @@ public class ConfigTool extends JFrame {
 			aboutMeConstraints.insets = new Insets(10,40,0,0); 
 		innerLeftPanel.add(aboutMe, aboutMeConstraints);
 
+		
+		// innerLeftPanel.add(clouds, poweredByC);
+
+
+
+		GridBagConstraints poweredByC = new GridBagConstraints();
+			// poweredByC.fill = GridBagConstraints.VERTICAL;
+			poweredByC.ipady = 0;       //reset to default
+			// poweredByC.weightx = 0.5;   //request any extra vertical space
+			poweredByC.anchor = GridBagConstraints.LINE_START; //bottom of space
+			poweredByC.insets = new Insets(0,10,0,0);  //top padding
+			poweredByC.gridx = 0;       //aligned with button 2
+			poweredByC.gridwidth = 1;   //2 columns wide
+			poweredByC.gridy = 1;       //third row
 
 		GridBagConstraints l = new GridBagConstraints();
-		l.fill = GridBagConstraints.BOTH;
-		l.gridx = 0;
-		l.gridy = 0;
-		l.weighty = 1.0;
+			l.fill = GridBagConstraints.BOTH;
+			l.gridx = 0;
+			l.gridy = 0;
+			l.weighty = 1.0;
 		leftPanel.add(innerLeftPanel);
 		mainFrame.add(leftPanel, l);
+		poweredByLabel.setText(String.format("<html><div style='color:white;'>%s: <span style='font-weight:bold; font-style:italics'>%s</span></div></html>", "Powered By", filePaths.opSystemFull));
+		bottomPanel.add(poweredByLabel);
+		mainFrame.add(bottomPanel, poweredByC);
+
 
 		GridBagConstraints rightPanelConstraints = new GridBagConstraints();
 			rightPanelConstraints.fill = GridBagConstraints.BOTH;
