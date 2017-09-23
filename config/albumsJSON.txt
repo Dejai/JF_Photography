@@ -1,18 +1,18 @@
 [
 {"name" :"albumone","folderName" :"albumone","coverImg" :"images/gallery/albumone/image1.jpg","images" : [
-{"name" :"/images/gallery/albumone/image8.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumone/image8.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumone/image3.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumone/image3.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumone/image7.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumone/image7.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumone/image6.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumone/image6.jpg","dimension" :"landscape"
 },
 {"name" :"/images/gallery/albumone/image5.jpg","dimension" :"portrait"
 },
-{"name" :"/images/gallery/albumone/image4.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumone/image4.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumone/image2.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumone/image2.jpg","dimension" :"landscape"
 },
 {"name" :"/images/gallery/albumone/image1.jpg","dimension" :"portrait"
 }]
@@ -22,17 +22,17 @@
 },
 {"name" :"/images/gallery/albumtwo/image1.jpg","dimension" :"portrait"
 },
-{"name" :"/images/gallery/albumtwo/image6.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumtwo/image6.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumtwo/image3.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumtwo/image3.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumtwo/image4.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumtwo/image4.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumtwo/image2.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumtwo/image2.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumtwo/image7.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumtwo/image7.jpg","dimension" :"landscape"
 },
-{"name" :"/images/gallery/albumtwo/image8.jpg","dimension" :"square"
+{"name" :"/images/gallery/albumtwo/image8.jpg","dimension" :"landscape"
 }]
 }
 ]
