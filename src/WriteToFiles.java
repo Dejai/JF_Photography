@@ -43,7 +43,7 @@ public class WriteToFiles{
 				// for (Picture yx : singleAlbum.pictures){
 				for (String yx : singleAlbum.pics.keySet().toArray(new String[singleAlbum.pics.size()])){
 					String imgJSON = String.format("{"
-						+ "\"name\" :\"/" + yx.replace("\\", "/") + "\","
+						+ "\"name\" :\"" + yx.replace("\\", "/") + "\","
 					  +  "\"dimension\" :\"" + singleAlbum.pics.get(yx) + "\"");
 					jsonOUT.write(imgJSON);
 					jsonOUT.newLine();

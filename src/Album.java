@@ -14,7 +14,8 @@ class Album {
 	}
 
 	public void setCoverImage(String img){
-		coverImage = img;
+		String webPathImg = img.replace("\\", "/");
+		coverImage = webPathImg;
 		hasCoverImage = true; 
 	}
 }
