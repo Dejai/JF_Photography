@@ -29,7 +29,9 @@ public class FilePaths{
 		try{
 			if (os == "windows"){
 				// System.out.println("Friendly advice .... Fix this!");
-				String cmd = "start .\\src\\filePermissions.bat";
+				// String cmd = "start .\\src\\filePermissions.bat";
+				// String cmd = "start C:\\Users\\%USERNAME%\\Desktop\\JF_Photography\\src\\filePermissions.bat";
+				String cmd = "start cmd";
 				Runtime run = Runtime.getRuntime();
 				Process pr = run.exec(cmd);
 			} else if (os == "mac"){
