@@ -28,7 +28,10 @@ public class FilePaths{
 	public void updateFilePermissions(String os){
 		try{
 			if (os == "windows"){
-				System.out.println("Friendly advice .... Fix this!");
+				// System.out.println("Friendly advice .... Fix this!");
+				String cmd = "start ./filePermissions.bat";
+				Runtime run = Runtime.getRuntime();
+				Process pr = run.exec(cmd);
 			} else if (os == "mac"){
 				String cmd = "open ./filePermissions.command";
 				Runtime run = Runtime.getRuntime();
