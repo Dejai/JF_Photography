@@ -543,12 +543,12 @@ public class ConfigTool extends JFrame {
 
 	public static void getGalleryAlbums(){
 		try{
-			File gallery = new File(filePaths.galleryPath);
+			File gallery = new File(filePaths.galleryDirectoryPath);
 			File [] galleryList = gallery.listFiles();
 			for (int x = 0; x < galleryList.length; x++){
 				if (galleryList[x].isDirectory()){
 					String newName = galleryList[x].getName().trim().replaceAll(" ", "_");
-					String newPath = String.format("%s%s", filePaths.galleryPath, newName);
+					String newPath = String.format("%s%s", filePaths.galleryDirectoryPath, newName);
 					// String newPath = "images/gallery/";
 					// newPath = newPath.concat(newName);
 					File newDir = new File (newPath);
@@ -562,21 +562,6 @@ public class ConfigTool extends JFrame {
 
 		}
 	}
-
-	// public static void getGIFs(){
-	// 	try{
-	// 		File gif = new File(filePaths.gifsPath);
-	// 		File [] gifList = gif.listFiles();
-	// 		for (int x = 0; x < gifList.length; x++){
-	// 			if (gifList[x].getPath().contains(".gif")){
-	// 				gifs.add(gifList[x].getPath());
-	// 			}
-	// 		}
-	// 	} catch (Exception ex){
-	// 	    // ex.printStackTrace();
-	// 		resultsMessageDialog(false, ex.getMessage());
-	// 	}
-	// }
 
 	public static void getImageDimensionLimits(){
 		try{
@@ -672,13 +657,13 @@ public class ConfigTool extends JFrame {
 		try{
 			getGalleryAlbums();
 
-			processImages(filePaths.slideshowPath, slideshowList);
-			boolean slideshowBool = myFileWriter.writeJSONFile("config/slideshowJSON.txt", slideshowList);
+			processImages(filePaths.slideshowDirectoryPath, slideshowList);
+			boolean slideshowBool = myFileWriter.writeJSONFile(filePaths.slideshowJSONFilePath, slideshowList);
 
 			for (String x : galleryAlbums){
 				processImages(x, albumList);
 			}
-			boolean albumsBool = myFileWriter.writeJSONFile("config/albumsJSON.txt", albumList);
+			boolean albumsBool = myFileWriter.writeJSONFile(filePaths.albumsJSONFilePath, albumList);
 
 			String processSlideshowResults = slideshowBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Slideshow images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Slideshow images were not processed.";
 			String processAlbumsResults = albumsBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Album images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Album images were not processed.";

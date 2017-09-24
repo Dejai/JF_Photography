@@ -8,9 +8,11 @@ public class FilePaths{
 	protected String opSystemFull;
 	protected String aboutMeFilePath;
 	protected String dimensionsFilePath;
+	protected String albumsJSONFilePath;
+	protected String slideshowJSONFilePath;
 	protected String gifsPath;
-	protected String galleryPath;
-	protected String slideshowPath;
+	protected String galleryDirectoryPath;
+	protected String slideshowDirectoryPath;
 	protected String separator; 
 
 	private static ArrayList<String> gifs = new ArrayList<String>();
@@ -46,9 +48,13 @@ public class FilePaths{
 
 		dimensionsFilePath = os == "windows" ? "config\\dimConfig.txt" : "config/dimConfig.txt";
 
-		galleryPath = os == "windows" ? "images\\gallery\\" : "images/gallery/";
+		albumsJSONFilePath = os == "windows" ? "config\\albumsJSON.txt" : "config/albumsJSON.txt";
 
-		slideshowPath = os == "windows" ? "images\\slideshow\\" : "images/slideshow";
+		slideshowJSONFilePath = os == "windows" ? "config\\slideshowJSON.txt" : "config/slideshowJSON.txt";
+
+		galleryDirectoryPath = os == "windows" ? "images\\gallery" : "images/gallery";
+
+		slideshowDirectoryPath = os == "windows" ? "images\\slideshow" : "images/slideshow";
 
 		gifsPath = os == "windows" ? "images\\assets\\gifs\\" : "images/assets/gifs/";
 
