@@ -14,6 +14,8 @@ public class FilePaths{
 	protected String galleryDirectoryPath;
 	protected String slideshowDirectoryPath;
 	protected String separator; 
+	protected String oopsImg; 
+	protected String successProcessingImg; 
 
 	private static ArrayList<String> gifs = new ArrayList<String>();
 
@@ -59,6 +61,12 @@ public class FilePaths{
 		gifsPath = os == "windows" ? "images\\assets\\gifs\\" : "images/assets/gifs/";
 
 		separator = os == "windows" ? "\\" : "/";
+
+		oopsImg = os == "windows" ? "images\\assets\\icons\\oops2.png" : "images/assets/icons/oops2.png";
+
+		successProcessingImg = os == "windows" ? "images\\assets\\icons\\successProcessing.png" : "images/assets/icons/successProcessing.png";
+
+		
 	}
 
 

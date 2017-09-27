@@ -211,6 +211,7 @@ public class ConfigTool extends JFrame {
 			rightPanelConstraints.gridx = 1;
 			rightPanelConstraints.gridy = 0;
 			rightPanelConstraints.weighty = 1.0;
+			innerRightPanel.add(new JLabel("Click on a menu option to get started."));
 		rightPanel.add(innerRightPanel);
 		mainFrame.add(rightPanel, rightPanelConstraints);
 	}
@@ -540,7 +541,6 @@ public class ConfigTool extends JFrame {
 	
 
 	/* GET Objects */ 
-
 	public static void getGalleryAlbums(){
 		try{
 			File gallery = new File(filePaths.galleryDirectoryPath);
@@ -548,7 +548,7 @@ public class ConfigTool extends JFrame {
 			for (int x = 0; x < galleryList.length; x++){
 				if (galleryList[x].isDirectory()){
 					String newName = galleryList[x].getName().trim().replaceAll(" ", "_");
-					String newPath = String.format("%s%s", filePaths.galleryDirectoryPath, newName);
+					String newPath = String.format("%s/%s", filePaths.galleryDirectoryPath, newName);
 					// String newPath = "images/gallery/";
 					// newPath = newPath.concat(newName);
 					File newDir = new File (newPath);
@@ -671,10 +671,14 @@ public class ConfigTool extends JFrame {
 			String succMsg = String.format("<html> %s <br/> <br/> %s </html>", processSlideshowResults, processAlbumsResults);
 
 			if (slideshowBool && albumsBool){
-				processingNow.setText("<html>Processing Images ... <span style='color:#66ff33;font-weight:bold;'>DONE</span></html>");
+				processingNow.setText("Processing Images");
+				workingOn.setText("");
+				processingImage.setIcon(new ImageIcon(filePaths.successProcessingImg));
 				resultsMessageDialog(true, succMsg);
 			} else {
-				processingNow.setText("<html>Processing Images ... <span style='color:red;font-weight:bold;'>DONE</span></html>");
+				processingNow.setText("Processing Images");
+				workingOn.setText("<html>Something went wrong. To try and remedy this, go to the 'src' folder and click on the filePermission file (the one with the gear icon).</html>");
+				processingImage.setIcon(new ImageIcon(filePaths.oopsImg));
 				resultsMessageDialog(false, succMsg);
 			}
 			// resultsMessageDialog(true, succMsg);

@@ -67,7 +67,7 @@ public class WriteToFiles{
 			jsonOUT.close();
 			return true;
 		} catch (Exception ex){
-		    ConfigTool.resultsMessageDialog(false, ex.getMessage());
+		    // ConfigTool.resultsMessageDialog(false, ex.getMessage());
 		    return false;
 
 		}
