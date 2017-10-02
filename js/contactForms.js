@@ -56,8 +56,25 @@ $(document).ready(function(){
 		}
 	});
 
+	var formQueryVal = location.search.split("=")[1]; 
+	whichForm(formQueryVal);
+
 });
 
+function whichForm(formValue){
+	switch(formValue){
+		case "service":
+			$("#contactQuestion").hide();
+			$("#requestServiceButtom").click();
+			break;
+		case "feedback":
+			$("#contactQuestion").hide();
+			$("#sendFeedbackButton").click();
+			break;
+		default:
+			console.log("Default form selection view");
+	}
+}
 function buildAnotherDate(){
 	var otherDate = "<br style=\"clear:both;\"/><br style=\"clear:both;\"/>"
 					+" <div class=\"dateSelectorSection\">"
@@ -94,14 +111,58 @@ function AddDateTimePicker(){
 	 });
 }
 
-
+function removeDateTimeRow(){
+	$(".removeNewDateTimeButton").click(function(){
+		alert("Made it");
+		// $(this).remove();
+		var rowToDelete = $(this).parent().parent();
+		var labelRowToDelete = rowToDelete.prev();
+		labelRowToDelete.remove();
+		rowToDelete.remove();
+	});
+}
 function addNewDateTimeRow(){
 	$(".addNewDateTimeButton").click(function(){
-		$(".addNewDateTimeSection").remove();
-		var nextOne = buildAnotherDate();
-		$("#datetimePickerSection").append(nextOne);
+		// $(".addNewDateTimeSection").remove();
+		// var nextOne = buildAnotherDate();
+		// $("#datetimePickerSection").append(nextOne);
+		// AddDateTimePicker();
+		// addNewDateTimeRow();
+		// var removeButton = "<a class='removeNewDateTimeButton glyphicon glyphicon-minus-sign' style='color:red; line-height:100%; font-size:22px;'></a>";
+		var removeButton = document.createElement("a");
+		removeButton.setAttribute("class", "removeNewDateTimeButton");
+		removeButton.setAttribute("class", "glyphicon glyphicon-minus-sign");
+		removeButton.style.color = "red";
+		removeButton.style.fontSize = "22px";
+		removeButton.style.cursor = "pointer";
+
+		// removeButton.setAttribute("class", "glyphicon-minus-sign");
+		// removeButton.setAttribute("style", "color:red; line-height:100%; font-size:22px;");
+		var theRow = $(this).parent().parent();
+		var sibling = $(this).next();
+		console.log(sibling.length);
+
+		var newRow = theRow.clone();
+		// console.log(newRow[0].childNodes[5]);
+		if (sibling.length < 1){
+			newRow[0].childNodes[5].append(removeButton);
+		}
+		// .children[2].append(removeButton);
+		// console.log(newRow[0].children[2]);
+		var theTable = theRow.parent();
+		var newLabelRow = "<tr style='margin-top:10px;'>"
+						 + "<td><label class=\"requiredField\">Alternate Date</label><br/></td>"
+						 + "<td><label>Time</label><br/></td>"
+						 + "<td>&nbsp;</td>"
+						 + "</tr>";
+		$(this).remove();
+		theTable.append(newLabelRow);
+		theTable.append(newRow);
 		AddDateTimePicker();
 		addNewDateTimeRow();
+		removeDateTimeRow();
+		// console.log(theRow);
+		// console.log(theLabelRow);
 	});
 }
 

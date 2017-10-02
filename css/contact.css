@@ -33,6 +33,10 @@ GENERAL
 	/*The submit button for each form */
 	.submitButton {	border: 1px solid white; background-color:black; color:white; letter-spacing: 1px; }
 
+	/*The new table form format*/
+	#datetimePickerSection table tr td {padding-left:10px; border-bottom-width:10px;}
+	#datetimePickerSection table tr {padding:1%;}
+
 
 /*
 REQUEST FORM
@@ -40,15 +44,21 @@ REQUEST FORM
 	#requestServiceForm{ width:100%; margin:auto; display:none; padding-top:2%;}
 	
 	/*The section for the date and time*/
-	.dateSection { width:100%;float:left;text-align:left; }
+	.dateSection { width:100%;float:left;text-align:left; border:1px solid red; }
 	.dateSelectorSection { width:35%; float:left; margin-right:2%;  }
 	.timeSelectorSection { width:25%; float:left;  }
 
 	/*The option to add a new date / time. */
 	.addNewDateTimeSection { width:45%; float:left; padding-left:2%; }
-	.addNewDateTimeButton { color:limegreen; font-size:12px; text-align:center; padding:0%; }
-	.addNewDateTimeButton:hover { cursor:pointer; color:red;}
+	/*.addNewDateTimeButton { color:limegreen; font-size:12px; text-align:center; padding:0%; }
+	.addNewDateTimeButton:hover { cursor:pointer; color:white; background-color:limegreen;}
+*/
+	.addNewDateTimeButton { color:limegreen; font-size:22px; }
+	.addNewDateTimeButton:hover { cursor:pointer;}
 
+	.removeNewDateTimeButton { color:red; font-size:22px; }
+	.removeNewDateTimeButton:hover { cursor:pointer;}
+	
 
 /*
 FEEDBACK FORM
@@ -88,8 +98,8 @@ FORM RESULTS
 		.customerInfoFields input { width:85%; }
 
 		/*Date / Time Section*/
-		.dateSection { width:80%;float:left;text-align:left; }
-		.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }
+		.dateSection { width:90%;float:left;text-align:left; }
+		/*.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }*/
 		.dateSelectorSection { width:35%;  }
 		.timeSelectorSection { width:20%; }
 		.addNewDateTimeSection { width:35%; }

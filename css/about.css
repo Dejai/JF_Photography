@@ -4,6 +4,9 @@
 #profilePic { width:50%; margin-right:2%; margin-bottom:5%; display:block; margin:auto; height:200px; border:1px solid white; }
 #clearer { display:block; clear:both; margin-bottom:2%; }
 
+#directLinkToRequestServices { border-width:2px; color:white; border-radius:40px;  }
+#directLinkToRequestServices:hover { background-color:white; color:black; }
+
 /* General Table (sideways)*/
 @media screen and (min-width:768px) and (min-height:500px) {
 	#aboutMeSection { width:70%; padding:0%; margin:auto; margin-top:140px;}
@@ -22,7 +25,7 @@
 /* Regular Laptops*/
 @media screen and (min-width:1024px) {
 	#aboutMeSection { width:60%;  margin-top:40px; line-height:250%; text-align:left; }
-	#profilePic { width:30%; height:250px; float:left; margin-right:5%; }
+	#profilePic { width:30%; height:250px; float:left; margin-right:5%; margin-bottom:50%; }
 	#clearer { display:none; }
 
 	/*#aboutMeParagraphs { font-size:2px; }*/
@@ -35,5 +38,5 @@
 
 @media screen and (min-width:1400px){
 	#aboutMeSection { width:55%; margin-top:40px;  }
-	#profilePic { width:30%; }
+	#profilePic { width:30%;  }
 }
