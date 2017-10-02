@@ -24,7 +24,7 @@ public class FilePaths{
 
 		opSystemFull =  System.getProperty("os.name");
 		opSystem = opSystemFull.toLowerCase().indexOf("mac") >= 0 ? "mac" : "windows" ;
-		updateFilePermissions(opSystem);
+		// updateFilePermissions(opSystem);
 		setFilePaths(opSystem);
 		getGIFS();
 	}
@@ -65,7 +65,6 @@ public class FilePaths{
 		oopsImg = os == "windows" ? "images\\assets\\icons\\oops2.png" : "images/assets/icons/oops2.png";
 
 		successProcessingImg = os == "windows" ? "images\\assets\\icons\\successProcessing.png" : "images/assets/icons/successProcessing.png";
-
 		
 	}
 

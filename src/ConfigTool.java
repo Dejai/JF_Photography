@@ -18,72 +18,74 @@ import java.util.Random;
 // public class ConfigTool extends ConfigToolrame implements Runnable {
 public class ConfigTool extends JFrame {
 
-	// Instance Variables
+	// JComponent Attributes
 		// Main Window & Content Panel
-		public static JFrame mainFrame = new JFrame("Managing Config Files");
-		public static JPanel contentPane = new JPanel();
+			public static JFrame mainFrame = new JFrame("Managing Config Files");
+			public static JPanel contentPane = new JPanel();
 
 		// OpSystem Panel
-		public static JPanel opSysPanel = new JPanel(new GridLayout(0,2));
-		public static JLabel windowsOSIcon = new JLabel("");
-		public static JLabel macOSIcon = new JLabel("");
+		// public static JPanel opSysPanel = new JPanel(new GridLayout(0,2));
+		// public static JLabel windowsOSIcon = new JLabel("");
+		// public static JLabel macOSIcon = new JLabel("");
 
-		public static JPanel bottomPanel = new JPanel(new FlowLayout());
-		public static JLabel poweredByLabel = new JLabel("");
+		// Bottom Section
+			public static JPanel bottomPanel = new JPanel(new FlowLayout());
+			public static JLabel poweredByLabel = new JLabel("");
 
 		
 		//Left Side 
-		public static JPanel leftPanel = new JPanel(new FlowLayout());
-		public static JPanel innerLeftPanel = new JPanel(new GridBagLayout());
+			public static JPanel leftPanel = new JPanel(new FlowLayout());
+			public static JPanel innerLeftPanel = new JPanel(new GridBagLayout());
 
-		public static JLabel menuLabel = new JLabel("Menu: ");
+			public static JLabel menuLabel = new JLabel("Menu: ");
 
-		public static JButton updateDimensions = new JButton("Update Dimensions");
-		public static JButton processImages = new JButton("Process Images");
-		public static JButton aboutMe = new JButton("About Me");
+			public static JButton updateDimensions = new JButton("Update Dimensions");
+			public static JButton processImages = new JButton("Process Images");
+			public static JButton aboutMe = new JButton("About Me");
 		
 		// Right Side
-		public static JPanel rightPanel = new JPanel(new FlowLayout());
-		public static JPanel innerRightPanel = new JPanel(new GridBagLayout());
+			public static JPanel rightPanel = new JPanel(new FlowLayout());
+			public static JPanel innerRightPanel = new JPanel(new GridBagLayout());
 
+			public static JLabel getStartedLabel = new JLabel("Click on a menu option to get started.");
 
-		public static JLabel updateDimensionsLabel = new JLabel("Edit Dimensions");
-		public static JPanel updateDimensionsPanel = new JPanel(new GridBagLayout());
-		public static JLabel portraitLabel = new JLabel("Max width for Portrait:");
-		public static JTextField portraitText = new JTextField("");
-		public static JLabel squareLabel = new JLabel("Max width for Square:");
-		public static JTextField squareText = new JTextField("");
-		public static JButton updateDimensionsButton = new JButton("Update");
-		public static JButton updateNow = new JButton("Update");
+			// Updating Dimensions
+				public static JLabel updateDimensionsLabel = new JLabel("Edit Dimensions");
+				public static JPanel updateDimensionsPanel = new JPanel(new GridBagLayout());
+				public static JLabel portraitLabel = new JLabel("Max width for Portrait:");
+				public static JTextField portraitText = new JTextField("");
+				public static JLabel squareLabel = new JLabel("Max width for Square:");
+				public static JTextField squareText = new JTextField("");
+				public static JButton updateDimensionsButton = new JButton("Update");
+				public static JButton updateNow = new JButton("Update");
 
+			// Processing Images
+				public static JPanel imagePanel = new JPanel(new GridLayout(0,1));
+				public static JLabel processingImage = new JLabel("");
 
-		public static JPanel imagePanel = new JPanel(new GridLayout(0,1));
-		public static JLabel processingImage = new JLabel("");
+				public static JLabel processingNow = new JLabel("");
+				public static JLabel workingOn = new JLabel(">>\t");
 
-		public static JLabel processingNow = new JLabel("");
-		public static JLabel workingOn = new JLabel(">>\t");
+			// About Me Sections
+				public static JLabel editAboutMe = new JLabel("Edit About Me");
+				public static JButton toggleAboutMeEditor = new JButton("Preview");
+				public static JButton saveAboutMe = new JButton("Save");
 
+				public static JPanel aboutMePanel = new JPanel(new GridLayout(0,1));
+				public static JEditorPane aboutMeTextEditor = new JEditorPane();
+				public static String plainText = "";
+				// public static String htmlHelpText = "Add a new line:\t<br/>";
 
-		public static JLabel editAboutMe = new JLabel("Edit About Me");
-		public static JButton toggleAboutMeEditor = new JButton("Preview");
-		public static JButton saveAboutMe = new JButton("Save");
+				// Help Info for Styling About Me Text
+					public static JLabel htmlHelpLabel = new JLabel("How To Style your Text");
 
-		public static JPanel aboutMePanel = new JPanel(new GridLayout(0,1));
-		public static JEditorPane aboutMeTextEditor = new JEditorPane();
-		public static String plainText = "";
-		public static String htmlHelpText = "Add a new line:\t<br/>";
-
-
-		public static JLabel htmlHelpLabel = new JLabel("How To Style your Text");
-
-		// public static String [] helpOptions = {" ","Add a new line", "Change the color", "Make it italics", "Make it bold"};
-		public static HashMap<String, String> htmlExamples = new HashMap<String, String>();
-		public static JComboBox<String> helpDropDown;
-		public static JLabel spanExample = new JLabel("");
+					public static HashMap<String, String> htmlExamples = new HashMap<String, String>();
+					public static JComboBox<String> helpDropDown;
+					public static JLabel spanExample = new JLabel("");
 
 		// public static JComboBox<String> helpDropDown = new JComboBox<String>(helpOptions);
 
-		// Class Attributes:
+	// ConfigTool Class Instance Attributes:
 		public static int portraitDim = 650;
 		public static int squareDim = 700;
 		public static ArrayList<Album> albumList = new ArrayList<Album>();
@@ -93,15 +95,16 @@ public class ConfigTool extends JFrame {
 		public static ArrayList<String> gifs = new ArrayList<String>();
 		public static String slideshowDirectory;
 
-		public static WriteToFiles myFileWriter = new WriteToFiles();
+		public static WriteToFiles myFileWriter;
 		public static FilePaths filePaths;
-		// = new FilePaths("mac");
+
 
     public static void main(String args []){
-
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
+		
 		filePaths = new FilePaths();
+		myFileWriter = new WriteToFiles();
 
 		initFrame();
 		mainFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -121,7 +124,7 @@ public class ConfigTool extends JFrame {
 			subH.setFont(new Font("Arial", Font.BOLD, 16));
 		}
 
-		JLabel [] headers= {menuLabel, processingNow, editAboutMe, updateDimensionsLabel };
+		JLabel [] headers= {menuLabel, processingNow, editAboutMe, updateDimensionsLabel, getStartedLabel };
 		for (JLabel xL : headers){
 			xL.setFont(new Font("Arial", Font.BOLD, 22));
 			// xL.setForeground(Color.WHITE);
@@ -129,9 +132,7 @@ public class ConfigTool extends JFrame {
 
 		JComponent [] leftSide = {leftPanel, innerLeftPanel, bottomPanel};
 		for (JComponent left : leftSide){
-			// left.setBackground(new Color(0.9f, 0.9f, 0.5f));
 			left.setBackground(Color.LIGHT_GRAY);
-			// left.setBackground(Color.BLACK);
 		}
 		mainFrame.getContentPane().setBackground(Color.GRAY);
 		bottomPanel.setBackground(Color.GRAY);
@@ -179,7 +180,11 @@ public class ConfigTool extends JFrame {
 		innerLeftPanel.add(aboutMe, aboutMeConstraints);
 
 		
-		// innerLeftPanel.add(clouds, poweredByC);
+
+		GridBagConstraints getStartedConstraints = new GridBagConstraints();
+			getStartedConstraints.insets = new Insets(40,0,0,0); 
+		innerRightPanel.add(getStartedLabel, getStartedConstraints);
+
 
 
 
@@ -211,7 +216,6 @@ public class ConfigTool extends JFrame {
 			rightPanelConstraints.gridx = 1;
 			rightPanelConstraints.gridy = 0;
 			rightPanelConstraints.weighty = 1.0;
-			innerRightPanel.add(new JLabel("Click on a menu option to get started."));
 		rightPanel.add(innerRightPanel);
 		mainFrame.add(rightPanel, rightPanelConstraints);
 	}
@@ -548,7 +552,7 @@ public class ConfigTool extends JFrame {
 			for (int x = 0; x < galleryList.length; x++){
 				if (galleryList[x].isDirectory()){
 					String newName = galleryList[x].getName().trim().replaceAll(" ", "_");
-					String newPath = String.format("%s/%s", filePaths.galleryDirectoryPath, newName);
+					String newPath = String.format("%s%s%s", filePaths.galleryDirectoryPath, filePaths.separator, newName);
 					// String newPath = "images/gallery/";
 					// newPath = newPath.concat(newName);
 					File newDir = new File (newPath);
