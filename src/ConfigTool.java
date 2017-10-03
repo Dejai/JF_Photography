@@ -554,15 +554,12 @@ public class ConfigTool extends JFrame {
 					String newName = galleryList[x].getName().trim();
 					// .replaceAll(" ", "_");
 					String newPath = String.format("%s%s%s", filePaths.galleryDirectoryPath, filePaths.separator, newName);
-					resultsMessageDialog(true, galleryList[x].getName());
 					// String newPath = "images/gallery/";
 					// newPath = newPath.concat(newName);
 					// File newDir = new File (newPath);
 					// galleryList[x].renameTo(newDir);
 					// resultsMessageDialog(true, newPath);
 					galleryAlbums.add(newPath);
-					resultsMessageDialog(true, galleryAlbums.get(galleryAlbums.size()-1));
-
 				}
 			}
 		} catch (Exception ex){
