@@ -38,13 +38,14 @@ GENERAL
 	#datetimePickerSection table tr {padding:1%;}
 
 
+
 /*
 REQUEST FORM
 */
 	#requestServiceForm{ width:100%; margin:auto; display:none; padding-top:2%;}
 	
 	/*The section for the date and time*/
-	.dateSection { width:100%;float:left;text-align:left; border:1px solid red; }
+	.dateSection { width:100%;float:left;text-align:left; }
 	.dateSelectorSection { width:35%; float:left; margin-right:2%;  }
 	.timeSelectorSection { width:25%; float:left;  }
 
@@ -53,11 +54,32 @@ REQUEST FORM
 	/*.addNewDateTimeButton { color:limegreen; font-size:12px; text-align:center; padding:0%; }
 	.addNewDateTimeButton:hover { cursor:pointer; color:white; background-color:limegreen;}
 */
-	.addNewDateTimeButton { color:limegreen; font-size:22px; }
-	.addNewDateTimeButton:hover { cursor:pointer;}
+	.addNewDateTimeButton { color:green; font-size:22px; }
+	.addNewDateTimeButton:hover { cursor:pointer; color:limegreen;}
 
-	.removeNewDateTimeButton { color:red; font-size:22px; }
-	.removeNewDateTimeButton:hover { cursor:pointer;}
+	.addNewDateTimeButtonTooltip { visibility: hidden; width:100px; color:white;
+									 font-size:16px; word-spacing:150px; position: absolute; z-index: 1; top:100%; left:10%;
+									  -webkit-transition-delay: 0.7s;
+									transition-delay: 0.7s;
+									-webkit-transition-property: visibility; /* Safari */
+								    transition-property: visibility;
+								  }
+	.addNewDateTimeButton:hover .addNewDateTimeButtonTooltip { visibility:visible;; cursor:pointer;}
+
+
+
+	.removeNewDateTimeButton { color:firebrick; font-size:22px; }
+
+	.removeNewDateTimeButton:hover { cursor:pointer; color:red;}
+
+	.removeNewDateTimeButtonTooltip { visibility: hidden; width:100px; color:white;
+									 font-size:16px; word-spacing:150px; position: absolute; z-index: 1; top:100%; left:10%;
+									 -webkit-transition-delay: 0.7s;
+										transition-delay: 0.7s;
+									 -webkit-transition-property: visibility; /* Safari */
+								    transition-property: visibility;
+									}
+	.removeNewDateTimeButton:hover .removeNewDateTimeButtonTooltip { visibility:visible; cursor:pointer;}
 	
 
 /*

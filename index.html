@@ -28,30 +28,36 @@
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
+<div id="testIntro" style="color:white;text-align:center;">
+    <h1 id="introHeader" style="display:none;">Welcome to<br/><span style="color:red">JeRon Fyfield Photography</span></h1>
+    <br/>
+    <h3 id="sentenceOne" style="display:none;">Professional quality pictures ... at a family-friendly price.</h3>
+    <br/>
+    <h3 id="sentenceTwo" style="display:none;color:red;">Let's Make Magic!</h3>
+
+</div>
 <div id="slideshowSection" class="delayedDisplay hideForMobileNav">
-    <div id="slideshowImagesContainerzz" style="width:100%;height:100%; padding-top:0.5%;">
-        <img class="slideshow_image dim-portrait selectedImage1 showMeDel2" style="margin:auto;" src="/images/slideshow/imageQ.jpg">
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image1.jpg">
+    <div id="slideshowImagesContainer" style="width:100%;height:100%; padding-top:0.5%;">
+        <!-- <img class="slideshow_image dim-portrait selectedImage1 showMeDel2" style="margin:auto;" src="/images/slideshow/imageQ.jpg"> -->
+        <!-- <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image1.jpg">
         <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image3.jpg">
         <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image4.jpg">
         <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image5.jpg">
         <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image6.jpg">
-        <!-- <img class="slideshow_image dim-landscape" src="/images/slideshow/image7.jpg"> -->
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image8.jpg">
+        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image8.jpg"> -->
     </div>
 </div>
 <div id="slideshowNavigation" class="delayedDisplay">
     <span id="slideshowPositionsSection">
-        <p id="slideshow_leftButton" class="slideshowArrow showMeDel"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="1"></p>
+       <!--  <p id="slideshow_leftButton" class="slideshowArrow showMeDel"></p>
+        <p class="slideshowPositionIndicator showMeDel currentSlidePosition" data-ron-slide="1"></p>
         <p class="slideshowPositionIndicator showMeDel" data-ron-slide="2"></p>
         <p class="slideshowPositionIndicator showMeDel" data-ron-slide="3"></p>
         <p class="slideshowPositionIndicator showMeDel" data-ron-slide="4"></p>
         <p class="slideshowPositionIndicator showMeDel" data-ron-slide="5"></p>
         <p class="slideshowPositionIndicator showMeDel" data-ron-slide="6"></p>
         <p class="slideshowPositionIndicator showMeDel" data-ron-slide="7"></p>
-        <!-- <p class="slideshowPositionIndicator showMeDel" data-ron-slide="8"></p> -->
-        <p id="slideshow_rightButton" class="slideshowArrow showMeDel"></p>
+        <p id="slideshow_rightButton" class="slideshowArrow showMeDel"></p> -->
     </span>
 </div>
 <div id="footer"></div> 
@@ -65,19 +71,35 @@
         var theTimer;
         $(document).ready(function(){
             // $("#testImages").load("/views/slideshow.html", function(){
-                // $(".slideshow_image").hide();
-                 slideshow_images = $(".slideshow_image").toArray();
-                myPositions = $(".slideshowPositionIndicator").toArray();
-                // displayDelayed(300);
-                setTimeout(function(){
-                    $(".delayedDisplay").fadeIn(2000);
+                newBuildSlideshow();
+                $(".slideshow_image").hide();
 
-                    // $(".delayedDisplay").fadeIn(4000, function(){
-                        // $(".showMeDel2").fadeIn(1000, function(){ $(".showMeDel").css("visibility", "visible");}).css("display","block");
-                    // });
-                }, 400);
-                carousel();
-                slideshowEventListeners();
+                setTimeout(function(){
+                    $("#introHeader").fadeIn();
+                    setTimeout(function(){
+                        $("#sentenceOne").fadeIn();
+                        setTimeout(function(){
+                            $("#sentenceTwo").fadeIn();
+                        }, 2000)
+                    }, 2000);
+                }, 500);
+
+                setTimeout(function(){
+                    $("#testIntro").fadeOut(500);
+                    slideshow_images = $(".slideshow_image").toArray();
+                    myPositions = $(".slideshowPositionIndicator").toArray();
+
+                    // displayDelayed(300);
+                    setTimeout(function(){
+                        $(".delayedDisplay").fadeIn(500);
+
+                        // $(".delayedDisplay").fadeIn(4000, function(){
+                            // $(".showMeDel2").fadeIn(1000, function(){ $(".showMeDel").css("visibility", "visible");}).css("display","block");
+                        // });
+                    }, 400);
+                    carousel();
+                    slideshowEventListeners();
+                }, 7000);
             // });
         });
     </script>

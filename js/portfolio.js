@@ -1,14 +1,31 @@
+var albumObj = {};
+
 $(document).ready(function(){
 	var url = window.location.pathname;
 	displayDelayed();
-	var filename = url.substring(url.lastIndexOf('/')+1);
-	if (filename == "albums.html"){
-		var query = window.location.search
-		var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
-	    getAlbumPhotos(albumName);
-	} else {
-	    getAlbumCovers();
-	}
+	$.get("/config/albumsJSON.txt", function(results){
+		storeAlbumImages(JSON.parse(results));
+		var filename = url.substring(url.lastIndexOf('/')+1);
+
+		if (filename == "albums.html"){
+			var query = window.location.search
+			var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
+	    	albumName = decodeURIComponent(albumName);
+	    	getAlbumPhotos(albumName);
+		} else {
+			var payload = JSON.parse(results);
+		    getAlbumCovers(payload);
+		}
+	});
+	// var filename = url.substring(url.lastIndexOf('/')+1);
+	// if (filename == "albums.html"){
+	// 	var query = window.location.search
+	// 	var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
+	//     albumName = decodeURIComponent(albumName);
+	//     getAlbumPhotos(albumName);
+	// } else {
+	//     getAlbumCovers();
+	// }
 });
 
 
@@ -23,21 +40,51 @@ $(document).ready(function(){
 /*
 	@desc -- Makes a GET call to retrieve information about the different albums from the config file.
 */
-function getAlbumCovers(){
-	$.get("/config/albumCovers.txt", function(results){
-    	var albumCovers_config = results.split("\n");
+// function getAlbumCovers(){
+// 	$.get("/config/albumCovers.txt", function(results){
+//     	var albumCovers_config = results.split("\n");
+//     	var albumCovers_element = ""; 
+//     	var clientWidth = window.innerWidth;
+//     	var endOfRow = clientWidth >= 760 ? 3 : 2;
+//     	for (var x = 1; x < albumCovers_config.length; x++){
+//     		var folderName = albumCovers_config[x].split(", ")[0];
+//     		var albumName = albumCovers_config[x].split(", ")[1];
+//     		var albumCoverImage = albumCovers_config[x].split(", ")[2];
+//     		if (x == 1){
+//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "firstCellInRow");
+//     		} else if ( (x % endOfRow) == 0 && x != albumCovers_config.length-1){
+//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCellInRow");
+//     		} else if ( x == albumCovers_config.length-1){
+//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCell");
+//     		} else {
+//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "middleCell");
+//     		}
+//     	}
+//     	$("#albumCoversTable").append(albumCovers_element);
+
+//     	//NOTE: This is where I could add a handler for what to do if the album value is not valid. 
+
+//     	// ADDING A LISTENER FOR EACH ALBUM COVER
+//     	$(".albumCoversSingleCell").click(function(){
+// 	        var albumID = $(this).attr("data-album-id");
+// 	        var portfolioPath= window.location.href; 
+// 	        window.location.assign(portfolioPath + "albums.html?name="+albumID);
+// 	    });
+// 	});
+// }
+function getAlbumCovers(pay){
     	var albumCovers_element = ""; 
     	var clientWidth = window.innerWidth;
     	var endOfRow = clientWidth >= 760 ? 3 : 2;
-    	for (var x = 1; x < albumCovers_config.length; x++){
-    		var folderName = albumCovers_config[x].split(", ")[0];
-    		var albumName = albumCovers_config[x].split(", ")[1];
-    		var albumCoverImage = albumCovers_config[x].split(", ")[2];
-    		if (x == 1){
+    	for (var x = 0; x < pay.length; x++){
+    		var folderName = pay[x].folderName;
+    		var albumName = pay[x].name;
+    		var albumCoverImage = "/" + pay[x].coverImg;
+    		if (x == 0){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "firstCellInRow");
-    		} else if ( (x % endOfRow) == 0 && x != albumCovers_config.length-1){
+    		} else if ( (x % endOfRow) == 0 && x != pay.length-1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCellInRow");
-    		} else if ( x == albumCovers_config.length-1){
+    		} else if ( x == pay.length-1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCell");
     		} else {
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "middleCell");
@@ -53,9 +100,14 @@ function getAlbumCovers(){
 	        var portfolioPath= window.location.href; 
 	        window.location.assign(portfolioPath + "albums.html?name="+albumID);
 	    });
-});
 }
 
+
+function storeAlbumImages(payload){
+	for (var x = 0 ; x < payload.length; x++){
+		albumObj[payload[x].name] = payload[x].images;
+	}
+}
 /*
 	@desc -- Used to build each album cover and return the element
 	@params -- Name of the album, the image for the album, which number in the row is it (i.e. type)
@@ -64,7 +116,7 @@ function buildAlbumCover(folderName, albumName, coverImage, typeOfCell){
 	var openCell, closeCell;
 	var openCoverDesc = "<div class=\"albumCoverDescription\">";
 	var closeCoverDesc = "</div>";
-	var img = "<img class='albumCoverPhoto imageHover' src='/images/gallery/"+folderName+"/"+ coverImage + "'/>";
+	var img = "<img class='albumCoverPhoto imageHover' src='"+coverImage+ "'/>";
 	switch(typeOfCell){
 		case "firstCellInRow":
 			openCell = "<div class=\"albumCoversRow\">\n\t<div data-album-id=\""+folderName+"\" class=\"albumCoversSingleCell\">"; 
@@ -95,27 +147,65 @@ function buildAlbumCover(folderName, albumName, coverImage, typeOfCell){
 			Also sets some event listeners for the images and related buttons (i.e. directional buttons)
 	@params -- The name of the album; Used to get the photos from the correct config file
 */
+// function getAlbumPhotos(folderName){
+// 	$.get("/config/"+folderName+".txt", function(results){
+//     	var albumPhotos_config = results.split("\n");
+//     	var albumPhotos_element = ""; 
+
+//     	for (var counter = 1; counter < albumPhotos_config.length; counter++){
+//     		var photo = albumPhotos_config[counter].split(", ")[0];
+//     		// var description = albumPhotos_config[counter].split(", ")[1];
+//     		var dimension = albumPhotos_config[counter].split(", ")[1];
+
+//     		if (counter == 1){
+//     			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "firstCellInRow");
+//     		} else if ( (counter % 3) == 0 && counter != albumPhotos_config.length-1){
+//     			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCellInRow");
+//     		} else if ( counter == albumPhotos_config.length-1){
+//     			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCell");
+//     		} else {
+//     			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "middleCell");
+//     		}
+//             $("#galleryModalImageContainer").append("<img class=\"galleryModalImage\" data-photo-dimension=\""+dimension+"\" src='/images/gallery/"+folderName+"/" + photo + "'/>");
+//             // $("#galleryModalImageDescriptions").append("<p class=\"galleryDescription\">" + description + "</p>");
+
+//     	}
+//     	$("#albumPhotosTable").append(albumPhotos_element);
+//     	galleryModalEventListeners();
+//     	setTimeout(function(){
+//     		$(".backToAlbums").fadeIn();
+//     		var arr = $(".albumPhoto").toArray();
+//     		for (var x in arr){
+//     			// $(arr[x]).css("width", "33.333%").css("height","200px");
+//     			$(arr[x]).css("width", "95%").css("height","inherit");
+//     		}
+//     	}, 70);
+//     });
+// }
 function getAlbumPhotos(folderName){
-	$.get("/config/"+folderName+".txt", function(results){
-    	var albumPhotos_config = results.split("\n");
+    	var albumPhotos_config = albumObj[folderName];
+    	// JSON.parse(results);
     	var albumPhotos_element = ""; 
 
-    	for (var counter = 1; counter < albumPhotos_config.length; counter++){
-    		var photo = albumPhotos_config[counter].split(", ")[0];
-    		// var description = albumPhotos_config[counter].split(", ")[1];
-    		var dimension = albumPhotos_config[counter].split(", ")[1];
+    	for (var counter = 0; counter < albumPhotos_config.length; counter++){
 
-    		if (counter == 1){
-    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "firstCellInRow");
-    		} else if ( (counter % 3) == 0 && counter != albumPhotos_config.length-1){
-    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCellInRow");
-    		} else if ( counter == albumPhotos_config.length-1){
-    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCell");
-    		} else {
-    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "middleCell");
-    		}
-            $("#galleryModalImageContainer").append("<img class=\"galleryModalImage\" data-photo-dimension=\""+dimension+"\" src='/images/gallery/"+folderName+"/" + photo + "'/>");
-            // $("#galleryModalImageDescriptions").append("<p class=\"galleryDescription\">" + description + "</p>");
+	    		// var photo = albumPhotos_config[counter].split(", ")[0];
+	    		var photo = albumPhotos_config[counter].name
+	    		// var description = albumPhotos_config[counter].split(", ")[1];
+	    		// var dimension = albumPhotos_config[counter].split(", ")[1];
+	    		var dimension = albumPhotos_config[counter].dimension;
+
+	    		if (counter == 0){
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "firstCellInRow");
+	    		} else if ( (counter % 3) == 0 && counter != albumPhotos_config.length-1){
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCellInRow");
+	    		} else if ( counter == albumPhotos_config.length-1){
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCell");
+	    		} else {
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "middleCell");
+	    		}
+	            $("#galleryModalImageContainer").append("<img class=\"galleryModalImage\" data-photo-dimension=\""+dimension+"\" src='/"+photo+"'/>");
+	            // $("#galleryModalImageDescriptions").append("<p class=\"galleryDescription\">" + description + "</p>");
 
     	}
     	$("#albumPhotosTable").append(albumPhotos_element);
@@ -128,7 +218,6 @@ function getAlbumPhotos(folderName){
     			$(arr[x]).css("width", "95%").css("height","inherit");
     		}
     	}, 70);
-    });
 }
 
 /*
@@ -137,7 +226,7 @@ function getAlbumPhotos(folderName){
 */
 function buildAlbumPhoto(folderName, photo, photoIndex, typeOfCell){
 	var openCell, closeCell;
-	var img = "<img class='albumPhoto imageHover' src='/images/gallery/"+folderName+"/" + photo + "'/>";
+	var img = "<img class='albumPhoto imageHover' src='/"+photo+"'/>";
 
 	switch(typeOfCell){
 		case "firstCellInRow":

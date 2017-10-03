@@ -113,12 +113,37 @@ function AddDateTimePicker(){
 
 function removeDateTimeRow(){
 	$(".removeNewDateTimeButton").click(function(){
-		alert("Made it");
 		// $(this).remove();
+		var addButton = document.createElement("a");
+		addButton.className = "addNewDateTimeButton glyphicon glyphicon-plus-sign";
+		var addButtonTooltip = document.createElement("span");
+		addButtonTooltip.className += "addNewDateTimeButtonTooltip";
+		addButtonTooltip.append(document.createTextNode("Add alternate date"));
+		addButton.append(addButtonTooltip);
+		// console.log(addButton);
+		var resetAddButton = false; 
+
 		var rowToDelete = $(this).parent().parent();
 		var labelRowToDelete = rowToDelete.prev();
+
+		var sibling = $(this).prev();
+		if (sibling.length > 0){
+			resetAddButton = true;		
+		}
+		
 		labelRowToDelete.remove();
 		rowToDelete.remove();
+
+		var parent = $("#newTableForDates .fieldsRow");
+		var lastRow = parent[parent.length-1];
+		var buttonCol = lastRow.querySelectorAll(".addOrRemoveDates")[0];
+		// console.log(addButton);
+		// console.log(lastRow);
+		if (resetAddButton && buttonCol.querySelectorAll(".addNewDateTimeButton").length < 1){
+			buttonCol.prepend(addButton);
+			addNewDateTimeRow();
+		}
+		// removeDateTimeRow();
 	});
 }
 function addNewDateTimeRow(){
@@ -130,22 +155,24 @@ function addNewDateTimeRow(){
 		// addNewDateTimeRow();
 		// var removeButton = "<a class='removeNewDateTimeButton glyphicon glyphicon-minus-sign' style='color:red; line-height:100%; font-size:22px;'></a>";
 		var removeButton = document.createElement("a");
-		removeButton.setAttribute("class", "removeNewDateTimeButton");
-		removeButton.setAttribute("class", "glyphicon glyphicon-minus-sign");
-		removeButton.style.color = "red";
-		removeButton.style.fontSize = "22px";
-		removeButton.style.cursor = "pointer";
+		removeButton.className += "removeNewDateTimeButton glyphicon glyphicon-minus-sign";
+		var removeButtonTooltip = document.createElement("span");
+		removeButtonTooltip.className += "removeNewDateTimeButtonTooltip";
+		removeButtonTooltip.append(document.createTextNode("Remove this date/time."));
+		removeButton.append(removeButtonTooltip);
+		// removeButton.style.color = "red";
+		// removeButton.style.fontSize = "22px";
+		// removeButton.style.cursor = "pointer";
 
 		// removeButton.setAttribute("class", "glyphicon-minus-sign");
 		// removeButton.setAttribute("style", "color:red; line-height:100%; font-size:22px;");
 		var theRow = $(this).parent().parent();
 		var sibling = $(this).next();
-		console.log(sibling.length);
+		// console.log(sibling.length);
 
 		var newRow = theRow.clone();
-		// console.log(newRow[0].childNodes[5]);
 		if (sibling.length < 1){
-			newRow[0].childNodes[5].append(removeButton);
+			newRow[0].querySelectorAll(".addOrRemoveDates")[0].append(removeButton);
 		}
 		// .children[2].append(removeButton);
 		// console.log(newRow[0].children[2]);

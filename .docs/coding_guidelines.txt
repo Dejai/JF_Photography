@@ -35,4 +35,8 @@ Settled on this one:
 	https://www.youtube.com/watch?v=3V_jFx51lao
 
 
+How to Setup a Slideshow ... NO JS
+https://www.experts-exchange.com/articles/14861/Build-a-Pure-CSS3-Slideshow-no-javascript-here.html
+
+
 

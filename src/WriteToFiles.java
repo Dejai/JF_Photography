@@ -29,7 +29,7 @@ public class WriteToFiles{
 
 			jsonOUT.write("[");
 			jsonOUT.newLine();
-			int albumCount = 0; 
+			int albumCount = 0;
 			for (Album singleAlbum : albumArrayList){
 				String openJSON = String.format("{"
 					+ "\"name\" :\"" + singleAlbum.albumName + "\","
@@ -41,7 +41,9 @@ public class WriteToFiles{
 
 				int pictCount = 0;
 				// for (Picture yx : singleAlbum.pictures){
-				for (String yx : singleAlbum.pics.keySet().toArray(new String[singleAlbum.pics.size()])){
+				String picsArr [] = singleAlbum.pics.keySet().toArray(new String[singleAlbum.pics.size()]);
+				Arrays.sort(picsArr);
+				for (String yx : picsArr){
 					String imgJSON = String.format("{"
 						+ "\"name\" :\"" + yx.replace("\\", "/") + "\","
 					  +  "\"dimension\" :\"" + singleAlbum.pics.get(yx) + "\"");

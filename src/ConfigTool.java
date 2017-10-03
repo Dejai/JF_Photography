@@ -551,13 +551,18 @@ public class ConfigTool extends JFrame {
 			File [] galleryList = gallery.listFiles();
 			for (int x = 0; x < galleryList.length; x++){
 				if (galleryList[x].isDirectory()){
-					String newName = galleryList[x].getName().trim().replaceAll(" ", "_");
+					String newName = galleryList[x].getName().trim();
+					// .replaceAll(" ", "_");
 					String newPath = String.format("%s%s%s", filePaths.galleryDirectoryPath, filePaths.separator, newName);
+					resultsMessageDialog(true, galleryList[x].getName());
 					// String newPath = "images/gallery/";
 					// newPath = newPath.concat(newName);
-					File newDir = new File (newPath);
-					galleryList[x].renameTo(newDir);
+					// File newDir = new File (newPath);
+					// galleryList[x].renameTo(newDir);
+					// resultsMessageDialog(true, newPath);
 					galleryAlbums.add(newPath);
+					resultsMessageDialog(true, galleryAlbums.get(galleryAlbums.size()-1));
+
 				}
 			}
 		} catch (Exception ex){
@@ -696,7 +701,7 @@ public class ConfigTool extends JFrame {
 		}	
 	}
 	
-	public static void processImages(String directoryPath, ArrayList<Album> albumArrayList){	
+	public static void processImages(String directoryPath, ArrayList<Album> albumArrayList){
 		try{
 			File dir = new File(directoryPath);
 			File dirList[] = dir.listFiles();
