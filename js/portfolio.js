@@ -194,15 +194,16 @@ function getAlbumPhotos(folderName){
 	    		// var description = albumPhotos_config[counter].split(", ")[1];
 	    		// var dimension = albumPhotos_config[counter].split(", ")[1];
 	    		var dimension = albumPhotos_config[counter].dimension;
+	    		var photoIndex = counter+1;
 
 	    		if (counter == 0){
-	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "firstCellInRow");
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, photoIndex, "firstCellInRow");
 	    		} else if ( (counter % 3) == 0 && counter != albumPhotos_config.length-1){
-	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCellInRow");
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, photoIndex, "lastCellInRow");
 	    		} else if ( counter == albumPhotos_config.length-1){
-	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "lastCell");
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, photoIndex, "lastCell");
 	    		} else {
-	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, counter, "middleCell");
+	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, photoIndex, "middleCell");
 	    		}
 	            $("#galleryModalImageContainer").append("<img class=\"galleryModalImage\" data-photo-dimension=\""+dimension+"\" src='/"+photo+"'/>");
 	            // $("#galleryModalImageDescriptions").append("<p class=\"galleryDescription\">" + description + "</p>");
@@ -275,7 +276,7 @@ function galleryModalEventListeners(){
 		$("#galleryModal").show().css("z-index", 10);
 		$("body").css("overflow", "hidden");
 		var photoIndex = Number($(this).attr("data-photo-index"));
-		var photoIndex = Number($(this).attr("data-photo-index"));
+		// var photoIndex = Number($(this).attr("data-photo-index"));
 		$("#currentGalleryModalImage").html(photoIndex-1);
 		nextGalleryImage(galleryModalPhotos_array, "right");
     });
@@ -375,27 +376,27 @@ function nextGalleryImage(galleryPhotos, direction){
 	
 }
 
-// function setImageDimensions(container, dimension){
-// 	var ele = "#"+container;
-// 	switch (dimension){
-// 		case "portrait":
-// 			// $("#galleryModalImageContainer").css("width", "35%").css("height", "380px").css("border", "1px solid green");
-// 			$(ele).css("width", "400px").css("height", "450px");
-// 			// .css("border", "1px solid green");
-// 			break;
-// 		case "landscape":
-// 			// $("#galleryModalImageContainer").css("width", "60%").css("height", "350px").css("border", "1px solid yellow");
-// 			$(ele).css("width", "850px").css("height", "450px");
-// 			// .css("border", "1px solid yellow");
-// 			break;
-// 		case "square":
-// 			// $("#galleryModalImageContainer").css("width", "50%").css("height", "350px").css("border", "1px solid purple");
-// 			$(ele).css("width", "450px").css("height", "450px");
-// 			// .css("border", "1px solid purple");
-// 			break;
-// 		default:
-// 			// $("#galleryModalImageContainer").css("width", "50%").css("height", "350px").css("border", "1px solid red");
-// 			$(ele).css("width", "50%").css("height", "350px");
-// 			// .css("border", "1px solid red");
-// 	}
-// }
+function setImageDimensions(container, dimension){
+	var ele = "#"+container;
+	switch (dimension){
+		case "portrait":
+			// $("#galleryModalImageContainer").css("width", "35%").css("height", "380px").css("border", "1px solid green");
+			$(ele).css("width", "400px").css("height", "450px");
+			// .css("border", "1px solid green");
+			break;
+		case "landscape":
+			// $("#galleryModalImageContainer").css("width", "60%").css("height", "350px").css("border", "1px solid yellow");
+			$(ele).css("width", "850px").css("height", "450px");
+			// .css("border", "1px solid yellow");
+			break;
+		case "square":
+			// $("#galleryModalImageContainer").css("width", "50%").css("height", "350px").css("border", "1px solid purple");
+			$(ele).css("width", "450px").css("height", "450px");
+			// .css("border", "1px solid purple");
+			break;
+		default:
+			// $("#galleryModalImageContainer").css("width", "50%").css("height", "350px").css("border", "1px solid red");
+			$(ele).css("width", "50%").css("height", "350px");
+			// .css("border", "1px solid red");
+	}
+}
