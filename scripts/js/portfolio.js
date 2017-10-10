@@ -90,11 +90,11 @@ function getAlbumCovers(pay){
     	var albumCovers_element = ""; 
     	var clientWidth = window.innerWidth;
     	var endOfRow = clientWidth >= 760 ? 3 : 2;
-    	for (var x = 0; x < pay.length; x++){
-    		var folderName = pay[x].folderName;
-    		var albumName = pay[x].name;
-    		var albumCoverImage = "/" + pay[x].coverImg;
-    		if (x == 0){
+    	for (var x = 1; x <= pay.length; x++){
+    		var folderName = pay[x-1].folderName;
+    		var albumName = pay[x-1].name;
+    		var albumCoverImage = "/" + pay[x-1].coverImg;
+    		if (x == 1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "firstCellInRow");
     		} else if ( (x % endOfRow) == 0 && x != pay.length-1){
     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCellInRow");
@@ -206,16 +206,19 @@ function getAlbumPhotos(folderName){
     		return -1;
     	}
 
-    	for (var counter = 0; counter < albumPhotos_config.length; counter++){
+  		console.log(albumPhotos_config.length);
+
+    	for (var counter = 1; counter <= albumPhotos_config.length; counter++){
 
 	    		// var photo = albumPhotos_config[counter].split(", ")[0];
-	    		var photo = albumPhotos_config[counter].name
+	    		var photo = albumPhotos_config[counter-1].name;
+
 	    		// var description = albumPhotos_config[counter].split(", ")[1];
 	    		// var dimension = albumPhotos_config[counter].split(", ")[1];
-	    		var dimension = albumPhotos_config[counter].dimension;
-	    		var photoIndex = counter+1;
+	    		var dimension = albumPhotos_config[counter-1].dimension;
+	    		var photoIndex = counter;
 
-	    		if (counter == 0){
+	    		if (counter == 1){
 	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, photoIndex, "firstCellInRow");
 	    		} else if ( (counter % 3) == 0 && counter != albumPhotos_config.length-1){
 	    			albumPhotos_element += buildAlbumPhoto(folderName, photo, photoIndex, "lastCellInRow");
