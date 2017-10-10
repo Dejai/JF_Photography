@@ -7,13 +7,23 @@ $(document).ready(function(){
 
 		var filename = url.substring(url.lastIndexOf('/')+1);
 		var query = window.location.search;
+		var queryName = query.split("=")[0].substring(1);
+		var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
 		var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
 
-		if (query && albumName){
+		if (query && albumName && queryName == "album"){
 			$("#albumCoversList").hide();
 			albumName = decodeURIComponent(albumName);
-	    	getAlbumPhotos(albumName);
+			if ( !albumObj[albumName] ){
+				$("#albumNotFound").show();
+	    		// alert("Couldn't find that ablum.... WOOOOPS!");
+	    	} else{
+				$("#albumNotFound").hide();
+
+	    		getAlbumPhotos(albumName);
+	    	}
 		} else{
+			$("#albumNotFound").hide();
 			$("#albumPhotosList").hide();
 			displayDelayed();
 			var payload = JSON.parse(results);
@@ -41,6 +51,7 @@ $(document).ready(function(){
 	//     getAlbumCovers();
 	// }
 });
+
 
 
 /*
@@ -111,8 +122,9 @@ function getAlbumCovers(pay){
     	// ADDING A LISTENER FOR EACH ALBUM COVER
     	$(".albumCoversSingleCell").click(function(){
 	        var albumID = $(this).attr("data-album-id");
-	        var portfolioPath= window.location.href; 
-	        window.location.assign(portfolioPath + "?name="+albumID);
+	        var portfolioPath= window.location.href.split("?")[0];
+	        // alert(portfolioPath.split("?")[0]);
+	        window.location.assign(portfolioPath + "?album="+albumID);
 	    });
 }
 
@@ -200,12 +212,7 @@ function getAlbumPhotos(folderName){
     	var albumPhotos_config = albumObj[folderName];
     	// JSON.parse(results);
     	var albumPhotos_element = "";
-
-    	if (!albumPhotos_config){
-    		alert("Couldn't find that ablum!");
-    		return -1;
-    	}
-
+ 
   		console.log(albumPhotos_config.length);
 
     	for (var counter = 1; counter <= albumPhotos_config.length; counter++){
