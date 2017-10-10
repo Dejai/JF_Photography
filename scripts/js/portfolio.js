@@ -2,20 +2,34 @@ var albumObj = {};
 
 $(document).ready(function(){
 	var url = window.location.pathname;
-	displayDelayed();
 	$.get("/config/albumsJSON.txt", function(results){
 		storeAlbumImages(JSON.parse(results));
-		var filename = url.substring(url.lastIndexOf('/')+1);
 
-		if (filename == "albums.html"){
-			var query = window.location.search
-			var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
-	    	albumName = decodeURIComponent(albumName);
+		var filename = url.substring(url.lastIndexOf('/')+1);
+		var query = window.location.search;
+		var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
+
+		if (query && albumName){
+			$("#albumCoversList").hide();
+			albumName = decodeURIComponent(albumName);
 	    	getAlbumPhotos(albumName);
-		} else {
+		} else{
+			$("#albumPhotosList").hide();
+			displayDelayed();
 			var payload = JSON.parse(results);
 		    getAlbumCovers(payload);
 		}
+
+
+		// if (filename == "albums.html"){
+		// 	var query = window.location.search
+		// 	var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
+	 //    	albumName = decodeURIComponent(albumName);
+	 //    	getAlbumPhotos(albumName);
+		// } else {
+		// 	var payload = JSON.parse(results);
+		//     getAlbumCovers(payload);
+		// }
 	});
 	// var filename = url.substring(url.lastIndexOf('/')+1);
 	// if (filename == "albums.html"){
@@ -98,7 +112,7 @@ function getAlbumCovers(pay){
     	$(".albumCoversSingleCell").click(function(){
 	        var albumID = $(this).attr("data-album-id");
 	        var portfolioPath= window.location.href; 
-	        window.location.assign(portfolioPath + "albums.html?name="+albumID);
+	        window.location.assign(portfolioPath + "?name="+albumID);
 	    });
 }
 
@@ -185,7 +199,12 @@ function buildAlbumCover(folderName, albumName, coverImage, typeOfCell){
 function getAlbumPhotos(folderName){
     	var albumPhotos_config = albumObj[folderName];
     	// JSON.parse(results);
-    	var albumPhotos_element = ""; 
+    	var albumPhotos_element = "";
+
+    	if (!albumPhotos_config){
+    		alert("Couldn't find that ablum!");
+    		return -1;
+    	}
 
     	for (var counter = 0; counter < albumPhotos_config.length; counter++){
 

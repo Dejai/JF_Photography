@@ -32,6 +32,19 @@
     <script type="text/javascript" src="/scripts/js/portfolio.js"></script>
 </head>
 <body>
+
+<!-- New Approach -->
+<div id="galleryModal">
+    <span class="glyphicon glyphicon-remove" id="closeGalleryModal"></span>
+    <div id="galleryModalImageContainer"></div>
+    <div id="galleryModalNavigationSection">
+        <a id="galleryModalLeftButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <span id="currentGalleryModalImage" class="noSelector"></span><span class="noSelector"> / </span><span id="numberOfGalleryModalImages" class="noSelector"></span> 
+        <a id="galleryModalRightButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-right"></span>  </a>        
+    </div>
+</div>
+
+
 <nav id="navbar" class="navbarHeight"></nav>
 <div id="albumSection" class="hideForMobileNav mobileBelowNav" >
     <div id="albumCoversList" class="delayedDisplay">
@@ -47,6 +60,12 @@
         </a>
         </p>
  -->        <!-- <p style="color:white;">My albums are coming soon!</p> -->
+    </div>
+    <div id="albumPhotosList">
+        <div id="backToAlbumContainer">
+            <a class = "backToAlbums" href="/pages/portfolio"> &#8656; Back </a>            
+        </div>
+        <div id="albumPhotosTable"> </div>
     </div>
 </div>
 <div id="footer"></div>
