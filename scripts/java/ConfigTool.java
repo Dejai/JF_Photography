@@ -23,11 +23,6 @@ public class ConfigTool extends JFrame {
 			public static JFrame mainFrame = new JFrame("Managing Config Files");
 			public static JPanel contentPane = new JPanel();
 
-		// OpSystem Panel
-		// public static JPanel opSysPanel = new JPanel(new GridLayout(0,2));
-		// public static JLabel windowsOSIcon = new JLabel("");
-		// public static JLabel macOSIcon = new JLabel("");
-
 		// Bottom Section
 			public static JPanel bottomPanel = new JPanel(new FlowLayout());
 			public static JLabel poweredByLabel = new JLabel("");
@@ -235,167 +230,42 @@ public class ConfigTool extends JFrame {
 		// Updating Dimensions
 		updateDimensions.addActionListener(new ActionListener() {
 		  public void actionPerformed(ActionEvent e) {
-		  	clearPanel(innerRightPanel);
-			hideHTMLExamples();
-
-		  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
-				firstRowConstraints.fill = GridBagConstraints.BOTH;
-				firstRowConstraints.gridx = 0; 
-				firstRowConstraints.gridy = 0;
-				firstRowConstraints.anchor = GridBagConstraints.CENTER;
-				firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
-			innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
-				firstRowConstraints.fill = GridBagConstraints.NONE;
-				firstRowConstraints.gridx = 1;
-			innerRightPanel.add(updateNow, firstRowConstraints);
-
-			GridBagConstraints secondSectionConstraints = new GridBagConstraints();
-				secondSectionConstraints.fill = GridBagConstraints.BOTH;
-				secondSectionConstraints.gridx = 0; 
-				secondSectionConstraints.gridy = 1; 
-				secondSectionConstraints.weighty = 0.1;
-			GridBagConstraints secondRowConstraints = new GridBagConstraints();
-				secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
-				secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-				secondRowConstraints.gridx = 0; 
-				secondRowConstraints.gridy = 1;
-				secondRowConstraints.weightx = 0.1;
-				secondRowConstraints.ipady = 30;
-				secondSectionConstraints.gridwidth = 2;
-			updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
-				secondRowConstraints.ipady = 15;
-				secondRowConstraints.gridx = 1;
-			updateDimensionsPanel.add(portraitText, secondRowConstraints);
-				secondRowConstraints.gridx = 0; 
-				secondRowConstraints.gridy = 2;
-				secondRowConstraints.weighty = 0.1;
-			updateDimensionsPanel.add(squareLabel, secondRowConstraints);
-				secondRowConstraints.gridx = 1;
-			updateDimensionsPanel.add(squareText, secondRowConstraints);
-
-			innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
-
-
-		  	GridBagConstraints updateDimensionsLabelConstraints = new GridBagConstraints();
-				updateDimensionsLabelConstraints.fill = GridBagConstraints.BOTH;
-				updateDimensionsLabelConstraints.gridx = 0; 
-				updateDimensionsLabelConstraints.gridy = 0;
-
-		  	
-
-		  	GridBagConstraints updateDimensionsDescConstraints = new GridBagConstraints();
-				updateDimensionsDescConstraints.gridx = 0; 
-				updateDimensionsDescConstraints.gridy = 1;
-				updateDimensionsDescConstraints.anchor = GridBagConstraints.CENTER;
-
-
-		  	GridBagConstraints updateDimensionsPanelConstraints= new GridBagConstraints();
-				updateDimensionsPanelConstraints.gridx = 0; 
-				updateDimensionsPanelConstraints.gridy = 1;
-				updateDimensionsPanelConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-				updateDimensionsPanelConstraints.gridwidth = GridBagConstraints.REMAINDER;
-			validateView();
-			getImageDimensionLimits();
+		  	showDimensionSection();
 		  }
 		});
 
 		updateNow.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				saveDimensions();
-				// saveUpdatedDimensions(portraitText.getText(), squareText.getText());
 			}
 		});	
 
 		// Processing Images
 		processImages.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-		 		try{
-			 		ThreadControl myThread1 = new ThreadControl("show");
-			 		Thread thread1 = new Thread(myThread1);
-			 		thread1.start();
-		 			thread1.join();
-		 			ThreadControl myThread2 = new ThreadControl("start");
-			 		Thread thread2 = new Thread(myThread2);
-			 		if(!thread1.isAlive()){
-			 			thread2.start();
-			 		}
-		 		} catch(InterruptedException ie){
-		 			resultsMessageDialog(false, ie.getMessage());
-		 			// ie.printStackTrace();
-		 		}
+				showImagePreProcessing();
+		 		// try{
+			 	// 	ThreadControl myThread1 = new ThreadControl("show");
+			 	// 	Thread thread1 = new Thread(myThread1);
+			 	// 	thread1.start();
+		 		// 	thread1.join();
+		 		// 	ThreadControl myThread2 = new ThreadControl("start");
+			 	// 	Thread thread2 = new Thread(myThread2);
+			 	// 	if(!thread1.isAlive()){
+			 	// 		thread2.start();
+			 	// 	}
+		 		// } catch(InterruptedException ie){
+		 		// 	resultsMessageDialog(false, ie.getMessage());
+		 		// }
 		 						
 			}
 			
 		});
 
-
 		// About Me
 		aboutMe.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				clearPanel(innerRightPanel);
-				// clearPanel(rightPanel);
-				GridBagConstraints editAboutMeConstraints = new GridBagConstraints();
-					editAboutMeConstraints.fill = GridBagConstraints.BOTH;
-					editAboutMeConstraints.gridx = 0; 
-					editAboutMeConstraints.gridy = 0;
-					editAboutMeConstraints.anchor = GridBagConstraints.CENTER;
-					editAboutMeConstraints.insets = new Insets(10,0,20,10);  //top padding
-				innerRightPanel.add(editAboutMe, editAboutMeConstraints);
-					editAboutMeConstraints.fill = GridBagConstraints.HORIZONTAL;
-					editAboutMeConstraints.gridx = 1;
-					editAboutMeConstraints.insets = new Insets(10,0,20,0);  //top paddin
-				innerRightPanel.add(toggleAboutMeEditor, editAboutMeConstraints);
-					editAboutMeConstraints.gridx = 2;
-				innerRightPanel.add(saveAboutMe, editAboutMeConstraints);
-
-
-				GridBagConstraints aboutMeTextEditorC = new GridBagConstraints();
-					aboutMeTextEditorC.fill = GridBagConstraints.BOTH;
-					aboutMeTextEditorC.gridx = 0; 
-					aboutMeTextEditorC.gridy = 1;
-					aboutMeTextEditorC.weighty = 0.5;
-					aboutMeTextEditorC.anchor = GridBagConstraints.FIRST_LINE_START;
-					aboutMeTextEditorC.gridwidth = GridBagConstraints.REMAINDER;
-				aboutMeTextEditor.setEditable(true);
-				aboutMeTextEditor.setMargin(new Insets(10,10,0,10));
-				// aboutMePanel.add(aboutMeTextEditor);
-				// Dimension rightPanelSize = rightPanel.getSize();
-				// innerRightPanel.setPreferredSize(rightPanelSize);
-				// innerRightPanel.setPreferredSize(new Dimension(rightPanel.getWidth()-100, rightPanel.getHeight()-100));
-				// aboutMeTextEditor.setPreferredSize(rightPanelSize);
-				// innerRightPanel.add(aboutMePanel, aboutMeTextEditorC);
-				innerRightPanel.add(aboutMeTextEditor, aboutMeTextEditorC);
-				// innerRightPanel.add(aboutMePreviewEditor, aboutMeTextEditorC);
-
-				
-				GridBagConstraints helpLabelC = new GridBagConstraints();
-					// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
-					helpLabelC.weightx = 0.5;			
-					helpLabelC.gridx = 0; 
-					helpLabelC.gridy = 4;
-					helpLabelC.insets = new Insets(30,40,0,10);
-				innerLeftPanel.add(htmlHelpLabel, helpLabelC);
-
-				GridBagConstraints helpDropDownC = new GridBagConstraints();
-					// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
-					helpDropDownC.weightx = 0.5;			
-					helpDropDownC.gridx = 0; 
-					helpDropDownC.gridy = 5;
-					helpDropDownC.insets = new Insets(10,40,0,10);
-				innerLeftPanel.add(helpDropDown, helpDropDownC);
-				
-
-				GridBagConstraints spanExampleC = new GridBagConstraints();
-					spanExampleC.fill = GridBagConstraints.HORIZONTAL;
-					spanExampleC.weightx = 0.5;			
-					spanExampleC.gridx = 0; 
-					spanExampleC.gridy = 6;
-					spanExampleC.ipady = 10;
-					spanExampleC.insets = new Insets(10,5,0,0);
-				innerLeftPanel.add(spanExample, spanExampleC);
-				// rightPanel.add(innerRightPanel);
-				validateView();
-				getAboutMeText();
+				showAboutMesection();
 			}
 		});
 
@@ -420,7 +290,7 @@ public class ConfigTool extends JFrame {
 	}
 
 
-	/* Action-Listener FUNCTIONS */
+	/* ADDING / CHANGING / REMOVING SECTIONS */
 
 	public static void setHTMLExamples(){
 		htmlExamples.put(" ", " ");
@@ -485,6 +355,214 @@ public class ConfigTool extends JFrame {
 		innerLeftPanel.remove(spanExample);				
 	}
 
+	public static void toggleAboutMeEditor(){
+		try{
+			String contentType = aboutMeTextEditor.getContentType();
+			if(contentType == "text/plain"){
+				toggleAboutMeEditor.setText("Edit");
+				plainText = aboutMeTextEditor.getText();
+				aboutMeTextEditor.setBackground(Color.BLACK);
+				aboutMeTextEditor.setContentType("text/html");
+				aboutMeTextEditor.setEditable(false);
+				aboutMeTextEditor.setText(plainText);
+			} else {
+				toggleAboutMeEditor.setText("Preview");
+				aboutMeTextEditor.setBackground(Color.WHITE);
+				aboutMeTextEditor.setContentType("text/plain");
+				aboutMeTextEditor.setEditable(true);
+				aboutMeTextEditor.setText(plainText);
+			}
+		} catch (Exception ex){
+			resultsMessageDialog(false, ex.getMessage());
+		}
+	}
+
+
+	public static void showDimensionSection(){
+		clearPanel(innerRightPanel);
+		hideHTMLExamples();
+
+	  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
+			firstRowConstraints.fill = GridBagConstraints.BOTH;
+			firstRowConstraints.gridx = 0; 
+			firstRowConstraints.gridy = 0;
+			firstRowConstraints.anchor = GridBagConstraints.CENTER;
+			firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
+		innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
+			firstRowConstraints.fill = GridBagConstraints.NONE;
+			firstRowConstraints.gridx = 1;
+		innerRightPanel.add(updateNow, firstRowConstraints);
+
+		GridBagConstraints secondSectionConstraints = new GridBagConstraints();
+			secondSectionConstraints.fill = GridBagConstraints.BOTH;
+			secondSectionConstraints.gridx = 0; 
+			secondSectionConstraints.gridy = 1; 
+			secondSectionConstraints.weighty = 0.1;
+		GridBagConstraints secondRowConstraints = new GridBagConstraints();
+			secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
+			secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+			secondRowConstraints.gridx = 0; 
+			secondRowConstraints.gridy = 1;
+			secondRowConstraints.weightx = 0.1;
+			secondRowConstraints.ipady = 30;
+			secondSectionConstraints.gridwidth = 2;
+		updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
+			secondRowConstraints.ipady = 15;
+			secondRowConstraints.gridx = 1;
+		updateDimensionsPanel.add(portraitText, secondRowConstraints);
+			secondRowConstraints.gridx = 0; 
+			secondRowConstraints.gridy = 2;
+			secondRowConstraints.weighty = 0.1;
+		updateDimensionsPanel.add(squareLabel, secondRowConstraints);
+			secondRowConstraints.gridx = 1;
+		updateDimensionsPanel.add(squareText, secondRowConstraints);
+
+		innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
+
+
+	  	GridBagConstraints updateDimensionsLabelConstraints = new GridBagConstraints();
+			updateDimensionsLabelConstraints.fill = GridBagConstraints.BOTH;
+			updateDimensionsLabelConstraints.gridx = 0; 
+			updateDimensionsLabelConstraints.gridy = 0;
+
+	  	
+
+	  	GridBagConstraints updateDimensionsDescConstraints = new GridBagConstraints();
+			updateDimensionsDescConstraints.gridx = 0; 
+			updateDimensionsDescConstraints.gridy = 1;
+			updateDimensionsDescConstraints.anchor = GridBagConstraints.CENTER;
+
+
+	  	GridBagConstraints updateDimensionsPanelConstraints= new GridBagConstraints();
+			updateDimensionsPanelConstraints.gridx = 0; 
+			updateDimensionsPanelConstraints.gridy = 1;
+			updateDimensionsPanelConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+			updateDimensionsPanelConstraints.gridwidth = GridBagConstraints.REMAINDER;
+		validateView();
+		getImageDimensionLimits();
+	}
+
+	public static void showAboutMesection(){
+		clearPanel(innerRightPanel);
+		// clearPanel(rightPanel);
+		GridBagConstraints editAboutMeConstraints = new GridBagConstraints();
+			editAboutMeConstraints.fill = GridBagConstraints.BOTH;
+			editAboutMeConstraints.gridx = 0; 
+			editAboutMeConstraints.gridy = 0;
+			editAboutMeConstraints.anchor = GridBagConstraints.CENTER;
+			editAboutMeConstraints.insets = new Insets(10,0,20,10);  //top padding
+		innerRightPanel.add(editAboutMe, editAboutMeConstraints);
+			editAboutMeConstraints.fill = GridBagConstraints.HORIZONTAL;
+			editAboutMeConstraints.gridx = 1;
+			editAboutMeConstraints.insets = new Insets(10,0,20,0);  //top paddin
+		innerRightPanel.add(toggleAboutMeEditor, editAboutMeConstraints);
+			editAboutMeConstraints.gridx = 2;
+		innerRightPanel.add(saveAboutMe, editAboutMeConstraints);
+
+
+		GridBagConstraints aboutMeTextEditorC = new GridBagConstraints();
+			aboutMeTextEditorC.fill = GridBagConstraints.BOTH;
+			aboutMeTextEditorC.gridx = 0; 
+			aboutMeTextEditorC.gridy = 1;
+			aboutMeTextEditorC.weighty = 0.5;
+			aboutMeTextEditorC.anchor = GridBagConstraints.FIRST_LINE_START;
+			aboutMeTextEditorC.gridwidth = GridBagConstraints.REMAINDER;
+		aboutMeTextEditor.setEditable(true);
+		aboutMeTextEditor.setMargin(new Insets(10,10,0,10));
+		// aboutMePanel.add(aboutMeTextEditor);
+		// Dimension rightPanelSize = rightPanel.getSize();
+		// innerRightPanel.setPreferredSize(rightPanelSize);
+		// innerRightPanel.setPreferredSize(new Dimension(rightPanel.getWidth()-100, rightPanel.getHeight()-100));
+		// aboutMeTextEditor.setPreferredSize(rightPanelSize);
+		// innerRightPanel.add(aboutMePanel, aboutMeTextEditorC);
+		innerRightPanel.add(aboutMeTextEditor, aboutMeTextEditorC);
+		// innerRightPanel.add(aboutMePreviewEditor, aboutMeTextEditorC);
+
+		
+		GridBagConstraints helpLabelC = new GridBagConstraints();
+			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
+			helpLabelC.weightx = 0.5;			
+			helpLabelC.gridx = 0; 
+			helpLabelC.gridy = 4;
+			helpLabelC.insets = new Insets(30,40,0,10);
+		innerLeftPanel.add(htmlHelpLabel, helpLabelC);
+
+		GridBagConstraints helpDropDownC = new GridBagConstraints();
+			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
+			helpDropDownC.weightx = 0.5;			
+			helpDropDownC.gridx = 0; 
+			helpDropDownC.gridy = 5;
+			helpDropDownC.insets = new Insets(10,40,0,10);
+		innerLeftPanel.add(helpDropDown, helpDropDownC);
+		
+
+		GridBagConstraints spanExampleC = new GridBagConstraints();
+			spanExampleC.fill = GridBagConstraints.HORIZONTAL;
+			spanExampleC.weightx = 0.5;			
+			spanExampleC.gridx = 0; 
+			spanExampleC.gridy = 6;
+			spanExampleC.ipady = 10;
+			spanExampleC.insets = new Insets(10,5,0,0);
+		innerLeftPanel.add(spanExample, spanExampleC);
+		// rightPanel.add(innerRightPanel);
+		validateView();
+		getAboutMeText();
+	}
+
+	public static void showImagePreProcessing(){
+		clearPanel(innerRightPanel);
+		hideHTMLExamples();
+
+		/* 
+			In here ... Add the new JComponents that would be about reminding the user to compress the images. 
+	
+	  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
+			firstRowConstraints.fill = GridBagConstraints.BOTH;
+			firstRowConstraints.gridx = 0; 
+			firstRowConstraints.gridy = 0;
+			firstRowConstraints.anchor = GridBagConstraints.CENTER;
+			firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
+		innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
+			firstRowConstraints.fill = GridBagConstraints.NONE;
+			firstRowConstraints.gridx = 1;
+		innerRightPanel.add(updateNow, firstRowConstraints);
+
+		GridBagConstraints secondSectionConstraints = new GridBagConstraints();
+			secondSectionConstraints.fill = GridBagConstraints.BOTH;
+			secondSectionConstraints.gridx = 0; 
+			secondSectionConstraints.gridy = 1; 
+			secondSectionConstraints.weighty = 0.1;
+		GridBagConstraints secondRowConstraints = new GridBagConstraints();
+			secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
+			secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+			secondRowConstraints.gridx = 0; 
+			secondRowConstraints.gridy = 1;
+			secondRowConstraints.weightx = 0.1;
+			secondRowConstraints.ipady = 30;
+			secondSectionConstraints.gridwidth = 2;
+		updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
+			secondRowConstraints.ipady = 15;
+			secondRowConstraints.gridx = 1;
+		updateDimensionsPanel.add(portraitText, secondRowConstraints);
+			secondRowConstraints.gridx = 0; 
+			secondRowConstraints.gridy = 2;
+			secondRowConstraints.weighty = 0.1;
+		updateDimensionsPanel.add(squareLabel, secondRowConstraints);
+			secondRowConstraints.gridx = 1;
+		updateDimensionsPanel.add(squareText, secondRowConstraints);
+
+		innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
+
+		*/
+
+		validateView();
+
+
+	}
+	
+
+	/* SAVING FILES */
+
 	public static void saveAboutMe(){
 		try{
 			String saveText;
@@ -519,30 +597,13 @@ public class ConfigTool extends JFrame {
 		}
 	}
 
-	public static void toggleAboutMeEditor(){
-		try{
-			String contentType = aboutMeTextEditor.getContentType();
-			if(contentType == "text/plain"){
-				toggleAboutMeEditor.setText("Edit");
-				plainText = aboutMeTextEditor.getText();
-				aboutMeTextEditor.setBackground(Color.BLACK);
-				aboutMeTextEditor.setContentType("text/html");
-				aboutMeTextEditor.setEditable(false);
-				aboutMeTextEditor.setText(plainText);
-			} else {
-				toggleAboutMeEditor.setText("Preview");
-				aboutMeTextEditor.setBackground(Color.WHITE);
-				aboutMeTextEditor.setContentType("text/plain");
-				aboutMeTextEditor.setEditable(true);
-				aboutMeTextEditor.setText(plainText);
-			}
-		} catch (Exception ex){
-			resultsMessageDialog(false, ex.getMessage());
-		}
-	}
+
 
 
 	
+
+
+
 
 	/* GET Objects */ 
 	public static void getGalleryAlbums(){
@@ -611,6 +672,9 @@ public class ConfigTool extends JFrame {
 			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
+
+
+
 
 
 	/* PROCESSING IMAGES */
