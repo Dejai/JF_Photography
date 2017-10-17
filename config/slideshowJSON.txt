@@ -1,8 +1,8 @@
 [
 {"name" :"slideshow","folderName" :"slideshow","coverImg" :"images/slideshow/image0.jpg","images" : [
-{"name" :"images/slideshow/image0.jpg","dimension" :"landscape"
+{"name" :"images/slideshow/image0.jpg","dimension" :"square"
 },
-{"name" :"images/slideshow/image1.jpg","dimension" :"landscape"
+{"name" :"images/slideshow/image1.jpg","dimension" :"square"
 },
 {"name" :"images/slideshow/image3.jpg","dimension" :"landscape"
 },
@@ -10,11 +10,11 @@
 },
 {"name" :"images/slideshow/image5.jpg","dimension" :"landscape"
 },
-{"name" :"images/slideshow/image6.jpg","dimension" :"landscape"
+{"name" :"images/slideshow/image6.jpg","dimension" :"square"
 },
-{"name" :"images/slideshow/image7.jpg","dimension" :"landscape"
+{"name" :"images/slideshow/image7.jpg","dimension" :"square"
 },
-{"name" :"images/slideshow/image8.jpg","dimension" :"landscape"
+{"name" :"images/slideshow/image8.jpg","dimension" :"square"
 }]
 }
 ]

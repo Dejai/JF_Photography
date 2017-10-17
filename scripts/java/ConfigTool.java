@@ -44,6 +44,13 @@ public class ConfigTool extends JFrame {
 
 			public static JLabel getStartedLabel = new JLabel("Click on a menu option to get started.");
 
+
+			public static JLabel compressImagesReminder = new JLabel("<html><p>Remember to compress your images!</p></html>");
+			public static JButton useTinyPng = new JButton("<html><font color='blue'><strong>Click here to go to TinyPng.com</strong></font></html>");
+			public static URI tinyPngURI;
+			public static JButton startImageProcessing = new JButton("Start Processing");
+
+
 			// Updating Dimensions
 				public static JLabel updateDimensionsLabel = new JLabel("Edit Dimensions");
 				public static JPanel updateDimensionsPanel = new JPanel(new GridBagLayout());
@@ -119,7 +126,7 @@ public class ConfigTool extends JFrame {
 			subH.setFont(new Font("Arial", Font.BOLD, 16));
 		}
 
-		JLabel [] headers= {menuLabel, processingNow, editAboutMe, updateDimensionsLabel, getStartedLabel };
+		JLabel [] headers= {menuLabel, processingNow, editAboutMe, updateDimensionsLabel, getStartedLabel, compressImagesReminder };
 		for (JLabel xL : headers){
 			xL.setFont(new Font("Arial", Font.BOLD, 22));
 			// xL.setForeground(Color.WHITE);
@@ -259,7 +266,38 @@ public class ConfigTool extends JFrame {
 		 		// }
 		 						
 			}
-			
+		});
+
+		startImageProcessing.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+		 		try{
+			 		ThreadControl myThread1 = new ThreadControl("show");
+			 		Thread thread1 = new Thread(myThread1);
+			 		thread1.start();
+		 			thread1.join();
+		 			ThreadControl myThread2 = new ThreadControl("start");
+			 		Thread thread2 = new Thread(myThread2);
+			 		if(!thread1.isAlive()){
+			 			thread2.start();
+			 		}
+		 		} catch(InterruptedException ie){
+		 			resultsMessageDialog(false, ie.getMessage());
+		 		}				
+			}
+		});
+
+		useTinyPng.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if (Desktop.isDesktopSupported()) {
+					try {
+			        	Desktop.getDesktop().browse(tinyPngURI);
+				   	} catch (IOException ex) { /* TODO: error handling */ 
+
+				   	}
+				} else { 
+				    /* TODO: error handling */ 
+				}
+			}
 		});
 
 		// About Me
@@ -510,8 +548,30 @@ public class ConfigTool extends JFrame {
 	}
 
 	public static void showImagePreProcessing(){
+
+		try{
+			tinyPngURI = new URI("http://tinypng.com");
+		} catch (Exception ex){
+			System.out.println(ex.getMessage());
+		}
 		clearPanel(innerRightPanel);
 		hideHTMLExamples();
+
+		GridBagConstraints preProcessCon = new GridBagConstraints();
+			preProcessCon.fill = GridBagConstraints.HORIZONTAL;
+			preProcessCon.gridx = 0;
+			preProcessCon.gridy = 0;
+			preProcessCon.weightx = 1;
+			preProcessCon.insets = new Insets(0,0,20,60);
+		innerRightPanel.add(compressImagesReminder, preProcessCon);
+			preProcessCon.gridy = 1;
+		innerRightPanel.add(useTinyPng, preProcessCon);
+			// preProcessCon.fill = GridBagConstraints.NONE;
+			preProcessCon.gridy = 2;
+			preProcessCon.weightx = 0;
+		innerRightPanel.add(startImageProcessing, preProcessCon);
+
+		
 
 		/* 
 			In here ... Add the new JComponents that would be about reminding the user to compress the images. 
