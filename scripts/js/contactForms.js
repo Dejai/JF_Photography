@@ -171,6 +171,13 @@ function addNewDateTimeRow(){
 		// console.log(sibling.length);
 
 		var newRow = theRow.clone();
+		console.log(newRow);
+		var inputs = newRow[0].querySelectorAll("input");
+		console.log(inputs);
+		for (var x = 0; x < inputs.length; x++){
+			inputs[x].value = "";
+			// console.log(inputs[x].value);
+		}
 		if (sibling.length < 1){
 			newRow[0].querySelectorAll(".addOrRemoveDates")[0].append(removeButton);
 		}
