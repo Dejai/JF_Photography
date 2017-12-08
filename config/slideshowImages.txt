@@ -1,9 +1,0 @@
-Image Name, Dimension
-imageX.jpg, portrait
-image1.jpg, landscape
-image3.jpg, landscape
-image4.jpg, landscape
-image5.jpg, landscape
-image6.jpg, landscape
-image7.jpg, landscape
-image8.jpg, landscape

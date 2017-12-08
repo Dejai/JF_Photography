@@ -1,5 +1,0 @@
-Folder Name, Album Name, Album Cover
-albumone, The First One, image3.jpg
-albumtwo, Humans, image8.jpg
-albumone, The Other One, image4.jpg
-albumtwo, Hello, image6.jpg
