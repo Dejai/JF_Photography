@@ -30,73 +30,12 @@ $(document).ready(function(){
 		    getAlbumCovers(payload);
 		}
 
-
-		// if (filename == "albums.html"){
-		// 	var query = window.location.search
-		// 	var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
-	 //    	albumName = decodeURIComponent(albumName);
-	 //    	getAlbumPhotos(albumName);
-		// } else {
-		// 	var payload = JSON.parse(results);
-		//     getAlbumCovers(payload);
-		// }
 	});
-	// var filename = url.substring(url.lastIndexOf('/')+1);
-	// if (filename == "albums.html"){
-	// 	var query = window.location.search
-	// 	var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
-	//     albumName = decodeURIComponent(albumName);
-	//     getAlbumPhotos(albumName);
-	// } else {
-	//     getAlbumCovers();
-	// }
+
 });
 
 
 
-/*
-	NEW LOGIC: 
-		On page load .... Load the JSON file of albums (includes the slideshow album)
-			> Maybe the slideshow album should end up being a config file on its own.
-		Save each album object as a class on the JS side. 
-		First .... List each album object; 
-*/
-
-/*
-	@desc -- Makes a GET call to retrieve information about the different albums from the config file.
-*/
-// function getAlbumCovers(){
-// 	$.get("/config/albumCovers.txt", function(results){
-//     	var albumCovers_config = results.split("\n");
-//     	var albumCovers_element = ""; 
-//     	var clientWidth = window.innerWidth;
-//     	var endOfRow = clientWidth >= 760 ? 3 : 2;
-//     	for (var x = 1; x < albumCovers_config.length; x++){
-//     		var folderName = albumCovers_config[x].split(", ")[0];
-//     		var albumName = albumCovers_config[x].split(", ")[1];
-//     		var albumCoverImage = albumCovers_config[x].split(", ")[2];
-//     		if (x == 1){
-//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "firstCellInRow");
-//     		} else if ( (x % endOfRow) == 0 && x != albumCovers_config.length-1){
-//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCellInRow");
-//     		} else if ( x == albumCovers_config.length-1){
-//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "lastCell");
-//     		} else {
-//     			albumCovers_element +=  buildAlbumCover(folderName, albumName, albumCoverImage, "middleCell");
-//     		}
-//     	}
-//     	$("#albumCoversTable").append(albumCovers_element);
-
-//     	//NOTE: This is where I could add a handler for what to do if the album value is not valid. 
-
-//     	// ADDING A LISTENER FOR EACH ALBUM COVER
-//     	$(".albumCoversSingleCell").click(function(){
-// 	        var albumID = $(this).attr("data-album-id");
-// 	        var portfolioPath= window.location.href; 
-// 	        window.location.assign(portfolioPath + "albums.html?name="+albumID);
-// 	    });
-// 	});
-// }
 function getAlbumCovers(pay){
     	var albumCovers_element = ""; 
     	var clientWidth = window.innerWidth;
