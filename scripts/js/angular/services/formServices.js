@@ -85,7 +85,7 @@ angular.module("contactForms").service("formServices", function($http, $q, $time
 			for (let x in dates_List){
 				let timee = times_List[x].value != '' ? " at " + times_List[x].value : " (time not selected)";
 				if (x == 0){
-					dateTimeCombo += "<li>" + dates_List[x].value + timee + " <em style='color:redl padding-left:1%;'> << preferred date/time</em></li>";
+					dateTimeCombo += "<li>" + dates_List[x].value + timee + " <em style='color:red; padding-left:2%;'> << preferred date/time</em></li>";
 				} else { 
 					dateTimeCombo += "<li>" + dates_List[x].value + timee + "</li>";
 				}
