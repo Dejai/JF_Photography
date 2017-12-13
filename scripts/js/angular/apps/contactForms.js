@@ -23,6 +23,7 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 		if ($scope.submittingForm){
 			return null;  //Do not allow users to select another form while the form is being processed
 		} else if (formValue == "service"){
+			$scope.dates = [0];
 			$scope.serviceStyle = selectedButton;
 			$scope.feedbackStyle = "";
 			$scope.showServiceForm = true;
