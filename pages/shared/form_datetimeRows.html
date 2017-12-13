@@ -1,0 +1,25 @@
+<tr >
+	<td>
+		<label class="requiredField">{{ row == 0 ? "Preferred Date" : "Additional Date"}} </label><br/>
+	</td>
+	<td>
+		<label>Time</label><br/>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr class="fieldsRow" style="border-bottom:20px solid transparent;">
+	<td style="">
+		<input class="datePicker inheritWidth resetAfterSubmit" style="width:120px;" name="dateChoice" placeholder="mm/dd/yy" required>
+	</td>
+	<td style="padding-left:10px;">
+		<input class="timePicker inheritWidth resetAfterSubmit" style="width:70px;" name="timeChoice" placeholder="h:mm">
+	</td>
+	<td class="addOrRemoveDates">
+		<a class="addNewDateTimeButton glyphicon glyphicon-plus-sign" ng-click="addDateTimeRow()" ng-if="$last">
+			<span class="addNewDateTimeButtonTooltip" >Add alternate date/time.</span>
+		</a>
+		<a class="removeNewDateTimeButton glyphicon glyphicon-minus-sign" ng-click="removeDateTimeRow()" ng-if="$last && row > 0">
+			<span class="removeNewDateTimeButtonTooltip" >Remove this date/time.</span>
+		</a>
+	</td>
+</tr>

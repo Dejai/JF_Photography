@@ -38,5 +38,9 @@ Settled on this one:
 How to Setup a Slideshow ... NO JS
 https://www.experts-exchange.com/articles/14861/Build-a-Pure-CSS3-Slideshow-no-javascript-here.html
 
+How to apply updates to the proper scope with AngularJS
+https://stackoverflow.com/questions/46888185/accessing-scope-from-within-a-catch-function-after-a-promise?answertab=oldest#tab-top
+
+
 
 

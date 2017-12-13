@@ -17,28 +17,7 @@
 	<label>When do you need photos taken?</label><br/>
 	<div id="datetimePickerSection" class="dateSection">
 		<table id="newTableForDates">
-			<tr >
-				<td>
-					<label class="requiredField">Preferred Date</label><br/>
-				</td>
-				<td>
-					<label>Time</label><br/>
-				</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr class="fieldsRow" style="border-bottom:20px solid transparent;">
-				<td style="">
-					<input class="datePicker inheritWidth resetAfterSubmit" style="width:120px;" name="dateChoice" placeholder="mm/dd/yy" required>
-				</td>
-				<td style="padding-left:10px;">
-					<input class="timePicker inheritWidth resetAfterSubmit" style="width:70px;" name="timeChoice" placeholder="h:mm">
-				</td>
-				<td class="addOrRemoveDates">
-					<a class="addNewDateTimeButton glyphicon glyphicon-plus-sign">
-						<span class="addNewDateTimeButtonTooltip">Add alternate date/time</span>
-					</a>
-				</td>
-			</tr>
+			<tbody ng-repeat="row in dates" date-time-rows> </tbody>
 		</table>
 	</div>
 </div>
