@@ -1,7 +1,7 @@
 angular.module("contactForms").service("dateTime", function(){
 
 	this.dateAndTime = function(){
-		// This can be done in a AngularJS way ... I'm certain
+		console.log("DateTime presences");
 		$(".timePicker").datetimepicker({
 			datepicker:false,
 			timepicker:true,

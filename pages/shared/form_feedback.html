@@ -1,0 +1,18 @@
+<p><span class="requiredField"></span> indicates required field.</p>
+<div class="formRow">
+	<div class="customerInfoFields">
+		<label class="optionalField">Name</label><br/>
+		<input id="feedbackField_Name" autocomplete="off" class="resetAfterSubmit clearPlaceholder" type="text" name="fullName" placeholder="Enter your name"/>
+	</div>
+</div>
+<div class="formRow">
+	<div style="color:white;float:left;width:100%;text-align:left;">
+		<p>Feedback<span class="requiredField"></span></p>
+	</div>
+	<div style="width:100%; text-align:left; float:left;">
+		<textarea class="clearPlaceholder resetAfterSubmit nonAdjustableTextArea" name="feedback" rows="5" placeholder="What do you want to let me know?" required></textarea>
+	</div>
+</div>
+<div class="formRow">
+	<input class="submitButton formButton" type="submit" name="Submit" value="Send Feedback" ng-click="submitForm('feedback')"/>
+</div>

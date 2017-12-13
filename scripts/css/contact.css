@@ -2,13 +2,12 @@
 	#contactQuestion { color:white;padding:2%;text-align:center; margin-top:0px; margin-bottom:5%;
 						transition: font-size 0.6s ease-out, margin-bottom 0.6s ease-out, padding 0.6s ease-out; 
 						-webkit-transition: font-size 0.6s ease-out, margin-bottom 0.6s ease-out, padding 0.6s ease-out; }
-	#contactOptionsSection { width:100%; margin:auto; text-align:center; padding:3%; margin-bottom:2%;
+	#contactOptionsSection { width:100%; margin:auto; text-align:center; padding:2%;
 							transition: padding 0.5s ease-out; -webkit-transition: padding 0.5s ease-out; }
 	.contactOption  { border: 1px solid white; font-size:14px; background-color:none; color:white; padding:2%; margin:1%; 
 						letter-spacing: 1px; transition: font-size 0.5s ease-out; -webkit-transition: font-size 0.5s ease-out; }
 	/*.contactOption:hover {background-color:white; color:black; border:1px solid black; cursor:pointer;}*/
 	
-
 /*
 GENERAL 
 */
@@ -22,7 +21,7 @@ GENERAL
 	.inheritWidth { width:100%; }
 	.customerInfoFields { width:70%; float:left; text-align:left; margin-bottom:3%; }
 	.customerInfoFields input { width:100%; }
-
+	.nonAdjustableTextArea { resize: none; }
 	/*The Labels and inputs*/
 	.contactForm label { color:white; font-size:12px;}
 	.contactForm p { color:white; }
@@ -42,7 +41,7 @@ GENERAL
 /*
 REQUEST FORM
 */
-	#requestServiceForm{ width:100%; margin:auto; display:none; padding-top:2%;}
+	#requestServiceForm{ width:100%; margin:auto; padding-top:2%;}
 	
 	/*The section for the date and time*/
 	.dateSection { width:100%;float:left;text-align:left; }
@@ -85,13 +84,13 @@ REQUEST FORM
 /*
 FEEDBACK FORM
 */
-	#feedbackForm{ width:100%; margin:auto; display:none; padding-top:2%;}
+	#feedbackForm{ width:100%; margin:auto; padding-top:2%;}
 
 
 /* 
 FORM RESULTS
 */
-	#formResultsSection { color:white; text-align:center; display:none; padding-top:2%; }
+	#formResultsSection { color:white; text-align:center; padding-top:2%; }
 	#counterSection { padding:2%; text-align:center; display:none; }
 	#countDownNumber { color:red; padding:1%;}
 	#formStatusSection { display:none }
@@ -111,7 +110,7 @@ FORM RESULTS
 		/*Contact Options*/
 		/*#contactQuestion { margin-bottom:2%; font-size:24px; }*/
 		#contactQuestion { margin-bottom:2%; }
-		.contactOption { font-size:18px; }
+		.contactOption { font-size:14px; }
 
 		/*GENERAL */
 		.formRow { padding-left:0%; }
