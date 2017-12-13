@@ -111,6 +111,8 @@ angular.module("contactForms").service("email", function($http){
 
 	function formResults(formID, status){
 		$("#formResultsSection img").remove();
+		$("#formStatusSentence").html("");
+		$("#formStatusSentence2").html("");
 		var firstImage = "<img id=\"successImage\" src=\"/images/assets/icons/successImage.gif\" alt=\"*INSERT CAMERA FLASH*\"/>";
 		var oops = "<img src=\"/images/assets/icons/oops.png\" width=\"100\" height=\"100\" style=\"margin-top:2%;\" alt=\"*INSERT SAD FACE*\"/>"
 		var firstSentence = formID == "feedback" ? "Thanks for the feedback!" : "Your request has been sent.";

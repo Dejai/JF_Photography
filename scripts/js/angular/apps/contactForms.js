@@ -1,10 +1,22 @@
 const contactForms = angular.module("contactForms", []);
 
-contactForms.controller("contactFormsController", function($scope, email, dateTime){
+contactForms.controller("contactFormsController", function($scope, $timeout, email, dateTime){
 
-	$scope.selectForm = function(event){
+	$scope.checkQueryString = function(){
+		var search = window.location.search;
+		var query = search ? search.replace("?", "").trim().split("=") : false;
+		if (query != false) {
+			if (query[0] == "ref" && query[1] == "a"){
+				$scope.selectForm("service");
+			}
+		}
+	}
+
+	$scope.selectForm = function(event){		
+		let formValue = typeof(event) === "string" ? event : event.srcElement.dataset.jfContactOption;
+		$scope.hiddenFormQuestion = "font-size:0%; margin-bottom: 0%; padding: 0%;";
 		var selectedButton = "background-color:white; color: black; border: 1px solid black;";
-		if (event.srcElement.dataset.jfContactOption == "service"){
+		if (formValue == "service"){
 			$scope.serviceStyle = selectedButton;
 			$scope.showServiceForm = true;
 			$scope.showFeedbackForm = false;
@@ -16,13 +28,20 @@ contactForms.controller("contactFormsController", function($scope, email, dateTi
 			$scope.showServiceForm = false;
 			$scope.serviceStyle = "";
 		}
-		$scope.hiddenFormQuestion = "font-size:0%; margin-bottom: 0%; padding: 0%;";
 	};
+	
+	$scope.checkQueryString();
+
+
 
 	$scope.submitForm = function(form){
 		$scope.showServiceForm = $scope.showFeedbackForm = false;
 		$scope.submittingForm = true;
-		email.submitForm(form);
+		setTimeout(function(form){
+			$scope.submittingForm = false;
+			// $scope.formSubmitted = true;
+			email.submitForm(form);
+		}, 5000, form);
 	}
 
 });
