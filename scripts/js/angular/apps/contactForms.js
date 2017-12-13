@@ -37,16 +37,21 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 	
 	$scope.checkQueryString();
 
-	// Was used for testing the process without sending the email. 
-	// var afterProcessing = function(){
-	// 	console.log("From within 'After processing'");
-	// 	$scope.submittingForm = false;
-	// 	$scope.formSubmitted = true;
-	// 	// formServices.submitForm($scope.formTemp);
-	// }
+	$scope.validateForm = function(form){
+		let formId = form == "service" ? "requestServiceForm" : "feedbackForm";
+		let requiredFields = document.getElementById(formId).querySelectorAll("[required]");
+		let notReady = 0;
+		angular.forEach(requiredFields, function(value, key, obj){
+			if (!value.value){
+				notReady++;
+			}
+		});
+		return (notReady == 0);
+	}
 
 	$scope.submitForm = function(form){
-			$scope.formStatus = 0;
+		if ($scope.validateForm(form)){
+			console.log("Form is ready.");
 			$scope.showServiceForm = $scope.showFeedbackForm = false;
 			$scope.submittingForm = true;
 			formServices.submitForm(form)
@@ -70,7 +75,10 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 							}
 						}, function(error){
 							formServices.formResults(form, 500);
-						});	
+						});
+		} else {
+			console.log("Form is not ready!");
+		}
 	}
 
 	
