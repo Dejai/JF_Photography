@@ -5,7 +5,7 @@
 /* GENERAL STYLE FOR ANY ELEMENT IN THE PORTFOLIO PAGE*/
 
 	.imageHover:hover { border: 1px solid white; cursor:pointer; }
-	#albumSection { margin-top:120px; }
+	#albumSection { margin-top:130px; }
 
 /* LIST OF ALBUMS */
 	#albumListingDescription { color:white; padding:1%; text-align:center; }

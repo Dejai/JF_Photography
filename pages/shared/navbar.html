@@ -4,7 +4,9 @@
 	</a>
 </div>
 <div id="navbar-navigation-section" class="navbarHeight">
-	<a id="navbar-mobile-hamburger-button" class="glyphicon glyphicon-menu-hamburger mobileNavToggle"></a>
+	<a id="navbar-mobile-hamburger-button" class="glyphicon glyphicon-menu-hamburger mobileNavToggle" ng-click="mobileMenu('open')"></a>
+	<a id="navbar-mobile-close-button" class="glyphicon glyphicon-remove mobileNavToggle" ng-click="mobileMenu('close')"></a>
+
 	<a id="navbar-mobile-close-button" class="glyphicon glyphicon-remove mobileNavToggle"></a>
 	<div id="navbar-navigation-options-section">
 		<a class="navbar-navigation-option" data-ron-nav-link="home" href="/">Home</a>

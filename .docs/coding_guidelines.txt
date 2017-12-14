@@ -42,5 +42,15 @@ How to apply updates to the proper scope with AngularJS
 https://stackoverflow.com/questions/46888185/accessing-scope-from-within-a-catch-function-after-a-promise?answertab=oldest#tab-top
 
 
+The icons that I will try to use for the new mobile menu: 
+
+hamburger: 
+https://www.iconfinder.com/icons/1954554/hamburger_line_menu_more_buttton_three_icon#size=128
+
+Cancel: 
+https://www.iconfinder.com/icons/1894663/cancel_delete_exit_remove_icon#size=128
+
+
+
 
 

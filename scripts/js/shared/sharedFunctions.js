@@ -22,19 +22,26 @@ const sharedFunctions = {
 	        $(".delayedDisplay").fadeIn();
 	    }, time);
 	}, 
-	mobileMenu : function(){
-	    $("#navbar-mobile-hamburger-button").click(function(){
-	        $(".hideForMobileNav").hide();
-	        $("#navbar-navigation-options-section").show();
-	        $("#navbar-mobile-hamburger-button").hide();
-	        $("#navbar-mobile-close-button").css("display", "block");
-	    });
-	    $("#navbar-mobile-close-button").click(function(){
-	        $("#navbar-navigation-options-section").toggle();
-	        $("#navbar-mobile-hamburger-button").toggle();
-	        $("#navbar-mobile-close-button").toggle();
-	        $(".hideForMobileNav").fadeIn();
-	    });
+	mobileMenu : function(action){
+		var toHide = document.getElementsByClassName("hideForMobileNav");
+		if (action == "open"){
+			for (let x = 0; x < toHide.length; x++){
+				toHide[x].style.opacity = "0";
+			}
+			document.getElementById("navbar-navigation-options-section").style.display = "block";
+			document.getElementById("navbar-mobile-hamburger-button").style.display = "none";
+			document.getElementById("navbar-mobile-close-button").style.display = "flex";
+			document.getElementById("navbar-social-links-section").style.display = "block";
+		} else {
+			for (let x = 0; x < toHide.length; x++){
+				toHide[x].style.opacity = "1";
+			}
+			document.getElementById("navbar-navigation-options-section").style.display = "none";
+			document.getElementById("navbar-mobile-hamburger-button").style.display = "flex";
+			document.getElementById("navbar-mobile-close-button").style.display = "none";
+			document.getElementById("navbar-social-links-section").style.display = "none";
+
+		}
 	}, 
 	swipedetect: function(el, callback){
 	    var touchsurface = el,
@@ -83,5 +90,3 @@ const sharedFunctions = {
 	    }, false);
 	}
 };
-
-

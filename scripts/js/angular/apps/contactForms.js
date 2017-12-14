@@ -3,7 +3,11 @@ const contactForms = angular.module("contactForms", []);
 contactForms.controller("contactFormsController", function($scope, $timeout, formServices){
 
 	// sharedFunctions.functions(); // Show the available functions for sharedFunctions in the console log
-	sharedFunctions.mobileMenu();
+	// sharedFunctions.mobileMenu();
+
+	$scope.mobileMenu = function(action){
+		sharedFunctions.mobileMenu(action);
+	}
 
 	$scope.checkQueryString = function(){
 		var search = window.location.search;

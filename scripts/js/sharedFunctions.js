@@ -34,13 +34,16 @@ function mobileMenu(){
         $(".hideForMobileNav").hide();
         $("#navbar-navigation-options-section").show();
         $("#navbar-mobile-hamburger-button").hide();
-        $("#navbar-mobile-close-button").css("display", "block");
+        $("#navbar-social-links-section").show();
+        $("#navbar-mobile-close-button").css("display", "flex");
     });
     $("#navbar-mobile-close-button").click(function(){
         $("#navbar-navigation-options-section").toggle();
         $("#navbar-mobile-hamburger-button").toggle();
         $("#navbar-mobile-close-button").toggle();
-        $(".hideForMobileNav").fadeIn();
+        $("#navbar-social-links-section").toggle();
+        $(".mainSection").show();
+
     });
 }
 
