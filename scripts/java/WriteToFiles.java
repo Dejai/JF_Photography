@@ -25,7 +25,7 @@ public class WriteToFiles{
 		try{
 			File fp = new File(fileParam);
 			fp.setWritable(true);
-			BufferedWriter jsonOUT = new BufferedWriter(new FileWriter(fp));
+			BufferedWriter jsonOUT = new BufferedWriter(new FileWriter(fp, false));
 
 			jsonOUT.write("[");
 			jsonOUT.newLine();
