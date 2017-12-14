@@ -18,13 +18,12 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
     <link rel="stylesheet" type="text/css" href="/scripts/css/slideshow.css">
     <link rel="stylesheet" type="text/css" href="/scripts/css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/footer.css">
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
@@ -64,10 +63,11 @@
 </div>    
 </body>
     <!-- Custom JavaScript -->
-    <!-- <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script> -->
-    <script type="text/javascript" src="/scripts/js/sharedFunctions.js"></script>
+    <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script>
     <script type="text/javascript" src="/scripts/js/slideshow.js"></script>
     <script type="text/javascript">
+        sharedFunctions.loadNavBar();
+
         var slideIndex = 0;
         var slideshow_images; 
         var myPositions;

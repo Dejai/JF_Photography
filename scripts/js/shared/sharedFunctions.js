@@ -7,20 +7,27 @@ const sharedFunctions = {
 		console.log("Hide / Show sections with th designated classes when clicking the mobile menu:\tsharedFunctions.mobileMenu()\n\t" + (this.mobileMenu) );
 		console.log("Add swipe detection to given elements on the page.:\tsharedFunctions.swipedetect(element, callback)\n\t" + (this.swipedetect) );
 	},
-	highlightCurrentPage : function(element){
+	loadNavBar : function(){
+		$("#navbar").load("/pages/shared/navbar.html", function(){
+            sharedFunctions.highlightCurrentPage();
+        });
+	},
+	highlightCurrentPage : function(ele){
+		var element = ele ? ele[0] : document.getElementById("navbar");
 		var path = window.location.pathname;
-		var page = path.substring(path.search(/pages/g)+5);
+		var page = (path == "/") ? 'home' : path.substring(path.search(/pages/g)+5);
 		page = page.replace(/\//g, "").trim();
-		var link = element[0].querySelectorAll("[data-ron-nav-link='"+page+"']")[0];
+		var link = element.querySelectorAll("[data-ron-nav-link='"+page+"']")[0];
 		link.style.borderTop = "2px solid red";
 		link.style.borderBottom = "2px solid red";
 		link.style.paddingTop = "0.5%";
 		link.style.paddingBottom = "0.5%";
 	}, 
-	displayDelayed: function(){
+	displayDelayed: function(time){
+	    let delayTime = time ? time : 0;
 		setTimeout(function(){
 	        $(".delayedDisplay").fadeIn();
-	    }, time);
+	    }, delayTime);
 	}, 
 	mobileMenu : function(action){
 		var toHide = document.getElementsByClassName("hideForMobileNav");
@@ -90,3 +97,18 @@ const sharedFunctions = {
 	    }, false);
 	}
 };
+
+
+
+
+
+
+//USAGE: for the swipe detect
+/*
+var el = document.getElementById('someel')
+swipedetect(el, function(swipedir){
+    swipedir contains either "none", "left", "right", "top", or "down"
+    if (swipedir =='left')
+        alert('You just swiped left!')
+})
+*/

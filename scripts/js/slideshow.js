@@ -145,7 +145,7 @@ function slideshowEventListeners(){
 
     // var slideshowImages = document.getElementsByClassName("slideshow_image");
 	var slideSection = document.getElementById("slideshowSection");
-	swipedetect(slideSection, function(swipedir){
+	sharedFunctions.swipedetect(slideSection, function(swipedir){
 	    if (swipedir =='right') {
 	    	clearTimeout(theTimer);
 		    $(this).blur();

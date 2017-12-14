@@ -1,6 +1,9 @@
 var albumObj = {};
 
 $(document).ready(function(){
+
+	sharedFunctions.loadNavBar();
+
 	var url = window.location.pathname;
 	$.get("/config/albumsJSON.txt", function(results){
 		storeAlbumImages(JSON.parse(results));
@@ -25,7 +28,7 @@ $(document).ready(function(){
 		} else{
 			$("#albumNotFound").hide();
 			$("#albumPhotosList").hide();
-			displayDelayed();
+			sharedFunctions.displayDelayed();
 			var payload = JSON.parse(results);
 		    getAlbumCovers(payload);
 		}
@@ -268,7 +271,7 @@ function galleryModalEventListeners(){
     	nextGalleryImage(galleryModalPhotos_array, "right");
     });
 	var galleryModalImageContainer = document.getElementById("galleryModalImageContainer");
-	swipedetect(galleryModalImageContainer, function(swipedir){
+	sharedFunctions.swipedetect(galleryModalImageContainer, function(swipedir){
 	    if (swipedir == "left") {
     		nextGalleryImage(galleryModalPhotos_array, "right");
 	    } else if (swipedir == "right"){
