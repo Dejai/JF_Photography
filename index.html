@@ -73,38 +73,54 @@
         var myPositions;
         var theTimer;
         $(document).ready(function(){
-            // $("#testImages").load("/views/slideshow.html", function(){
+      
                 newBuildSlideshow();
                 $(".slideshow_image").hide();
 
-                setTimeout(function(){
+                if ( Storage !== 'undefined'){
+                    if (sessionStorage.test){
+                        console.log("Same session");
+                        showSlideshow();
+                    } else {
+                        console.log("New session");
+                        showWelcomeMessage();
+                        sessionStorage.test = "auto";
+                    }
+                } else {
+                    console.log("I need to check for the cookie");
+                    showWelcomeMessage();
+                }
+        });
+
+        function showWelcomeMessage(){
+            setTimeout(function(){
                     $("#introHeader").fadeIn();
                     setTimeout(function(){
                         $("#sentenceOne").fadeIn();
                         setTimeout(function(){
                             $("#sentenceTwo").fadeIn();
+                            setTimeout(function(){
+                                showSlideshow(300);
+                            }, 2000)
                         }, 2000)
                     }, 2000);
                 }, 500);
-
-                setTimeout(function(){
-                    $("#testIntro").fadeOut(500);
+        }
+        function showSlideshow(time){
+            var delayTime = time ? time : 300;
+            setTimeout(function(){
+                    // $("#testIntro").fadeOut(300);
+                    $("#testIntro").hide();
                     slideshow_images = $(".slideshow_image").toArray();
                     myPositions = $(".slideshowPositionIndicator").toArray();
 
-                    // displayDelayed(300);
-                    setTimeout(function(){
-                        $(".delayedDisplay").fadeIn(500);
-
-                        // $(".delayedDisplay").fadeIn(4000, function(){
-                            // $(".showMeDel2").fadeIn(1000, function(){ $(".showMeDel").css("visibility", "visible");}).css("display","block");
-                        // });
-                    }, 400);
+                    // setTimeout(function(){
+                        $(".delayedDisplay").fadeIn(400);
+                    // }, 400);
                     carousel();
                     slideshowEventListeners();
-                }, 7000);
-            // });
-        });
+                }, delayTime);
+        }
     </script>
 
 </html>
