@@ -31,39 +31,24 @@
     <h1 id="introHeader" style="display:none;">Welcome to
         <br/>
         <img src="/images/assets/logo/jfphotobiz_logo.png" style="height:220px; width:200px;">
-        <!-- <span style="color:red">JeRon Fyfield Photography</span> -->
     </h1>
     <h3 id="sentenceOne" style="display:none;">Professional quality pictures ... at a family-friendly price.</h3>
     <br/><h3 id="sentenceTwo" style="display:none;color:red;">Let's Make Magic!</h3>
+    <br/>
+    <div id="getStartedButton" style="display:none; text-align:center; width:100%;">
+        <button class="JF-Button" onclick="showSlideshow()"><h4>ENTER</h4></button>            
+    </div>
 
 </div>
 <div id="slideshowSection" class="delayedDisplay hideForMobileNav mainSection">
-    <div id="slideshowImagesContainer" style="width:100%;height:100%; padding-top:0.5%;">
-        <!-- <img class="slideshow_image dim-portrait selectedImage1 showMeDel2" style="margin:auto;" src="/images/slideshow/imageQ.jpg"> -->
-        <!-- <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image1.jpg">
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image3.jpg">
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image4.jpg">
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image5.jpg">
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image6.jpg">
-        <img class="slideshow_image dim-landscape" src="/images/slideshow/tiny/image8.jpg"> -->
-    </div>
+    <div id="slideshowImagesContainer" style="width:100%;height:100%; padding-top:0.5%;"></div>
 </div>
 <div id="slideshowNavigation" class="delayedDisplay mainSection">
-    <span id="slideshowPositionsSection">
-       <!--  <p id="slideshow_leftButton" class="slideshowArrow showMeDel"></p>
-        <p class="slideshowPositionIndicator showMeDel currentSlidePosition" data-ron-slide="1"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="2"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="3"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="4"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="5"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="6"></p>
-        <p class="slideshowPositionIndicator showMeDel" data-ron-slide="7"></p>
-        <p id="slideshow_rightButton" class="slideshowArrow showMeDel"></p> -->
-    </span>
+    <span id="slideshowPositionsSection"></span>
 </div>    
 </body>
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script>
+    <script type="text/javascript" src="/scripts/js/sharedFunctions.js"></script>
     <script type="text/javascript" src="/scripts/js/slideshow.js"></script>
     <script type="text/javascript">
         sharedFunctions.loadNavBar();
@@ -73,38 +58,51 @@
         var myPositions;
         var theTimer;
         $(document).ready(function(){
-            // $("#testImages").load("/views/slideshow.html", function(){
+      
                 newBuildSlideshow();
                 $(".slideshow_image").hide();
 
-                setTimeout(function(){
+                if ( Storage !== 'undefined'){
+                    if (sessionStorage.JFPhotobizSession){
+                        console.log("Same session");
+                        showSlideshow();
+                    } else {
+                        console.log("New session");
+                        showWelcomeMessage();
+                        sessionStorage.JFPhotobizSession = true;
+                    }
+                } else {
+                    console.log("I need to check for the cookie");
+                    showWelcomeMessage();
+                }
+        });
+
+        function showWelcomeMessage(){
+            setTimeout(function(){
                     $("#introHeader").fadeIn();
                     setTimeout(function(){
                         $("#sentenceOne").fadeIn();
                         setTimeout(function(){
                             $("#sentenceTwo").fadeIn();
-                        }, 2000)
-                    }, 2000);
+                            setTimeout(function(){
+                                $("#getStartedButton").fadeIn();
+                            }, 1000);
+                        }, 1000)
+                    }, 1000);
                 }, 500);
-
-                setTimeout(function(){
-                    $("#testIntro").fadeOut(500);
+        }
+        function showSlideshow(time){
+            var delayTime = time ? time : 300;
+            setTimeout(function(){
+                    // $("#testIntro").fadeOut(300);
+                    $("#testIntro").hide();
                     slideshow_images = $(".slideshow_image").toArray();
                     myPositions = $(".slideshowPositionIndicator").toArray();
-
-                    // displayDelayed(300);
-                    setTimeout(function(){
-                        $(".delayedDisplay").fadeIn(500);
-
-                        // $(".delayedDisplay").fadeIn(4000, function(){
-                            // $(".showMeDel2").fadeIn(1000, function(){ $(".showMeDel").css("visibility", "visible");}).css("display","block");
-                        // });
-                    }, 400);
+                    $(".delayedDisplay").fadeIn(400);
                     carousel();
                     slideshowEventListeners();
-                }, 7000);
-            // });
-        });
+                }, delayTime);
+        }
     </script>
 
 </html>
