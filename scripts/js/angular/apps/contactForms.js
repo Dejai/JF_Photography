@@ -107,10 +107,8 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 		return {
 			restrict: 'EA',
 			link: function(scope, element, index){
-				sharedFunctions.highlightCurrentPage(element);
 				scope.contactFormOpacity = "opacity:1"; // Ease-in the contact form section with CSS animation
-			},
-			templateUrl: '/pages/shared/navbar.html'		
+			}
 		};
 	});
 
