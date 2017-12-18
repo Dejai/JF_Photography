@@ -1,3 +1,13 @@
+/*Welcome Message*/
+
+.JF-Button { border: 1px solid limegreen; color:black; background-color:limegreen; border-radius:50px; display:flex; justify-content: center; align-content: center; margin:auto; padding:0% 2%;
+				transition: padding 0.2s linear;
+			 }
+.JF-Button:hover { padding:0% 2.5%; }
+.JF-Button:focus { outline:0; }
+/*style="display:none; background-color:limegreen; color:black; border-radius:10%;"*/
+
+
 /*Slideshow Section & Buttons*/
 	/*#slideshowSection { position:fixed; top:180px; height:350px; width:50%;}*/
 	#slideshowSection { margin:auto; margin-top:150px;}

@@ -18,7 +18,7 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
@@ -35,7 +35,10 @@
     </h1>
     <h3 id="sentenceOne" style="display:none;">Professional quality pictures ... at a family-friendly price.</h3>
     <br/><h3 id="sentenceTwo" style="display:none;color:red;">Let's Make Magic!</h3>
-    <button id="getStartedButton" style="display:none; background-color:limegreen; color:black;" onclick="showSlideshow()">Get Started!</button>    
+    <br/>
+    <div id="getStartedButton" style="display:none; text-align:center; width:100%;">
+        <button class="JF-Button" onclick="showSlideshow()"><h4>ENTER</h4></button>            
+    </div>
 
 </div>
 <div id="slideshowSection" class="delayedDisplay hideForMobileNav mainSection">
@@ -59,13 +62,13 @@
                 $(".slideshow_image").hide();
 
                 if ( Storage !== 'undefined'){
-                    if (sessionStorage.test){
+                    if (sessionStorage.JFPhotobizSession){
                         console.log("Same session");
                         showSlideshow();
                     } else {
                         console.log("New session");
                         showWelcomeMessage();
-                        sessionStorage.test = "auto";
+                        sessionStorage.JFPhotobizSession = true;
                     }
                 } else {
                     console.log("I need to check for the cookie");
@@ -82,10 +85,9 @@
                             $("#sentenceTwo").fadeIn();
                             setTimeout(function(){
                                 $("#getStartedButton").fadeIn();
-                                // showSlideshow(300);
-                            }, 2000);
-                        }, 2000)
-                    }, 2000);
+                            }, 1000);
+                        }, 1000)
+                    }, 1000);
                 }, 500);
         }
         function showSlideshow(time){
@@ -95,10 +97,7 @@
                     $("#testIntro").hide();
                     slideshow_images = $(".slideshow_image").toArray();
                     myPositions = $(".slideshowPositionIndicator").toArray();
-
-                    // setTimeout(function(){
-                        $(".delayedDisplay").fadeIn(400);
-                    // }, 400);
+                    $(".delayedDisplay").fadeIn(400);
                     carousel();
                     slideshowEventListeners();
                 }, delayTime);
