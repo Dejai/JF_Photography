@@ -1,36 +1,278 @@
 [
-{"name" :"The First Album","folderName" :"The First Album","coverImg" :"images/gallery/The First Album/image1.jpg","images" : [
-{"name" :"images/gallery/The First Album/image1.jpg","dimension" :"portrait"
+{"name" :"Studio","folderName" :"Studio","coverImg" :"images/gallery/Studio/image1.jpg","images" : [
+{"name" :"images/gallery/Studio/image1.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image2.jpg","dimension" :"landscape"
+{"name" :"images/gallery/Studio/image10.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image3.jpg","dimension" :"landscape"
+{"name" :"images/gallery/Studio/image11.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image4.jpg","dimension" :"landscape"
+{"name" :"images/gallery/Studio/image12.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image5.jpg","dimension" :"portrait"
+{"name" :"images/gallery/Studio/image13.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image6.jpg","dimension" :"landscape"
+{"name" :"images/gallery/Studio/image14.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image7.jpg","dimension" :"landscape"
+{"name" :"images/gallery/Studio/image2.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The First Album/image8.jpg","dimension" :"landscape"
+{"name" :"images/gallery/Studio/image3.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image4.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image5.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image6.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image7.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image8.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image9.jpg","dimension" :"square"
 }]
 },
 {"name" :"The Second Album","folderName" :"The Second Album","coverImg" :"images/gallery/The Second Album/image2.jpg","images" : [
-{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"landscape"
+{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"landscape"
+{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"landscape"
+{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"square"
 },
 {"name" :"images/gallery/The Second Album/image5.jpg","dimension" :"portrait"
 },
-{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"landscape"
+{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"landscape"
+{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"square"
 },
-{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"landscape"
+{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"square"
+}]
+},
+{"name" :"Studio","folderName" :"Studio","coverImg" :"images/gallery/Studio/image1.jpg","images" : [
+{"name" :"images/gallery/Studio/image1.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image10.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image11.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image12.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image13.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image14.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image2.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image3.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image4.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image5.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image6.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image7.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image8.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image9.jpg","dimension" :"square"
+}]
+},
+{"name" :"The Second Album","folderName" :"The Second Album","coverImg" :"images/gallery/The Second Album/image2.jpg","images" : [
+{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"square"
+}]
+},
+{"name" :"Studio","folderName" :"Studio","coverImg" :"images/gallery/Studio/image1.jpg","images" : [
+{"name" :"images/gallery/Studio/image1.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image10.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image11.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image12.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image13.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image14.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image2.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image3.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image4.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image5.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image6.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image7.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image8.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/Studio/image9.jpg","dimension" :"square"
+}]
+},
+{"name" :"The Second Album","folderName" :"The Second Album","coverImg" :"images/gallery/The Second Album/image2.jpg","images" : [
+{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"square"
+},
+{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"square"
+}]
+},
+{"name" :"Studio","folderName" :"Studio","coverImg" :"images/gallery/Studio/image1.jpg","images" : [
+{"name" :"images/gallery/Studio/image1.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image10.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image11.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image12.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image13.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image14.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image2.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image3.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image4.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image6.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image7.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image8.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image9.jpg","dimension" :"portrait"
+}]
+},
+{"name" :"The Second Album","folderName" :"The Second Album","coverImg" :"images/gallery/The Second Album/image2.jpg","images" : [
+{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"portrait"
+}]
+},
+{"name" :"Studio","folderName" :"Studio","coverImg" :"images/gallery/Studio/image1.jpg","images" : [
+{"name" :"images/gallery/Studio/image1.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image10.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image11.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image12.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image13.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image14.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image2.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image3.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image4.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image6.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image7.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image8.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image9.jpg","dimension" :"portrait"
+}]
+},
+{"name" :"The Second Album","folderName" :"The Second Album","coverImg" :"images/gallery/The Second Album/image2.jpg","images" : [
+{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"portrait"
+}]
+},
+{"name" :"Studio","folderName" :"Studio","coverImg" :"images/gallery/Studio/image1.jpg","images" : [
+{"name" :"images/gallery/Studio/image1.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image10.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image11.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image12.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image13.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image14.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image2.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image3.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image4.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image6.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image7.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image8.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/Studio/image9.jpg","dimension" :"portrait"
+}]
+},
+{"name" :"The Second Album","folderName" :"The Second Album","coverImg" :"images/gallery/The Second Album/image2.jpg","images" : [
+{"name" :"images/gallery/The Second Album/image2.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image3.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image4.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image5.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image6.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image7.jpg","dimension" :"portrait"
+},
+{"name" :"images/gallery/The Second Album/image8.jpg","dimension" :"portrait"
 }]
 }
 ]

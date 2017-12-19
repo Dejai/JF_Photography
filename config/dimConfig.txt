@@ -1,2 +1,2 @@
-portrait=650
-square=4000
+portrait=1600
+square=2000
