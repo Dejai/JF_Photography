@@ -1,16 +1,30 @@
-body {	background-color: black; }
-* { box-sizing: border-box; }
 
-.delayedDisplay { display:none; }
-a:hover { text-decoration:none; }
+/* The Overall Body / Elements*/
+	body {	background-color: black; }
+	* { box-sizing: border-box; }
+	a:hover { text-decoration:none; }
+	.delayedDisplay { display:none; }
+	.pageHeadlinerSize { font-size:14px;  }
 
-.dim-portrait {max-width:70%; height:350px; }
-.dim-landscape { max-width:100%; height:300px;}
-.dim-square { max-width:80%; height:300px; }
 
-.pageHeadlinerSize { font-size:14px;  }
+/* Buttons */
+	.jfButton { border-radius:50px; transition: padding 0.2s linear;}
+	.jfButton:focus { outline: 0; }
 
-.circularButton { border-style: solid; border-color:white; padding:1% 2%; border-radius:40px;
+	.jfButton-small { padding:0% 2%;  }
+	.jfButton-small:hover { padding:0% 2.5%; }
+
+	.jfButton-large { padding:1% 2%;}
+	.jfButton-large:hover { padding:1% 3%; }
+
+/*Images*/
+
+	.dim-portrait {max-width:70%; height:350px; }
+	.dim-landscape { max-width:100%; height:300px;}
+	.dim-square { max-width:80%; height:300px; }
+
+
+.circularButton { border-style: solid; border-color:white; /*padding:1% 2%;*/ /*border-radius:40px;*/
 				cursor:pointer; display:inline-block; }
 
 /*iPads (mini, Air, and small pro)*/

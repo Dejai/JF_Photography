@@ -4,7 +4,8 @@
 #profilePic { width:50%; margin-right:2%; margin-bottom:5%; display:block; margin:auto; height:200px; border:1px solid white; }
 #clearer { display:block; clear:both; margin-bottom:2%; }
 
-#directLinkToRequestServices { border-width:2px; color:white; border-radius:40px;  }
+/*#directLinkToRequestServices { border-width:2px; color:white; border-radius:40px;  }*/
+#directLinkToRequestServices { border: 2px solid white; color:white; border-radius:40px;  }
 #directLinkToRequestServices:hover { background-color:white; color:black; }
 
 /* General Table (sideways)*/
