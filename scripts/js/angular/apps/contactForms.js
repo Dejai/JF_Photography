@@ -103,15 +103,6 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 
 
 // The Directives
-	contactForms.directive("navBar", function(){
-		return {
-			restrict: 'EA',
-			link: function(scope, element, index){
-				scope.contactFormOpacity = "opacity:1"; // Ease-in the contact form section with CSS animation
-			}
-		};
-	});
-
 	contactForms.directive("serviceForm", function(){
 		return {
 			restrict: 'AE',
@@ -121,6 +112,9 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 	contactForms.directive("feedbackForm", function(){
 		return {
 			restrict: 'AE',
+			link: function(scope, element, index){
+				scope.contactFormOpacity = "opacity:1"; // Ease-in the contact form section with CSS animation
+			},
 			templateUrl: "/pages/shared/form_feedback.html"
 		};
 	});

@@ -26,10 +26,8 @@
     
 </head>
 <body ng-app="contactForms" ng-controller="contactFormsController">
-<nav id="navbar" class="navbarHeight" nav-bar></nav>
-<!-- <nav id="navbar" class="navbarHeight" nav-bar></nav> -->
+<nav id="navbar" class="navbarHeight"></nav>
 
-<!-- <div id="contactFormSection" class="col-lg-12 hideForMobileNav mobileBelowNav"> -->
 <div id="contactFormSection" class="col-lg-12 hideForMobileNav mobileBelowNav mainSection" style="{{contactFormOpacity}}">
 	<p id="contactQuestion" class="pageHeadlinerSize" style="{{hiddenFormQuestion}}" ng-show="!formSelected">
 		What would you like to contact me about?
@@ -60,7 +58,6 @@
 	</div>
 	<form id="requestServiceForm" class="contactForm formToSubmit formSections" ng-show="showServiceForm"  service-form></form>
 	<form id="feedbackForm" class="contactForm formToSubmit formSections" ng-show="showFeedbackForm"  feedback-form></form>
-	
 </div>
 </body>
 
