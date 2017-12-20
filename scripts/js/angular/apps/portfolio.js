@@ -35,11 +35,14 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 	// 		];
 
 
+
+	$scope.albumLength = 0;
 	$scope.testFunc = function(ele){
 
 		var albumName = ele.target.innerHTML ? ele.target.innerHTML : false;
 		$scope.albumTitle = albumName
-		console.log($scope.albums[albumName].images);
+		console.log($scope.albums[albumName].images.length);
+		$scope.albumLength = $scope.albums[albumName].images.length;
 		$scope.singleAlbum = $scope.albums[albumName].images;
 		$scope.singleAlbumView = true;
 
@@ -49,7 +52,86 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 		$scope.singleAlbumView = false;
 		$scope.albumTitle = "My Albums"
 	}
-	
+
+
+	$scope.viewedImage;
+	$scope.viewingIndex;
+	$scope.openImage = function(index){
+		// console.log(ele.target.style);
+		$scope.viewingIndex = index;
+		$scope.modalOpen = true;
+		// getCurrentIndex(index);
+		document.getElementById("viewingImage").innerHTML = index+1;
+
+
+		console.log("New Index = photo-0" + index);
+
+		var thisWidth = $scope.singleAlbum[index].width;
+		var thisHeight = $scope.singleAlbum[index].height;
+		console.log(thisWidth);
+		// var targetWidth = thisWidth > 2000 ? thisWidth / 6 : thisWidth / 4; 
+		var targetWidth = thisWidth / 4; 
+		var targetHeight = (thisHeight / thisWidth ) * targetWidth;
+		var element = document.getElementById("photo-0"+index);
+		element.scrollIntoView();
+		$scope.viewedImage = element;
+		element.classList.remove("imgTest");
+		element.classList.add("galleryImgViewed");
+		element.style.width = targetWidth+"px";
+		element.style.height = targetHeight+"px";
+		element.style.marginTop = "-"+(targetHeight/2)+"px";
+		element.style.marginLeft = "-"+(targetWidth/2)+"px";
+		document.getElementById("galleryModal-x").style.display = "block";
+	}
+
+	$scope.closeImage = function(){
+		console.log("Inside closeImg");
+		// var element = document.getElementById("photo-0"+$scope.viewingIndex);
+		$scope.viewedImage.classList.remove("galleryImgViewed");
+		$scope.viewedImage.style.width = "100%";
+		$scope.viewedImage.style.height = "100%";
+		$scope.viewedImage.style.marginTop = "0px";
+		$scope.viewedImage.style.marginLeft = "0px";
+		$scope.viewedImage.classList.add("imgTest");
+	}
+
+	$scope.closeModal = function(){
+		document.getElementById("galleryModal-x").style.display = "none";
+		$scope.modalOpen = false;
+		console.log("Inside closeModal");
+		$scope.closeImage();
+	}	
+
+	$scope.keyboardListener = function(){
+		window.onkeyup = function(event){
+
+			var nextImage = $scope.viewingIndex == $scope.albumLength-1 ? 0 : $scope.viewingIndex+1;
+			var prevImage = $scope.viewingIndex == 0 ? $scope.albumLength-1 : $scope.viewingIndex-1;
+			if ($scope.modalOpen){
+				switch(event.which){
+					case 37:   //left arrow
+						// console.log($scope.viewingIndex);
+						// console.log(prevImage);
+						$scope.closeImage();
+						$scope.openImage(prevImage);
+						break;
+					case 39:   // right arrow
+						// console.log(nextImage);
+						$scope.closeImage();
+						$scope.openImage(nextImage);
+						break;
+					case 27: //Escape button
+						$scope.closeModal();
+						break;
+					default:
+						event.preventDefault();
+				}
+			}
+	    }
+	}
+	$scope.keyboardListener();
+
+
 });
 
 

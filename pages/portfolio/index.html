@@ -30,7 +30,12 @@
 <body ng-app="portfolioApp" ng-controller="portfolioController">
 
 <!-- New Approach -->
-<div id="galleryModal" gallery-modal></div>
+<!-- <div id="galleryModal" gallery-modal></div> -->
+<div id="galleryModal-x" ng-click="closeModal()">
+  <p style="position:fixed; bottom:0; width:100%; text-align:center; color:white; font-size:14px; font-weight: bold;">
+    <span id="viewingImage"></span> / {{albumLength}}
+  </p>
+</div>
 <nav id="navbar" class="navbarHeight"></nav>
 
 <div id="albumSection" class="hideForMobileNav mobileBelowNav mainSection" >
@@ -53,9 +58,7 @@
     <div class="portfolioListing" ng-show="singleAlbumView">
         <div class="portfolioListing" >
             <div ng-repeat="y in singleAlbum" style="width:30%; height:270px; float:left; margin:1%;">
-            <!-- <div style="margin:2%; padding:2%;"> -->
-                <img class="imgTest" src="{{y.path}}" alt="{{y.path}}" style="width:100%; height:100%;">
-            <!-- </div> -->
+                <img id="photo-0{{$index}}" class="imgTest galleryImage" src="{{y.path}}" alt="{{y.path}}" style="width:100%; height:100%;" ng-click="openImage($index)">
             </div>
         </div>
     </div>
@@ -63,9 +66,17 @@
 
 
     <style type="text/css">
+
+        #galleryModal-x { display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index: 900; opacity:0.8; overflow:scroll; background-color:black; }
         .portfolioListing { width:90%; margin:auto;}
 
+        /*.galleryImage { transition: width 0.2s linear, height 0.5s linear, top 0.5s linear, left 0.5s linear  }*/
+
         .imgTest:hover { opacity:0.7; cursor:pointer; transform: scale(1.1); transition: all 0.2s; z-index:200; }
+
+        .galleryImgViewed { position:fixed; top:50%; left:50%; z-index: 1000; }
+
+
 
         .parent {  display:flex;
           justify-content: center;
@@ -151,5 +162,5 @@
         sharedFunctions.loadNavBar();
     </script>
     <script type="text/javascript" src="/scripts/js/angular/apps/portfolio.js"></script>
-    <script type="text/javascript" src="/scripts/js/portfolio.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/js/portfolio.js"></script> -->
 </html>
