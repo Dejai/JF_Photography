@@ -76,6 +76,7 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 		element.scrollIntoView();
 		$scope.viewedImage = element;
 		element.classList.remove("imgTest");
+		element.classList.remove("imgTestLoad");
 		element.classList.add("galleryImgViewed");
 		element.style.width = targetWidth+"px";
 		element.style.height = targetHeight+"px";
@@ -87,12 +88,13 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 	$scope.closeImage = function(){
 		console.log("Inside closeImg");
 		// var element = document.getElementById("photo-0"+$scope.viewingIndex);
-		$scope.viewedImage.classList.remove("galleryImgViewed");
 		$scope.viewedImage.style.width = "100%";
 		$scope.viewedImage.style.height = "100%";
 		$scope.viewedImage.style.marginTop = "0px";
 		$scope.viewedImage.style.marginLeft = "0px";
 		$scope.viewedImage.classList.add("imgTest");
+		$scope.viewedImage.classList.remove("galleryImgViewed");
+
 	}
 
 	$scope.closeModal = function(){
@@ -134,6 +136,33 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 
 });
 
+portfolioApp.directive("albumPhoto", function(){
+	return {
+		restrict: "EA",
+		template: "<img id=\"photo-0{{$index}}\" class=\"imgTest galleryImage imgTestLoad\" src=\"{{y.path}}\" alt=\"{{y.path}}\" ng-click=\"openImage($index)\">",
+		link: function($scope, $element, $attr){
+			if($scope.$last){
+				var theImgs = document.getElementsByClassName("imgTest");
+				angular.forEach(theImgs, function(val, key, obj){
+					// console.log(val);
+					setTimeout(function(){
+						val.style.width="100%";
+						val.style.height="100%";
+					}, 300);
+				});
+				// document.getElementById("ngApp").style.visibility = "visible";
+				// document.getElementById("ngApp").style.opacity =  1;
+			}
+			// $timeout(function($element){
+			// 	var theImage = $element[0].querySelectorAll("img")[0];
+			// 	theImage.style.width = "100%";
+			// 	theImage.style.height = "100%";
+			// 	// $element.style.width = "100%";
+			// 	// $element.style.height = "100%";
+			// },2000);
+		}
+	}
+});
 
 portfolioApp.directive("galleryModal", function(){
 	return{

@@ -57,8 +57,9 @@
     </div>
     <div class="portfolioListing" ng-show="singleAlbumView">
         <div class="portfolioListing" >
-            <div ng-repeat="y in singleAlbum" style="width:30%; height:270px; float:left; margin:1%;">
-                <img id="photo-0{{$index}}" class="imgTest galleryImage" src="{{y.path}}" alt="{{y.path}}" style="width:100%; height:100%;" ng-click="openImage($index)">
+            <div ng-repeat="y in singleAlbum" style="width:30%; height:270px; float:left; margin:1%; display:flex; justify-content: center;">
+              <album-photo style="display:flex; justify-content: center;"></album-photo>
+                <!-- <img id="photo-0{{$index}}" class="imgTest galleryImage" src="{{y.path}}" alt="{{y.path}}" ng-click="openImage($index)"> -->
             </div>
         </div>
     </div>
@@ -74,7 +75,14 @@
 
         .imgTest:hover { opacity:0.7; cursor:pointer; transform: scale(1.1); transition: all 0.2s; z-index:200; }
 
-        .galleryImgViewed { position:fixed; top:50%; left:50%; z-index: 1000; }
+        .imgTest { width:0%; height:0%; }
+
+        .imgTestLoad { transition: width 0.1s ease-out, height 0.1s ease-out; }
+        /* This is just so that the images can load on a transition upon their first call. It is removed when they are open, and become useless - it is not used for additional visits */
+
+        .galleryImgViewed { position:fixed; top:50%; left:50%; z-index: 1000; 
+                            transition: all 0s;
+                            }
 
 
 
