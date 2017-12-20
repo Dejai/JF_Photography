@@ -10,13 +10,13 @@ public class ThreadControl implements Runnable{
 	public void run(){
 		switch(mtr){
 			case "show":
-				ConfigTool.showImageProcessing();
+				Main.showImageProcessing();
 				break;
 			case "start":
-				ConfigTool.startImageProcessing();
+				Main.startImageProcessing();
 				break;
 			default:
-				ConfigTool.showImageProcessing();
+				Main.showImageProcessing();
 		}
     }
 

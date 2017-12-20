@@ -39,7 +39,7 @@ public class FilePaths{
 				Process pr = run.exec(cmd);
 			}
 		} catch (Exception ex){
-			ConfigTool.resultsMessageDialog(false, ex.getMessage());
+			Main.resultsMessageDialog(false, ex.getMessage());
 		}
 		
 	}

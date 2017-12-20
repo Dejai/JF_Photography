@@ -31,7 +31,7 @@
 function newBuildSlideshow(){
 	$.get("/config/slideshowJSON.txt", function(payload){
 		var pay = JSON.parse(payload);
-		images = pay[0].images;
+		images = pay["slideshow"].images;
 		var res = "";
 		var posRes = "";
 		for (var x = 0; x < images.length; x++){
@@ -40,10 +40,10 @@ function newBuildSlideshow(){
 	        	$("#slideshowPositionsSection").append(leftArrow);
 	        	var pos = "<p class=\"slideshowPositionIndicator showMeDel\" data-ron-slide=\"" +(x+1)+"\"></p>";
 	        	$("#slideshowPositionsSection").append(pos);
-	        	var img = "<img class=\"currentIMG slideshow_image dim-"+images[x].dimension + " selectedImage1 showMeDel2\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].name+"\">";
+	        	var img = "<img class=\"currentIMG slideshow_image dim-"+images[x].dimension + " selectedImage1 showMeDel2\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
 	       		$("#slideshowImagesContainer").append(img);
 	    	} else if (x == images.length-1) {
-	    		var img = "<img class=\"slideshow_image dim-"+images[x].dimension + "\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].name+"\">";
+	    		var img = "<img class=\"slideshow_image dim-"+images[x].dimension + "\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
 	       		$("#slideshowImagesContainer").append(img);
 	       		var pos = "<p class=\"slideshowPositionIndicator showMeDel\" data-ron-slide=\"" +(x+1)+"\"></p>";
 	        	$("#slideshowPositionsSection").append(pos);
@@ -51,7 +51,7 @@ function newBuildSlideshow(){
 	    		$("#slideshowPositionsSection").append(rightArrow);
 	    		res += img;
 	    	} else{
-	    		var img = "<img class=\"slideshow_image dim-"+images[x].dimension + "\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].name+"\">";
+	    		var img = "<img class=\"slideshow_image dim-"+images[x].dimension + "\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
 	       		$("#slideshowImagesContainer").append(img);
 	       		var pos = "<p class=\"slideshowPositionIndicator showMeDel\" data-ron-slide=\"" +(x+1)+"\"></p>";
 	        	$("#slideshowPositionsSection").append(pos);

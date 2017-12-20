@@ -15,8 +15,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
-// public class ConfigTool extends ConfigToolrame implements Runnable {
-public class ConfigTool extends JFrame {
+public class Main extends JFrame {
 
 	// JComponent Attributes
 		// Main Window & Content Panel
@@ -102,6 +101,13 @@ public class ConfigTool extends JFrame {
 
 
     public static void main(String args []){
+
+    	// filePaths = new FilePaths();
+    	// getImageDimensionLimits();
+
+    	// processImages("../../images/slideshow/", slideshowList);
+
+    	
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
 		
@@ -571,50 +577,6 @@ public class ConfigTool extends JFrame {
 			preProcessCon.weightx = 0;
 		innerRightPanel.add(startImageProcessing, preProcessCon);
 
-		
-
-		/* 
-			In here ... Add the new JComponents that would be about reminding the user to compress the images. 
-	
-	  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
-			firstRowConstraints.fill = GridBagConstraints.BOTH;
-			firstRowConstraints.gridx = 0; 
-			firstRowConstraints.gridy = 0;
-			firstRowConstraints.anchor = GridBagConstraints.CENTER;
-			firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
-		innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
-			firstRowConstraints.fill = GridBagConstraints.NONE;
-			firstRowConstraints.gridx = 1;
-		innerRightPanel.add(updateNow, firstRowConstraints);
-
-		GridBagConstraints secondSectionConstraints = new GridBagConstraints();
-			secondSectionConstraints.fill = GridBagConstraints.BOTH;
-			secondSectionConstraints.gridx = 0; 
-			secondSectionConstraints.gridy = 1; 
-			secondSectionConstraints.weighty = 0.1;
-		GridBagConstraints secondRowConstraints = new GridBagConstraints();
-			secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
-			secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 1;
-			secondRowConstraints.weightx = 0.1;
-			secondRowConstraints.ipady = 30;
-			secondSectionConstraints.gridwidth = 2;
-		updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
-			secondRowConstraints.ipady = 15;
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(portraitText, secondRowConstraints);
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 2;
-			secondRowConstraints.weighty = 0.1;
-		updateDimensionsPanel.add(squareLabel, secondRowConstraints);
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(squareText, secondRowConstraints);
-
-		innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
-
-		*/
-
 		validateView();
 
 
@@ -694,7 +656,8 @@ public class ConfigTool extends JFrame {
 		try{
 			String line; 
 			// filePaths.dimensionsFilePath = "config/dimConfig.txt";
-			BufferedReader dimConfig = new BufferedReader(new FileReader(filePaths.dimensionsFilePath));
+			// BufferedReader dimConfig = new BufferedReader(new FileReader(filePaths.dimensionsFilePath));
+			BufferedReader dimConfig = new BufferedReader(new FileReader("../../config/dimConfig.txt"));
 			while ( (line = dimConfig.readLine()) != null){
 				String [] lineSplit = line.split("=");
 				switch(lineSplit[0]){
@@ -824,62 +787,97 @@ public class ConfigTool extends JFrame {
 	
 	public static void processImages(String directoryPath, ArrayList<Album> albumArrayList){
 		try{
+			// System.out.println(directoryPath);
+			System.out.printf("Portrait <= %d\n", portraitDim);
+			System.out.printf("Square > %d <= %d\n", portraitDim, squareDim);
+			System.out.printf("Landscape > %d\n", squareDim);
+			System.out.println();
 			File dir = new File(directoryPath);
 			File dirList[] = dir.listFiles();
+			// System.out.println(directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1));
 			String albumName = directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1);
-			albumArrayList.add(new Album(albumName));
+
+			// albumArrayList.add(new Album(albumName));
+
+			Album temp = new Album(albumName);
+
 			for (int x = 0; x < dirList.length; x++){
 				boolean isImage; 
 				String dimensionTemp = "";
-				String extension;
-				if (dirList[x].getPath().contains(".")){
-					extension = dirList[x].getPath().substring(dirList[x].getPath().lastIndexOf("."));
-				} else {
-					extension = "noExtension";
-				}
-				switch(extension){
-					case ".jpg":
-					case ".png":
-					case ".gif":
-						isImage = true;
-						break;
-					default:
-						isImage = false; 
-				}
+				// String extension;
+				isImage = checkIfIsImage(dirList[x].getPath());
+
 				if (!dirList[x].isDirectory() && isImage){
-					workingOn.setText(String.format("<html> >> Working on <span style='font-weight:bold; color:white;'>%s</span></html>", dirList[x].getPath()));
 					BufferedImage imageB = ImageIO.read(new File(dirList[x].getPath()));
-					if (imageB.getWidth() <= portraitDim){
+					workingOn.setText(String.format("<html>Working on:<br/><span style='font-weight:bold; color:white;'>%s</span></html>", dirList[x].getPath()));
+					// workingOn.setText(String.format("Width: %s | Height : %s", imageB.getWidth(), imageB.getHeight()));
+					
+					// if (imageB.getWidth() <= portraitDim || imageB.getHeight() > imageB.getWidth()){
+					// 	dimensionTemp = "portrait";
+					// } else if (imageB.getWidth() > portraitDim && imageB.getWidth() <= squareDim){
+					// 	dimensionTemp = "square";
+					// } else {
+					// 	dimensionTemp = "landscape";
+					// }
+					if (imageB.getHeight() > imageB.getWidth()){
 						dimensionTemp = "portrait";
-					} else if (imageB.getWidth() > portraitDim && imageB.getWidth() <= squareDim){
+					} else if ( imageB.getWidth() > imageB.getHeight() ){
+						dimensionTemp = "landscape";
+					} else if (imageB.getWidth() == imageB.getHeight() ) {
 						dimensionTemp = "square";
-					} else{
+					} else {
 						dimensionTemp = "landscape";
 					}
 
-					
-					if ( !albumArrayList.get(albumArrayList.size()-1).hasCoverImage || dirList[x].getPath().contains("cover_") ) {
-						// System.out.printf("Setting album cover to:  %s\n", dirList[x].getPath());
-						albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
-					} else {
-						// System.out.println("Aready has an album cover");
-					}
-					albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
+					temp.addPicture(dirList[x].getPath(), imageB.getWidth(), imageB.getHeight(), dimensionTemp);
 
+					if (!temp.hasCoverImage || dirList[x].getPath().contains("cover_") ){
+						temp.setCoverImage(dirList[x].getPath());
+					}
+
+					// System.out.printf("Image dimensions: w-%d, h-%d \t= %s\n", imageB.getWidth(), imageB.getHeight(), dimensionTemp);
+
+					// if ( !albumArrayList.get(albumArrayList.size()-1).hasCoverImage || dirList[x].getPath().contains("cover_") ) {
+						// System.out.printf("Setting album cover to:  %s\n", dirList[x].getPath());
+						// albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
+					// } else {
+						// System.out.println("Aready has an album cover");
+					// }
+					// albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
 				}
 			}
+			albumArrayList.add(temp);
+
 		} catch (Exception ex){
-		    resultsMessageDialog(false, ex.getMessage());
-		 	// ex.printStackTrace();
+		    // resultsMessageDialog(false, ex.getMessage());
+		    System.out.println(ex.getMessage());
+		 	ex.printStackTrace();
 		}
 	}
 
-
-
-	public static void resultsMessageDialog(boolean success, String message){
-		if (message.isEmpty()){
-			message = "Uknown error!";
+	public static boolean checkIfIsImage(String imagePath){
+		boolean isImage; 
+		if (imagePath.contains(".")) {
+			String extension = imagePath.substring(imagePath.lastIndexOf("."));
+			switch(extension){
+				case ".jpg":
+				case ".png":
+				case ".gif":
+					isImage = true;
+					break;
+				default:
+					isImage = false; 
+			}
+		} else {
+			isImage = false; 
 		}
+		return isImage;
+	} 
+
+	public static void resultsMessageDialog(boolean success, String msg){
+
+		String message = !msg.isEmpty() ? msg : "Unknown Error!";
+
 		if (success){
 			JOptionPane.showMessageDialog(mainFrame, message, "Success", JOptionPane.INFORMATION_MESSAGE);
 		} else {

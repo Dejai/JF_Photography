@@ -30,10 +30,11 @@
 	.albumPhoto { width:0%; margin:auto; height:0%; float:left; 
 					transition: width 0.8s ease-out 0.2s, height 0.8s ease-out 0.2s; }
 	.albumPhotosSingleCell:hover { opacity:0.5; }
-	#backToAlbumContainer { width:100%; padding-top:2%; padding-bottom:2%; padding-left:1%;  }
+	#backToAlbumContainer { width:100%; padding: 1% 2%; }
+	#backToAlbumContainer-x { width:100%; padding: 1% 5%; margin-bottom:20px; }
 
-	.backToAlbums { border: 2px solid white; color:gray; border-radius:50px; padding:1% 2%; display:inline-block; display:none;}
-	.backToAlbums:hover { color:white; }
+	.backToAlbums-x { border: 2px solid white; background-color: transparent; color:white; position:absolute; left:10%;}
+	.backToAlbums-x:hover { color:black; background-color: white; }
 
 
 /* GALLERY MODAL OF PHOTOS */
