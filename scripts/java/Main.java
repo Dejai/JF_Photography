@@ -50,16 +50,6 @@ public class Main extends JFrame {
 			public static JButton startImageProcessing = new JButton("Start Processing");
 
 
-			// Updating Dimensions
-				public static JLabel updateDimensionsLabel = new JLabel("Edit Dimensions");
-				public static JPanel updateDimensionsPanel = new JPanel(new GridBagLayout());
-				public static JLabel portraitLabel = new JLabel("Max width for Portrait:");
-				public static JTextField portraitText = new JTextField("");
-				public static JLabel squareLabel = new JLabel("Max width for Square:");
-				public static JTextField squareText = new JTextField("");
-				public static JButton updateDimensionsButton = new JButton("Update");
-				public static JButton updateNow = new JButton("Update");
-
 			// Processing Images
 				public static JPanel imagePanel = new JPanel(new GridLayout(0,1));
 				public static JLabel processingImage = new JLabel("");
@@ -132,7 +122,7 @@ public class Main extends JFrame {
 			subH.setFont(new Font("Arial", Font.BOLD, 16));
 		}
 
-		JLabel [] headers= {menuLabel, processingNow, editAboutMe, updateDimensionsLabel, getStartedLabel, compressImagesReminder };
+		JLabel [] headers= {menuLabel, processingNow, editAboutMe, getStartedLabel, compressImagesReminder };
 		for (JLabel xL : headers){
 			xL.setFont(new Font("Arial", Font.BOLD, 22));
 			// xL.setForeground(Color.WHITE);
@@ -145,7 +135,7 @@ public class Main extends JFrame {
 		mainFrame.getContentPane().setBackground(Color.GRAY);
 		bottomPanel.setBackground(Color.GRAY);
 
-		JComponent [] rightSide = {updateDimensionsPanel, rightPanel, innerRightPanel };
+		JComponent [] rightSide = {rightPanel, innerRightPanel };
 		for (JComponent right : rightSide){
 			right.setBackground(new Color(0.2f, 0.5f, 0.6f));
 		}
@@ -160,20 +150,11 @@ public class Main extends JFrame {
 			menuLabelConstraints.insets = new Insets(10,5,0,10);  //top padding
 		innerLeftPanel.add(menuLabel, menuLabelConstraints);
 
-		GridBagConstraints updateDimensionsConstraints = new GridBagConstraints();
-			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
-			updateDimensionsConstraints.weightx = 0.5;				
-			updateDimensionsConstraints.gridx = 0; 
-			updateDimensionsConstraints.gridy = 1;
-			// updateDimensionsConstraints.ipadx = 50;
-			updateDimensionsConstraints.insets = new Insets(10,40,0,0); 
-		innerLeftPanel.add(updateDimensions, updateDimensionsConstraints);
-
 		GridBagConstraints processImagesConstraints = new GridBagConstraints();
 			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
 			processImagesConstraints.weightx = 0.5;				
 			processImagesConstraints.gridx = 0; 
-			processImagesConstraints.gridy = 2;
+			processImagesConstraints.gridy = 1;
 			// updateDimensionsConstraints.ipadx = 50;
 			processImagesConstraints.insets = new Insets(10,40,0,0); 
 		innerLeftPanel.add(processImages, processImagesConstraints);
@@ -182,7 +163,7 @@ public class Main extends JFrame {
 			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
 			aboutMeConstraints.weightx = 0.5;				
 			aboutMeConstraints.gridx = 0; 
-			aboutMeConstraints.gridy = 3;
+			aboutMeConstraints.gridy = 2;
 			// updateDimensionsConstraints.ipadx = 50;
 			aboutMeConstraints.insets = new Insets(10,40,0,0); 
 		innerLeftPanel.add(aboutMe, aboutMeConstraints);
@@ -239,38 +220,12 @@ public class Main extends JFrame {
 		rightPanel.validate();
 	}
 
-	public static void menuEventListeners(){
-		// Updating Dimensions
-		updateDimensions.addActionListener(new ActionListener() {
-		  public void actionPerformed(ActionEvent e) {
-		  	showDimensionSection();
-		  }
-		});
-
-		updateNow.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				saveDimensions();
-			}
-		});	
+	public static void menuEventListeners(){	
 
 		// Processing Images
 		processImages.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				showImagePreProcessing();
-		 		// try{
-			 	// 	ThreadControl myThread1 = new ThreadControl("show");
-			 	// 	Thread thread1 = new Thread(myThread1);
-			 	// 	thread1.start();
-		 		// 	thread1.join();
-		 		// 	ThreadControl myThread2 = new ThreadControl("start");
-			 	// 	Thread thread2 = new Thread(myThread2);
-			 	// 	if(!thread1.isAlive()){
-			 	// 		thread2.start();
-			 	// 	}
-		 		// } catch(InterruptedException ie){
-		 		// 	resultsMessageDialog(false, ie.getMessage());
-		 		// }
-		 						
 			}
 		});
 
@@ -422,69 +377,69 @@ public class Main extends JFrame {
 	}
 
 
-	public static void showDimensionSection(){
-		clearPanel(innerRightPanel);
-		hideHTMLExamples();
+	// public static void showDimensionSection(){
+	// 	clearPanel(innerRightPanel);
+	// 	hideHTMLExamples();
 
-	  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
-			firstRowConstraints.fill = GridBagConstraints.BOTH;
-			firstRowConstraints.gridx = 0; 
-			firstRowConstraints.gridy = 0;
-			firstRowConstraints.anchor = GridBagConstraints.CENTER;
-			firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
-		innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
-			firstRowConstraints.fill = GridBagConstraints.NONE;
-			firstRowConstraints.gridx = 1;
-		innerRightPanel.add(updateNow, firstRowConstraints);
+	//   	GridBagConstraints firstRowConstraints = new GridBagConstraints();
+	// 		firstRowConstraints.fill = GridBagConstraints.BOTH;
+	// 		firstRowConstraints.gridx = 0; 
+	// 		firstRowConstraints.gridy = 0;
+	// 		firstRowConstraints.anchor = GridBagConstraints.CENTER;
+	// 		firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
+	// 	innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
+	// 		firstRowConstraints.fill = GridBagConstraints.NONE;
+	// 		firstRowConstraints.gridx = 1;
+	// 	innerRightPanel.add(updateNow, firstRowConstraints);
 
-		GridBagConstraints secondSectionConstraints = new GridBagConstraints();
-			secondSectionConstraints.fill = GridBagConstraints.BOTH;
-			secondSectionConstraints.gridx = 0; 
-			secondSectionConstraints.gridy = 1; 
-			secondSectionConstraints.weighty = 0.1;
-		GridBagConstraints secondRowConstraints = new GridBagConstraints();
-			secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
-			secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 1;
-			secondRowConstraints.weightx = 0.1;
-			secondRowConstraints.ipady = 30;
-			secondSectionConstraints.gridwidth = 2;
-		updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
-			secondRowConstraints.ipady = 15;
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(portraitText, secondRowConstraints);
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 2;
-			secondRowConstraints.weighty = 0.1;
-		updateDimensionsPanel.add(squareLabel, secondRowConstraints);
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(squareText, secondRowConstraints);
+	// 	GridBagConstraints secondSectionConstraints = new GridBagConstraints();
+	// 		secondSectionConstraints.fill = GridBagConstraints.BOTH;
+	// 		secondSectionConstraints.gridx = 0; 
+	// 		secondSectionConstraints.gridy = 1; 
+	// 		secondSectionConstraints.weighty = 0.1;
+	// 	GridBagConstraints secondRowConstraints = new GridBagConstraints();
+	// 		secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
+	// 		secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+	// 		secondRowConstraints.gridx = 0; 
+	// 		secondRowConstraints.gridy = 1;
+	// 		secondRowConstraints.weightx = 0.1;
+	// 		secondRowConstraints.ipady = 30;
+	// 		secondSectionConstraints.gridwidth = 2;
+	// 	updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
+	// 		secondRowConstraints.ipady = 15;
+	// 		secondRowConstraints.gridx = 1;
+	// 	updateDimensionsPanel.add(portraitText, secondRowConstraints);
+	// 		secondRowConstraints.gridx = 0; 
+	// 		secondRowConstraints.gridy = 2;
+	// 		secondRowConstraints.weighty = 0.1;
+	// 	updateDimensionsPanel.add(squareLabel, secondRowConstraints);
+	// 		secondRowConstraints.gridx = 1;
+	// 	updateDimensionsPanel.add(squareText, secondRowConstraints);
 
-		innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
+	// 	innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
 
 
-	  	GridBagConstraints updateDimensionsLabelConstraints = new GridBagConstraints();
-			updateDimensionsLabelConstraints.fill = GridBagConstraints.BOTH;
-			updateDimensionsLabelConstraints.gridx = 0; 
-			updateDimensionsLabelConstraints.gridy = 0;
+	//   	GridBagConstraints updateDimensionsLabelConstraints = new GridBagConstraints();
+	// 		updateDimensionsLabelConstraints.fill = GridBagConstraints.BOTH;
+	// 		updateDimensionsLabelConstraints.gridx = 0; 
+	// 		updateDimensionsLabelConstraints.gridy = 0;
 
 	  	
 
-	  	GridBagConstraints updateDimensionsDescConstraints = new GridBagConstraints();
-			updateDimensionsDescConstraints.gridx = 0; 
-			updateDimensionsDescConstraints.gridy = 1;
-			updateDimensionsDescConstraints.anchor = GridBagConstraints.CENTER;
+	//   	GridBagConstraints updateDimensionsDescConstraints = new GridBagConstraints();
+	// 		updateDimensionsDescConstraints.gridx = 0; 
+	// 		updateDimensionsDescConstraints.gridy = 1;
+	// 		updateDimensionsDescConstraints.anchor = GridBagConstraints.CENTER;
 
 
-	  	GridBagConstraints updateDimensionsPanelConstraints= new GridBagConstraints();
-			updateDimensionsPanelConstraints.gridx = 0; 
-			updateDimensionsPanelConstraints.gridy = 1;
-			updateDimensionsPanelConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-			updateDimensionsPanelConstraints.gridwidth = GridBagConstraints.REMAINDER;
-		validateView();
-		getImageDimensionLimits();
-	}
+	//   	GridBagConstraints updateDimensionsPanelConstraints= new GridBagConstraints();
+	// 		updateDimensionsPanelConstraints.gridx = 0; 
+	// 		updateDimensionsPanelConstraints.gridy = 1;
+	// 		updateDimensionsPanelConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
+	// 		updateDimensionsPanelConstraints.gridwidth = GridBagConstraints.REMAINDER;
+	// 	validateView();
+	// 	getImageDimensionLimits();
+	// }
 
 	public static void showAboutMesection(){
 		clearPanel(innerRightPanel);
@@ -605,26 +560,7 @@ public class Main extends JFrame {
 			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
-
-	public static void saveDimensions(){
-		try{
-			boolean saveDimensionsStatus = myFileWriter.writeUpdatedDimensions(filePaths.dimensionsFilePath, portraitText.getText(), squareText.getText());
-			if (saveDimensionsStatus){
-				resultsMessageDialog(true, "<html><span style='color:green;font-weight:bold'>SUCCESS</span>: Dimensions were successfully updated</html>");
-			} else{
-				resultsMessageDialog(false, "<html><span style='color:red;font-weight:bold'>FAILED</span> to update Dimensions.");
-			}
-		} catch (Exception ex){
-			resultsMessageDialog(false, ex.getMessage());
-		}
-	}
-
-
-
-
 	
-
-
 
 
 	/* GET Objects */ 
@@ -649,34 +585,6 @@ public class Main extends JFrame {
 			resultsMessageDialog(false, ex.getMessage());
 			// ex.printStackTrace();
 
-		}
-	}
-
-	public static void getImageDimensionLimits(){
-		try{
-			String line; 
-			// filePaths.dimensionsFilePath = "config/dimConfig.txt";
-			// BufferedReader dimConfig = new BufferedReader(new FileReader(filePaths.dimensionsFilePath));
-			BufferedReader dimConfig = new BufferedReader(new FileReader("../../config/dimConfig.txt"));
-			while ( (line = dimConfig.readLine()) != null){
-				String [] lineSplit = line.split("=");
-				switch(lineSplit[0]){
-					case "portrait":
-						portraitDim = Integer.parseInt(lineSplit[1]);
-						portraitText.setText(lineSplit[1]);
-						break;
-					case "square":
-						squareDim = Integer.parseInt(lineSplit[1]);
-						squareText.setText(lineSplit[1]);
-						break;
-					default:
-						portraitDim = 650;
-						squareDim = 900;
-				}
-			}
-		} catch (Exception ex){
-		    // ex.printStackTrace();
-			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
 
