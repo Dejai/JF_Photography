@@ -1,32 +1,54 @@
-// var slideIndex = 0;
-// var slideshow_images; 
-// var images; 
-// var myPositions;
-// var theTimer;
-// $(document).ready(function(){
-// 	slideshow_images = $(".slideshow_image").toArray();
-//    	myPositions = $(".slideshowPositionIndicator").toArray();
-//     carousel();
-//     slideshowEventListeners();
-// 	$.get("/config/slideshowImages.txt", function(results){
-//         if (buildSlideshow(results)){
-//         	displayDelayed();
-//         	slideshow_images = $(".slideshow_image").toArray();
-//     		myPositions = $(".slideshowPositionIndicator").toArray();
-//         	carousel();
-//         	slideshowEventListeners();
-//         }
-//     });	
-// });
-// $(document).ready(function(){
-// 	newBuildSlideshow();
-//     slideshow_images = $(".slideshow_image").toArray();
-//     myPositions = $(".slideshowPositionIndicator").toArray();
-// 	setTimeout(function(){
-//         $(".delayedDisplay").fadeIn(2000);
-//     }, 400);
-//     // carousel();
-// });
+sharedFunctions.loadNavBar();
+
+var slideIndex = 0;
+var slideshow_images; 
+var myPositions;
+var theTimer;
+$(document).ready(function(){
+
+        newBuildSlideshow();
+        $(".slideshow_image").hide();
+
+        if ( Storage !== 'undefined'){
+            if (sessionStorage.JFPhotobizSession){
+                console.log("Same session");
+                showSlideshow();
+            } else {
+                console.log("New session");
+                showWelcomeMessage();
+                sessionStorage.JFPhotobizSession = true;
+            }
+        } else {
+            console.log("I need to check for the cookie");
+            showWelcomeMessage();
+        }
+});
+
+function showWelcomeMessage(){
+    setTimeout(function(){
+            $("#welcomeMessageHeader").fadeIn();
+            setTimeout(function(){
+                $("#welcomeSentence-one").fadeIn();
+                setTimeout(function(){
+                    $("#welcomeSentence-two").fadeIn();
+                    setTimeout(function(){
+                        $("#enterButtonSection").fadeIn();
+                    }, 1000);
+                }, 1000)
+            }, 1000);
+        }, 500);
+}
+function showSlideshow(time){
+    var delayTime = time ? time : 300;
+    setTimeout(function(){
+            $("#welcomeMessageSection").hide();
+            slideshow_images = $(".slideshow_image").toArray();
+            myPositions = $(".slideshowPositionIndicator").toArray();
+            $(".delayedDisplay").fadeIn(400);
+            carousel();
+            slideshowEventListeners();
+        }, delayTime);
+}
 
 function newBuildSlideshow(){
 	$.get("/config/slideshowJSON.txt", function(payload){
@@ -36,24 +58,24 @@ function newBuildSlideshow(){
 		var posRes = "";
 		for (var x = 0; x < images.length; x++){
 	    	if (x == 0){ 
-	    		var leftArrow = "<p id=\"slideshow_leftButton\" class=\"slideshowArrow showMeDel\"></p>";
+	    		var leftArrow = "<p id=\"slideshow_leftButton\" class=\"slideshowArrow \"></p>";
 	        	$("#slideshowPositionsSection").append(leftArrow);
-	        	var pos = "<p class=\"slideshowPositionIndicator showMeDel\" data-ron-slide=\"" +(x+1)+"\"></p>";
+	        	var pos = "<p class=\"slideshowPositionIndicator \" data-ron-slide=\"" +(x+1)+"\"></p>";
 	        	$("#slideshowPositionsSection").append(pos);
-	        	var img = "<img class=\"currentIMG slideshow_image dim-"+images[x].dimension + " selectedImage1 showMeDel2\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
+	        	var img = "<img class=\"currentIMG slideshow_image dim-"+images[x].dimension + " selectedImage1 \" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
 	       		$("#slideshowImagesContainer").append(img);
 	    	} else if (x == images.length-1) {
 	    		var img = "<img class=\"slideshow_image dim-"+images[x].dimension + "\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
 	       		$("#slideshowImagesContainer").append(img);
-	       		var pos = "<p class=\"slideshowPositionIndicator showMeDel\" data-ron-slide=\"" +(x+1)+"\"></p>";
+	       		var pos = "<p class=\"slideshowPositionIndicator \" data-ron-slide=\"" +(x+1)+"\"></p>";
 	        	$("#slideshowPositionsSection").append(pos);
-	       		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideshowArrow showMeDel\"></p>";
+	       		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideshowArrow \"></p>";
 	    		$("#slideshowPositionsSection").append(rightArrow);
 	    		res += img;
 	    	} else{
 	    		var img = "<img class=\"slideshow_image dim-"+images[x].dimension + "\" data-photo-dimension=\""+images[x].dimension+"\" src=\""+images[x].path+"\">";
 	       		$("#slideshowImagesContainer").append(img);
-	       		var pos = "<p class=\"slideshowPositionIndicator showMeDel\" data-ron-slide=\"" +(x+1)+"\"></p>";
+	       		var pos = "<p class=\"slideshowPositionIndicator \" data-ron-slide=\"" +(x+1)+"\"></p>";
 	        	$("#slideshowPositionsSection").append(pos);
 	    	}
 		}
@@ -61,29 +83,7 @@ function newBuildSlideshow(){
 
 	});
 }
-// function buildSlideshow(results){
-// 	var slideshow_images_array = results.split("\n");
-//     for (var x = 0; x < slideshow_images_array.length; x++){
-//     	var imageDetails = slideshow_images_array[x].split(",");
-//     	if (x == 0){ 
-//     		var leftArrow = "<p id=\"slideshow_leftButton\" class=\"slideshowArrow\"></p>";
-//         	$("#slideshowPositionsSection").append(leftArrow);
-//     	} else if (x == slideshow_images_array.length-1) {
-//     		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/images/slideshow/"+imageDetails[0]+"\">";
-//        		$("#slideshowImagesContainer").append(img);
-//        		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
-//         	$("#slideshowPositionsSection").append(pos);
-//        		var rightArrow = "<p id=\"slideshow_rightButton\" class=\"slideshowArrow\"></p>";
-//     		$("#slideshowPositionsSection").append(rightArrow);
-//     	} else{
-//     		var img = "<img class=\"slideshow_image\" data-photo-dimension=\""+imageDetails[1]+"\" src=\"/images/slideshow/"+imageDetails[0]+"\">";
-//        		$("#slideshowImagesContainer").append(img);
-//        		var pos = "<p class=\"slideshowPositionIndicator\" data-ron-slide=\"" +x+"\"></p>";
-//         	$("#slideshowPositionsSection").append(pos);
-//     	}
-//     }
-//     return true;
-// }
+
 
 function carousel() {
 	$(".slideshow_image").hide();

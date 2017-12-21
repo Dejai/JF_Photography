@@ -11,7 +11,6 @@
     <meta http-equiv="expires" content="Mon, 16 Dec 1996 4:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <link rel="icon" type="image/png" href="/images/assets/logo/jfphotobiz_logo.png"/>
-    
 
     <!-- BOOTSTRAP -->
      <!-- Latest compiled and minified CSS -->
@@ -23,146 +22,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
    
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/css/shared.css">
     <link rel="stylesheet" type="text/css" href="/scripts/css/portfolio.css">    
 </head>
 <body ng-app="portfolioApp" ng-controller="portfolioController">
 
-<!-- New Approach -->
-<!-- <div id="galleryModal" gallery-modal></div> -->
-<div id="galleryModal-x" ng-click="closeModal()">
-  <p style="position:fixed; bottom:0; width:100%; text-align:center; color:white; font-size:14px; font-weight: bold;">
-    <span id="viewingImage"></span> / {{albumLength}}
-  </p>
+<div id="galleryModal" ng-click="closeModal()">
+  <p id="galleryModalIndicator"><span id="viewingImage"></span> / {{albumLength}}</p>
 </div>
 <nav id="navbar" class="navbarHeight"></nav>
-
 <div id="albumSection" class="hideForMobileNav mobileBelowNav mainSection" >
-
-     <div style="text-align:center; color:white; margin-bottom:20px;">
-        <button id="backToAlbums-x" class = "backToAlbums-x jfButton jfButton-small" ng-show="singleAlbumView" ng-click="backToAlbums()">
+     <div id="albumTitleSection">
+        <button id="backToAlbums" class="jfButton jfButton-small" ng-show="singleAlbumView" ng-click="backToAlbums()">
             <h5>&#8656; Back</h5>
         </button>
         <h2>{{albumTitle}}</h2>        
     </div>
-    <div id="albumListings" class="portfolioListing" ng-hide="singleAlbumView">    
-        <div class="portfolioListing" style="padding:0% 1%;">
-            <div class="parent" ng-repeat="x in albums" ng-click="testFunc($event)">
-                <div class="child" style="background-image:url('{{x.coverImg}}');">
-                    <div class="theSpan">{{x.folderName}}</div>
+    <div id="listOfAlbums" class="portfolioListing" ng-hide="singleAlbumView">    
+        <div class="portfolioListing">
+            <div class="albumCover-container" ng-repeat="x in albums" ng-click="testFunc($event)">
+                <div class="albumCover-image" style="background-image:url('{{x.coverImg}}');">
+                    <div class="albumCover-name">{{x.folderName}}</div>
                 </div>
             </div>    
         </div>  
     </div>
-    <div class="portfolioListing" ng-show="singleAlbumView">
+    <div id="listOfPicsInAlbum" class="portfolioListing" ng-show="singleAlbumView">
         <div class="portfolioListing" >
-            <div ng-repeat="y in singleAlbum" style="width:30%; height:270px; float:left; margin:1%; display:flex; justify-content: center;">
-              <album-photo style="display:flex; justify-content: center;"></album-photo>
-                <!-- <img id="photo-0{{$index}}" class="imgTest galleryImage" src="{{y.path}}" alt="{{y.path}}" ng-click="openImage($index)"> -->
+            <div class="albumPhoto-container" ng-repeat="y in singleAlbum">
+              <album-photo class="albumPhoto-directive"></album-photo>
             </div>
         </div>
     </div>
 
-
-
-    <style type="text/css">
-
-        #galleryModal-x { display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index: 900; opacity:0.8; overflow:scroll; background-color:black; }
-        .portfolioListing { width:90%; margin:auto;}
-
-        /*.galleryImage { transition: width 0.2s linear, height 0.5s linear, top 0.5s linear, left 0.5s linear  }*/
-
-        .imgTest:hover { opacity:0.7; cursor:pointer; transform: scale(1.1); transition: all 0.2s; z-index:200; }
-
-        .imgTest { width:0%; height:0%; }
-
-        .imgTestLoad { transition: width 0.1s ease-out, height 0.1s ease-out; }
-        /* This is just so that the images can load on a transition upon their first call. It is removed when they are open, and become useless - it is not used for additional visits */
-
-        .galleryImgViewed { position:fixed; top:50%; left:50%; z-index: 1000; 
-                            transition: all 0s;
-                            }
-
-
-
-        .parent {  display:flex;
-          justify-content: center;
-          align-content: center; 
-          width:30%; margin: 1%; margin-bottom:2%; height:270px; float:left;
-          /*border:1px solid white;*/
-      }
-
-
-        .child {
-          width: 100%;
-          height: 100%;
-          background-color: black; /* fallback color */
-          background-position: center;
-          background-size: cover;
-          transition: all .2s;
-          display:flex;
-          justify-content: center;
-          align-content: center; 
-         
-        }
-
-        .parent:hover .child,
-        .parent:focus .child {
-          transform: scale(1.1);
-          cursor:pointer;
-          border:1px solid white;
-
-        }
-
-        .child::before {
-          content: "";
-          display: none;
-          height: 100%;
-          width: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          background-color: rgba(52, 73, 94, 0.75);
-        }
-
-        .parent:hover .child:before,
-        .parent:focus .child:before {
-          display: block;
-        }
-        .theSpan {
-          color: white; 
-          font-family: sans-serif;
-          font-size:20px;
-          display:none;
-          padding-top:35%;
-          font-size:200%;
-          z-index: 1000;
-          width:100%;
-          text-align:center;
-        }
-
-        .parent:hover .theSpan,
-        .parent:focus .theSpan {
-          display: block;
-        }
-
-    </style>
-
-<!--     <div id="albumCoversList" class="delayedDisplay">
-        <div id="albumCoversTable">
-            <h1>Album Covers</h1>
-
-        </div>
-    </div>
-    <div id="albumPhotosList">
-        <div id="albumPhotosTable"> </div>
-    </div> -->
-    <div photos-not-found ng-show="photosNotFound"></div>
 </div>
 </body>
-
-    
 
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script>
@@ -170,5 +64,4 @@
         sharedFunctions.loadNavBar();
     </script>
     <script type="text/javascript" src="/scripts/js/angular/apps/portfolio.js"></script>
-    <!-- <script type="text/javascript" src="/scripts/js/portfolio.js"></script> -->
 </html>

@@ -1,4 +1,5 @@
-/*	CONTACT OPTIONS	*/
+
+/* General - Contact Options */
 	#contactQuestion { color:white;padding:2%;text-align:center; margin-top:0px; margin-bottom:5%;
 						transition: font-size 0.6s ease-out, margin-bottom 0.6s ease-out, padding 0.6s ease-out; 
 						-webkit-transition: font-size 0.6s ease-out, margin-bottom 0.6s ease-out, padding 0.6s ease-out; }
@@ -6,15 +7,14 @@
 							transition: padding 0.5s ease-out; -webkit-transition: padding 0.5s ease-out; }
 	.contactOption  { border: 1px solid white; font-size:14px; background-color:none; color:white; padding:2%; margin:1%; 
 						letter-spacing: 1px; transition: font-size 0.5s ease-out; -webkit-transition: font-size 0.5s ease-out; }
-	/*.contactOption:hover {background-color:white; color:black; border:1px solid black; cursor:pointer;}*/
-	
-/*
-GENERAL 
-*/
+
+
+/* Forms - Processing */
+	#formProcessingGif { text-align:center; }
+	#formProcessingGif img { width:200px; height:200px; margin-top:2%; }
+/* Forms - General */
 	/* The rows and components in the form*/
 	#contactFormSection { margin-top:130px; opacity:0; transition: opacity 0.8s ease-in; }
-
-
 	.formRow { width:100%; float:left; padding-bottom:2%; margin-bottom:0%; padding-left:5%;}
 	.formButton:hover { background-color:white; color:black; border:1px solid black; cursor:pointer;  }
 	.requiredField::after{ content:" * "; color:red; }
@@ -29,21 +29,17 @@ GENERAL
 	.contactForm p:hover { cursor:default; }
 	.contactForm textarea { width:100%; }
 
-
 	/*The submit button for each form */
 	.submitButton {	border: 1px solid white; background-color:black; color:white; letter-spacing: 1px; }
 
+
+/* Forms - Request Service */
+	#requestServiceForm{ width:100%; margin:auto; padding-top:2%;}
+	
 	/*The new table form format*/
 	#datetimePickerSection table tr td {padding-left:10px; border-bottom-width:10px;}
 	#datetimePickerSection table tr {padding:1%;}
 
-
-
-/*
-REQUEST FORM
-*/
-	#requestServiceForm{ width:100%; margin:auto; padding-top:2%;}
-	
 	/*The section for the date and time*/
 	.dateSection { width:100%;float:left;text-align:left; }
 	.dateSelectorSection { width:35%; float:left; margin-right:2%;  }
@@ -51,9 +47,6 @@ REQUEST FORM
 
 	/*The option to add a new date / time. */
 	.addNewDateTimeSection { width:45%; float:left; padding-left:2%; }
-	/*.addNewDateTimeButton { color:limegreen; font-size:12px; text-align:center; padding:0%; }
-	.addNewDateTimeButton:hover { cursor:pointer; color:white; background-color:limegreen;}
-*/
 	.addNewDateTimeButton { color:green; font-size:22px; }
 	.addNewDateTimeButton:hover { cursor:pointer; color:limegreen;}
 
@@ -81,16 +74,10 @@ REQUEST FORM
 									}
 	.removeNewDateTimeButton:hover .removeNewDateTimeButtonTooltip { visibility:visible; cursor:pointer;}
 	
-
-/*
-FEEDBACK FORM
-*/
+/* Forms - Request Service */
 	#feedbackForm{ width:100%; margin:auto; padding-top:2%;}
 
-
-/* 
-FORM RESULTS
-*/
+/* Forms - Results */
 	#formResultsSection { color:white; text-align:center; padding-top:2%; }
 	#counterSection { padding:2%; text-align:center; display:none; }
 	#countDownNumber { color:red; padding:1%;}
@@ -100,6 +87,8 @@ FORM RESULTS
 	#formStatusSentence2 { font-size:16px; }
 	#successImage { width:200px; height:200px; margin-top:2%; }
 
+
+/* ------------------------ MEDIA QUERIES ------------------------ */
 
 
 /* MEDIA QUERIES */

@@ -19,9 +19,8 @@
 
 
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/css/shared.css">
     <link rel="stylesheet" type="text/css" href="/scripts/css/contact.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/navbar.css">
     
 </head>
 <body ng-app="contactForms" ng-controller="contactFormsController">
@@ -31,7 +30,6 @@
 	<p id="contactQuestion" class="pageHeadlinerSize" style="{{hiddenFormQuestion}}" ng-show="!formSelected">
 		What would you like to contact me about?
 	</p>
-	<p style="color:white;">{{timeInMs}}</p>
 	<div id="contactOptionsSection">
 		<a id="requestServiceButtom" style="{{serviceStyle}}" class="contactOption formButton" data-jf-contact-option="service" ng-click="selectForm($event)" disabled="true">
 			Request services
@@ -41,9 +39,8 @@
 		</a>
 		<br/>
 		<!-- -->
-		<div id="formProcessingGif" style="text-align:center;" ng-show="submittingForm">
-			<img src="/images/assets/icons/loading.gif" style="width:200px; height:200px; margin-top:2%;">		
-			}
+		<div id="formProcessingGif" ng-show="submittingForm">
+			<img src="/images/assets/icons/loading.gif">
 		</div>
 	</div>
 	<div id="formResultsSection" class="formSections" ng-show="formSubmitted && !showServiceForm && !showFeedbackForm">
@@ -73,18 +70,17 @@
         });
     </script>
 
-	
+	<!-- CUSTOM SCRIPTS -->
+    <script type="text/javascript" src="/scripts/js/angular/apps/contactForms.js"></script>
+    <script type="text/javascript" src="/scripts/js/angular/services/formServices.js"></script>
+
 	<!-- EMAIL JS SCRIPT -->
 	<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-	
-
-	<!-- STYLE & CODE FOR datePicker -->
+    <!-- STYLE & CODE FOR datePicker -->
 	<!-- this should go after your </body> -->
 	<link rel="stylesheet" type="text/css" href="/scripts/js/datetimepicker-master/jquery.datetimepicker.css"/ >
 	<script src="/scripts/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
 
-	<!-- CUSTOM SCRIPTS -->
-    <script type="text/javascript" src="/scripts/js/angular/apps/contactForms.js"></script>
-    <script type="text/javascript" src="/scripts/js/angular/services/formServices.js"></script>
+
 </html>

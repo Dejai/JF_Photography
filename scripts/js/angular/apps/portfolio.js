@@ -4,17 +4,7 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 
 
 	$scope.albumTitle = "My Albums";
-	// var query = window.location.search;
-	// var queryName = query.split("=")[0].substring(1);
-	// var albumName = query.substring(query.lastIndexOf("=")+1); // Check the URL for a query search (specifically a value for the name of the album);
-	// if (query && (albumName !== "Studio") ) {
-	// 	$scope.photosNotFound = true; 
-	// } else if (query && albumName && queryName == "album"){
-	// 	$scope.photosNotFound = false; 
-	// 	$scope.test = true;
-	// } else {
-	// 	$scope.test = false;
-	// }
+	
 	$http.get("/config/albumsJSON.txt")
 		.then(function(payload){
 			$scope.albums = payload.data;
@@ -75,14 +65,14 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 		var element = document.getElementById("photo-0"+index);
 		element.scrollIntoView();
 		$scope.viewedImage = element;
-		element.classList.remove("imgTest");
-		element.classList.remove("imgTestLoad");
-		element.classList.add("galleryImgViewed");
+		element.classList.remove("albumPhoto-image");
+		element.classList.remove("albumPhoto-transition");
+		element.classList.add("albumPhoto-galleryView");
 		element.style.width = targetWidth+"px";
 		element.style.height = targetHeight+"px";
 		element.style.marginTop = "-"+(targetHeight/2)+"px";
 		element.style.marginLeft = "-"+(targetWidth/2)+"px";
-		document.getElementById("galleryModal-x").style.display = "block";
+		document.getElementById("galleryModal").style.display = "block";
 	}
 
 	$scope.closeImage = function(){
@@ -92,35 +82,41 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 		$scope.viewedImage.style.height = "100%";
 		$scope.viewedImage.style.marginTop = "0px";
 		$scope.viewedImage.style.marginLeft = "0px";
-		$scope.viewedImage.classList.add("imgTest");
-		$scope.viewedImage.classList.remove("galleryImgViewed");
+		$scope.viewedImage.classList.add("albumPhoto-image");
+		$scope.viewedImage.classList.remove("albumPhoto-galleryView");
 
 	}
 
 	$scope.closeModal = function(){
-		document.getElementById("galleryModal-x").style.display = "none";
+		document.getElementById("galleryModal").style.display = "none";
 		$scope.modalOpen = false;
 		console.log("Inside closeModal");
 		$scope.closeImage();
-	}	
+	}
+
+	$scope.changeGalleryImage = function(direction){
+		var nextImage = $scope.viewingIndex == $scope.albumLength-1 ? 0 : $scope.viewingIndex+1;
+		var prevImage = $scope.viewingIndex == 0 ? $scope.albumLength-1 : $scope.viewingIndex-1;
+		if (direction == "right"){
+			$scope.closeImage();
+			$scope.openImage(nextImage);
+		} else if (direction == "left"){
+			$scope.closeImage();
+			$scope.openImage(prevImage);
+		} else {
+			$scope.closeModal();
+		}
+	}
 
 	$scope.keyboardListener = function(){
 		window.onkeyup = function(event){
-
-			var nextImage = $scope.viewingIndex == $scope.albumLength-1 ? 0 : $scope.viewingIndex+1;
-			var prevImage = $scope.viewingIndex == 0 ? $scope.albumLength-1 : $scope.viewingIndex-1;
 			if ($scope.modalOpen){
 				switch(event.which){
 					case 37:   //left arrow
-						// console.log($scope.viewingIndex);
-						// console.log(prevImage);
-						$scope.closeImage();
-						$scope.openImage(prevImage);
+						$scope.changeGalleryImage("left");
 						break;
 					case 39:   // right arrow
-						// console.log(nextImage);
-						$scope.closeImage();
-						$scope.openImage(nextImage);
+						$scope.changeGalleryImage("right");
 						break;
 					case 27: //Escape button
 						$scope.closeModal();
@@ -139,27 +135,17 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 portfolioApp.directive("albumPhoto", function(){
 	return {
 		restrict: "EA",
-		template: "<img id=\"photo-0{{$index}}\" class=\"imgTest galleryImage imgTestLoad\" src=\"{{y.path}}\" alt=\"{{y.path}}\" ng-click=\"openImage($index)\">",
+		template: "<img id=\"photo-0{{$index}}\" class=\"albumPhoto-image galleryImage albumPhoto-transition\" src=\"{{y.path}}\" alt=\"{{y.path}}\" ng-click=\"openImage($index)\">",
 		link: function($scope, $element, $attr){
 			if($scope.$last){
-				var theImgs = document.getElementsByClassName("imgTest");
-				angular.forEach(theImgs, function(val, key, obj){
-					// console.log(val);
+				var theImgs = document.getElementsByClassName("albumPhoto-image");
+				angular.forEach(theImgs, function(ele, key, obj){
 					setTimeout(function(){
-						val.style.width="100%";
-						val.style.height="100%";
+						ele.style.width="100%";
+						ele.style.height="100%";
 					}, 300);
 				});
-				// document.getElementById("ngApp").style.visibility = "visible";
-				// document.getElementById("ngApp").style.opacity =  1;
 			}
-			// $timeout(function($element){
-			// 	var theImage = $element[0].querySelectorAll("img")[0];
-			// 	theImage.style.width = "100%";
-			// 	theImage.style.height = "100%";
-			// 	// $element.style.width = "100%";
-			// 	// $element.style.height = "100%";
-			// },2000);
 		}
 	}
 });
@@ -168,13 +154,6 @@ portfolioApp.directive("galleryModal", function(){
 	return{
 		restrict: 'AE', 
 		templateUrl: "/pages/shared/galleryModal.html"
-	}
-});
-
-portfolioApp.directive("photosNotFound", function(){
-	return {
-		restrict: "AE",
-		templateUrl: "/pages/shared/photosNotFound.html"
 	}
 });
 

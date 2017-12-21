@@ -1,23 +1,20 @@
+/* About Me Section*/
+	#aboutMeSection { width:100%; color:white; text-align:center; padding:2%; margin-top:120px; font-family:Arial; line-height:200%; }
 
-#aboutMeSection { width:100%; color:white; text-align:center; padding:2%; margin-top:120px; font-family:Arial; line-height:200%; }
-/*#aboutMeParagraphs { font-size:12px; }*/
-#profilePic { width:50%; margin-right:2%; margin-bottom:5%; display:block; margin:auto; height:200px; border:1px solid white; }
-#clearer { display:block; clear:both; margin-bottom:2%; }
+	#profilePic { width:50%; margin-right:2%; margin-bottom:5%; display:block; margin:auto; height:200px; border:1px solid white; }
 
-/*#directLinkToRequestServices { border-width:2px; color:white; border-radius:40px;  }*/
-#directLinkToRequestServices { border: 2px solid white; color:white; border-radius:40px;  }
-#directLinkToRequestServices:hover { background-color:white; color:black; }
+	#directLinkToRequestServices { border: 2px solid white; color:white; border-radius:40px; display:inline-block;  }
+	#directLinkToRequestServices:hover { background-color:white; color:black; }
 
 /* General Table (sideways)*/
 @media screen and (min-width:768px) and (min-height:500px) {
 	#aboutMeSection { width:70%; padding:0%; margin:auto; margin-top:140px;}
 	#profilePic { width:30%; height:180px; }
-	/*#aboutMeParagraphs { font-size:12px; }*/
 }
 
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:1024px){
-	#aboutMeSection { width:80%; margin-top:200px; line-height:250%; text-align:left;}
+	#aboutMeSection { width:80%; margin:auto; margin-top:200px; line-height:250%; text-align:left;}
 	#profilePic { width:40%; height:250px; float:left; margin-right:5%; }
 	#clearer { display:none; }
 
@@ -25,16 +22,13 @@
 
 /* Regular Laptops*/
 @media screen and (min-width:1024px) {
-	#aboutMeSection { width:60%;  margin-top:40px; line-height:250%; text-align:left; }
+	#aboutMeSection { width:60%;  margin:auto;  margin-top:40px; line-height:250%; text-align:left; }
 	#profilePic { width:30%; height:250px; float:left; margin-right:5%; margin-bottom:50%; }
-	#clearer { display:none; }
 
-	/*#aboutMeParagraphs { font-size:2px; }*/
 }
 
 /* Medium Laptops or Sideways Ipad Pros*/
 @media screen and (min-width:1300px){
-	/*#aboutMeParagraphs { font-size:18px; }*/
 }
 
 @media screen and (min-width:1400px){

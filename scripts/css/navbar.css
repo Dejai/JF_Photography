@@ -37,37 +37,15 @@
 	/*#navbar-social-links-section { display:none; height:inherit; text-align:right; padding:2%; float:right;}*/
 	#navbar-social-links-section { display:none; padding:5%; position:fixed; bottom:0px; width:100%; text-align:center; z-index:100; }
 
-
 	/* Tooltip container */
-	.tooltipz {
-	    position: relative;
-	    display: inline-block;
-	    /*border-bottom: 1px dotted black;  If you want dots under the hoverable text */
-	}
+	.tooltipz { position: relative; display: inline-block; }
 	/* Tooltip text */
-	.tooltipz .tooltiptextz {
-	    visibility: hidden;
-	    width: 120px;
-	    background-color: black;
-	    color: #fff;
-	    text-align: center;
-	    padding: 5px 0;
-	    border-radius: 6px;	 
-	    /* Position the tooltip text - see examples below! */
-	    position: absolute;
-	    z-index: 1;	
-	    top:5%; 
-	    left:90%;
-
-
-	}
+	.tooltipz .tooltiptextz { position: absolute; top:5%; left:90%; visibility: hidden; width: 120px; color: #fff; background-color: black;
+	    					  text-align: center; padding: 5px 0; border-radius: 6px; z-index: 1; }
 
 	/* Show the tooltip text when you mouse over the tooltip container */
 	.tooltipz:hover { cursor:pointer; }
-	.tooltipz:hover .tooltiptextz {
-	    visibility: visible;
-	    cursor:pointer;
-	}
+	.tooltipz:hover .tooltiptextz { visibility: visible; cursor:pointer; }
 
 
 
@@ -88,7 +66,6 @@
 
 	#navbar-navigation-options-section { margin-top:70px; }
 	.mobileNavToggle { width:100px; }
-
 }
 
 
