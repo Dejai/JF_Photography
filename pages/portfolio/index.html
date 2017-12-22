@@ -11,57 +11,57 @@
     <meta http-equiv="expires" content="Mon, 16 Dec 1996 4:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <link rel="icon" type="image/png" href="/images/assets/logo/jfphotobiz_logo.png"/>
-    
 
     <!-- BOOTSTRAP -->
      <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
+    <!-- The latest AngularJS minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+   
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/css/shared.css">
     <link rel="stylesheet" type="text/css" href="/scripts/css/portfolio.css">    
 </head>
-<body>
+<body ng-app="portfolioApp" ng-controller="portfolioController">
 
-<!-- New Approach -->
-<div id="galleryModal">
-    <span class="glyphicon glyphicon-remove" id="closeGalleryModal"></span>
-    <div id="galleryModalImageContainer"></div>
-    <div id="galleryModalNavigationSection">
-        <a id="galleryModalLeftButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <span id="currentGalleryModalImage" class="noSelector"></span><span class="noSelector"> / </span><span id="numberOfGalleryModalImages" class="noSelector"></span> 
-        <a id="galleryModalRightButton" class="galleryModalArrow"><span class="glyphicon glyphicon-chevron-right"></span>  </a>        
-    </div>
+<div id="galleryModal" ng-click="closeModal()">
+  <p id="galleryModalIndicator"><span id="viewingImage"></span> / {{albumLength}}</p>
 </div>
-
-
 <nav id="navbar" class="navbarHeight"></nav>
 <div id="albumSection" class="hideForMobileNav mobileBelowNav mainSection" >
-    <div id="albumCoversList" class="delayedDisplay">
-        <div id="albumCoversTable"> </div>
+     <div id="albumTitleSection">
+        <button id="backToAlbums" class="jfButton jfButton-small" ng-show="singleAlbumView" ng-click="backToAlbums()">
+            <h5>&#8656; Back</h5>
+        </button>
+        <h2>{{albumTitle}}</h2>        
     </div>
-    <div id="albumPhotosList">
-        <div id="backToAlbumContainer">
-            <a class = "backToAlbums" href="/pages/portfolio"> &#8656; Back </a>            
-        </div>
-        <div id="albumPhotosTable"> </div>
-        <div id="albumNotFound" style="display:none;color:white; text-align:Center;">
-            <h3> Photos Not Found</h3>
-            <img src="/images/assets/icons/oops2.png" style="height:100px; width:100px;"><br/>
-            <p>Sorry! It looks like we couldn't find the photos you were looking for.</p>
-            <p> The album could have been renamed or moved.</p>
-            <span>Checkout the <a href="/pages/portfolio" style="color:royalblue;">full list of albums.</a></span>
+    <div id="listOfAlbums" class="portfolioListing" ng-hide="singleAlbumView">    
+        <div class="portfolioListing">
+            <div class="albumCover-container" ng-repeat="x in albums" ng-click="testFunc($event)">
+                <div class="albumCover-image" style="background-image:url('{{x.coverImg}}');">
+                    <div class="albumCover-name">{{x.folderName}}</div>
+                </div>
+            </div>    
+        </div>  
+    </div>
+    <div id="listOfPicsInAlbum" class="portfolioListing" ng-show="singleAlbumView">
+        <div class="portfolioListing" >
+            <div class="albumPhoto-container" ng-repeat="y in singleAlbum">
+              <album-photo class="albumPhoto-directive"></album-photo>
+            </div>
         </div>
     </div>
+
 </div>
 </body>
 
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script>
-    <script type="text/javascript" src="/scripts/js/portfolio.js"></script>
+    <script type="text/javascript">
+        sharedFunctions.loadNavBar();
+    </script>
+    <script type="text/javascript" src="/scripts/js/angular/apps/portfolio.js"></script>
 </html>

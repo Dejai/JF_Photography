@@ -21,20 +21,24 @@
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/css/shared.css">
     <link rel="stylesheet" type="text/css" href="/scripts/css/about.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/navbar.css">
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
 
-<div id="aboutMeSection" class="delayedDisplay hideForMobileNav mainSection">
-    <img id="profilePic" src="/images/assets/profile/aboutMe.jpg" alt="profile pic"/>
-    <span id="clearer"></span>
-        <p id="aboutMeParagraphs" class="pageHeadlinerSize"></p>
-
-    <div style="text-align:center;">
-        <a id="directLinkToRequestServices" class="circularButton jfButton jfButton-large" href="/pages/contact?ref=a"> 
+<div id="aboutMeSection" class="delayedDisplay hideForMobileNav mobileBelowNav">
+    <div id="subsection">
+        <div id="profilePicSection">
+            <img id="profilePic" alt="JeRon Fyfield - Profile Picture"/>
+        </div>
+        <div id="aboutMeParagraphSection">
+            <p id="aboutMeParagraphs" class="pageHeadlinerSize"></p>
+        </div>
+        <br class="clearFloat"/>
+    </div>
+    <div id="requestServicesContainer" class="clearFloat">
+        <a id="directLinkToRequestServices" class="jfButton jfButton-large" href="/pages/contact?ref=a"> 
             <h4>Request services today!</h4>
         </a>
     </div>
@@ -44,6 +48,17 @@
     <script type="text/javascript">
         $(document).ready(function(){
             sharedFunctions.loadNavBar();
+            $.get("/config/albumsJSON.json", function(payload){
+                var profilePic = document.getElementById("profilePic");
+                var profileObj = payload["profile"];
+                profilePic.src = profileObj.coverImg;
+                // var oldWidth = profileObj.images[0].width;
+                // var oldHeight = profileObj.images[0].height;
+                // var newDims = sharedFunctions.calculateAspectRatio(oldWidth, oldHeight);
+                // profilePic.width = newDims.width;
+                // profilePic.height = newDims.height;
+                // console.log(sharedFunctions.calculateAspectRatio(profileObj.images[0].width, profileObj.images[0].height));
+            });
             $.get("/config/aboutMe.txt", function(results){
                 var paragraphs = results.split("\n");
                 for (var x in paragraphs){

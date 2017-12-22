@@ -1,2 +1,2 @@
-Main-Class: ConfigTool
+Main-Class: Main
 

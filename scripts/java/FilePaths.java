@@ -7,12 +7,11 @@ public class FilePaths{
 	protected String opSystem;
 	protected String opSystemFull;
 	protected String aboutMeFilePath;
-	protected String dimensionsFilePath;
-	protected String albumsJSONFilePath;
-	protected String slideshowJSONFilePath;
+	protected String albumsJSONPath;
 	protected String gifsPath;
 	protected String galleryDirectoryPath;
 	protected String slideshowDirectoryPath;
+	protected String profileDirectoryPath;
 	protected String separator; 
 	protected String oopsImg; 
 	protected String successProcessingImg; 
@@ -39,7 +38,7 @@ public class FilePaths{
 				Process pr = run.exec(cmd);
 			}
 		} catch (Exception ex){
-			ConfigTool.resultsMessageDialog(false, ex.getMessage());
+			Main.resultsMessageDialog(false, ex.getMessage());
 		}
 		
 	}
@@ -48,15 +47,13 @@ public class FilePaths{
 	public void setFilePaths(String os){
 		aboutMeFilePath = os == "windows" ? "config\\aboutMe.txt" : "config/aboutMe.txt";
 
-		dimensionsFilePath = os == "windows" ? "config\\dimConfig.txt" : "config/dimConfig.txt";
-
-		albumsJSONFilePath = os == "windows" ? "config\\albumsJSON.txt" : "config/albumsJSON.txt";
-
-		slideshowJSONFilePath = os == "windows" ? "config\\slideshowJSON.txt" : "config/slideshowJSON.txt";
+		albumsJSONPath = os == "windows" ? "config\\albumsJSON.json" : "config/albumsJSON.json";
 
 		galleryDirectoryPath = os == "windows" ? "images\\gallery" : "images/gallery";
 
 		slideshowDirectoryPath = os == "windows" ? "images\\slideshow" : "images/slideshow";
+
+		profileDirectoryPath = os == "windows" ? "images\\assets\\profile" : "images/assets/profile";
 
 		gifsPath = os == "windows" ? "images\\assets\\gifs\\" : "images/assets/gifs/";
 

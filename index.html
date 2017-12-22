@@ -17,31 +17,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="/scripts/css/sharedStyle.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/slideshow.css">
-    <link rel="stylesheet" type="text/css" href="/scripts/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/css/shared.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/css/main.css">
+
 </head>
 <body>
 <nav id="navbar" class="navbarHeight"></nav>
-<div id="testIntro" class="hideForMobileNav mobileBelowNav" style="color:white;text-align:center;">
-    <h1 id="introHeader" style="display:none;">Welcome to
-        <br/>
-        <img src="/images/assets/logo/jfphotobiz_logo.png" style="height:220px; width:200px;">
+<div id="welcomeMessageSection" class="hideForMobileNav mobileBelowNav">
+    <h1 id="welcomeMessageHeader" class="hideInitially">
+        Welcome to<br/> <img id="welcomeMessageImage" src="/images/assets/logo/jfphotobiz_logo.png">
     </h1>
-    <h3 id="sentenceOne" style="display:none;">Professional quality pictures ... at a family-friendly price.</h3>
-    <br/><h3 id="sentenceTwo" style="display:none;color:red;">Let's Make Magic!</h3>
-    <br/>
-    <div id="getStartedButton" style="display:none; text-align:center; width:100%;">
+    <h3 id="welcomeSentence-one" class="hideInitially extraSpace">Professional quality pictures <span id="elips"> ... </span>at a family-friendly price.</h3>
+    <br class="extraSpace"/>
+    <h3 id="welcomeSentence-two" class="hideInitially extraSpace">Let's Make Magic!</h3>
+    <br class="extraSpace"/>
+    <div id="enterButtonSection" class="hideInitially">
         <button id="enterJFPhotobiz" class="jfButton jfButton-small" onclick="showSlideshow()"><h4>ENTER</h4></button>            
     </div>
-
 </div>
 <div id="slideshowSection" class="delayedDisplay hideForMobileNav mainSection">
-    <div id="slideshowImagesContainer" style="width:100%;height:100%; padding-top:0.5%;"></div>
+    <div id="slideshowImagesContainer"></div>
 </div>
 <div id="slideshowNavigation" class="delayedDisplay mainSection">
     <span id="slideshowPositionsSection"></span>
@@ -50,59 +47,5 @@
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script>
     <script type="text/javascript" src="/scripts/js/slideshow.js"></script>
-    <script type="text/javascript">
-        sharedFunctions.loadNavBar();
-
-        var slideIndex = 0;
-        var slideshow_images; 
-        var myPositions;
-        var theTimer;
-        $(document).ready(function(){
-      
-                newBuildSlideshow();
-                $(".slideshow_image").hide();
-
-                if ( Storage !== 'undefined'){
-                    if (sessionStorage.JFPhotobizSession){
-                        console.log("Same session");
-                        showSlideshow();
-                    } else {
-                        console.log("New session");
-                        showWelcomeMessage();
-                        sessionStorage.JFPhotobizSession = true;
-                    }
-                } else {
-                    console.log("I need to check for the cookie");
-                    showWelcomeMessage();
-                }
-        });
-
-        function showWelcomeMessage(){
-            setTimeout(function(){
-                    $("#introHeader").fadeIn();
-                    setTimeout(function(){
-                        $("#sentenceOne").fadeIn();
-                        setTimeout(function(){
-                            $("#sentenceTwo").fadeIn();
-                            setTimeout(function(){
-                                $("#getStartedButton").fadeIn();
-                            }, 1000);
-                        }, 1000)
-                    }, 1000);
-                }, 500);
-        }
-        function showSlideshow(time){
-            var delayTime = time ? time : 300;
-            setTimeout(function(){
-                    // $("#testIntro").fadeOut(300);
-                    $("#testIntro").hide();
-                    slideshow_images = $(".slideshow_image").toArray();
-                    myPositions = $(".slideshowPositionIndicator").toArray();
-                    $(".delayedDisplay").fadeIn(400);
-                    carousel();
-                    slideshowEventListeners();
-                }, delayTime);
-        }
-    </script>
 
 </html>

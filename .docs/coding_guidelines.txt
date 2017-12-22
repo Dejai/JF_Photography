@@ -51,6 +51,10 @@ Cancel:
 https://www.iconfinder.com/icons/1894663/cancel_delete_exit_remove_icon#size=128
 
 
+The following was used as a guide for adding zoom functionality to images
+https://css-tricks.com/zooming-background-images/
+
+
 
 
 

@@ -1,43 +1,41 @@
 
-#aboutMeSection { width:100%; color:white; text-align:center; padding:2%; margin-top:120px; font-family:Arial; line-height:200%; }
-/*#aboutMeParagraphs { font-size:12px; }*/
-#profilePic { width:50%; margin-right:2%; margin-bottom:5%; display:block; margin:auto; height:200px; border:1px solid white; }
-#clearer { display:block; clear:both; margin-bottom:2%; }
+/* About Me Section*/
+	#aboutMeSection { width:100%; color:white; text-align:center; padding:2%; font-family:Arial; line-height:200%; }
+	#subsection {  width:100%; }
+	#profilePicSection { float:left; text-align:center; width:100%;  }
+	#profilePicSection:after { content:''; margin-bottom: 3%; }
+	#profilePic { width:45%; margin-right:2%; display:block; margin:auto; height:200px; border:1px solid white; }
+	#aboutMeParagraphSection { margin:auto; width:90%; padding:2%; text-align:left;  }
+	#aboutMeParagraphs { text-align: center; }
 
-/*#directLinkToRequestServices { border-width:2px; color:white; border-radius:40px;  }*/
-#directLinkToRequestServices { border: 2px solid white; color:white; border-radius:40px;  }
-#directLinkToRequestServices:hover { background-color:white; color:black; }
+	#directLinkToRequestServices { border: 2px solid white; color:white; border-radius:40px; display:inline-block;  }
+	#directLinkToRequestServices:hover { background-color:white; color:black; }
 
-/* General Table (sideways)*/
-@media screen and (min-width:768px) and (min-height:500px) {
-	#aboutMeSection { width:70%; padding:0%; margin:auto; margin-top:140px;}
-	#profilePic { width:30%; height:180px; }
-	/*#aboutMeParagraphs { font-size:12px; }*/
-}
+	#requestServicesContainer { clear:both; text-align:center; }
 
-/*iPads (mini, Air, and small pro)*/
-@media screen and (min-width:768px) and (min-height:1024px){
-	#aboutMeSection { width:80%; margin-top:200px; line-height:250%; text-align:left;}
-	#profilePic { width:40%; height:250px; float:left; margin-right:5%; }
-	#clearer { display:none; }
+	.clearFloat { clear:both; }
 
+/* General tablet sizes*/
+@media screen and (min-width:768px) {
+	#aboutMeSection { line-height:250%; text-align:left;  }
+	#subsection { margin:auto;  width:95%; margin-bottom:2%; }
+	#profilePicSection { width:35%;  }
+	#profilePic { width:70%; height:250px; }
+	#aboutMeParagraphSection { float:left; width:65%; padding:0%; }
+	#aboutMeParagraphs { text-align: left; }
 }
 
 /* Regular Laptops*/
 @media screen and (min-width:1024px) {
-	#aboutMeSection { width:60%;  margin-top:40px; line-height:250%; text-align:left; }
-	#profilePic { width:30%; height:250px; float:left; margin-right:5%; margin-bottom:50%; }
-	#clearer { display:none; }
-
-	/*#aboutMeParagraphs { font-size:2px; }*/
+	#aboutMeSection { line-height:250%; text-align:left; }
+	#subsection { margin:auto;  width:75%; margin-bottom:2%; }
+	#profilePicSection { width:35%;  }
+	#profilePic { width:70%; height:250px; }
+	#aboutMeParagraphSection { float:left; width:65%; }
+	#aboutMeParagraphs { text-align: left; }
 }
 
-/* Medium Laptops or Sideways Ipad Pros*/
-@media screen and (min-width:1300px){
-	/*#aboutMeParagraphs { font-size:18px; }*/
-}
-
+/* Larger monitors */
 @media screen and (min-width:1400px){
-	#aboutMeSection { width:55%; margin-top:40px;  }
-	#profilePic { width:30%;  }
+	#profilePic { width:65%;  }
 }

@@ -2,11 +2,12 @@ import java.util.*;
 
 class Album {
 
-	public String albumName; 
-	public String folderName; 
-	public String coverImage; 
-	public boolean hasCoverImage;
-	public HashMap<String, String> pics = new HashMap<String, String>();
+	protected String albumName; 
+	protected String folderName; 
+	protected String coverImage; 
+	protected boolean hasCoverImage;
+	protected ArrayList<Picture> pictures = new ArrayList<Picture>();
+	protected HashMap<String, String> pics = new HashMap<String, String>();
 
 	public Album(String name){
 		albumName = name;
@@ -17,5 +18,27 @@ class Album {
 		String webPathImg = img.replace("\\", "/");
 		coverImage = webPathImg;
 		hasCoverImage = true; 
+	}
+
+	protected void addPicture(String p, int w, int h, String d){
+		this.pictures.add(new Picture(p, w, h, d));
+	}
+
+	public String toString(){
+		return String.format("Album:%s\n", this.albumName);
+	}
+}
+
+class Picture {
+
+	protected int width;
+	protected int height;
+	protected String path;
+	protected String dimension;
+	public Picture (String p, int w, int h, String d){
+		path = p;
+		width = w;
+		height = h;
+		dimension = d;
 	}
 }

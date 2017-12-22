@@ -15,8 +15,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
-// public class ConfigTool extends ConfigToolrame implements Runnable {
-public class ConfigTool extends JFrame {
+public class Main extends JFrame {
 
 	// JComponent Attributes
 		// Main Window & Content Panel
@@ -51,16 +50,6 @@ public class ConfigTool extends JFrame {
 			public static JButton startImageProcessing = new JButton("Start Processing");
 
 
-			// Updating Dimensions
-				public static JLabel updateDimensionsLabel = new JLabel("Edit Dimensions");
-				public static JPanel updateDimensionsPanel = new JPanel(new GridBagLayout());
-				public static JLabel portraitLabel = new JLabel("Max width for Portrait:");
-				public static JTextField portraitText = new JTextField("");
-				public static JLabel squareLabel = new JLabel("Max width for Square:");
-				public static JTextField squareText = new JTextField("");
-				public static JButton updateDimensionsButton = new JButton("Update");
-				public static JButton updateNow = new JButton("Update");
-
 			// Processing Images
 				public static JPanel imagePanel = new JPanel(new GridLayout(0,1));
 				public static JLabel processingImage = new JLabel("");
@@ -90,18 +79,17 @@ public class ConfigTool extends JFrame {
 	// ConfigTool Class Instance Attributes:
 		public static int portraitDim = 650;
 		public static int squareDim = 700;
-		public static ArrayList<Album> albumList = new ArrayList<Album>();
-		public static ArrayList<Album> slideshowList = new ArrayList<Album>();
-		// public static Album slideshowAlbum = new Album("slideshow");
+		public static ArrayList<Album> albumsList = new ArrayList<Album>();
 		public static ArrayList<String> galleryAlbums = new ArrayList<String>();
 		public static ArrayList<String> gifs = new ArrayList<String>();
-		public static String slideshowDirectory;
 
+		// Custom objects
 		public static WriteToFiles myFileWriter;
 		public static FilePaths filePaths;
 
 
     public static void main(String args []){
+    	
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
 		
@@ -126,7 +114,7 @@ public class ConfigTool extends JFrame {
 			subH.setFont(new Font("Arial", Font.BOLD, 16));
 		}
 
-		JLabel [] headers= {menuLabel, processingNow, editAboutMe, updateDimensionsLabel, getStartedLabel, compressImagesReminder };
+		JLabel [] headers= {menuLabel, processingNow, editAboutMe, getStartedLabel, compressImagesReminder };
 		for (JLabel xL : headers){
 			xL.setFont(new Font("Arial", Font.BOLD, 22));
 			// xL.setForeground(Color.WHITE);
@@ -139,7 +127,7 @@ public class ConfigTool extends JFrame {
 		mainFrame.getContentPane().setBackground(Color.GRAY);
 		bottomPanel.setBackground(Color.GRAY);
 
-		JComponent [] rightSide = {updateDimensionsPanel, rightPanel, innerRightPanel };
+		JComponent [] rightSide = {rightPanel, innerRightPanel };
 		for (JComponent right : rightSide){
 			right.setBackground(new Color(0.2f, 0.5f, 0.6f));
 		}
@@ -154,20 +142,11 @@ public class ConfigTool extends JFrame {
 			menuLabelConstraints.insets = new Insets(10,5,0,10);  //top padding
 		innerLeftPanel.add(menuLabel, menuLabelConstraints);
 
-		GridBagConstraints updateDimensionsConstraints = new GridBagConstraints();
-			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
-			updateDimensionsConstraints.weightx = 0.5;				
-			updateDimensionsConstraints.gridx = 0; 
-			updateDimensionsConstraints.gridy = 1;
-			// updateDimensionsConstraints.ipadx = 50;
-			updateDimensionsConstraints.insets = new Insets(10,40,0,0); 
-		innerLeftPanel.add(updateDimensions, updateDimensionsConstraints);
-
 		GridBagConstraints processImagesConstraints = new GridBagConstraints();
 			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
 			processImagesConstraints.weightx = 0.5;				
 			processImagesConstraints.gridx = 0; 
-			processImagesConstraints.gridy = 2;
+			processImagesConstraints.gridy = 1;
 			// updateDimensionsConstraints.ipadx = 50;
 			processImagesConstraints.insets = new Insets(10,40,0,0); 
 		innerLeftPanel.add(processImages, processImagesConstraints);
@@ -176,7 +155,7 @@ public class ConfigTool extends JFrame {
 			// updateDimensionsConstraints.fill = GridBagConstraints.HORIZONTAL;
 			aboutMeConstraints.weightx = 0.5;				
 			aboutMeConstraints.gridx = 0; 
-			aboutMeConstraints.gridy = 3;
+			aboutMeConstraints.gridy = 2;
 			// updateDimensionsConstraints.ipadx = 50;
 			aboutMeConstraints.insets = new Insets(10,40,0,0); 
 		innerLeftPanel.add(aboutMe, aboutMeConstraints);
@@ -233,38 +212,12 @@ public class ConfigTool extends JFrame {
 		rightPanel.validate();
 	}
 
-	public static void menuEventListeners(){
-		// Updating Dimensions
-		updateDimensions.addActionListener(new ActionListener() {
-		  public void actionPerformed(ActionEvent e) {
-		  	showDimensionSection();
-		  }
-		});
-
-		updateNow.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				saveDimensions();
-			}
-		});	
+	public static void menuEventListeners(){	
 
 		// Processing Images
 		processImages.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				showImagePreProcessing();
-		 		// try{
-			 	// 	ThreadControl myThread1 = new ThreadControl("show");
-			 	// 	Thread thread1 = new Thread(myThread1);
-			 	// 	thread1.start();
-		 		// 	thread1.join();
-		 		// 	ThreadControl myThread2 = new ThreadControl("start");
-			 	// 	Thread thread2 = new Thread(myThread2);
-			 	// 	if(!thread1.isAlive()){
-			 	// 		thread2.start();
-			 	// 	}
-		 		// } catch(InterruptedException ie){
-		 		// 	resultsMessageDialog(false, ie.getMessage());
-		 		// }
-		 						
 			}
 		});
 
@@ -415,71 +368,6 @@ public class ConfigTool extends JFrame {
 		}
 	}
 
-
-	public static void showDimensionSection(){
-		clearPanel(innerRightPanel);
-		hideHTMLExamples();
-
-	  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
-			firstRowConstraints.fill = GridBagConstraints.BOTH;
-			firstRowConstraints.gridx = 0; 
-			firstRowConstraints.gridy = 0;
-			firstRowConstraints.anchor = GridBagConstraints.CENTER;
-			firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
-		innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
-			firstRowConstraints.fill = GridBagConstraints.NONE;
-			firstRowConstraints.gridx = 1;
-		innerRightPanel.add(updateNow, firstRowConstraints);
-
-		GridBagConstraints secondSectionConstraints = new GridBagConstraints();
-			secondSectionConstraints.fill = GridBagConstraints.BOTH;
-			secondSectionConstraints.gridx = 0; 
-			secondSectionConstraints.gridy = 1; 
-			secondSectionConstraints.weighty = 0.1;
-		GridBagConstraints secondRowConstraints = new GridBagConstraints();
-			secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
-			secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 1;
-			secondRowConstraints.weightx = 0.1;
-			secondRowConstraints.ipady = 30;
-			secondSectionConstraints.gridwidth = 2;
-		updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
-			secondRowConstraints.ipady = 15;
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(portraitText, secondRowConstraints);
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 2;
-			secondRowConstraints.weighty = 0.1;
-		updateDimensionsPanel.add(squareLabel, secondRowConstraints);
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(squareText, secondRowConstraints);
-
-		innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
-
-
-	  	GridBagConstraints updateDimensionsLabelConstraints = new GridBagConstraints();
-			updateDimensionsLabelConstraints.fill = GridBagConstraints.BOTH;
-			updateDimensionsLabelConstraints.gridx = 0; 
-			updateDimensionsLabelConstraints.gridy = 0;
-
-	  	
-
-	  	GridBagConstraints updateDimensionsDescConstraints = new GridBagConstraints();
-			updateDimensionsDescConstraints.gridx = 0; 
-			updateDimensionsDescConstraints.gridy = 1;
-			updateDimensionsDescConstraints.anchor = GridBagConstraints.CENTER;
-
-
-	  	GridBagConstraints updateDimensionsPanelConstraints= new GridBagConstraints();
-			updateDimensionsPanelConstraints.gridx = 0; 
-			updateDimensionsPanelConstraints.gridy = 1;
-			updateDimensionsPanelConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-			updateDimensionsPanelConstraints.gridwidth = GridBagConstraints.REMAINDER;
-		validateView();
-		getImageDimensionLimits();
-	}
-
 	public static void showAboutMesection(){
 		clearPanel(innerRightPanel);
 		// clearPanel(rightPanel);
@@ -571,50 +459,6 @@ public class ConfigTool extends JFrame {
 			preProcessCon.weightx = 0;
 		innerRightPanel.add(startImageProcessing, preProcessCon);
 
-		
-
-		/* 
-			In here ... Add the new JComponents that would be about reminding the user to compress the images. 
-	
-	  	GridBagConstraints firstRowConstraints = new GridBagConstraints();
-			firstRowConstraints.fill = GridBagConstraints.BOTH;
-			firstRowConstraints.gridx = 0; 
-			firstRowConstraints.gridy = 0;
-			firstRowConstraints.anchor = GridBagConstraints.CENTER;
-			firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
-		innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
-			firstRowConstraints.fill = GridBagConstraints.NONE;
-			firstRowConstraints.gridx = 1;
-		innerRightPanel.add(updateNow, firstRowConstraints);
-
-		GridBagConstraints secondSectionConstraints = new GridBagConstraints();
-			secondSectionConstraints.fill = GridBagConstraints.BOTH;
-			secondSectionConstraints.gridx = 0; 
-			secondSectionConstraints.gridy = 1; 
-			secondSectionConstraints.weighty = 0.1;
-		GridBagConstraints secondRowConstraints = new GridBagConstraints();
-			secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
-			secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 1;
-			secondRowConstraints.weightx = 0.1;
-			secondRowConstraints.ipady = 30;
-			secondSectionConstraints.gridwidth = 2;
-		updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
-			secondRowConstraints.ipady = 15;
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(portraitText, secondRowConstraints);
-			secondRowConstraints.gridx = 0; 
-			secondRowConstraints.gridy = 2;
-			secondRowConstraints.weighty = 0.1;
-		updateDimensionsPanel.add(squareLabel, secondRowConstraints);
-			secondRowConstraints.gridx = 1;
-		updateDimensionsPanel.add(squareText, secondRowConstraints);
-
-		innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
-
-		*/
-
 		validateView();
 
 
@@ -643,26 +487,7 @@ public class ConfigTool extends JFrame {
 			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
-
-	public static void saveDimensions(){
-		try{
-			boolean saveDimensionsStatus = myFileWriter.writeUpdatedDimensions(filePaths.dimensionsFilePath, portraitText.getText(), squareText.getText());
-			if (saveDimensionsStatus){
-				resultsMessageDialog(true, "<html><span style='color:green;font-weight:bold'>SUCCESS</span>: Dimensions were successfully updated</html>");
-			} else{
-				resultsMessageDialog(false, "<html><span style='color:red;font-weight:bold'>FAILED</span> to update Dimensions.");
-			}
-		} catch (Exception ex){
-			resultsMessageDialog(false, ex.getMessage());
-		}
-	}
-
-
-
-
 	
-
-
 
 
 	/* GET Objects */ 
@@ -690,56 +515,24 @@ public class ConfigTool extends JFrame {
 		}
 	}
 
-	public static void getImageDimensionLimits(){
-		try{
-			String line; 
-			// filePaths.dimensionsFilePath = "config/dimConfig.txt";
-			BufferedReader dimConfig = new BufferedReader(new FileReader(filePaths.dimensionsFilePath));
-			while ( (line = dimConfig.readLine()) != null){
-				String [] lineSplit = line.split("=");
-				switch(lineSplit[0]){
-					case "portrait":
-						portraitDim = Integer.parseInt(lineSplit[1]);
-						portraitText.setText(lineSplit[1]);
-						break;
-					case "square":
-						squareDim = Integer.parseInt(lineSplit[1]);
-						squareText.setText(lineSplit[1]);
-						break;
-					default:
-						portraitDim = 650;
-						squareDim = 900;
-				}
-			}
-		} catch (Exception ex){
-		    // ex.printStackTrace();
-			resultsMessageDialog(false, ex.getMessage());
-		}
-	}
-
 	public static void getAboutMeText(){
 		try{
 			String line; 
 			String fullText = ""; 
-			// aboutMeFilePath = "config/aboutMe.txt";
 			BufferedReader aboutMeReader = new BufferedReader(new FileReader(filePaths.aboutMeFilePath));
 			while ( (line = aboutMeReader.readLine()) != null){
 				fullText = fullText.concat(line);
 			}
 			aboutMeTextEditor.setText(fullText);
 		} catch (Exception ex){
-		    // ex.printStackTrace();
 			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
 
 
-
-
-
 	/* PROCESSING IMAGES */
 
-	public static void showImageProcessing(){
+	public static void showImageProcessingSection(){
 		try{
 			hideHTMLExamples();
 			
@@ -783,103 +576,140 @@ public class ConfigTool extends JFrame {
 		}	
 	}
 
-	public static void startImageProcessing(){
+	public static void processImages(){
 		try{
+
+			// Process the profile picture
+			processDirectory(filePaths.profileDirectoryPath, albumsList);
+
+			// Process the slideshow pictures
+			processDirectory(filePaths.slideshowDirectoryPath, albumsList);
+
+			// First get the gallery albums, then process each one. 
 			getGalleryAlbums();
-
-			processImages(filePaths.slideshowDirectoryPath, slideshowList);
-			boolean slideshowBool = myFileWriter.writeJSONFile(filePaths.slideshowJSONFilePath, slideshowList);
-
 			for (String x : galleryAlbums){
-				processImages(x, albumList);
+				processDirectory(x, albumsList);
 			}
-			boolean albumsBool = myFileWriter.writeJSONFile(filePaths.albumsJSONFilePath, albumList);
 
-			String processSlideshowResults = slideshowBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Slideshow images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Slideshow images were not processed.";
-			String processAlbumsResults = albumsBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Album images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Album images were not processed.";
 
-			String succMsg = String.format("<html> %s <br/> <br/> %s </html>", processSlideshowResults, processAlbumsResults);
+			// Attempt to write the JSON file for all the albums
+			boolean oneBool = myFileWriter.writeJSONFile(filePaths.albumsJSONPath, albumsList);
 
-			if (slideshowBool && albumsBool){
+			String successMesage = "<span style='color:green;font-weight:bold'>SUCCESS:</span> All images were processed successfully.";
+			String failMessage = "<span style='color:red;font-weight:bold'>ERROR:</span>Could not complete the process.";
+
+			String resultsMessage = oneBool ? successMesage : failMessage;
+			String resultsMessageFormatted = String.format("<html> %s </html>", resultsMessage);
+
+			if (oneBool){
 				processingNow.setText("Processing Images");
 				workingOn.setText("");
 				processingImage.setIcon(new ImageIcon(filePaths.successProcessingImg));
-				resultsMessageDialog(true, succMsg);
+				resultsMessageDialog(true, resultsMessageFormatted);
 			} else {
 				processingNow.setText("Processing Images");
 				workingOn.setText("<html>Something went wrong. To try and remedy this, go to the 'src' folder and click on the filePermission file (the one with the gear icon).</html>");
 				processingImage.setIcon(new ImageIcon(filePaths.oopsImg));
-				resultsMessageDialog(false, succMsg);
+				resultsMessageDialog(false, resultsMessageFormatted);
 			}
-			// resultsMessageDialog(true, succMsg);
-			// clearPanel(innerRightPanel);
-			// validateView();
 		} catch (Exception ex){
 			resultsMessageDialog(false, ex.getMessage());
-		 	// ex.printStackTrace();
-
-
 		}	
 	}
 	
-	public static void processImages(String directoryPath, ArrayList<Album> albumArrayList){
+	public static void processDirectory(String directoryPath, ArrayList<Album> albumArrayList){
 		try{
+			// System.out.println(directoryPath);
+			// System.out.printf("Portrait <= %d\n", portraitDim);
+			// System.out.printf("Square > %d <= %d\n", portraitDim, squareDim);
+			// System.out.printf("Landscape > %d\n", squareDim);
+			// System.out.println();
 			File dir = new File(directoryPath);
 			File dirList[] = dir.listFiles();
+			// System.out.println(directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1));
 			String albumName = directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1);
-			albumArrayList.add(new Album(albumName));
+
+			// albumArrayList.add(new Album(albumName));
+
+			Album temp = new Album(albumName);
+
 			for (int x = 0; x < dirList.length; x++){
 				boolean isImage; 
 				String dimensionTemp = "";
-				String extension;
-				if (dirList[x].getPath().contains(".")){
-					extension = dirList[x].getPath().substring(dirList[x].getPath().lastIndexOf("."));
-				} else {
-					extension = "noExtension";
-				}
-				switch(extension){
-					case ".jpg":
-					case ".png":
-					case ".gif":
-						isImage = true;
-						break;
-					default:
-						isImage = false; 
-				}
+				// String extension;
+				isImage = checkIfIsImage(dirList[x].getPath());
+
 				if (!dirList[x].isDirectory() && isImage){
-					workingOn.setText(String.format("<html> >> Working on <span style='font-weight:bold; color:white;'>%s</span></html>", dirList[x].getPath()));
 					BufferedImage imageB = ImageIO.read(new File(dirList[x].getPath()));
-					if (imageB.getWidth() <= portraitDim){
+					workingOn.setText(String.format("<html>Working on:<br/><span style='font-weight:bold; color:white;'>%s</span></html>", dirList[x].getPath()));
+					// workingOn.setText(String.format("Width: %s | Height : %s", imageB.getWidth(), imageB.getHeight()));
+					
+					// if (imageB.getWidth() <= portraitDim || imageB.getHeight() > imageB.getWidth()){
+					// 	dimensionTemp = "portrait";
+					// } else if (imageB.getWidth() > portraitDim && imageB.getWidth() <= squareDim){
+					// 	dimensionTemp = "square";
+					// } else {
+					// 	dimensionTemp = "landscape";
+					// }
+					if (imageB.getHeight() > imageB.getWidth()){
 						dimensionTemp = "portrait";
-					} else if (imageB.getWidth() > portraitDim && imageB.getWidth() <= squareDim){
+					} else if ( imageB.getWidth() > imageB.getHeight() ){
+						dimensionTemp = "landscape";
+					} else if (imageB.getWidth() == imageB.getHeight() ) {
 						dimensionTemp = "square";
-					} else{
+					} else {
 						dimensionTemp = "landscape";
 					}
 
-					
-					if ( !albumArrayList.get(albumArrayList.size()-1).hasCoverImage || dirList[x].getPath().contains("cover_") ) {
-						// System.out.printf("Setting album cover to:  %s\n", dirList[x].getPath());
-						albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
-					} else {
-						// System.out.println("Aready has an album cover");
-					}
-					albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
+					temp.addPicture(dirList[x].getPath(), imageB.getWidth(), imageB.getHeight(), dimensionTemp);
 
+					if (!temp.hasCoverImage || dirList[x].getPath().contains("cover_") ){
+						temp.setCoverImage(dirList[x].getPath());
+					}
+
+					// System.out.printf("Image dimensions: w-%d, h-%d \t= %s\n", imageB.getWidth(), imageB.getHeight(), dimensionTemp);
+
+					// if ( !albumArrayList.get(albumArrayList.size()-1).hasCoverImage || dirList[x].getPath().contains("cover_") ) {
+						// System.out.printf("Setting album cover to:  %s\n", dirList[x].getPath());
+						// albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
+					// } else {
+						// System.out.println("Aready has an album cover");
+					// }
+					// albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
 				}
 			}
+			albumArrayList.add(temp);
+
 		} catch (Exception ex){
-		    resultsMessageDialog(false, ex.getMessage());
-		 	// ex.printStackTrace();
+		    // resultsMessageDialog(false, ex.getMessage());
+		    System.out.println(ex.getMessage());
+		 	ex.printStackTrace();
 		}
 	}
 
-
-
-	public static void resultsMessageDialog(boolean success, String message){
-		if (message.isEmpty()){
-			message = "Uknown error!";
+	public static boolean checkIfIsImage(String imagePath){
+		boolean isImage; 
+		if (imagePath.contains(".")) {
+			String extension = imagePath.substring(imagePath.lastIndexOf("."));
+			switch(extension){
+				case ".jpg":
+				case ".png":
+				case ".gif":
+					isImage = true;
+					break;
+				default:
+					isImage = false; 
+			}
+		} else {
+			isImage = false; 
 		}
+		return isImage;
+	} 
+
+	public static void resultsMessageDialog(boolean success, String msg){
+
+		String message = !msg.isEmpty() ? msg : "Unknown Error!";
+
 		if (success){
 			JOptionPane.showMessageDialog(mainFrame, message, "Success", JOptionPane.INFORMATION_MESSAGE);
 		} else {

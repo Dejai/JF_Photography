@@ -86,8 +86,32 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 		}
 	}
 
-	
 
+	$scope.loadSources = function(){
+		var script_emailjs = document.createElement("script");
+		script_emailjs.src = "https://cdn.emailjs.com/dist/email.min.js";
+
+		var script_datetime = document.createElement("script");
+		script_datetime.src = "/scripts/js/datetimepicker-master/build/jquery.datetimepicker.full.min.js";
+
+		var link_datetime = document.createElement("link");
+		link_datetime.rel = "stylesheet";
+		link_datetime.href= "/scripts/js/datetimepicker-master/jquery.datetimepicker.css";
+
+		document.getElementsByTagName("head")[0].appendChild(script_emailjs);
+		document.getElementsByTagName("head")[0].appendChild(script_datetime);
+		document.getElementsByTagName("head")[0].appendChild(link_datetime);
+
+		//  I need to consider a better way of running these "chain" functions
+		$timeout(function(){
+			$scope.scriptsLoaded = true;
+			formServices.initiateEmailJS();
+			var newDate = document.getElementById("requestServiceForm").querySelectorAll(".datePicker")[0];
+			var newTime = document.getElementById("requestServiceForm").querySelectorAll(".timePicker")[0];
+			$scope.setDatetime(newDate, newTime);
+		}, 3000);
+	}
+	
 	$scope.dates = [0];
 	$scope.addDateTimeRow = function(){
 		var lastNum = $scope.dates[$scope.dates.length-1];
@@ -114,6 +138,7 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 			restrict: 'AE',
 			link: function(scope, element, index){
 				scope.contactFormOpacity = "opacity:1"; // Ease-in the contact form section with CSS animation
+				scope.loadSources();
 			},
 			templateUrl: "/pages/shared/form_feedback.html"
 		};
@@ -123,9 +148,11 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 		return {
 			restrict: 'EA',
 			link: function(scope, element, index){
-				var newDate = element[0].querySelectorAll(".datePicker")[0];
-				var newTime = element[0].querySelectorAll(".timePicker")[0];
-				scope.setDatetime(newDate, newTime);
+				if ( scope.scriptsLoaded ) {
+					var newDate = element[0].querySelectorAll(".datePicker")[0];
+					var newTime = element[0].querySelectorAll(".timePicker")[0];
+					scope.setDatetime(newDate, newTime);
+				}
 			},
 			templateUrl:  "/pages/shared/form_dateTimeRows.html"
 		}

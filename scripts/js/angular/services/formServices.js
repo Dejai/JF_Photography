@@ -2,15 +2,19 @@ angular.module("contactForms").service("formServices", function($http, $q, $time
 
 
 /* EMAIL JS Functionality */
-	try{
-		// First things first ... Initialize the emailJS object with my account ID. 
-		emailjs.init("user_6LgqYqLc1866439iII9Iw");
-	} catch (err){
-		console.error("Couldn't initiate emailJS!\n"+err);
-	} finally {
-		// console.log("Moving on .. anyway");
-	}
+	
 
+	this.initiateEmailJS = function(){
+		try{
+			// First things first ... Initialize the emailJS object with my account ID. 
+			emailjs.init("user_6LgqYqLc1866439iII9Iw");
+		} catch (err){
+			console.error("Couldn't initiate emailJS!\n"+err);
+		} finally {
+			// console.log("Moving on .. anyway");
+		}
+	}
+	
 	this.submitForm = function(form){
 		let formObject = getFormObject(form);
 		let template = (form == "service") ? "new_request" : "new_feedback";
