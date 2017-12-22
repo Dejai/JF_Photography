@@ -47,7 +47,7 @@ public class FilePaths{
 	public void setFilePaths(String os){
 		aboutMeFilePath = os == "windows" ? "config\\aboutMe.txt" : "config/aboutMe.txt";
 
-		albumsJSONPath = os == "windows" ? "config\\albumsJSON.txt" : "config/albumsJSON.txt";
+		albumsJSONPath = os == "windows" ? "config\\albumsJSON.json" : "config/albumsJSON.json";
 
 		galleryDirectoryPath = os == "windows" ? "images\\gallery" : "images/gallery";
 
