@@ -206,8 +206,8 @@ public class Main extends JFrame {
 		panel.revalidate();
 		panel.repaint();
 		innerRightPanel.setPreferredSize(new Dimension(rightPanel.getWidth()-100, rightPanel.getHeight()-50));
-
 	}
+	
 	public static void validateView(){
 		rightPanel.validate();
 	}
@@ -576,6 +576,8 @@ public class Main extends JFrame {
 		}	
 	}
 
+
+	// Consider making this its own object .... One for specifically processing Images 
 	public static void processImages(){
 		try{
 
@@ -705,6 +707,8 @@ public class Main extends JFrame {
 		}
 		return isImage;
 	} 
+
+
 
 	public static void resultsMessageDialog(boolean success, String msg){
 
