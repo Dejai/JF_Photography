@@ -5,7 +5,7 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 
 	$scope.albumTitle = "My Albums";
 	
-	$http.get("/config/newAlbumsJSON.txt")
+	$http.get("/config/albumsJSON.txt")
 		.then(function(payload){
 			var albumsCut = {};
 			angular.forEach(payload.data, function(value, key, obj){

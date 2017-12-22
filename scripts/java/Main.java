@@ -79,45 +79,16 @@ public class Main extends JFrame {
 	// ConfigTool Class Instance Attributes:
 		public static int portraitDim = 650;
 		public static int squareDim = 700;
-		public static ArrayList<Album> albumList = new ArrayList<Album>();
-		public static ArrayList<Album> slideshowList = new ArrayList<Album>();
-		public static ArrayList<Album> albumzList = new ArrayList<Album>();
-		// public static Album slideshowAlbum = new Album("slideshow");
+		public static ArrayList<Album> albumsList = new ArrayList<Album>();
 		public static ArrayList<String> galleryAlbums = new ArrayList<String>();
 		public static ArrayList<String> gifs = new ArrayList<String>();
-		public static String slideshowDirectory;
 
+		// Custom objects
 		public static WriteToFiles myFileWriter;
 		public static FilePaths filePaths;
 
 
     public static void main(String args []){
-
-  //   	filePaths = new FilePaths();
-  //   	processImages("../../images/slideshow", albumzList);
-  //   	try{
-		// 	File gallery = new File("../../images/gallery");
-		// 	File [] galleryList = gallery.listFiles();
-		// 	for (int x = 0; x < galleryList.length; x++){
-		// 		if (galleryList[x].isDirectory()){
-		// 			String newName = galleryList[x].getName().trim();
-		// 			String newPath = String.format("%s%s%s", "../../images/gallery", filePaths.separator, newName);
-		// 			galleryAlbums.add(newPath);
-		// 		}
-		// 	}
-		// } catch (Exception ex){
-		// 	resultsMessageDialog(false, ex.getMessage());
-		// 	// ex.printStackTrace();
-		// }
-  //   	for (String x : galleryAlbums){
-		// 		processImages(x, albumzList);
-		// 	}
-		// processImages("../../images/assets/profile", albumzList);
-  //   	// System.out.println(albumzList.toString());
-		// for (Album y : albumzList){
-		// 	System.out.println(y.toString());
-		// 	// System.out.printf("Album : %s\n" + y.albumName);
-		// }
     	
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
@@ -548,25 +519,20 @@ public class Main extends JFrame {
 		try{
 			String line; 
 			String fullText = ""; 
-			// aboutMeFilePath = "config/aboutMe.txt";
 			BufferedReader aboutMeReader = new BufferedReader(new FileReader(filePaths.aboutMeFilePath));
 			while ( (line = aboutMeReader.readLine()) != null){
 				fullText = fullText.concat(line);
 			}
 			aboutMeTextEditor.setText(fullText);
 		} catch (Exception ex){
-		    // ex.printStackTrace();
 			resultsMessageDialog(false, ex.getMessage());
 		}
 	}
 
 
-
-
-
 	/* PROCESSING IMAGES */
 
-	public static void showImageProcessing(){
+	public static void showImageProcessingSection(){
 		try{
 			hideHTMLExamples();
 			
@@ -610,54 +576,48 @@ public class Main extends JFrame {
 		}	
 	}
 
-	public static void startImageProcessing(){
+	public static void processImages(){
 		try{
 
-			processImages(filePaths.profileDirectoryPath, albumzList);
+			// Process the profile picture
+			processDirectory(filePaths.profileDirectoryPath, albumsList);
 
+			// Process the slideshow pictures
+			processDirectory(filePaths.slideshowDirectoryPath, albumsList);
 
-			processImages(filePaths.slideshowDirectoryPath, albumzList);
-			// boolean slideshowBool = myFileWriter.writeJSONFile(filePaths.slideshowJSONFilePath, slideshowList);
-
+			// First get the gallery albums, then process each one. 
 			getGalleryAlbums();
 			for (String x : galleryAlbums){
-				processImages(x, albumzList);
+				processDirectory(x, albumsList);
 			}
-			// boolean albumsBool = myFileWriter.writeJSONFile(filePaths.albumsJSONFilePath, albumList);
 
-			boolean oneBool = myFileWriter.writeJSONFile(filePaths.newAlbumsJSONFilePath, albumzList);
 
-			boolean slideshowBool = oneBool;  
-			boolean albumsBool = oneBool;
+			// Attempt to write the JSON file for all the albums
+			boolean oneBool = myFileWriter.writeJSONFile(filePaths.albumsJSONPath, albumsList);
 
-			String processSlideshowResults = slideshowBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Slideshow images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Slideshow images were not processed.";
-			String processAlbumsResults = albumsBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Album images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Album images were not processed.";
+			String successMesage = "<span style='color:green;font-weight:bold'>SUCCESS:</span> All images were processed successfully.";
+			String failMessage = "<span style='color:red;font-weight:bold'>ERROR:</span>Could not complete the process.";
 
-			String succMsg = String.format("<html> %s <br/> <br/> %s </html>", processSlideshowResults, processAlbumsResults);
+			String resultsMessage = oneBool ? successMesage : failMessage;
+			String resultsMessageFormatted = String.format("<html> %s </html>", resultsMessage);
 
-			if (slideshowBool && albumsBool){
+			if (oneBool){
 				processingNow.setText("Processing Images");
 				workingOn.setText("");
 				processingImage.setIcon(new ImageIcon(filePaths.successProcessingImg));
-				resultsMessageDialog(true, succMsg);
+				resultsMessageDialog(true, resultsMessageFormatted);
 			} else {
 				processingNow.setText("Processing Images");
 				workingOn.setText("<html>Something went wrong. To try and remedy this, go to the 'src' folder and click on the filePermission file (the one with the gear icon).</html>");
 				processingImage.setIcon(new ImageIcon(filePaths.oopsImg));
-				resultsMessageDialog(false, succMsg);
+				resultsMessageDialog(false, resultsMessageFormatted);
 			}
-			// resultsMessageDialog(true, succMsg);
-			// clearPanel(innerRightPanel);
-			// validateView();
 		} catch (Exception ex){
 			resultsMessageDialog(false, ex.getMessage());
-		 	// ex.printStackTrace();
-
-
 		}	
 	}
 	
-	public static void processImages(String directoryPath, ArrayList<Album> albumArrayList){
+	public static void processDirectory(String directoryPath, ArrayList<Album> albumArrayList){
 		try{
 			// System.out.println(directoryPath);
 			// System.out.printf("Portrait <= %d\n", portraitDim);

@@ -7,10 +7,7 @@ public class FilePaths{
 	protected String opSystem;
 	protected String opSystemFull;
 	protected String aboutMeFilePath;
-	protected String dimensionsFilePath;
-	protected String albumsJSONFilePath;
-	protected String slideshowJSONFilePath;
-	protected String newAlbumsJSONFilePath;
+	protected String albumsJSONPath;
 	protected String gifsPath;
 	protected String galleryDirectoryPath;
 	protected String slideshowDirectoryPath;
@@ -50,20 +47,12 @@ public class FilePaths{
 	public void setFilePaths(String os){
 		aboutMeFilePath = os == "windows" ? "config\\aboutMe.txt" : "config/aboutMe.txt";
 
-		dimensionsFilePath = os == "windows" ? "config\\dimConfig.txt" : "config/dimConfig.txt";
-
-		albumsJSONFilePath = os == "windows" ? "config\\albumsJSON.txt" : "config/albumsJSON.txt";
-
-		slideshowJSONFilePath = os == "windows" ? "config\\slideshowJSON.txt" : "config/slideshowJSON.txt";
-
-		// Testing
-		newAlbumsJSONFilePath = os == "windows" ? "config\\newAlbumsJSON.txt" : "config/newAlbumsJSON.txt";
+		albumsJSONPath = os == "windows" ? "config\\albumsJSON.txt" : "config/albumsJSON.txt";
 
 		galleryDirectoryPath = os == "windows" ? "images\\gallery" : "images/gallery";
 
 		slideshowDirectoryPath = os == "windows" ? "images\\slideshow" : "images/slideshow";
 
-		// Testing
 		profileDirectoryPath = os == "windows" ? "images\\assets\\profile" : "images/assets/profile";
 
 		gifsPath = os == "windows" ? "images\\assets\\gifs\\" : "images/assets/gifs/";

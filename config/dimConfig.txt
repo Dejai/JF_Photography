@@ -1,2 +1,0 @@
-portrait=1600
-square=2000
