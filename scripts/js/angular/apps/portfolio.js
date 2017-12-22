@@ -5,33 +5,25 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 
 	$scope.albumTitle = "My Albums";
 	
-	$http.get("/config/albumsJSON.txt")
+	$http.get("/config/newAlbumsJSON.txt")
 		.then(function(payload){
-			$scope.albums = payload.data;
-			console.log(payload.data);
+			var albumsCut = {};
+			angular.forEach(payload.data, function(value, key, obj){
+				if (key != "profile" && key != "slideshow"){
+					albumsCut[key] = value;
+				}
+			});
+			$scope.albums = albumsCut;
 		}, function(error){
 			console.err(error);
 		});
-
-	// $scope.albums = [ 
-	// 		{name: "Studio", folderName: "Studio", coverImg: "images/gallery/Studio/image1.jpg" },
-	// 		{name: "Studio 2", folderName: "Studio", coverImg: "images/gallery/Studio/image1.jpg" },
-	// 		{name: "Studio 3", folderName: "Studio", coverImg: "images/gallery/Studio/image1.jpg" },
-	// 		{name: "Studio 4", folderName: "Studio", coverImg: "images/gallery/Studio/image1.jpg" },
-	// 		{name: "The Second Album", folderName: "The Second Album", coverImg: "images/gallery/The Second Album/image2.jpg" },
-	// 		{name: "The Second Album", folderName: "The Second Album", coverImg: "images/gallery/The Second Album/image2.jpg" },
-	// 		{name: "The Second Album", folderName: "The Second Album", coverImg: "images/gallery/The Second Album/image2.jpg" },
-	// 		{name: "The Second Album", folderName: "The Second Album", coverImg: "images/gallery/The Second Album/image2.jpg" }
-	// 		];
-
-
 
 	$scope.albumLength = 0;
 	$scope.testFunc = function(ele){
 
 		var albumName = ele.target.innerHTML ? ele.target.innerHTML : false;
 		$scope.albumTitle = albumName
-		console.log($scope.albums[albumName].images.length);
+		// console.log($scope.albums[albumName].images.length);
 		$scope.albumLength = $scope.albums[albumName].images.length;
 		$scope.singleAlbum = $scope.albums[albumName].images;
 		$scope.singleAlbumView = true;

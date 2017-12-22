@@ -51,7 +51,7 @@ function showSlideshow(time){
 }
 
 function newBuildSlideshow(){
-	$.get("/config/slideshowJSON.txt", function(payload){
+	$.get("/config/newAlbumsJSON.txt", function(payload){
 		var pay = JSON.parse(payload);
 		images = pay["slideshow"].images;
 		var res = "";

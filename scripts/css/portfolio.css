@@ -18,7 +18,7 @@
     					transition: all .2s; display:flex; justify-content: center;align-content: center; }
 
     .albumCover-container:hover .albumCover-image, 
-    .albumCover-container:focus .albumCover-image { transform: scale(1.1); cursor:pointer; border:1px solid white; }
+    .albumCover-container:focus .albumCover-image { transform: scale(1.1); cursor:pointer; border:2px solid white; }
 
     .albumCover-container:hover .albumCover-image:before,
     .albumCover-container:focus .albumCover-image:before { display: block; }
@@ -74,7 +74,7 @@
 @media screen and (min-width:1024px){
     
     /* Listings - Albums */
-        .albumCover-container { width:30%; margin: 1%; height:270px; }
+        .albumCover-container { width:30%; margin: 2%; height:270px; }
         .albumCover-name { display:none; padding-top:35%; font-size:200%;background-color:initial; }
         .albumCover-image::before { content: ""; display:none; height: 100%; width: 100%; position: absolute; top: 0; left: 0; 
                                 background-color: rgba(52, 73, 94, 0.75); }

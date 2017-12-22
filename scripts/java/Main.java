@@ -81,6 +81,7 @@ public class Main extends JFrame {
 		public static int squareDim = 700;
 		public static ArrayList<Album> albumList = new ArrayList<Album>();
 		public static ArrayList<Album> slideshowList = new ArrayList<Album>();
+		public static ArrayList<Album> albumzList = new ArrayList<Album>();
 		// public static Album slideshowAlbum = new Album("slideshow");
 		public static ArrayList<String> galleryAlbums = new ArrayList<String>();
 		public static ArrayList<String> gifs = new ArrayList<String>();
@@ -92,11 +93,31 @@ public class Main extends JFrame {
 
     public static void main(String args []){
 
-    	// filePaths = new FilePaths();
-    	// getImageDimensionLimits();
-
-    	// processImages("../../images/slideshow/", slideshowList);
-
+  //   	filePaths = new FilePaths();
+  //   	processImages("../../images/slideshow", albumzList);
+  //   	try{
+		// 	File gallery = new File("../../images/gallery");
+		// 	File [] galleryList = gallery.listFiles();
+		// 	for (int x = 0; x < galleryList.length; x++){
+		// 		if (galleryList[x].isDirectory()){
+		// 			String newName = galleryList[x].getName().trim();
+		// 			String newPath = String.format("%s%s%s", "../../images/gallery", filePaths.separator, newName);
+		// 			galleryAlbums.add(newPath);
+		// 		}
+		// 	}
+		// } catch (Exception ex){
+		// 	resultsMessageDialog(false, ex.getMessage());
+		// 	// ex.printStackTrace();
+		// }
+  //   	for (String x : galleryAlbums){
+		// 		processImages(x, albumzList);
+		// 	}
+		// processImages("../../images/assets/profile", albumzList);
+  //   	// System.out.println(albumzList.toString());
+		// for (Album y : albumzList){
+		// 	System.out.println(y.toString());
+		// 	// System.out.printf("Album : %s\n" + y.albumName);
+		// }
     	
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
@@ -376,71 +397,6 @@ public class Main extends JFrame {
 		}
 	}
 
-
-	// public static void showDimensionSection(){
-	// 	clearPanel(innerRightPanel);
-	// 	hideHTMLExamples();
-
-	//   	GridBagConstraints firstRowConstraints = new GridBagConstraints();
-	// 		firstRowConstraints.fill = GridBagConstraints.BOTH;
-	// 		firstRowConstraints.gridx = 0; 
-	// 		firstRowConstraints.gridy = 0;
-	// 		firstRowConstraints.anchor = GridBagConstraints.CENTER;
-	// 		firstRowConstraints.insets = new Insets(10,0,20,10);  //top padding
-	// 	innerRightPanel.add(updateDimensionsLabel, firstRowConstraints);
-	// 		firstRowConstraints.fill = GridBagConstraints.NONE;
-	// 		firstRowConstraints.gridx = 1;
-	// 	innerRightPanel.add(updateNow, firstRowConstraints);
-
-	// 	GridBagConstraints secondSectionConstraints = new GridBagConstraints();
-	// 		secondSectionConstraints.fill = GridBagConstraints.BOTH;
-	// 		secondSectionConstraints.gridx = 0; 
-	// 		secondSectionConstraints.gridy = 1; 
-	// 		secondSectionConstraints.weighty = 0.1;
-	// 	GridBagConstraints secondRowConstraints = new GridBagConstraints();
-	// 		secondRowConstraints.fill = GridBagConstraints.HORIZONTAL;
-	// 		secondRowConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-	// 		secondRowConstraints.gridx = 0; 
-	// 		secondRowConstraints.gridy = 1;
-	// 		secondRowConstraints.weightx = 0.1;
-	// 		secondRowConstraints.ipady = 30;
-	// 		secondSectionConstraints.gridwidth = 2;
-	// 	updateDimensionsPanel.add(portraitLabel, secondRowConstraints);
-	// 		secondRowConstraints.ipady = 15;
-	// 		secondRowConstraints.gridx = 1;
-	// 	updateDimensionsPanel.add(portraitText, secondRowConstraints);
-	// 		secondRowConstraints.gridx = 0; 
-	// 		secondRowConstraints.gridy = 2;
-	// 		secondRowConstraints.weighty = 0.1;
-	// 	updateDimensionsPanel.add(squareLabel, secondRowConstraints);
-	// 		secondRowConstraints.gridx = 1;
-	// 	updateDimensionsPanel.add(squareText, secondRowConstraints);
-
-	// 	innerRightPanel.add(updateDimensionsPanel,secondSectionConstraints);
-
-
-	//   	GridBagConstraints updateDimensionsLabelConstraints = new GridBagConstraints();
-	// 		updateDimensionsLabelConstraints.fill = GridBagConstraints.BOTH;
-	// 		updateDimensionsLabelConstraints.gridx = 0; 
-	// 		updateDimensionsLabelConstraints.gridy = 0;
-
-	  	
-
-	//   	GridBagConstraints updateDimensionsDescConstraints = new GridBagConstraints();
-	// 		updateDimensionsDescConstraints.gridx = 0; 
-	// 		updateDimensionsDescConstraints.gridy = 1;
-	// 		updateDimensionsDescConstraints.anchor = GridBagConstraints.CENTER;
-
-
-	//   	GridBagConstraints updateDimensionsPanelConstraints= new GridBagConstraints();
-	// 		updateDimensionsPanelConstraints.gridx = 0; 
-	// 		updateDimensionsPanelConstraints.gridy = 1;
-	// 		updateDimensionsPanelConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
-	// 		updateDimensionsPanelConstraints.gridwidth = GridBagConstraints.REMAINDER;
-	// 	validateView();
-	// 	getImageDimensionLimits();
-	// }
-
 	public static void showAboutMesection(){
 		clearPanel(innerRightPanel);
 		// clearPanel(rightPanel);
@@ -656,15 +612,23 @@ public class Main extends JFrame {
 
 	public static void startImageProcessing(){
 		try{
+
+			processImages(filePaths.profileDirectoryPath, albumzList);
+
+
+			processImages(filePaths.slideshowDirectoryPath, albumzList);
+			// boolean slideshowBool = myFileWriter.writeJSONFile(filePaths.slideshowJSONFilePath, slideshowList);
+
 			getGalleryAlbums();
-
-			processImages(filePaths.slideshowDirectoryPath, slideshowList);
-			boolean slideshowBool = myFileWriter.writeJSONFile(filePaths.slideshowJSONFilePath, slideshowList);
-
 			for (String x : galleryAlbums){
-				processImages(x, albumList);
+				processImages(x, albumzList);
 			}
-			boolean albumsBool = myFileWriter.writeJSONFile(filePaths.albumsJSONFilePath, albumList);
+			// boolean albumsBool = myFileWriter.writeJSONFile(filePaths.albumsJSONFilePath, albumList);
+
+			boolean oneBool = myFileWriter.writeJSONFile(filePaths.newAlbumsJSONFilePath, albumzList);
+
+			boolean slideshowBool = oneBool;  
+			boolean albumsBool = oneBool;
 
 			String processSlideshowResults = slideshowBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Slideshow images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Slideshow images were not processed.";
 			String processAlbumsResults = albumsBool ? "<span style='color:green;font-weight:bold'>SUCCESS:</span> Album images were processed successfully." : "<span style='color:red;font-weight:bold'>FAILED:</span> Album images were not processed.";
@@ -696,10 +660,10 @@ public class Main extends JFrame {
 	public static void processImages(String directoryPath, ArrayList<Album> albumArrayList){
 		try{
 			// System.out.println(directoryPath);
-			System.out.printf("Portrait <= %d\n", portraitDim);
-			System.out.printf("Square > %d <= %d\n", portraitDim, squareDim);
-			System.out.printf("Landscape > %d\n", squareDim);
-			System.out.println();
+			// System.out.printf("Portrait <= %d\n", portraitDim);
+			// System.out.printf("Square > %d <= %d\n", portraitDim, squareDim);
+			// System.out.printf("Landscape > %d\n", squareDim);
+			// System.out.println();
 			File dir = new File(directoryPath);
 			File dirList[] = dir.listFiles();
 			// System.out.println(directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1));

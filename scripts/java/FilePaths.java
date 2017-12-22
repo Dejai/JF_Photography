@@ -10,9 +10,11 @@ public class FilePaths{
 	protected String dimensionsFilePath;
 	protected String albumsJSONFilePath;
 	protected String slideshowJSONFilePath;
+	protected String newAlbumsJSONFilePath;
 	protected String gifsPath;
 	protected String galleryDirectoryPath;
 	protected String slideshowDirectoryPath;
+	protected String profileDirectoryPath;
 	protected String separator; 
 	protected String oopsImg; 
 	protected String successProcessingImg; 
@@ -54,9 +56,15 @@ public class FilePaths{
 
 		slideshowJSONFilePath = os == "windows" ? "config\\slideshowJSON.txt" : "config/slideshowJSON.txt";
 
+		// Testing
+		newAlbumsJSONFilePath = os == "windows" ? "config\\newAlbumsJSON.txt" : "config/newAlbumsJSON.txt";
+
 		galleryDirectoryPath = os == "windows" ? "images\\gallery" : "images/gallery";
 
 		slideshowDirectoryPath = os == "windows" ? "images\\slideshow" : "images/slideshow";
+
+		// Testing
+		profileDirectoryPath = os == "windows" ? "images\\assets\\profile" : "images/assets/profile";
 
 		gifsPath = os == "windows" ? "images\\assets\\gifs\\" : "images/assets/gifs/";
 
