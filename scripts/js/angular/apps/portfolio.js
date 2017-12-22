@@ -47,21 +47,24 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 	$scope.viewedImage;
 	$scope.viewingIndex;
 	$scope.openImage = function(index){
-		// console.log(ele.target.style);
 		$scope.viewingIndex = index;
 		$scope.modalOpen = true;
-		// getCurrentIndex(index);
 		document.getElementById("viewingImage").innerHTML = index+1;
-
-
-		console.log("New Index = photo-0" + index);
 
 		var thisWidth = $scope.singleAlbum[index].width;
 		var thisHeight = $scope.singleAlbum[index].height;
-		console.log(thisWidth);
-		// var targetWidth = thisWidth > 2000 ? thisWidth / 6 : thisWidth / 4; 
-		var targetWidth = thisWidth / 4; 
-		var targetHeight = (thisHeight / thisWidth ) * targetWidth;
+		var divisor = window.outerWidth > 1400 ? 3 : window.outerWidth < 768 ? 5 : 4;
+		// console.log(divisor);
+
+		if ( (thisWidth > thisHeight) && (window.outerWidth < 500) ){
+			// console.log
+			var targetWidth = window.innerWidth; 
+			var targetHeight = (thisHeight / thisWidth ) * (thisWidth / divisor);
+		} else {
+			var targetWidth = thisWidth / divisor; 
+			var targetHeight = (thisHeight / thisWidth ) * targetWidth;
+		}
+		
 		var element = document.getElementById("photo-0"+index);
 		element.scrollIntoView();
 		$scope.viewedImage = element;
@@ -76,7 +79,7 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 	}
 
 	$scope.closeImage = function(){
-		console.log("Inside closeImg");
+		// console.log("Inside closeImg");
 		// var element = document.getElementById("photo-0"+$scope.viewingIndex);
 		$scope.viewedImage.style.width = "100%";
 		$scope.viewedImage.style.height = "100%";
@@ -90,7 +93,7 @@ portfolioApp.controller("portfolioController", function($scope, $http){
 	$scope.closeModal = function(){
 		document.getElementById("galleryModal").style.display = "none";
 		$scope.modalOpen = false;
-		console.log("Inside closeModal");
+		// console.log("Inside closeModal");
 		$scope.closeImage();
 	}
 

@@ -91,55 +91,56 @@
 /* ------------------------ MEDIA QUERIES ------------------------ */
 
 
-/* MEDIA QUERIES */
 
+@media screen and (min-width:768px) and (min-height:500px){
+	#contactFormSection { margin-top:150px; }
 
-	@media screen and (min-width:768px) and (min-height:500px){
-		#contactFormSection { margin-top:150px; }
+	/*Contact Options*/
+	/*#contactQuestion { margin-bottom:2%; font-size:24px; }*/
+	#contactQuestion { margin-bottom:2%; }
+	.contactOption { font-size:14px; }
 
-		/*Contact Options*/
-		/*#contactQuestion { margin-bottom:2%; font-size:24px; }*/
-		#contactQuestion { margin-bottom:2%; }
-		.contactOption { font-size:14px; }
+	/*GENERAL */
+	.formRow { padding-left:0%; }
+	.contactForm label { font-size: 14px; }
+	.customerInfoFields { width:33.333%; }
+	.customerInfoFields input { width:85%; }
 
-		/*GENERAL */
-		.formRow { padding-left:0%; }
-		.contactForm label { font-size: 14px; }
-		.customerInfoFields { width:33.333%; }
-		.customerInfoFields input { width:85%; }
+	/*Date / Time Section*/
+	.dateSection { width:90%;float:left;text-align:left; }
+	/*.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }*/
+	.dateSelectorSection { width:35%;  }
+	.timeSelectorSection { width:20%; }
+	.addNewDateTimeSection { width:35%; }
 
-		/*Date / Time Section*/
-		.dateSection { width:90%;float:left;text-align:left; }
-		/*.addNewDateTimeButton { text-align:left; padding:5%; font-size:14px; }*/
-		.dateSelectorSection { width:35%;  }
-		.timeSelectorSection { width:20%; }
-		.addNewDateTimeSection { width:35%; }
+	/*Individual Forms / Sections*/
+	#requestServiceForm{ width:75%; margin:auto; padding-bottom:5%;}
 
-		/*Individual Forms / Sections*/
-		#requestServiceForm{ width:75%; margin:auto; padding-bottom:5%;}
+	#feedbackForm{ width:75%;  margin:auto; padding-top:2%; padding-bottom:5%;}
+	.formStatusSentence { padding:1%; }
 
-		#feedbackForm{ width:75%;  margin:auto; padding-top:2%; padding-bottom:5%;}
-		.formStatusSentence { padding:1%; }
+	#successImage { width:300px; height:300px; margin-top:0%; }
 
-		#successImage { width:300px; height:300px; margin-top:0%; }
+}
+/*iPads (mini, Air, and small pro)*/
+@media screen and (min-width:768px) and (min-height:1024px){
+	#contactFormSection { margin-top:170px; }
+}
 
-	}
-	/*iPads (mini, Air, and small pro)*/
-	@media screen and (min-width:768px) and (min-height:1024px){
-		#contactFormSection { margin-top:170px; }
-	}
+@media screen and (min-width:1024px){
+	#contactFormSection { margin-top:20px; }
 
-	@media screen and (min-width:1024px){
-		#contactFormSection { margin-top:20px; }
+	#contactQuestion { margin-bottom:1%; }
+	#requestServiceForm{ width:55%; }
+	#feedbackForm{ width:55%; }
+	#successImage { width:350px; height:350px; }
 
-		#contactQuestion { margin-bottom:1%; }
-		#requestServiceForm{ width:55%; }
-		#feedbackForm{ width:55%; }
-		#successImage { width:350px; height:350px; }
+}
+@media screen and (min-width:1024px) and (min-height:1366px){
+	#contactFormSection { margin-top:50px; }
+}
 
-	}
-	@media screen and (min-width:1024px) and (min-height:1366px){
-		#contactFormSection { margin-top:50px; }
-	}
-
+@media screen and (min-width:1440px){  
+	
+}
 

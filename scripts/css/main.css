@@ -4,6 +4,8 @@
 	#welcomeMessageSection { color:white; text-align: center; }
 	#welcomeMessageSection .hideInitially { display:none; }
 	#welcomeMessageImage { height:220px; width:200px; }
+	#elips { display:none; color:white; }
+	.extraSpace { display:none; }
 	#welcomeSentence-two { color:red; }
 	#enterJFPhotobiz { border: 1px solid limegreen; color:black; background-color:limegreen;
 						display:flex; justify-content: center; align-content: center; margin:auto; }
@@ -45,6 +47,10 @@
 
 /*Medium devices (tablets, 768px and up)*/
 @media screen and (min-width:768px) and (min-height:1024px){
+	/* Welcome Message */
+		#elips { display:inline; }
+
+
 	/* Slideshow - Section */
 		#slideshowSection { margin-top:200px; }
 
@@ -56,6 +62,9 @@
 
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:500px){
+	/* Welcome Message */
+		#elips { display:inline; }
+
 	/* Slideshow - Section */
 		#slideshowSection {margin-top:120px;}
 
@@ -66,6 +75,11 @@
 }
 
 @media screen and (min-width:1024px){ 
+	/* Welcome Message */
+		#elips { display:inline; }
+		.extraSpace { display:inline; }
+
+
 	/* Slideshow - Section */
 		#slideshowSection {margin-top:0px;}
 
@@ -89,6 +103,7 @@
 
 /* These may not be needed */
 @media screen and (min-width:1024px) and (min-height:1366px){
+	/*#elips:after { content:" ... "; }*/
 	#slideshowSection {margin-top:50px;}	
 }
 
@@ -98,6 +113,28 @@
 }
 
 @media screen and (min-width:1440px){
-	#slideshowSection {margin-top:30px;}
+	/* Welcome Message */
+		#welcomeMessageSection h1
+		#welcomeMessageSection h2,
+		#welcomeMessageSection h3,
+		#welcomeMessageSection h4 { font-size:200%; }
+
+	/* Slideshow - Section */
+		#slideshowSection {margin-top:30px;}
+
+	/* Slideshow - Images */
+		.dim-portrait { max-width:420px; height: 550px; }
+		.dim-landscape { max-width:850px; height: 550px;  }
+		.dim-square { max-width:550px; height: 550px; }
+
+	/* Slideshow - Position Indicators */
+		.slideshowPositionIndicator { height:26px; width:26px;  }
+		#slideshow_leftButton { border-top: 18px solid transparent; border-bottom: 18px solid transparent;
+								border-right: 22px solid white; }
+		#slideshow_rightButton { border-top: 18px solid transparent; border-bottom: 18px solid transparent;
+								 border-left: 22px solid white; }
+
+
+
 }
 

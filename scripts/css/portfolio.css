@@ -1,42 +1,35 @@
 /* Gallery Modal */
-	#galleryModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index: 900; opacity:0.8; overflow:scroll; background-color:black; }
+	#galleryModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index: 2000; opacity:0.9; overflow:scroll; background-color:black; }
 	#galleryModalIndicator { position:fixed; bottom:0; width:100%; text-align:center; color:white; font-size:14px; font-weight: bold; }
 
 /* Album Section & Sub-Navigation */
-	#albumSection { margin-top:130px; }
 	#albumTitleSection { text-align:center; color:white; margin-bottom:20px; }
 
 	#backToAlbums { border: 2px solid white; background-color: transparent; color:white; position:absolute; left:10%;}
 	#backToAlbums:hover { color:black; background-color: white; }
 
 /* Listings - General */
-    .portfolioListing { width:90%; margin:auto;}
-
+    .portfolioListing { width:90%; margin:auto; overflow: scroll;}
 
 /* Listings - Albums */
     .albumCover-container {  display:flex; justify-content: center; align-content: center; 
-          					width:30%; margin: 1%; margin-bottom:2%; height:270px; float:left; }
+          					width:100%; margin:auto; margin-bottom:5%; height:150px; float:left; }
     .albumCover-image { width: 100%;height: 100%; background-color: black; background-position: center; background-size: cover; 
     					transition: all .2s; display:flex; justify-content: center;align-content: center; }
 
     .albumCover-container:hover .albumCover-image, 
     .albumCover-container:focus .albumCover-image { transform: scale(1.1); cursor:pointer; border:1px solid white; }
 
-    .albumCover-image::before { content: ""; display: none; height: 100%; width: 100%; position: absolute; top: 0; left: 0; 
-    							background-color: rgba(52, 73, 94, 0.75); }
-
     .albumCover-container:hover .albumCover-image:before,
     .albumCover-container:focus .albumCover-image:before { display: block; }
 
-    .albumCover-name { display:none; color: white; font-family: sans-serif; font-size:20px;
-      		 		   padding-top:35%; font-size:200%; z-index: 1000; width:100%; text-align:center; }
+    .albumCover-name { color: white; font-family: sans-serif; font-size:20px; background-color: rgba(52, 73, 94, 0.75);
+      		 		   padding-top:25%; font-size:150%; z-index: 1000; width:100%; text-align:center; }
 
-    .albumCover-container:hover .albumCover-name,
-    .albumCover-container:focus .albumCover-name { display: block;  }
 
 
 /* Listings - Album Photos */
-	.albumPhoto-container { width:30%; height:270px; float:left; margin:1%; display:flex; justify-content: center; }
+	.albumPhoto-container { width:100%; height:270px; float:left; margin:1%; display:flex; justify-content: center; }
 	.albumPhoto-directive { display:flex; justify-content: center; }
 
     .albumPhoto-image { width:0%; height:0%; }
@@ -47,38 +40,61 @@
     /* This is just so that the images can load on a transition upon their first call. 
     	It is removed when they are open, and become useless - it is not used for additional visits */
 
-	.albumPhoto-galleryView { position:fixed; top:50%; left:50%; z-index: 1000; transition: all 0s; }
+	.albumPhoto-galleryView { position:fixed; top:50%; left:50%; z-index: 3000; transition: all 0s; }
 
 
 /* ------------------------ MEDIA QUERIES ------------------------ */
         
 
 /*Medium devices (tablets, 768px and up)*/
-@media screen and  (min-width: 768px) and (min-height:500px) {
+@media screen and (min-width:768px) and (min-height:500px){
 
+    /* Listings - Albums */
+        .albumCover-container { width:30%; margin: 2%; height:190px; }
+        .albumCover-name { padding-top:35%; }
 
-	#albumSection { margin-top:120px; }
+    /* Listings - Album Photos */
+        .albumPhoto-container { width:45%; height:270px; }
 
 
 }
 
 /*iPads (mini, Air, and small pro)*/
 @media screen and (min-width:768px) and (min-height:1024px){
+     /*Listings - Albums */
+        .albumCover-container { width:45%; margin: 2%; height:200px; }
+        .albumCover-name { padding-top:30%; font-size:190%; }
 
-	#albumSection { margin-top:160px; }
+    /* Listings - Album Photos */
+        .albumPhoto-container { width:45%; height:270px; }
 
 }
 
 
-
 @media screen and (min-width:1024px){
+    
+    /* Listings - Albums */
+        .albumCover-container { width:30%; margin: 1%; height:270px; }
+        .albumCover-name { display:none; padding-top:35%; font-size:200%;background-color:initial; }
+        .albumCover-image::before { content: ""; display:none; height: 100%; width: 100%; position: absolute; top: 0; left: 0; 
+                                background-color: rgba(52, 73, 94, 0.75); }
+        .albumCover-container:hover .albumCover-name,
+        .albumCover-container:focus .albumCover-name { display: block;  }
 
-
-	#albumSection { margin-top:20px; }
+    /* Listings - Album Photos */
+        .albumPhoto-container { width:30%; height:270px; }
 
 }
 
 
 @media screen and (min-width:1440px){
+    /* Gallery Modal */
+        #galleryModalIndicator { font-size:22px; }
+
+    /* Listings - Albums */
+        .albumCover-container { width:25%; margin:2%; height:320px; }
+
+    /* Listings - Album Photos */
+        .albumPhoto-container {  height:350px; }
 
 }
