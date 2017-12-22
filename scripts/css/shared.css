@@ -123,6 +123,12 @@
 		.mobileBelowNav { margin-top:0%; }
 }
 
+/* Rare case for iPad Pro */
+@media screen and (min-width:1024px) and (min-height:1366px), screen and (min-width:1366px) and (min-height:1024px) {
+	/* MAIN - General */
+		.mobileBelowNav { margin-top:40px; }
+}
+
 @media screen and (min-width:1440px){  
 
 }

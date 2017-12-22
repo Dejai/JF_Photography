@@ -29,6 +29,20 @@ const sharedFunctions = {
 	        $(".delayedDisplay").fadeIn();
 	    }, delayTime);
 	}, 
+	calculateAspectRatio: function(width, height){
+		// var divisor = window.outerWidth > 1400 ? 3 : window.outerWidth < 768 ? 5 : 4;
+		var divisor = 12;
+		var targetWidth, targetHeight;
+		console.log(divisor);
+		if ( (width > height) && (window.outerWidth < 500) ){
+			var targetWidth = window.innerWidth; 
+			var targetHeight = (height / width ) * (width / divisor);
+		} else {
+			var targetWidth = width / divisor; 
+			var targetHeight = (height / width ) * targetWidth;
+		}
+		return { "width" : targetWidth, "height" : targetHeight }
+	},
 	mobileMenu : function(action){
 		var toHide = document.getElementsByClassName("hideForMobileNav");
 		if (action == "open"){
