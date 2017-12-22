@@ -6,7 +6,7 @@
 },
 {"name" :"images/slideshow/image2.jpg","dimension" :"landscape"
 },
-{"name" :"images/slideshow/image3.jpg","dimension" :"landscape"
+{"name" :"images/slideshow/image3.jpg","dimension" :"portrait"
 },
 {"name" :"images/slideshow/image4.jpg","dimension" :"landscape"
 },
