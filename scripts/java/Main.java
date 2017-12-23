@@ -45,7 +45,7 @@ public class Main extends JFrame {
 
 
 			public static JLabel compressImagesReminder = new JLabel("<html><p>Remember to compress your images!</p></html>");
-			public static JButton useTinyPng = new JButton("<html><font color='blue'><strong>Click here to go to TinyPng.com</strong></font></html>");
+			public static JButton useTinyPng = new JButton("<html><font color='blue'><strong><span class='text'>Click here to go to TinyPng.com</span></strong></font></html>");
 			public static URI tinyPngURI;
 			public static JButton startImageProcessing = new JButton("Start Processing");
 
@@ -460,8 +460,6 @@ public class Main extends JFrame {
 		innerRightPanel.add(startImageProcessing, preProcessCon);
 
 		validateView();
-
-
 	}
 	
 
