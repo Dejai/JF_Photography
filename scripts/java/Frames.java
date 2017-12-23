@@ -21,7 +21,6 @@ public class Frames extends JFrame {
 
 	// JComponent Attributes
 		// Main Window & Content Panel
-			// JFrame mainFrame = new JFrame("Managing Config Files");
 			JPanel contentPane = new JPanel();
 
 		// Bottom Section
@@ -33,7 +32,7 @@ public class Frames extends JFrame {
 			JPanel leftPanel = new JPanel(new FlowLayout());
 			JPanel innerLeftPanel = new JPanel(new GridBagLayout());
 
-			JLabel menuLabel = new JLabel("Menu: ");
+			JLabel menuLabel = new JLabel("Menu:");
 
 			JButton updateDimensions = new JButton("Update Dimensions");
 			JButton processImages = new JButton("Process Images");
@@ -76,70 +75,92 @@ public class Frames extends JFrame {
 				JComboBox<String> helpDropDown;
 				JLabel spanExample = new JLabel("");
 
+		// Containers of Components
+			JButton [] actionableButtons = { processImages, aboutMe };
+			JLabel [] subheaders= {htmlHelpLabel};
+			JLabel [] headers= {menuLabel, processingNow, editAboutMe, getStartedLabel, compressImagesReminder };
+			JComponent [] leftSide = {leftPanel, innerLeftPanel, bottomPanel};
+			JComponent [] rightSide = {rightPanel, innerRightPanel };
 
 	public Frames( String title, String opSystem){
+
 		super ( title ); 
 		setSize(800, 500);
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setLayout(new GridBagLayout());
 		initFrame(opSystem);
+		menuEventListeners();
 
+		// testActionables();
+
+	}
+
+	public void testActionables(){
+		for (JButton c : actionableButtons){
+			// System.out.println(c.toString());
+			String test = parseAction(c.toString());
+			System.out.printf("Results of parseAction = %s\n", test);
+
+		}
+	}
+
+	public static String parseAction(String value){
+		int textIndex = value.indexOf("text=");
+		String firstSub = value.substring(textIndex); 
+		int cutOffIndex = firstSub.indexOf(",");
+		String secondSub = firstSub.substring(0, cutOffIndex);
+		String action = secondSub.split("=")[1];
+		return action;
 	}
 
 	public void initFrame(String opSystem){
 
-		JLabel [] subheaders= {htmlHelpLabel};
 		for (JLabel subH : subheaders){
 			subH.setFont(new Font("Arial", Font.BOLD, 16));
 		}
 
-		JLabel [] headers= {menuLabel, processingNow, editAboutMe, getStartedLabel, compressImagesReminder };
-		for (JLabel xL : headers){
-			xL.setFont(new Font("Arial", Font.BOLD, 22));
+		for (JLabel header : headers){
+			header.setFont(new Font("Arial", Font.BOLD, 22));
 		}
 
-		JComponent [] leftSide = {leftPanel, innerLeftPanel, bottomPanel};
 		for (JComponent left : leftSide){
 			left.setBackground(Color.LIGHT_GRAY);
 		}
 		this.getContentPane().setBackground(Color.GRAY);
 		bottomPanel.setBackground(Color.GRAY);
 
-		JComponent [] rightSide = {rightPanel, innerRightPanel };
 		for (JComponent right : rightSide){
 			right.setBackground(new Color(0.2f, 0.5f, 0.6f));
 		}
 
+		innerLeftPanel.add(menuLabel, new GridBagParams("menuLabel"));
 
-		GridBagConstraints menuLabelConstraints = new GridBagConstraints();
-			menuLabelConstraints.fill = GridBagConstraints.HORIZONTAL;
-			menuLabelConstraints.weightx = 0.5;				
-			menuLabelConstraints.gridx = 0; 
-			menuLabelConstraints.gridy = 0;
-			menuLabelConstraints.ipadx = 50;
-			menuLabelConstraints.insets = new Insets(10,5,0,10);  //top padding
-		innerLeftPanel.add(menuLabel, menuLabelConstraints);
+		// GridBagConstraints processImagesConstraints = new GridBagConstraints();
+		// 	processImagesConstraints.weightx = 0.5;				
+		// 	processImagesConstraints.gridx = 0; 
+		// 	processImagesConstraints.gridy = 1;
+		// 	processImagesConstraints.insets = new Insets(10,40,0,0); 
+		innerLeftPanel.add(processImages, new GridBagParams("processImagesButton"));
 
-		GridBagConstraints processImagesConstraints = new GridBagConstraints();
-			processImagesConstraints.weightx = 0.5;				
-			processImagesConstraints.gridx = 0; 
-			processImagesConstraints.gridy = 1;
-			processImagesConstraints.insets = new Insets(10,40,0,0); 
-		innerLeftPanel.add(processImages, processImagesConstraints);
+		// GridBagConstraints aboutMeConstraints = new GridBagConstraints();
+		// // aboutMeButton
+		// // 	aboutMeConstraints.weightx = 0.5;				
+		// // 	aboutMeConstraints.gridx = 0; 
+		// // 	aboutMeConstraints.gridy = 2;
+		// // 	aboutMeConstraints.insets = new Insets(10,40,0,0); 
+		// // innerLeftPanel.add(aboutMe, aboutMeConstraints);
+		innerLeftPanel.add(aboutMe, new GridBagParams("aboutMeButton"));
 
-		GridBagConstraints aboutMeConstraints = new GridBagConstraints();
-			aboutMeConstraints.weightx = 0.5;				
-			aboutMeConstraints.gridx = 0; 
-			aboutMeConstraints.gridy = 2;
-			aboutMeConstraints.insets = new Insets(10,40,0,0); 
-		innerLeftPanel.add(aboutMe, aboutMeConstraints);
 
 		
 
-		GridBagConstraints getStartedConstraints = new GridBagConstraints();
-			getStartedConstraints.insets = new Insets(40,0,0,0); 
-		innerRightPanel.add(getStartedLabel, getStartedConstraints);
+		// GridBagConstraints getStartedConstraints = new GridBagConstraints();
+		// // startProcessingImagesButton
+		// // 	getStartedConstraints.insets = new Insets(40,0,0,0); 
+		// innerRightPanel.add(getStartedLabel, getStartedConstraints);
+		innerRightPanel.add(getStartedLabel, new GridBagParams("startProcessingImagesButton"));
+
 
 
 
@@ -174,15 +195,26 @@ public class Frames extends JFrame {
 		this.add(rightPanel, rightPanelConstraints);
 	}
 
-	public void menuEventListeners(){	
+	public void menuEventListeners(){
 
-		// Processing Images
-		this.processImages.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				// JOptionPane.showMessageDialog(this, "Hello, World", "Test", JOptionPane.INFORMATION_MESSAGE);
-				showImagePreProcessing();
-			}
-		});
+		for (JButton actionable : actionableButtons){
+			String action = parseAction(actionable.toString());
+			actionable.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					switch (action){
+						case "Process Images" :
+							showImagePreProcessing();
+							break;
+						case "About Me":
+							showAboutMesection();
+							resultsMessageDialog(true, "Hello, World");
+							break;
+						default:
+							System.out.println("Hello, World");
+					}
+				}
+			});
+		}
 
 		startImageProcessing.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -214,7 +246,6 @@ public class Frames extends JFrame {
 	}
 
 	public void showImagePreProcessing(){
-		JOptionPane.showMessageDialog(this, "Hello, World", "Test", JOptionPane.INFORMATION_MESSAGE);
 		try{
 			tinyPngURI = new URI("http://tinypng.com");
 		} catch (Exception ex){
@@ -238,6 +269,64 @@ public class Frames extends JFrame {
 
 		validateView();
 	}
+
+	public void showAboutMesection(){
+		clearPanel(innerRightPanel);
+		// clearPanel(rightPanel);
+		GridBagConstraints editAboutMeConstraints = new GridBagConstraints();
+			editAboutMeConstraints.fill = GridBagConstraints.BOTH;
+			editAboutMeConstraints.gridx = 0; 
+			editAboutMeConstraints.gridy = 0;
+			editAboutMeConstraints.anchor = GridBagConstraints.CENTER;
+			editAboutMeConstraints.insets = new Insets(10,0,20,10);  //top padding
+		innerRightPanel.add(editAboutMe, editAboutMeConstraints);
+			editAboutMeConstraints.fill = GridBagConstraints.HORIZONTAL;
+			editAboutMeConstraints.gridx = 1;
+			editAboutMeConstraints.insets = new Insets(10,0,20,0);  //top paddin
+		innerRightPanel.add(toggleAboutMeEditor, editAboutMeConstraints);
+			editAboutMeConstraints.gridx = 2;
+		innerRightPanel.add(saveAboutMe, editAboutMeConstraints);
+
+
+		GridBagConstraints aboutMeTextEditorC = new GridBagConstraints();
+			aboutMeTextEditorC.fill = GridBagConstraints.BOTH;
+			aboutMeTextEditorC.gridx = 0; 
+			aboutMeTextEditorC.gridy = 1;
+			aboutMeTextEditorC.weighty = 0.5;
+			aboutMeTextEditorC.anchor = GridBagConstraints.FIRST_LINE_START;
+			aboutMeTextEditorC.gridwidth = GridBagConstraints.REMAINDER;
+		aboutMeTextEditor.setEditable(true);
+		aboutMeTextEditor.setMargin(new Insets(10,10,0,10));
+		innerRightPanel.add(aboutMeTextEditor, aboutMeTextEditorC);
+
+		
+		// GridBagConstraints helpLabelC = new GridBagConstraints();
+		// 	helpLabelC.weightx = 0.5;			
+		// 	helpLabelC.gridx = 0; 
+		// 	helpLabelC.gridy = 4;
+		// 	helpLabelC.insets = new Insets(30,40,0,10);
+		// innerLeftPanel.add(htmlHelpLabel, helpLabelC);
+
+		// GridBagConstraints helpDropDownC = new GridBagConstraints();
+		// 	helpDropDownC.weightx = 0.5;			
+		// 	helpDropDownC.gridx = 0; 
+		// 	helpDropDownC.gridy = 5;
+		// 	helpDropDownC.insets = new Insets(10,40,0,10);
+		// innerLeftPanel.add(helpDropDown, helpDropDownC);
+		
+
+		// GridBagConstraints spanExampleC = new GridBagConstraints();
+		// 	spanExampleC.fill = GridBagConstraints.HORIZONTAL;
+		// 	spanExampleC.weightx = 0.5;			
+		// 	spanExampleC.gridx = 0; 
+		// 	spanExampleC.gridy = 6;
+		// 	spanExampleC.ipady = 10;
+		// 	spanExampleC.insets = new Insets(10,5,0,0);
+		// innerLeftPanel.add(spanExample, spanExampleC);
+		validateView();
+		// getAboutMeText();
+	}
+
 
 	public void resultsMessageDialog(boolean success, String msg){
 		String message = !msg.isEmpty() ? msg : "Unknown Error!";
