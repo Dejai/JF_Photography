@@ -10,8 +10,10 @@
 
       var isLiveSite = window.location.hostname == "jfphotobiz.com" ? true : false;
       if (isLiveSite){
-          alert("Live Site");
+        console.log("Live site");
           gtag('config', 'UA-111602147-1');
+      } else {
+        console.log("Beta site");
       }
     </script>
 
