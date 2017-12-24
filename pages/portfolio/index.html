@@ -27,9 +27,8 @@
 </head>
 <body ng-app="portfolioApp" ng-controller="portfolioController">
 
-<div id="galleryModal" ng-click="closeModal()">
-  <p id="galleryModalIndicator"><span id="viewingImage"></span> / {{albumLength}}</p>
-</div>
+<div id="galleryModal" class="galleryModalElements" ng-click="closeModal()"></div>
+<p id="galleryModalIndicator" class="galleryModalElements"><span id="viewingImage"></span> / {{albumLength}}</p>
 <nav id="navbar" class="navbarHeight"></nav>
 <div id="albumSection" class="hideForMobileNav mobileBelowNav mainSection" >
      <div id="albumTitleSection">
