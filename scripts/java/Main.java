@@ -681,16 +681,6 @@ public class Main extends JFrame {
 					if (!temp.hasCoverImage || dirList[x].getPath().contains("cover_") ){
 						temp.setCoverImage(dirList[x].getPath());
 					}
-
-					// System.out.printf("Image dimensions: w-%d, h-%d \t= %s\n", imageB.getWidth(), imageB.getHeight(), dimensionTemp);
-
-					// if ( !albumArrayList.get(albumArrayList.size()-1).hasCoverImage || dirList[x].getPath().contains("cover_") ) {
-						// System.out.printf("Setting album cover to:  %s\n", dirList[x].getPath());
-						// albumArrayList.get(albumArrayList.size()-1).setCoverImage(dirList[x].getPath());
-					// } else {
-						// System.out.println("Aready has an album cover");
-					// }
-					// albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
 				}
 			}
 			return temp;
@@ -705,7 +695,7 @@ public class Main extends JFrame {
 	public static boolean checkIfIsImage(String imagePath){
 		boolean isImage; 
 		if (imagePath.contains(".")) {
-			String extension = imagePath.substring(imagePath.lastIndexOf("."));
+			String extension = imagePath.substring(imagePath.lastIndexOf(".")).toLowerCase();
 			switch(extension){
 				case ".jpg":
 				case ".png":
