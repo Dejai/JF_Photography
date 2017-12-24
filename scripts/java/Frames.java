@@ -72,7 +72,7 @@ public class Frames extends JFrame {
 			JComponent [] rightSide = {rightPanel, innerRightPanel };
 
 
-	public Frames( String title ){
+	public Frames( String title, boolean testState ){
 
 		super ( title );
 		setSize(800, 500);
@@ -80,7 +80,7 @@ public class Frames extends JFrame {
 		setLocationRelativeTo(null);
 		setLayout(new GridBagLayout());
 
-		Listeners ll = new Listeners (this);
+		Listeners ll = new Listeners (this, testState);
 		initFrame(ll.opSystem);
 
 	}

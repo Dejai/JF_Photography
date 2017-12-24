@@ -7,7 +7,8 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 
 
-public class FilesCRUD{
+public class FilesCRUD {
+
 
 	public static boolean writeJSONFile(String fileParam, ArrayList<Album> albumArrayList){
 		try{
@@ -49,13 +50,11 @@ public class FilesCRUD{
 		} catch (Exception ex){
 		    return false;
 		}
-
-		}
 	}
 
 
 	public static String getAboutMeText(String aboutMeFilePath){
-		try{
+		try {
 			String line; 
 			String fullText = ""; 
 			BufferedReader aboutMeReader = new BufferedReader(new FileReader(aboutMeFilePath));
@@ -63,12 +62,12 @@ public class FilesCRUD{
 				fullText = fullText.concat(line).concat("\n");
 			}
 			return fullText;
-			// aboutMeTextEditor.setText(fullText);
 		} catch (Exception ex){
 			ex.printStackTrace();
 			return null; 
 		}
 	}
+
 
 	public static boolean writeAboutMeText(String fileParam, String newText){
 		try{

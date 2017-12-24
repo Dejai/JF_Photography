@@ -12,16 +12,21 @@ public class Listeners extends JFrame {
 
 	protected String opSystem;
 
-	private FilePaths filePaths = new FilePaths("test");
+	private FilePaths filePaths;
 
 	private Frames theMainFrame;
 
 	private static String plainText;
 
 
-	public Listeners(Frames frame){
+	public Listeners(Frames frame, boolean isTest){
+		if (isTest){
+			filePaths = new FilePaths("test");
+		} else {
+			filePaths = new FilePaths();
+		}
 		opSystem = filePaths.opSystemFull;
-		
+
 		theMainFrame = frame;
 
 		for (JComponent actionable : theMainFrame.actionableButtons){
@@ -354,8 +359,8 @@ public class Listeners extends JFrame {
 				theMainFrame.aboutMeTextEditor.setForeground(Color.WHITE);
 				theMainFrame.aboutMeTextEditor.setContentType("text/html");
 				theMainFrame.aboutMeTextEditor.setEditable(false);
-				String allWhite = "<style> body { color:white; } </style>";
-				String htmlVersion = allWhite.concat(plainText);
+				String allWhite = "<style> body { color:white; } </style><div>";
+				String htmlVersion = allWhite.concat(plainText).concat("</div>");
 				theMainFrame.aboutMeTextEditor.setText(htmlVersion);
 			} else {
 
