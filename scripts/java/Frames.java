@@ -1,20 +1,6 @@
 import java.util.*;
-import java.io.*;
-import java.net.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.BufferedWriter;
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.FileReader;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.Random;
-
 
 public class Frames extends JFrame {
 
@@ -54,7 +40,7 @@ public class Frames extends JFrame {
 				JLabel processingImage = new JLabel("");
 
 				JLabel processingNow = new JLabel("");
-				JLabel workingOn = new JLabel(">>\t");
+				JLabel workingOn = new JLabel("Working on:");
 
 			// About Me Sections
 				JLabel editAboutMe = new JLabel("Edit About Me");
@@ -63,6 +49,8 @@ public class Frames extends JFrame {
 
 				JPanel aboutMePanel = new JPanel(new GridLayout(0,1));
 				JEditorPane aboutMeTextEditor = new JEditorPane();
+				// JTextPane aboutMeTextEditor = new JTextPane();
+				JScrollPane aboutMeScrollPane = new JScrollPane(aboutMeTextEditor);
 				String plainText = "";
 				// String htmlHelpText = "Add a new line:\t<br/>";
 
@@ -74,7 +62,9 @@ public class Frames extends JFrame {
 				JLabel htmlExampleArea = new JLabel("");
 
 		// Containers of Components
-			JComponent [] actionableButtons = { processImages, aboutMe, useTinyPng, toggleAboutMeEditor, htmlHelpDropdown };
+			JComponent [] actionableButtons = { processImages, aboutMe, useTinyPng, 
+												toggleAboutMeEditor, saveAboutMe, 
+												startImageProcessing, htmlHelpDropdown };
 			// JComponent [] actionableButtons = { processImages, aboutMe, useTinyPng, toggleAboutMeEditor };
 			JLabel [] subheaders= {htmlHelpLabel};
 			JLabel [] headers= {menuLabel, processingNow, editAboutMe, getStartedLabel, compressImagesReminder };

@@ -96,13 +96,15 @@ public class GridBagParams extends GridBagConstraints {
 				this.anchor = GridBagConstraints.CENTER;
 				this.insets = new Insets(10,0,20,10);  //top padding
 				break;
-			case "aboutMeTextEditor":
+			case "aboutMeScrollPane":
 				this.fill = GridBagConstraints.BOTH;
 				this.gridx = 0; 
 				this.gridy = 1;
 				this.weighty = 0.5;
-				this.anchor = GridBagConstraints.FIRST_LINE_START;
-				this.gridwidth = GridBagConstraints.REMAINDER;
+				this.ipadx = 30;
+				this.weightx = 0.0;
+				// this.anchor = GridBagConstraints.FIRST_LINE_START;
+				this.gridwidth = 4;
 				break;
 			case "htmlHelpLabel":
 				this.fill = GridBagConstraints.HORIZONTAL;
@@ -124,8 +126,28 @@ public class GridBagParams extends GridBagConstraints {
 				this.ipady = 10;
 				this.insets = new Insets(10,5,0,0);
 				break;
+			case "processingNow" :
+				this.fill = GridBagConstraints.BOTH;
+				this.gridx = 0; 
+				this.gridy = 0;
+				this.anchor = GridBagConstraints.CENTER;
+				this.insets = new Insets(10,0,20,0);  //top padding
+				break;
+			case "imagePanel":
+				this.fill = GridBagConstraints.BOTH;
+				this.gridx = 0; 
+				this.gridy = 1;
+				this.anchor = GridBagConstraints.CENTER;
+				break;
+			case "workingOn":
+				this.fill = GridBagConstraints.HORIZONTAL;
+				this.weighty = 1.0;
+				this.gridx = 0; 
+				this.gridy = 2;
+				this.insets = new Insets(10,0,0,0);  //top padding
+				break;
 			default:
-				System.out.println("Did not catch");
+				System.out.println("Did not catch the GridBagConstraint selector");
 		}
 	}
 }

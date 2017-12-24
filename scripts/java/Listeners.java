@@ -1,42 +1,31 @@
 import java.util.*;
-import java.io.*;
 import java.net.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.BufferedWriter;
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.FileReader;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
-import java.lang.*;
 
 public class Listeners extends JFrame {
 
 	protected String opSystem;
-	private FilePaths filePaths;
+
+	private FilePaths filePaths = new FilePaths("test");
 
 	private Frames theMainFrame;
 
-	private String plainText;
-
+	private static String plainText;
 
 
 	public Listeners(Frames frame){
-		filePaths = new FilePaths();
 		opSystem = filePaths.opSystemFull;
 		
 		theMainFrame = frame;
 
-
 		for (JComponent actionable : theMainFrame.actionableButtons){
 			String action = parseAction(actionable.toString());				
-			// System.out.printf("Breakdown:\n%s\n%s\n\n", actionable, action);
 			if (actionable instanceof JButton){
 				addListeners( (JButton) actionable, action );
 			} else  if (actionable instanceof JComboBox){
@@ -50,22 +39,23 @@ public class Listeners extends JFrame {
 	public void addListeners(JButton button, String action){ 
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				switchAction(action);
+				assignListenerFunction(action);
 			}
 		});
 	}
+
 
 	// Adding Listeners for JComboBox
 	// @Overload
 	public void addListeners(JComboBox box, String action){ 
 		box.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				switchAction(action);
+				assignListenerFunction(action);
 			}
 		});
 	}
 
-	public void switchAction(String action){
+	public void assignListenerFunction(String action){
 		switch (action){
 			case "Process Images" :
 				showImagePreProcessing();
@@ -83,11 +73,19 @@ public class Listeners extends JFrame {
 			case "htmlHelpDropdown":
 				selectHTMLExamples();
 				break;
+			case "Save":
+				saveAboutMe();
+				break;
+			case "Start Processing":
+				startImageThreads();
+				break;
 			default:
 				System.out.println(action);
 				// System.out.println(actionable.toString());
 		}
 	}
+
+
 
 // General Processes
 	public static String parseAction(String value){
@@ -119,6 +117,10 @@ public class Listeners extends JFrame {
 		theMainFrame.rightPanel.validate();
 	}
 
+
+
+
+
 //  Image Processes
 	public void showImagePreProcessing(){
 		clearPanel(theMainFrame.innerRightPanel);
@@ -147,26 +149,148 @@ public class Listeners extends JFrame {
 		}
 	}
 
-	public void showImagePreProcessing(){
-		clearPanel(innerRightPanel);
-		hideHTMLExamples();
+	public void startImageThreads(){
+		try{
+			ImagesThread showImagesThread = new ImagesThread(this, "show");
+			showImagesThread.start();
+			showImagesThread.join();
 
-		GridBagConstraints preProcessCon = new GridBagConstraints();
-			preProcessCon.fill = GridBagConstraints.HORIZONTAL;
-			preProcessCon.gridx = 0;
-			preProcessCon.gridy = 0;
-			preProcessCon.weightx = 1;
-			preProcessCon.insets = new Insets(0,0,20,60);
-		innerRightPanel.add(compressImagesReminder, preProcessCon);
-			preProcessCon.gridy = 1;
-		innerRightPanel.add(useTinyPng, preProcessCon);
-			// preProcessCon.fill = GridBagConstraints.NONE;
-			preProcessCon.gridy = 2;
-			preProcessCon.weightx = 0;
-		innerRightPanel.add(startImageProcessing, preProcessCon);
-
-		validateView();
+			ImagesThread startImagesThread = new ImagesThread(this, "start");
+			if (!showImagesThread.isAlive()){
+				startImagesThread.start();
+			}
+ 		} catch(InterruptedException ie){
+ 			theMainFrame.resultsMessageDialog(false, ie.getMessage());
+ 		}	
 	}
+
+	public void showImageProcessingSection(){
+		try{
+			clearPanel(theMainFrame.innerRightPanel);
+
+			theMainFrame.processingNow.setText("<html>Processing Images ... <span style='color:orange;font-weight:bold;'>RUNNING NOW</span></html>");
+			theMainFrame.innerRightPanel.add(theMainFrame.processingNow, new GridBagParams("processingNow"));
+
+			String procImg = filePaths.getRandomGIF();
+			theMainFrame.processingImage.setIcon(new ImageIcon(procImg));
+			theMainFrame.imagePanel.add(theMainFrame.processingImage);
+			theMainFrame.innerRightPanel.add(theMainFrame.imagePanel, new GridBagParams("imagePanel"));
+
+			theMainFrame.innerRightPanel.add(theMainFrame.workingOn, new GridBagParams("workingOn"));
+			validateView();
+
+		} catch (Exception ex){
+			theMainFrame.resultsMessageDialog(false, ex.getMessage());
+		}	
+	}
+
+	public void processImages(){
+		try{
+			theMainFrame.workingOn.setText("Working on:");
+
+			ArrayList<Album> albumsList = new ArrayList<Album>();
+			
+			albumsList.add(processDirectory(filePaths.profileDirectoryPath));
+
+			// Process the slideshow pictures
+			albumsList.add(processDirectory(filePaths.slideshowDirectoryPath));
+
+			// First get the gallery albums, then process each one. 
+			ArrayList<String> galleryAlbums = FilesCRUD.getGalleryAlbums(filePaths.galleryDirectoryPath, filePaths.separator);
+			for (String gal : galleryAlbums){
+				albumsList.add(processDirectory(gal));
+			}
+
+			// Attempt to write the JSON file for all the albums
+			boolean oneBool = FilesCRUD.writeJSONFile(filePaths.albumsJSONPath, albumsList);
+
+
+			String successMesage = "<span style='color:green;font-weight:bold'>SUCCESS:</span> All images were processed successfully.";
+			String failMessage = "<span style='color:red;font-weight:bold'>ERROR:</span>Could not complete the process.";
+
+			String resultsMessage = oneBool ? successMesage : failMessage;
+			String resultsMessageFormatted = String.format("<html> %s </html>", resultsMessage);
+			theMainFrame.processingNow.setText("Processing Images");
+
+			if (oneBool){
+				theMainFrame.workingOn.setText("");
+				theMainFrame.processingImage.setIcon(new ImageIcon(filePaths.successProcessingImg));
+				theMainFrame.resultsMessageDialog(true, resultsMessageFormatted);
+			} else {
+				theMainFrame.workingOn.setText("<html>Something went wrong. To try and remedy this, go to the 'src' folder and click on the filePermission file (the one with the gear icon).</html>");
+				theMainFrame.processingImage.setIcon(new ImageIcon(filePaths.oopsImg));
+				theMainFrame.resultsMessageDialog(false, resultsMessageFormatted);
+			}
+		} catch (Exception ex){
+			theMainFrame.resultsMessageDialog(false, ex.getMessage());
+		}	
+	}
+	
+	
+	public Album processDirectory(String directoryPath){
+		try{
+			File dir = new File(directoryPath);
+			File dirList[] = dir.listFiles();
+			String albumName = directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1);
+
+
+			Album temp = new Album(albumName);
+
+			for (int x = 0; x < dirList.length; x++){
+				boolean isImage; 
+				String dimensionTemp = "";
+				isImage = checkIfIsImage(dirList[x].getPath());
+
+				if (!dirList[x].isDirectory() && isImage){
+					BufferedImage imageB = ImageIO.read(new File(dirList[x].getPath()));
+					theMainFrame.workingOn.setText(String.format("<html>Working on:<br/><span style='font-weight:bold; color:white;'>%s</span></html>", dirList[x].getPath()));
+
+					if (imageB.getHeight() > imageB.getWidth()){
+						dimensionTemp = "portrait";
+					} else if ( imageB.getWidth() > imageB.getHeight() ){
+						dimensionTemp = "landscape";
+					} else if (imageB.getWidth() == imageB.getHeight() ) {
+						dimensionTemp = "square";
+					} else {
+						dimensionTemp = "landscape";
+					}
+
+					temp.addPicture(dirList[x].getPath(), imageB.getWidth(), imageB.getHeight(), dimensionTemp);
+
+					if (!temp.hasCoverImage || dirList[x].getPath().contains("cover_") ){
+						temp.setCoverImage(dirList[x].getPath());
+					}
+				}
+			}
+			return temp;
+		} catch (Exception ex){
+		    System.out.println(ex.getMessage());
+		 	ex.printStackTrace();
+		 	return null;
+		}
+	}
+
+	public static boolean checkIfIsImage(String imagePath){
+		boolean isImage; 
+		if (imagePath.contains(".")) {
+			String extension = imagePath.substring(imagePath.lastIndexOf("."));
+			switch(extension){
+				case ".jpg":
+				case ".png":
+				case ".gif":
+					isImage = true;
+					break;
+				default:
+					isImage = false; 
+			}
+		} else {
+			isImage = false; 
+		}
+		return isImage;
+	} 
+ 
+
+
 
 
 // About Me Processes
@@ -184,16 +308,41 @@ public class Listeners extends JFrame {
 
 		theMainFrame.aboutMeTextEditor.setEditable(true);
 		theMainFrame.aboutMeTextEditor.setMargin(new Insets(10,10,0,10));
-		theMainFrame.innerRightPanel.add(theMainFrame.aboutMeTextEditor, new GridBagParams("aboutMeTextEditor"));
-		
+		theMainFrame.innerRightPanel.add(theMainFrame.aboutMeScrollPane, new GridBagParams("aboutMeScrollPane"));
+
 		theMainFrame.htmlHelpLabel.setVisible(true);
 		theMainFrame.htmlHelpDropdown.setVisible(true);
 		theMainFrame.htmlExampleArea.setVisible(true);
 
-		theMainFrame.aboutMeTextEditor.setText(FilesCRUD.getAboutMeText("../../config/aboutMe.txt"));
-		// getAboutMeText();
+		theMainFrame.aboutMeTextEditor.setText(FilesCRUD.getAboutMeText(filePaths.aboutMeFilePath));
 	}
 
+	public void saveAboutMe(){
+		try{
+			String saveText;
+			boolean isSaved; 
+			if (theMainFrame.aboutMeTextEditor.getContentType() == "text/html"){
+				isSaved = FilesCRUD.writeAboutMeText(filePaths.aboutMeFilePath, plainText);
+			} else {
+				isSaved = FilesCRUD.writeAboutMeText(filePaths.aboutMeFilePath, theMainFrame.aboutMeTextEditor.getText());
+			}
+			
+			String message = isSaved ? "file successfully updated" : "file <strong>NOT</strong> updated!";
+			String messageHTML = String.format("<span style='font-style:italics'>'About Me'</span> %s", message);
+			String color = isSaved ? "green" : "red";
+			String results = isSaved ? "SUCCESS" : "ERROR";
+			String resultsHTML = String.format("<span style='color:%s;font-weight:bold'>%s</span>", color, results);
+			String fullMessage = String.format("<html>%s:  %s</hml>", resultsHTML, messageHTML);
+			
+			theMainFrame.resultsMessageDialog(isSaved, fullMessage);
+			theMainFrame.aboutMeTextEditor.setText("");
+			theMainFrame.aboutMeTextEditor.setText(FilesCRUD.getAboutMeText(filePaths.aboutMeFilePath));
+
+
+		} catch (Exception ex){
+			theMainFrame.resultsMessageDialog(false, ex.getMessage());
+		}
+	}
 
 	public void toggleAboutMeEditor(){
 		try{
@@ -202,12 +351,17 @@ public class Listeners extends JFrame {
 				theMainFrame.toggleAboutMeEditor.setText("Edit");
 				plainText = theMainFrame.aboutMeTextEditor.getText();
 				theMainFrame.aboutMeTextEditor.setBackground(Color.BLACK);
+				theMainFrame.aboutMeTextEditor.setForeground(Color.WHITE);
 				theMainFrame.aboutMeTextEditor.setContentType("text/html");
 				theMainFrame.aboutMeTextEditor.setEditable(false);
-				theMainFrame.aboutMeTextEditor.setText(plainText);
+				String allWhite = "<style> body { color:white; } </style>";
+				String htmlVersion = allWhite.concat(plainText);
+				theMainFrame.aboutMeTextEditor.setText(htmlVersion);
 			} else {
+
 				theMainFrame.toggleAboutMeEditor.setText("Preview");
 				theMainFrame.aboutMeTextEditor.setBackground(Color.WHITE);
+				theMainFrame.aboutMeTextEditor.setForeground(Color.BLACK);
 				theMainFrame.aboutMeTextEditor.setContentType("text/plain");
 				theMainFrame.aboutMeTextEditor.setEditable(true);
 				theMainFrame.aboutMeTextEditor.setText(plainText);
@@ -216,8 +370,6 @@ public class Listeners extends JFrame {
 			theMainFrame.resultsMessageDialog(false, ex.getMessage());
 		}
 	}
-
-
 
 
 
