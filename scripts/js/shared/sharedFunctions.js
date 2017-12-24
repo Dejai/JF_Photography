@@ -73,7 +73,7 @@ const sharedFunctions = {
 	    distY,
 	    threshold = 150, //required min distance traveled to be considered swipe
 	    restraint = 100, // maximum distance allowed at the same time in perpendicular direction
-	    allowedTime = 700, // maximum time allowed to travel that distance
+	    allowedTime = 7000, // maximum time allowed to travel that distance
 	    elapsedTime,
 	    startTime,
 	    handleswipe = callback;
@@ -102,12 +102,8 @@ const sharedFunctions = {
 	            if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
 	                swipedir = (distX < 0)? 'left' : 'right'; // if dist traveled is negative, it indicates left swipe
 	            }
-	            // else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){ // 2nd condition for vertical swipe met
-	            //     swipedir = (distY < 0)? 'up' : 'down' // if dist traveled is negative, it indicates up swipe
-	            // }
 	        }
 	        handleswipe(swipedir);
-	        // e.preventDefault()
 	    }, false);
 	}
 };
