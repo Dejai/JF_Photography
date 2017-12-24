@@ -10,7 +10,7 @@
 	#backToAlbums:hover { color:black; background-color: white; }
 
 /* Listings - General */
-    .portfolioListing { width:90%; margin:auto; overflow: scroll;}
+    .portfolioListing { width:90%; margin:auto;}
 
 /* Listings - Albums */
     .albumCover-container {  display:flex; justify-content: center; align-content: center; 

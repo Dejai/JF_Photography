@@ -11,10 +11,11 @@ $(document).ready(function(){
 
         if ( Storage !== 'undefined'){
             if (sessionStorage.JFPhotobizSession){
-                console.log("Same session");
+                // console.log("Same session");
                 showSlideshow();
             } else {
-                console.log("New session");
+				document.getElementById("navbar").style.display = "none";
+                // console.log("New session");
                 showWelcomeMessage();
                 sessionStorage.JFPhotobizSession = true;
             }
@@ -40,8 +41,9 @@ function showWelcomeMessage(){
 }
 function showSlideshow(time){
     var delayTime = time ? time : 300;
-    setTimeout(function(){
+    setTimeout(function(){    		
             $("#welcomeMessageSection").hide();
+            document.getElementById("navbar").style.display = window.outerWidth > 768 ? "flex" : "initial";;
             slideshow_images = $(".slideshow_image").toArray();
             myPositions = $(".slideshowPositionIndicator").toArray();
             $(".delayedDisplay").fadeIn(400);
