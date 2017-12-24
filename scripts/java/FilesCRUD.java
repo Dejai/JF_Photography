@@ -1,25 +1,14 @@
 import java.util.*;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.PrintWriter;
 
 
-public class WriteToFiles{
+public class FilesCRUD {
 
-	public static boolean writeUpdatedDimensions(String fileParam, String portraitDim, String squareDim){
-		try{
-			BufferedWriter writeDim = new BufferedWriter(new FileWriter(fileParam));
-			writeDim.write(String.format("portrait=%s",portraitDim));
-			writeDim.newLine();
-			writeDim.write(String.format("square=%s",squareDim));
-			writeDim.newLine();
-			writeDim.close();
-			return true;
-		} catch (Exception ex){
-		   	Main.resultsMessageDialog(false, ex.getMessage());
-			return false; 
-		}
-	}
 
 	public static boolean writeJSONFile(String fileParam, ArrayList<Album> albumArrayList){
 		try{
@@ -59,23 +48,56 @@ public class WriteToFiles{
 
 			return true;
 		} catch (Exception ex){
-		    Main.resultsMessageDialog(false, ex.getMessage());
 		    return false;
-
 		}
 	}
 
-	public boolean writeAboutMeText(String fileParam, String newText){
+
+	public static String getAboutMeText(String aboutMeFilePath){
+		try {
+			String line; 
+			String fullText = ""; 
+			BufferedReader aboutMeReader = new BufferedReader(new FileReader(aboutMeFilePath));
+			while ( (line = aboutMeReader.readLine()) != null){
+				fullText = fullText.concat(line).concat("\n");
+			}
+			return fullText;
+		} catch (Exception ex){
+			ex.printStackTrace();
+			return null; 
+		}
+	}
+
+
+	public static boolean writeAboutMeText(String fileParam, String newText){
 		try{
 			BufferedWriter writeAboutMe = new BufferedWriter(new FileWriter(fileParam));
 			writeAboutMe.write(newText);
 			writeAboutMe.close();
 			return true;
 		} catch (Exception ex){
-		    Main.resultsMessageDialog(false, ex.getMessage());
 			return false; 
 		}
 	}
+
+	public static ArrayList<String> getGalleryAlbums(String path, String sep){
+		try{
+			ArrayList<String> galleryAlbums = new ArrayList<String>();
+			File gallery = new File(path);
+			File [] galleryList = gallery.listFiles();
+			for (int x = 0; x < galleryList.length; x++){
+				if (galleryList[x].isDirectory()){
+					String newName = galleryList[x].getName().trim();
+					String newPath = String.format("%s%s%s", path, sep, newName);
+					galleryAlbums.add(newPath);
+				}
+			}
+			return galleryAlbums;
+		} catch (Exception ex){
+			return null;
+		}
+	}
+
 
 
 	

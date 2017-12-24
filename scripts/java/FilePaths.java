@@ -16,34 +16,25 @@ public class FilePaths{
 	protected String oopsImg; 
 	protected String successProcessingImg; 
 
-	private static ArrayList<String> gifs = new ArrayList<String>();
+	private ArrayList<String> gifs = new ArrayList<String>();
 
 
 	public FilePaths(){
 
 		opSystemFull =  System.getProperty("os.name");
 		opSystem = opSystemFull.toLowerCase().indexOf("mac") >= 0 ? "mac" : "windows" ;
-		// updateFilePermissions(opSystem);
 		setFilePaths(opSystem);
 		getGIFS();
 	}
-
-	public void updateFilePermissions(String os){
-		try{
-			if (os == "windows"){
-				System.out.println("It looks like it might not be needed on windows.");
-			} else if (os == "mac"){
-				String cmd = "open ./src/filePermissions.command";
-				Runtime run = Runtime.getRuntime();
-				Process pr = run.exec(cmd);
-			}
-		} catch (Exception ex){
-			Main.resultsMessageDialog(false, ex.getMessage());
-		}
-		
+	public FilePaths(String testing){
+		opSystemFull =  System.getProperty("os.name");
+		opSystem = opSystemFull.toLowerCase().indexOf("mac") >= 0 ? "mac" : "windows" ;
+		setTestFilePaths(opSystem);
+		getGIFS();
 	}
 
-	// Consolidate the two different set functions below
+	// This method is to set the file paths of the production tool
+	// @Override
 	public void setFilePaths(String os){
 		aboutMeFilePath = os == "windows" ? "config\\aboutMe.txt" : "config/aboutMe.txt";
 
@@ -61,8 +52,29 @@ public class FilePaths{
 
 		oopsImg = os == "windows" ? "images\\assets\\icons\\oops2.png" : "images/assets/icons/oops2.png";
 
-		successProcessingImg = os == "windows" ? "images\\assets\\icons\\successProcessing.png" : "images/assets/icons/successProcessing.png";
-		
+		successProcessingImg = os == "windows" ? "images\\assets\\icons\\successProcessing.png" : "images/assets/icons/successProcessing.png";	
+	}
+
+	// This is specifically for testing purposes
+	// @Override
+	public void setTestFilePaths(String os){
+		aboutMeFilePath = os == "windows" ? "..\\..\\config\\aboutMe.txt" : "../../config/aboutMe.txt";
+
+		albumsJSONPath = os == "windows" ? "..\\..\\config\\albumsJSON.json" : "../../config/albumsJSON.json";
+
+		galleryDirectoryPath = os == "windows" ? "..\\..\\images\\gallery" : "../../images/gallery";
+
+		slideshowDirectoryPath = os == "windows" ? "..\\..\\images\\slideshow" : "../../images/slideshow";
+
+		profileDirectoryPath = os == "windows" ? "..\\..\\images\\assets\\profile" : "../../images/assets/profile";
+
+		gifsPath = os == "windows" ? "..\\..\\images\\assets\\gifs\\" : "../../images/assets/gifs/";
+
+		separator = os == "windows" ? "\\" : "/";
+
+		oopsImg = os == "windows" ? "..\\..\\images\\assets\\icons\\oops2.png" : "../../images/assets/icons/oops2.png";
+
+		successProcessingImg = os == "windows" ? "..\\..\\images\\assets\\icons\\successProcessing.png" : "../../images/assets/icons/successProcessing.png";	
 	}
 
 

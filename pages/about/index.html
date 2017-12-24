@@ -45,28 +45,6 @@
 </div>
     <!-- Custom JavaScript to control page functionality -->
     <script type="text/javascript" src="/scripts/js/shared/sharedFunctions.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            sharedFunctions.loadNavBar();
-            $.get("/config/albumsJSON.json", function(payload){
-                var profilePic = document.getElementById("profilePic");
-                var profileObj = payload["profile"];
-                profilePic.src = profileObj.coverImg;
-                // var oldWidth = profileObj.images[0].width;
-                // var oldHeight = profileObj.images[0].height;
-                // var newDims = sharedFunctions.calculateAspectRatio(oldWidth, oldHeight);
-                // profilePic.width = newDims.width;
-                // profilePic.height = newDims.height;
-                // console.log(sharedFunctions.calculateAspectRatio(profileObj.images[0].width, profileObj.images[0].height));
-            });
-            $.get("/config/aboutMe.txt", function(results){
-                var paragraphs = results.split("\n");
-                for (var x in paragraphs){
-                    $("#aboutMeParagraphs").append(paragraphs[x] + "<br/>");
-                }
-                sharedFunctions.displayDelayed();
-            });
-        });
-    </script>
+    <script type="text/javascript" src="/scripts/js/aboutMe.js"></script>
 </body>
 </html>
