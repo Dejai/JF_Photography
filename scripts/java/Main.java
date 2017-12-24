@@ -79,8 +79,9 @@ public class Main extends JFrame {
 	// ConfigTool Class Instance Attributes:
 		public static int portraitDim = 650;
 		public static int squareDim = 700;
-		public static ArrayList<Album> albumsList = new ArrayList<Album>();
-		public static ArrayList<String> galleryAlbums = new ArrayList<String>();
+		// public static ArrayList<Album> albumsList;
+		 // = new ArrayList<Album>();
+		// public static ArrayList<String> galleryAlbums = new ArrayList<String>();
 		public static ArrayList<String> gifs = new ArrayList<String>();
 
 		// Custom objects
@@ -89,6 +90,15 @@ public class Main extends JFrame {
 
 
     public static void main(String args []){
+
+		// myFileWriter = new WriteToFiles();
+		// filePaths = new FilePaths();
+
+  //   	processDirectory("../../images/assets/profile", albumsList);
+		// processDirectory("../../images/slideshow", albumsList);
+		// boolean oneBool = myFileWriter.writeJSONFile("../../config/albumsJSON.json", albumsList);
+		// System.out.println(oneBool);
+
     	
 		setHTMLExamples();
 		mainFrame.setLayout(new GridBagLayout());
@@ -491,8 +501,10 @@ public class Main extends JFrame {
 
 
 	/* GET Objects */ 
-	public static void getGalleryAlbums(){
+	public static ArrayList<String> getGalleryAlbums(){
 		try{
+			ArrayList<String> galleryAlbums = new ArrayList<String>();
+
 			File gallery = new File(filePaths.galleryDirectoryPath);
 			File [] galleryList = gallery.listFiles();
 			for (int x = 0; x < galleryList.length; x++){
@@ -508,9 +520,11 @@ public class Main extends JFrame {
 					galleryAlbums.add(newPath);
 				}
 			}
+			return galleryAlbums;
 		} catch (Exception ex){
 			resultsMessageDialog(false, ex.getMessage());
 			// ex.printStackTrace();
+			return null;
 
 		}
 	}
@@ -579,21 +593,21 @@ public class Main extends JFrame {
 	public static void processImages(){
 		try{
 
+			ArrayList<Album> albumzList = new ArrayList<Album>();
 			// Process the profile picture
-			processDirectory(filePaths.profileDirectoryPath, albumsList);
+			albumzList.add(processDirectory(filePaths.profileDirectoryPath));
 
 			// Process the slideshow pictures
-			processDirectory(filePaths.slideshowDirectoryPath, albumsList);
+			albumzList.add(processDirectory(filePaths.slideshowDirectoryPath));
 
-			// First get the gallery albums, then process each one. 
-			getGalleryAlbums();
+			ArrayList<String> galleryAlbums = getGalleryAlbums();
 			for (String x : galleryAlbums){
-				processDirectory(x, albumsList);
+				albumzList.add(processDirectory(x));
 			}
 
-
 			// Attempt to write the JSON file for all the albums
-			boolean oneBool = myFileWriter.writeJSONFile(filePaths.albumsJSONPath, albumsList);
+			boolean oneBool = myFileWriter.writeJSONFile(filePaths.albumsJSONPath, albumzList);
+
 
 			String successMesage = "<span style='color:green;font-weight:bold'>SUCCESS:</span> All images were processed successfully.";
 			String failMessage = "<span style='color:red;font-weight:bold'>ERROR:</span>Could not complete the process.";
@@ -613,11 +627,13 @@ public class Main extends JFrame {
 				resultsMessageDialog(false, resultsMessageFormatted);
 			}
 		} catch (Exception ex){
+			ex.printStackTrace();
 			resultsMessageDialog(false, ex.getMessage());
-		}	
+			}	
 	}
 	
-	public static void processDirectory(String directoryPath, ArrayList<Album> albumArrayList){
+	// public static void processDirectory(String directoryPath, ArrayList<Album> albumArrayList){
+	public static Album processDirectory(String directoryPath){
 		try{
 			// System.out.println(directoryPath);
 			// System.out.printf("Portrait <= %d\n", portraitDim);
@@ -626,7 +642,6 @@ public class Main extends JFrame {
 			// System.out.println();
 			File dir = new File(directoryPath);
 			File dirList[] = dir.listFiles();
-			// System.out.println(directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1));
 			String albumName = directoryPath.substring(directoryPath.lastIndexOf(filePaths.separator)+1);
 
 			// albumArrayList.add(new Album(albumName));
@@ -678,12 +693,12 @@ public class Main extends JFrame {
 					// albumArrayList.get(albumArrayList.size()-1).pics.put(dirList[x].getPath(), dimensionTemp);
 				}
 			}
-			albumArrayList.add(temp);
-
+			return temp;
 		} catch (Exception ex){
 		    // resultsMessageDialog(false, ex.getMessage());
 		    System.out.println(ex.getMessage());
 		 	ex.printStackTrace();
+		 	return null;
 		}
 	}
 
