@@ -154,6 +154,6 @@ contactForms.controller("contactFormsController", function($scope, $timeout, for
 					scope.setDatetime(newDate, newTime);
 				}
 			},
-			templateUrl:  "/pages/shared/form_dateTimeRows.html"
+			templateUrl:  "/pages/shared/form_datetimeRows.html"
 		}
 	})
