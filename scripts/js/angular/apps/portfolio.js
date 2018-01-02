@@ -2,32 +2,57 @@ const portfolioApp = angular.module("portfolioApp", []);
 
 portfolioApp.controller("portfolioController", function($scope, $http, $timeout){
 
-
 	$scope.albumTitle = "My Albums";
 	
+	var albumsCut = {};
+	var albumCodes = {};
 	$http.get("/config/albumsJSON.json")
 		.then(function(payload){
-			var albumsCut = {};
 			angular.forEach(payload.data, function(value, key, obj){
 				if (key != "profile" && key != "slideshow"){
 					albumsCut[key] = value;
+					var albCode = key.toLowerCase().substring(0,3);
+					albumCodes[albCode] = key;
 				}
 			});
 			$scope.albums = albumsCut;
+			$scope.checkForQueryString();
 		}, function(error){
 			console.err(error);
 		});
 
-	$scope.albumLength = 0;
-	$scope.testFunc = function(ele){
+	$scope.checkForQueryString = function(){
+		var queryObject = {};
 
-		var albumName = ele.target.innerHTML ? ele.target.innerHTML : false;
+		if (window.location.search){
+			var queryVals = window.location.search.substring(1).split("&");
+			angular.forEach(queryVals, function(val, key, obj){
+				var splitz = val.split("=");
+				queryObject[splitz[0]] = splitz[1];
+			});
+		}
+		if (queryObject.code){
+			var albumVal = albumCodes[queryObject.code] ? albumCodes[queryObject.code] : null;
+			if (albumsCut[albumVal]){
+				$scope.openAlbum(albumVal);			
+			} else {
+				console.log("No such album");
+			}
+		}
+	}
+
+	$scope.albumLength = 0;
+	$scope.openAlbum = function(ele){
+		var albumName;
+		if (ele.target){
+			albumName = ele.target.innerHTML
+		} else {
+			albumName = ele;
+		}
 		$scope.albumTitle = albumName
-		// console.log($scope.albums[albumName].images.length);
 		$scope.albumLength = $scope.albums[albumName].images.length;
 		$scope.singleAlbum = $scope.albums[albumName].images;
 		$scope.singleAlbumView = true;
-
 	}
 
 	$scope.backToAlbums = function (){
@@ -136,7 +161,7 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 portfolioApp.directive("albumPhoto", function(){
 	return {
 		restrict: "EA",
-		template: "<img id=\"photo-0{{$index}}\" class=\"albumPhoto-image albumPhoto-hover galleryImage albumPhoto-transition\" src=\"{{y.path}}\" alt=\"{{y.path}}\" ng-click=\"openImage($index)\">",
+		template: "<img id=\"photo-0{{$index}}\" class=\"albumPhoto-image albumPhoto-hover galleryImage albumPhoto-transition\" src=\"{{photo.path}}\" alt=\"{{photo.path}}\" ng-click=\"openImage($index)\">",
 		link: function($scope, $element, $attr){
 			var theIMG = $element[0].querySelectorAll("img")[0];
 			// console.log($element[0].querySelectorAll("img"));

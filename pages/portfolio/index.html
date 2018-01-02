@@ -48,20 +48,20 @@
         <button id="backToAlbums" class="jfButton jfButton-small" ng-show="singleAlbumView" ng-click="backToAlbums()">
             <h5>&#8656; Back</h5>
         </button>
-        <h2>{{albumTitle}}</h2>        
+        <h2 ng-bind="albumTitle"></h2>        
     </div>
     <div id="listOfAlbums" class="portfolioListing" ng-hide="singleAlbumView">    
         <div class="portfolioListing">
-            <div class="albumCover-container" ng-repeat="x in albums" ng-click="testFunc($event)">
-                <div class="albumCover-image" style="background-image:url('{{x.coverImg}}');">
-                    <div class="albumCover-name">{{x.folderName}}</div>
+            <div class="albumCover-container" ng-repeat="album in albums" ng-click="openAlbum($event)">
+                <div class="albumCover-image" style="background-image:url('{{album.coverImg}}');">
+                    <div class="albumCover-name">{{album.folderName}}</div>
                 </div>
             </div>    
         </div>  
     </div>
     <div id="listOfPicsInAlbum" class="portfolioListing" ng-show="singleAlbumView">
         <div class="portfolioListing" >
-            <div class="albumPhoto-container" ng-repeat="y in singleAlbum">
+            <div class="albumPhoto-container" ng-repeat="photo in singleAlbum">
               <album-photo class="albumPhoto-directive"></album-photo>
             </div>
         </div>
