@@ -1,1 +1,0 @@
-icacls ..\config\*.txt /grant %USERNAME%:(F)
