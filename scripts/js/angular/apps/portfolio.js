@@ -71,10 +71,8 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		var thisWidth = $scope.singleAlbum[index].width;
 		var thisHeight = $scope.singleAlbum[index].height;
 		var divisor = window.outerWidth > 1400 ? 3 : window.outerWidth < 768 ? 5 : 4;
-		// console.log(divisor);
 
 		if ( (thisWidth > thisHeight) && (window.outerWidth < 500) ){
-			// console.log
 			var targetWidth = window.innerWidth; 
 			var targetHeight = (thisHeight / thisWidth ) * (thisWidth / divisor);
 		} else {
@@ -94,6 +92,9 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		element.style.marginLeft = "-"+(targetWidth/2)+"px";
 		document.getElementById("galleryModal").style.display = "block";
 		document.getElementById("galleryModalIndicator").style.display = "block";
+		document.getElementById("albumSection").style.overflow = "hidden";
+		document.getElementsByTagName("body")[0].style.overflow = "hidden";
+
 	}
 
 	$scope.closeImage = function(speed){
@@ -115,6 +116,7 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	$scope.closeModal = function(){
 		document.getElementById("galleryModal").style.display = "none";
 		document.getElementById("galleryModalIndicator").style.display = "none";
+		document.getElementsByTagName("body")[0].style.overflow = "initial";
 		$scope.modalOpen = false;
 		$scope.closeImage(0);
 	}
