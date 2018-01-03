@@ -3,7 +3,8 @@ const portfolioApp = angular.module("portfolioApp", []);
 portfolioApp.controller("portfolioController", function($scope, $http, $timeout){
 
 	$scope.albumTitle = "My Albums";
-	
+
+
 	var albumsCut = {};
 	var albumCodes = {};
 	$http.get("/config/albumsJSON.json")
@@ -21,6 +22,21 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 			console.err(error);
 		});
 
+	$scope.test = function(val){
+		// console.log(val.folderName);
+		// console.log(val.newPhotosExpire);
+		var today = new Date();
+		var expiration = new Date(val.newPhotosExpire);
+		var expired = today > expiration;
+		// console.log(today > expiration);
+		if (val.hasNewPhotos && !expired){
+			return true;
+		} else {
+			return false;
+		}
+		// return true;
+	}
+	
 	$scope.checkForQueryString = function(){
 		var queryObject = {};
 
