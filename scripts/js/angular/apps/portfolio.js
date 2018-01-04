@@ -77,11 +77,32 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	}
 
 
+	$scope.modalListener = function(swipedir){
+		console.log("Modal scroll - " + swipedir);
+	}
+
+	$scope.openAndCloseModal = function(action){
+		var theModal = document.getElementById("galleryModal");
+		var theModalIndicator = document.getElementById("galleryModalIndicator");
+		sharedFunctions.swipedetect(theModal, $scope.modalListener, false);
+		sharedFunctions.swipedetect(theModalIndicator, $scope.modalListener, false);
+		if (action == "open"){
+			theModal.style.display = "block";
+			theModalIndicator.style.display = "block";
+		} else {
+			theModal.style.display = "none";
+			theModalIndicator.style.display = "none";
+			$scope.modalOpen = false;
+			$scope.closeImage(0);
+		}
+	}
+
 	$scope.viewedImage;
 	$scope.viewingIndex;
 	$scope.openImage = function(index){
 		$scope.viewingIndex = index;
 		$scope.modalOpen = true;
+
 		document.getElementById("viewingImage").innerHTML = index+1;
 
 		var thisWidth = $scope.singleAlbum[index].width;
@@ -106,19 +127,14 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		element.style.height = targetHeight+"px";
 		element.style.marginTop = "-"+(targetHeight/2)+"px";
 		element.style.marginLeft = "-"+(targetWidth/2)+"px";
-		document.getElementById("galleryModal").style.display = "block";
-		document.getElementById("galleryModalIndicator").style.display = "block";
-		document.getElementById("albumSection").style.overflow = "hidden";
-		document.getElementsByTagName("body")[0].style.overflow = "hidden";
+		$scope.openAndCloseModal("open");
 
 	}
 
 	$scope.closeImage = function(speed){
-		// console.log("Inside closeImg");
 		var element = document.getElementById("photo-0"+$scope.viewingIndex);
 		element.style.opacity = "0";
 		element.classList.remove("albumPhoto-galleryView");
-	
 		$timeout(function(){
 			element.style.marginLeft = "0px";
 			element.style.marginTop = "0px";
@@ -132,7 +148,6 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	$scope.closeModal = function(){
 		document.getElementById("galleryModal").style.display = "none";
 		document.getElementById("galleryModalIndicator").style.display = "none";
-		document.getElementsByTagName("body")[0].style.overflow = "initial";
 		$scope.modalOpen = false;
 		$scope.closeImage(0);
 	}
@@ -146,7 +161,7 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		} else if (direction == "left"){
 			$scope.openImage(prevImage);
 		} else {
-			$scope.closeModal();
+			$scope.openAndCloseModal("close");
 		}
 		
 		

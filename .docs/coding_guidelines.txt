@@ -59,6 +59,7 @@ http://www.clker.com/cliparts/x/6/V/W/u/r/redstar-callout-hi.png
 
 
 
-
+This was helpful in preventing scrolling on iPhones
+https://benfrain.com/preventing-body-scroll-for-modals-in-ios/
 
 

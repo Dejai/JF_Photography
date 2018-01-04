@@ -87,11 +87,16 @@ const sharedFunctions = {
 	        startY = touchobj.pageY;
 	        startTime = new Date().getTime(); // record time when finger first makes contact with surface
 	        // e.preventDefault();
-	    }, false)
+	    }, false);
 	  
 	    touchsurface.addEventListener('touchmove', function(e){
+	    	// console.log(touchsurface.classList);
+	    	if ( touchsurface.classList.contains("albumPhoto-galleryView") 
+	    		 || touchsurface.classList.contains("galleryModalElements") ){
+	    		e.preventDefault();
+	    	}
 	        // e.preventDefault(); // prevent scrolling when inside DIV
-	    }, false)
+	    }, false);
 	  
 	    touchsurface.addEventListener('touchend', function(e){
 	        var touchobj = e.changedTouches[0];
