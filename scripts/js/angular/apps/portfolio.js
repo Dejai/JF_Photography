@@ -61,6 +61,20 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	}
 
 
+	$scope.openModal = function(){
+		var theModal = document.getElementById("galleryModal");
+		var theModalIndicator = document.getElementById("galleryModalIndicator");
+		theModal.style.display = "block";
+		theModalIndicator.style.display = "block";
+		sharedFunctions.swipedetect(theModal, function(swipedir){
+				if (swipedir == "right"){
+					$scope.changeGalleryImage("left");
+				} else if (swipedir == "left"){
+					$scope.changeGalleryImage("right");
+				}
+			});
+	}
+
 	$scope.viewedImage;
 	$scope.viewingIndex;
 	$scope.openImage = function(index){
@@ -90,25 +104,8 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		element.style.height = targetHeight+"px";
 		element.style.marginTop = "-"+(targetHeight/2)+"px";
 		element.style.marginLeft = "-"+(targetWidth/2)+"px";
-		document.getElementById("galleryModal").style.display = "block";
-		document.getElementById("galleryModalIndicator").style.display = "block";
-		// document.getElementById("albumSection").style.overflow = "hidden";
-		// document.getElementsByTagName("body")[0].style.overflow = "hidden";
-		$scope.preventBodyScroll(true);
-	}
+		$scope.openModal();
 
-	$scope.preventBodyScroll = function(val){
-
-		if (val){
-			document.getElementById("galleryModal").addEventListener("touchmove", function(e){
-	    		e.preventDefault();
-	   		 }, false);
-		} else {
-			document.getElementById("galleryModal").removeEventListener("touchmove", function(e){
-	    		e.preventDefault();
-	   		 }, false);
-		}
-		
 	}
 
 	$scope.closeImage = function(speed){
@@ -130,8 +127,6 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	$scope.closeModal = function(){
 		document.getElementById("galleryModal").style.display = "none";
 		document.getElementById("galleryModalIndicator").style.display = "none";
-		$scope.preventBodyScroll(false);
-		// document.getElementsByTagName("body")[0].style.overflow = "initial";
 		$scope.modalOpen = false;
 		$scope.closeImage(0);
 	}
@@ -180,8 +175,7 @@ portfolioApp.directive("albumPhoto", function(){
 		restrict: "EA",
 		template: "<img id=\"photo-0{{$index}}\" class=\"albumPhoto-image albumPhoto-hover galleryImage albumPhoto-transition\" src=\"{{photo.path}}\" alt=\"{{photo.path}}\" ng-click=\"openImage($index)\">",
 		link: function($scope, $element, $attr){
-			var theIMG = $element[0].querySelectorAll("img")[0];
-			console.log(theIMG.tagName);
+			// var theIMG = $element[0].querySelectorAll("img")[0];
 			// console.log($element[0].querySelectorAll("img"));
 			if($scope.$last){
 				var theImgs = document.getElementsByClassName("albumPhoto-image");
@@ -193,13 +187,13 @@ portfolioApp.directive("albumPhoto", function(){
 				});
 			}
 
-			sharedFunctions.swipedetect(theIMG, function(swipedir){
-				if (swipedir == "right"){
-					$scope.changeGalleryImage("left");
-				} else if (swipedir == "left"){
-					$scope.changeGalleryImage("right");
-				}
-			});
+			// sharedFunctions.swipedetect(theIMG, function(swipedir){
+			// 	if (swipedir == "right"){
+			// 		$scope.changeGalleryImage("left");
+			// 	} else if (swipedir == "left"){
+			// 		$scope.changeGalleryImage("right");
+			// 	}
+			// });
 		}
 	}
 });
