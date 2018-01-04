@@ -98,12 +98,13 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	}
 
 	$scope.preventBodyScroll = function(val){
+
 		if (val){
-			document.body.addEventListener("touchmove", function(e){
+			document.getElementById("galleryModal").addEventListener("touchmove", function(e){
 	    		e.preventDefault();
 	   		 }, false);
 		} else {
-			document.body.removeEventListener("touchmove", function(e){
+			document.getElementById("galleryModal").removeEventListener("touchmove", function(e){
 	    		e.preventDefault();
 	   		 }, false);
 		}
@@ -180,6 +181,7 @@ portfolioApp.directive("albumPhoto", function(){
 		template: "<img id=\"photo-0{{$index}}\" class=\"albumPhoto-image albumPhoto-hover galleryImage albumPhoto-transition\" src=\"{{photo.path}}\" alt=\"{{photo.path}}\" ng-click=\"openImage($index)\">",
 		link: function($scope, $element, $attr){
 			var theIMG = $element[0].querySelectorAll("img")[0];
+			console.log(theIMG.tagName);
 			// console.log($element[0].querySelectorAll("img"));
 			if($scope.$last){
 				var theImgs = document.getElementsByClassName("albumPhoto-image");
