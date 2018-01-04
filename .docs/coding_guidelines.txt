@@ -55,6 +55,7 @@ The following was used as a guide for adding zoom functionality to images
 https://css-tricks.com/zooming-background-images/
 
 
-
+This was helpful in preventing scrolling on iPhones
+https://benfrain.com/preventing-body-scroll-for-modals-in-ios/
 
 

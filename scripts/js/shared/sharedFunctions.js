@@ -91,7 +91,7 @@ const sharedFunctions = {
 	  
 	    touchsurface.addEventListener('touchmove', function(e){
 	        e.preventDefault(); // prevent scrolling when inside DIV
-	    }, false)
+	    }, false);
 	  
 	    touchsurface.addEventListener('touchend', function(e){
 	        var touchobj = e.changedTouches[0];

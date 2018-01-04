@@ -92,9 +92,22 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		element.style.marginLeft = "-"+(targetWidth/2)+"px";
 		document.getElementById("galleryModal").style.display = "block";
 		document.getElementById("galleryModalIndicator").style.display = "block";
-		document.getElementById("albumSection").style.overflow = "hidden";
-		document.getElementsByTagName("body")[0].style.overflow = "hidden";
+		// document.getElementById("albumSection").style.overflow = "hidden";
+		// document.getElementsByTagName("body")[0].style.overflow = "hidden";
+		$scope.preventBodyScroll(true);
+	}
 
+	$scope.preventBodyScroll = function(val){
+		if (val){
+			document.body.addEventListener("touchmove", function(e){
+	    		e.preventDefault();
+	   		 }, false);
+		} else {
+			document.body.removeEventListener("touchmove", function(e){
+	    		e.preventDefault();
+	   		 }, false);
+		}
+		
 	}
 
 	$scope.closeImage = function(speed){
@@ -116,7 +129,8 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	$scope.closeModal = function(){
 		document.getElementById("galleryModal").style.display = "none";
 		document.getElementById("galleryModalIndicator").style.display = "none";
-		document.getElementsByTagName("body")[0].style.overflow = "initial";
+		$scope.preventBodyScroll(false);
+		// document.getElementsByTagName("body")[0].style.overflow = "initial";
 		$scope.modalOpen = false;
 		$scope.closeImage(0);
 	}
