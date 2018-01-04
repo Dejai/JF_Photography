@@ -91,7 +91,8 @@ const sharedFunctions = {
 	  
 	    touchsurface.addEventListener('touchmove', function(e){
 	    	// console.log(touchsurface.classList);
-	    	if ( touchsurface.classList.contains("albumPhoto-galleryView") ){
+	    	if ( touchsurface.classList.contains("albumPhoto-galleryView") 
+	    		 || touchsurface.classList.contains("galleryModalElements") ){
 	    		e.preventDefault();
 	    	}
 	        // e.preventDefault(); // prevent scrolling when inside DIV
