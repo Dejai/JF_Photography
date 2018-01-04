@@ -56,7 +56,7 @@
                 <!-- <div class="albumCover-image newPhotosCallout" style="background-image:url('{{album.coverImg}}');"> -->
                 <!-- <div ng-class="{'albumCover-image':1==1 , 'newPhotosCallout':{{album.hasNewPhotos}} }" style="background-image:url('{{album.coverImg}}');"> -->
                 <!-- <div ng-class="{'albumCover-image':true , 'newPhotosCallout':test($index) }" style="background-image:url('{{album.coverImg}}');"> -->
-                <div ng-class="{'albumCover-image':true , 'newPhotosCallout':test({{album}}) }" style="background-image:url('{{album.coverImg}}');">
+                <div ng-class="{'albumCover-image':true , 'newPhotosCallout':showNewPhotosCallout({{album}}) }" style="background-image:url('{{album.coverImg}}');">
                     <div class="albumCover-name">{{album.folderName}}</div>
                 </div>
             </div>    

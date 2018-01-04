@@ -22,19 +22,15 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 			console.err(error);
 		});
 
-	$scope.test = function(val){
-		// console.log(val.folderName);
-		// console.log(val.newPhotosExpire);
+	$scope.showNewPhotosCallout = function(val){
 		var today = new Date();
 		var expiration = new Date(val.newPhotosExpire);
 		var expired = today > expiration;
-		// console.log(today > expiration);
 		if (val.hasNewPhotos && !expired){
 			return true;
 		} else {
 			return false;
 		}
-		// return true;
 	}
 	
 	$scope.checkForQueryString = function(){
