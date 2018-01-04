@@ -61,18 +61,20 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	}
 
 
-	$scope.openModal = function(){
+	$scope.openAndCloseModal = function(action){
 		var theModal = document.getElementById("galleryModal");
 		var theModalIndicator = document.getElementById("galleryModalIndicator");
-		theModal.style.display = "block";
-		theModalIndicator.style.display = "block";
-		sharedFunctions.swipedetect(theModal, function(swipedir){
-				if (swipedir == "right"){
-					$scope.changeGalleryImage("left");
-				} else if (swipedir == "left"){
-					$scope.changeGalleryImage("right");
-				}
-			});
+		if (action == "open"){
+			theModal.style.display = "block";
+			theModalIndicator.style.display = "block";
+		} else {
+			theModal.style.display = "none";
+			theModalIndicator.style.display = "none";
+			$scope.modalOpen = false;
+			$scope.closeImage(0);
+		}
+		
+		
 	}
 
 	$scope.viewedImage;
@@ -80,6 +82,7 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	$scope.openImage = function(index){
 		$scope.viewingIndex = index;
 		$scope.modalOpen = true;
+
 		document.getElementById("viewingImage").innerHTML = index+1;
 
 		var thisWidth = $scope.singleAlbum[index].width;
@@ -104,7 +107,8 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		element.style.height = targetHeight+"px";
 		element.style.marginTop = "-"+(targetHeight/2)+"px";
 		element.style.marginLeft = "-"+(targetWidth/2)+"px";
-		$scope.openModal();
+		// $scope.openModal();
+		$scope.openAndCloseModal("open");
 
 	}
 
@@ -140,7 +144,7 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		} else if (direction == "left"){
 			$scope.openImage(prevImage);
 		} else {
-			$scope.closeModal();
+			$scope.openAndCloseModal("close");
 		}
 		
 		
@@ -175,7 +179,7 @@ portfolioApp.directive("albumPhoto", function(){
 		restrict: "EA",
 		template: "<img id=\"photo-0{{$index}}\" class=\"albumPhoto-image albumPhoto-hover galleryImage albumPhoto-transition\" src=\"{{photo.path}}\" alt=\"{{photo.path}}\" ng-click=\"openImage($index)\">",
 		link: function($scope, $element, $attr){
-			// var theIMG = $element[0].querySelectorAll("img")[0];
+			var theIMG = $element[0].querySelectorAll("img")[0];
 			// console.log($element[0].querySelectorAll("img"));
 			if($scope.$last){
 				var theImgs = document.getElementsByClassName("albumPhoto-image");
@@ -187,13 +191,13 @@ portfolioApp.directive("albumPhoto", function(){
 				});
 			}
 
-			// sharedFunctions.swipedetect(theIMG, function(swipedir){
-			// 	if (swipedir == "right"){
-			// 		$scope.changeGalleryImage("left");
-			// 	} else if (swipedir == "left"){
-			// 		$scope.changeGalleryImage("right");
-			// 	}
-			// });
+			sharedFunctions.swipedetect(theIMG, function(swipedir){
+				if (swipedir == "right"){
+					$scope.changeGalleryImage("left");
+				} else if (swipedir == "left"){
+					$scope.changeGalleryImage("right");
+				}
+			});
 		}
 	}
 });
