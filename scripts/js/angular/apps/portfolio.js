@@ -19,15 +19,14 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 			$scope.albums = albumsCut;
 			$scope.checkForQueryString();
 		}, function(error){
-			console.err(error);
+			console.log(error);
 		});
 
 	$scope.showNewPhotosCallout = function(val){
 		var today = new Date();
 		var expiration = new Date(val.newPhotosExpire);
 		var expired = today > expiration;
-		// albumLocalStorage("get", val.newPhotosCode);
-		var bool = $scope.albumLocalStorage("get", "ABCD");
+		var bool = $scope.albumLocalStorage("get", val.newPhotosCode);
 		console.log(bool);
 		if (val.hasNewPhotos && !expired && !bool){
 			return true;
@@ -61,14 +60,13 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	$scope.albumLocalStorage = function(action, value){
 		if (Storage !== undefined){
 			if (action == "add"){
-				console.log("Add local value");
 				if (localStorage.viewedAlbums){
 					var obj = JSON.parse(localStorage.viewedAlbums);
-					// console.log(obj);
-					obj.push(value);
-					// console.log(obj);
-					objString = JSON.stringify(obj);
-					localStorage.viewedAlbums = objString;
+					if (!obj.includes(value)){
+						obj.push(value);
+						objString = JSON.stringify(obj);
+						localStorage.viewedAlbums = objString;
+					}
 				} else {
 					var obj = [value];
 					objString = JSON.stringify(obj);
@@ -77,14 +75,13 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 			} else if (action = "get"){
 				if (localStorage.viewedAlbums){
 					var obj = JSON.parse(localStorage.viewedAlbums);
-					// console.log(obj.includes(value));
 					return obj.includes(value);
 				} else {
-					// console.log("FALSE: Object not set yet");
 					return false;
 				}
-				// console.log("Get local value");
 			}
+		} else {
+			return false;
 		}
 	}
 
@@ -93,13 +90,7 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 		var albumName;
 		if (ele.target){
 			albumName = ele.target.innerHTML;
-			// $scope.localStorageForAlbums();
-			// $scope.albumLocalStorage("add", $scope.albums[albumName].hasNewPhotos);
-			$scope.albumLocalStorage("add", "ABCD");
-			// $scope.albumLocalStorage("add", Math.random()*10);
-			// console.log($scope.albums[albumName].hasNewPhotos);
-			// console.log(ele.target);
-			// console.log(ele.target.parent);
+			$scope.albumLocalStorage("add", $scope.albums[albumName].newPhotosCode);
 		} else {
 			albumName = ele;
 		}
