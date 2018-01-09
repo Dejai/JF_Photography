@@ -3,6 +3,10 @@ const portfolioApp = angular.module("portfolioApp", []);
 portfolioApp.controller("portfolioController", function($scope, $http, $timeout){
 
 	$scope.albumTitle = "My Albums";
+
+	$scope.isMobile = function(){
+		return window.innerWidth < 768 ? true : false;
+	}
 	
 	var albumsCut = {};
 	var albumCodes = {};
@@ -56,8 +60,47 @@ portfolioApp.controller("portfolioController", function($scope, $http, $timeout)
 	}
 
 	$scope.backToAlbums = function (){
+		$scope.setAlbumViewIcon("list");
+		$scope.setAlbumPhotoView("grid");
 		$scope.singleAlbumView = false;
-		$scope.albumTitle = "My Albums"
+		$scope.albumTitle = "My Albums";
+	}
+
+	$scope.toggleAlbumView = function(event){
+		var classes = event.target.classList;
+		if (classes.contains("glyphicon-th")){
+			$scope.setAlbumViewIcon("list");
+			$scope.setAlbumPhotoView("grid");
+		} else if (classes.contains("glyphicon-list")){
+			$scope.setAlbumViewIcon("grid");
+			$scope.setAlbumPhotoView("list");
+		}
+	}
+	$scope.setAlbumViewIcon = function(changeIconTo){
+		var icon = document.getElementById("toggleViewIcon");
+		var listClass = "glyphicon-list";
+		var gridClass = "glyphicon-th";
+		if (changeIconTo == "list"){
+			icon.classList.remove(gridClass);
+			icon.classList.add(listClass);
+		} else if (changeIconTo == "grid"){
+			icon.classList.remove(listClass);
+			icon.classList.add(gridClass);
+		}
+	}
+
+	$scope.setAlbumPhotoView = function(view){
+		var images = document.getElementsByClassName("albumPhoto-container");
+		var mobileListClass = "albumPhoto-container-mobileList";
+		angular.forEach(images, function(elem, key, obj){
+			if (view == "list"){
+				elem.classList.add(mobileListClass);
+			} else if (view == "grid"){
+				if (elem.classList.contains(mobileListClass)){
+					elem.classList.remove(mobileListClass);
+				}
+			}
+		}, true);
 	}
 
 
