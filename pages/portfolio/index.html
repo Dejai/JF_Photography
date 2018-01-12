@@ -48,7 +48,10 @@
         <button id="backToAlbums" class="jfButton jfButton-small" ng-show="singleAlbumView" ng-click="backToAlbums()">
             <h5>&#8656; Back</h5>
         </button>
-        <h2 ng-bind="albumTitle"></h2>  
+        <button id="toggleViewButton" class="jfButton" ng-show="singleAlbumView && isMobile()" ng-click="toggleAlbumView($event)">
+            <span id="toggleViewIcon" class="glyphicon glyphicon-list"></span>             
+        </button>
+        <h2 ng-bind="albumTitle"></h2>
     </div>
     <div id="listOfAlbums" class="portfolioListing" ng-hide="singleAlbumView">    
         <div class="portfolioListing">
