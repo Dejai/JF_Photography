@@ -81,14 +81,8 @@
 .newPhotosCallout:after { right:auto; transform: translate(80px, -5px) rotate(30deg); }
 
     /* Listings - Albums */
-<<<<<<< HEAD
-        .albumCover-container { width:30%; margin:2% 3%; height:190px; }
-        .albumCover-name { padding-top:35%;  }
-=======
         .albumCover-container { width:30%; margin:2%; height:190px; }
         .albumCover-name { padding-top:35%; }
->>>>>>> feature_ToggleView
-
     /* Listings - Album Photos */
         .albumPhoto-container { width:45%; margin:2% 1%;  height:270px; }
 
@@ -132,11 +126,7 @@
 
 
     /* Listings - Albums */
-<<<<<<< HEAD
-        .albumCover-container { width:30%; margin:2% 3%; height:270px; }
-=======
         .albumCover-container { width:30%; margin:2%; height:270px; }
->>>>>>> feature_ToggleView
         .albumCover-name { display:none; padding-top:35%; font-size:200%;background-color:initial; }
         .albumCover-image::before { content: ""; display:none; height: 100%; width: 100%; position: absolute; top: 0; left: 0; 
                                 background-color: rgba(52, 73, 94, 0.75); }
