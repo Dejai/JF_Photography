@@ -1,0 +1,113 @@
+2018-03-15 
+images/assets/profile
+images/assets/profile/IMG_5427 (1).jpg	<--> started processing
+images/assets/profile/IMG_5427 (1).jpg	<--> successfully processed
+ 
+ 
+images/slideshow
+images/slideshow/image6.jpg	<--> started processing
+images/slideshow/image6.jpg	<--> successfully processed
+ 
+images/slideshow/image4.jpg	<--> started processing
+images/slideshow/image4.jpg	<--> successfully processed
+ 
+images/slideshow/image5.jpg	<--> started processing
+images/slideshow/image5.jpg	<--> successfully processed
+ 
+images/slideshow/image1.jpg	<--> started processing
+images/slideshow/image1.jpg	<--> successfully processed
+ 
+images/slideshow/image0.jpg	<--> started processing
+images/slideshow/image0.jpg	<--> successfully processed
+ 
+images/slideshow/image2.jpg	<--> started processing
+images/slideshow/image2.jpg	<--> successfully processed
+ 
+images/slideshow/image3.jpg	<--> started processing
+images/slideshow/image3.jpg	<--> successfully processed
+ 
+ 
+images/gallery/Studio
+images/gallery/Studio/image8.jpg	<--> started processing
+images/gallery/Studio/image8.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image9.jpg	<--> started processing
+images/gallery/Studio/image9.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image14.jpg	<--> started processing
+images/gallery/Studio/image14.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image12.jpg	<--> started processing
+images/gallery/Studio/image12.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image13.jpg	<--> started processing
+images/gallery/Studio/image13.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image11.jpg	<--> started processing
+images/gallery/Studio/image11.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image7.jpg	<--> started processing
+images/gallery/Studio/image7.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image6.jpg	<--> started processing
+images/gallery/Studio/image6.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image4.jpg	<--> started processing
+images/gallery/Studio/image4.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image5.jpg	<--> started processing
+images/gallery/Studio/image5.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image1.jpg	<--> started processing
+images/gallery/Studio/image1.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image2.jpg	<--> started processing
+images/gallery/Studio/image2.jpg	<--> successfully processed
+ 
+images/gallery/Studio/image3.jpg	<--> started processing
+images/gallery/Studio/image3.jpg	<--> successfully processed
+ 
+ 
+images/gallery/Location
+images/gallery/Location/image8.jpg	<--> started processing
+images/gallery/Location/image8.jpg	<--> successfully processed
+ 
+images/gallery/Location/image14.jpg	<--> started processing
+images/gallery/Location/image14.jpg	<--> successfully processed
+ 
+images/gallery/Location/image15.jpg	<--> started processing
+images/gallery/Location/image15.jpg	<--> successfully processed
+ 
+images/gallery/Location/image17.jpg	<--> started processing
+images/gallery/Location/image17.jpg	<--> successfully processed
+ 
+images/gallery/Location/image16.jpg	<--> started processing
+images/gallery/Location/image16.jpg	<--> successfully processed
+ 
+images/gallery/Location/image12.jpg	<--> started processing
+images/gallery/Location/image12.jpg	<--> successfully processed
+ 
+images/gallery/Location/image13.jpg	<--> started processing
+images/gallery/Location/image13.jpg	<--> successfully processed
+ 
+images/gallery/Location/image11.jpg	<--> started processing
+images/gallery/Location/image11.jpg	<--> successfully processed
+ 
+images/gallery/Location/image7.jpg	<--> started processing
+images/gallery/Location/image7.jpg	<--> successfully processed
+ 
+images/gallery/Location/image6.jpg	<--> started processing
+images/gallery/Location/image6.jpg	<--> successfully processed
+ 
+images/gallery/Location/image4.jpg	<--> started processing
+images/gallery/Location/image4.jpg	<--> successfully processed
+ 
+images/gallery/Location/image0.jpg	<--> started processing
+images/gallery/Location/image0.jpg	<--> successfully processed
+ 
+images/gallery/Location/image2.jpg	<--> started processing
+images/gallery/Location/image2.jpg	<--> successfully processed
+ 
+images/gallery/Location/image3.jpg	<--> started processing
+images/gallery/Location/image3.jpg	<--> successfully processed
+ 
