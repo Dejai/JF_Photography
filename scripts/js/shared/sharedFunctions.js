@@ -1,17 +1,21 @@
 
 const sharedFunctions = {
-	functions: function(){
-		console.log("Shared Functions:")
-		console.log("Highlight Current Page in Menu:\tsharedFunctions.highlightCurrentPage(element)\n\t" + (this.highlightCurrentPage) );
-		console.log("Fade In Elements with '.delayedDisplay' Class:\tsharedFunctions.displayDelayed()\n\t" + (this.displayDelayed) );
-		console.log("Hide / Show sections with th designated classes when clicking the mobile menu:\tsharedFunctions.mobileMenu()\n\t" + (this.mobileMenu) );
-		console.log("Add swipe detection to given elements on the page.:\tsharedFunctions.swipedetect(element, callback)\n\t" + (this.swipedetect) );
-	},
+	/*	loadNavBar():
+			> Uses jQuery load() function to load an HTML view for the navigation bar
+			> Then after loading, calls the shared function highlightCurrentPage() 
+	*/
 	loadNavBar : function(){
 		$("#navbar").load("/pages/shared/navbar.html", function(){
             sharedFunctions.highlightCurrentPage();
         });
 	},
+
+	/*	highlightCurrentPage(DOM_Element?):
+			> Takes in an optional element from the DOM
+			> Then, it checks the URL path to determine the page
+			> Based on the values in the path, sets a variable for that page
+			> Then, finds the child within the element that has the matching custom data value
+	*/
 	highlightCurrentPage : function(ele){
 		var element = ele ? ele[0] : document.getElementById("navbar");
 		var path = window.location.pathname;
@@ -23,12 +27,22 @@ const sharedFunctions = {
 		link.style.paddingTop = "0.5%";
 		link.style.paddingBottom = "0.5%";
 	}, 
+
+	/*	displayDelayed(Time?):
+			> Takes in an optional time - default is 0
+			> Sets a native JS timeout call, with the given time
+			> After the delayTime - any element with the right class is loaded (faded in)
+	*/
 	displayDelayed: function(time){
 	    let delayTime = time ? time : 0;
 		setTimeout(function(){
 	        $(".delayedDisplay").fadeIn();
 	    }, delayTime);
 	}, 
+
+	/*	calculateAspectRatio(width, height):
+			> Determines the proper width and height for an image
+	*/
 	calculateAspectRatio: function(width, height){
 		// var divisor = window.outerWidth > 1400 ? 3 : window.outerWidth < 768 ? 5 : 4;
 		var divisor = 12;
