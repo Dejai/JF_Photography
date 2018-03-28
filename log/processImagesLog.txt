@@ -1,113 +1,181 @@
-2018-03-15 
-images/assets/profile
-images/assets/profile/IMG_5427 (1).jpg	<--> started processing
-images/assets/profile/IMG_5427 (1).jpg	<--> successfully processed
+Wed, March 28 - 12:39 
+ 
+images\assets\profile
+images\assets\profile\IMG_5427 (1).jpg	<--> started processing
+images\assets\profile\IMG_5427 (1).jpg	<--> successfully processed
+ 
+images\assets\profile\Thumbs.db	<--> started processing
+ 
+ERROR: 
+images\assets\profile\Thumbs.db
+Details:	This image is not considered an image that can be added
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
  
-images/slideshow
-images/slideshow/image6.jpg	<--> started processing
-images/slideshow/image6.jpg	<--> successfully processed
+images\slideshow
+images\slideshow\image0.jpg	<--> started processing
+images\slideshow\image0.jpg	<--> successfully processed
  
-images/slideshow/image4.jpg	<--> started processing
-images/slideshow/image4.jpg	<--> successfully processed
+images\slideshow\image1.jpg	<--> started processing
+images\slideshow\image1.jpg	<--> successfully processed
  
-images/slideshow/image5.jpg	<--> started processing
-images/slideshow/image5.jpg	<--> successfully processed
+images\slideshow\image2.jpg	<--> started processing
+images\slideshow\image2.jpg	<--> successfully processed
  
-images/slideshow/image1.jpg	<--> started processing
-images/slideshow/image1.jpg	<--> successfully processed
+images\slideshow\image3.jpg	<--> started processing
+images\slideshow\image3.jpg	<--> successfully processed
  
-images/slideshow/image0.jpg	<--> started processing
-images/slideshow/image0.jpg	<--> successfully processed
+images\slideshow\image4.jpg	<--> started processing
+images\slideshow\image4.jpg	<--> successfully processed
  
-images/slideshow/image2.jpg	<--> started processing
-images/slideshow/image2.jpg	<--> successfully processed
+images\slideshow\image5.jpg	<--> started processing
+images\slideshow\image5.jpg	<--> successfully processed
  
-images/slideshow/image3.jpg	<--> started processing
-images/slideshow/image3.jpg	<--> successfully processed
+images\slideshow\image6.jpg	<--> started processing
+images\slideshow\image6.jpg	<--> successfully processed
  
+images\slideshow\Thumbs.db	<--> started processing
  
-images/gallery/Studio
-images/gallery/Studio/image8.jpg	<--> started processing
-images/gallery/Studio/image8.jpg	<--> successfully processed
- 
-images/gallery/Studio/image9.jpg	<--> started processing
-images/gallery/Studio/image9.jpg	<--> successfully processed
- 
-images/gallery/Studio/image14.jpg	<--> started processing
-images/gallery/Studio/image14.jpg	<--> successfully processed
- 
-images/gallery/Studio/image12.jpg	<--> started processing
-images/gallery/Studio/image12.jpg	<--> successfully processed
- 
-images/gallery/Studio/image13.jpg	<--> started processing
-images/gallery/Studio/image13.jpg	<--> successfully processed
- 
-images/gallery/Studio/image11.jpg	<--> started processing
-images/gallery/Studio/image11.jpg	<--> successfully processed
- 
-images/gallery/Studio/image7.jpg	<--> started processing
-images/gallery/Studio/image7.jpg	<--> successfully processed
- 
-images/gallery/Studio/image6.jpg	<--> started processing
-images/gallery/Studio/image6.jpg	<--> successfully processed
- 
-images/gallery/Studio/image4.jpg	<--> started processing
-images/gallery/Studio/image4.jpg	<--> successfully processed
- 
-images/gallery/Studio/image5.jpg	<--> started processing
-images/gallery/Studio/image5.jpg	<--> successfully processed
- 
-images/gallery/Studio/image1.jpg	<--> started processing
-images/gallery/Studio/image1.jpg	<--> successfully processed
- 
-images/gallery/Studio/image2.jpg	<--> started processing
-images/gallery/Studio/image2.jpg	<--> successfully processed
- 
-images/gallery/Studio/image3.jpg	<--> started processing
-images/gallery/Studio/image3.jpg	<--> successfully processed
+ERROR: 
+images\slideshow\Thumbs.db
+Details:	This image is not considered an image that can be added
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
  
-images/gallery/Location
-images/gallery/Location/image8.jpg	<--> started processing
-images/gallery/Location/image8.jpg	<--> successfully processed
+images\gallery\Location
+images\gallery\Location\image1.jpg	<--> started processing
+images\gallery\Location\image1.jpg	<--> successfully processed
  
-images/gallery/Location/image14.jpg	<--> started processing
-images/gallery/Location/image14.jpg	<--> successfully processed
+images\gallery\Location\image1a.jpg	<--> started processing
+images\gallery\Location\image1a.jpg	<--> successfully processed
  
-images/gallery/Location/image15.jpg	<--> started processing
-images/gallery/Location/image15.jpg	<--> successfully processed
+images\gallery\Location\image1b.jpg	<--> started processing
+images\gallery\Location\image1b.jpg	<--> successfully processed
  
-images/gallery/Location/image17.jpg	<--> started processing
-images/gallery/Location/image17.jpg	<--> successfully processed
+images\gallery\Location\image1c.jpg	<--> started processing
+images\gallery\Location\image1c.jpg	<--> successfully processed
  
-images/gallery/Location/image16.jpg	<--> started processing
-images/gallery/Location/image16.jpg	<--> successfully processed
+images\gallery\Location\image1d.jpg	<--> started processing
+images\gallery\Location\image1d.jpg	<--> successfully processed
  
-images/gallery/Location/image12.jpg	<--> started processing
-images/gallery/Location/image12.jpg	<--> successfully processed
+images\gallery\Location\image1e.jpg	<--> started processing
+images\gallery\Location\image1e.jpg	<--> successfully processed
  
-images/gallery/Location/image13.jpg	<--> started processing
-images/gallery/Location/image13.jpg	<--> successfully processed
+images\gallery\Location\image1f.jpg	<--> started processing
+images\gallery\Location\image1f.jpg	<--> successfully processed
  
-images/gallery/Location/image11.jpg	<--> started processing
-images/gallery/Location/image11.jpg	<--> successfully processed
+images\gallery\Location\image1g.jpg	<--> started processing
+images\gallery\Location\image1g.jpg	<--> successfully processed
  
-images/gallery/Location/image7.jpg	<--> started processing
-images/gallery/Location/image7.jpg	<--> successfully processed
+images\gallery\Location\image1h.jpg	<--> started processing
+images\gallery\Location\image1h.jpg	<--> successfully processed
  
-images/gallery/Location/image6.jpg	<--> started processing
-images/gallery/Location/image6.jpg	<--> successfully processed
+images\gallery\Location\image1i.jpg	<--> started processing
+images\gallery\Location\image1i.jpg	<--> successfully processed
  
-images/gallery/Location/image4.jpg	<--> started processing
-images/gallery/Location/image4.jpg	<--> successfully processed
+images\gallery\Location\image1j.jpg	<--> started processing
+images\gallery\Location\image1j.jpg	<--> successfully processed
  
-images/gallery/Location/image0.jpg	<--> started processing
-images/gallery/Location/image0.jpg	<--> successfully processed
+images\gallery\Location\image1k.jpg	<--> started processing
+images\gallery\Location\image1k.jpg	<--> successfully processed
  
-images/gallery/Location/image2.jpg	<--> started processing
-images/gallery/Location/image2.jpg	<--> successfully processed
+images\gallery\Location\image1l.jpg	<--> started processing
+images\gallery\Location\image1l.jpg	<--> successfully processed
  
-images/gallery/Location/image3.jpg	<--> started processing
-images/gallery/Location/image3.jpg	<--> successfully processed
+images\gallery\Location\image1m.jpg	<--> started processing
+images\gallery\Location\image1m.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1n.jpg	<--> started processing
+images\gallery\Location\image1n.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1o.jpg	<--> started processing
+images\gallery\Location\image1o.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1p.jpg	<--> started processing
+images\gallery\Location\image1p.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1q.jpg	<--> started processing
+images\gallery\Location\image1q.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1r.jpg	<--> started processing
+images\gallery\Location\image1r.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1s.jpg	<--> started processing
+images\gallery\Location\image1s.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1t.jpg	<--> started processing
+images\gallery\Location\image1t.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1u.jpg	<--> started processing
+images\gallery\Location\image1u.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1v.jpg	<--> started processing
+images\gallery\Location\image1v.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1w.jpg	<--> started processing
+images\gallery\Location\image1w.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1x.jpg	<--> started processing
+images\gallery\Location\image1x.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1y.jpg	<--> started processing
+images\gallery\Location\image1y.jpg	<--> successfully processed
+ 
+images\gallery\Location\image1z.jpg	<--> started processing
+images\gallery\Location\image1z.jpg	<--> successfully processed
+ 
+images\gallery\Location\Thumbs.db	<--> started processing
+ 
+ERROR: 
+images\gallery\Location\Thumbs.db
+Details:	This image is not considered an image that can be added
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+ 
+images\gallery\Studio
+images\gallery\Studio\image1.jpg	<--> started processing
+images\gallery\Studio\image1.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image11.jpg	<--> started processing
+images\gallery\Studio\image11.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image12.jpg	<--> started processing
+images\gallery\Studio\image12.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image13.jpg	<--> started processing
+images\gallery\Studio\image13.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image14.jpg	<--> started processing
+images\gallery\Studio\image14.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image2.jpg	<--> started processing
+images\gallery\Studio\image2.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image3.jpg	<--> started processing
+images\gallery\Studio\image3.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image4.jpg	<--> started processing
+images\gallery\Studio\image4.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image5.jpg	<--> started processing
+images\gallery\Studio\image5.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image6.jpg	<--> started processing
+images\gallery\Studio\image6.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image7.jpg	<--> started processing
+images\gallery\Studio\image7.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image8.jpg	<--> started processing
+images\gallery\Studio\image8.jpg	<--> successfully processed
+ 
+images\gallery\Studio\image9.jpg	<--> started processing
+images\gallery\Studio\image9.jpg	<--> successfully processed
+ 
+images\gallery\Studio\Thumbs.db	<--> started processing
+ 
+ERROR: 
+images\gallery\Studio\Thumbs.db
+Details:	This image is not considered an image that can be added
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
